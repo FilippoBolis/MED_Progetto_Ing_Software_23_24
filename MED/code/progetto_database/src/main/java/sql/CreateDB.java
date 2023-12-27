@@ -25,9 +25,14 @@ public class CreateDB {
 		Connection conn = DriverManager.getConnection(DB_URL);
 		if (conn != null) {
 			Statement stmt = conn.createStatement();
-			String sql = "CREATE TABLE PERSONALE (CODICE TEXT PRIMARY KEY, NOME TEXT, COGNOME TEXT, MANSIONE INT )"; 
+			String tabellapersonale = "CREATE TABLE PERSONALE (CODICE TEXT, NOME TEXT, COGNOME TEXT, MANSIONE INT, PRIMARY KEY(CODICE))";
+			String tabelladegente = "CREATE TABLE DEGENTE (CODICE TEXT, NOME TEXT, COGNOME TEXT, URGENZA INT, IN_ATTESA BOOLEAN, PRIMARY KEY (CODICE))";
+			String tabelladiaria = "CREATE TABLE DIARIA (CODICE TEXT, CODICE_DEGENTE TEXT, DATA DATE, ORA TIME, NOTE_PARTICOLARI TEXT, IMPORTANTE BOOLEAN, FARMACO TEXT, FOREIGN KEY (CODICE_DEGENTE) REFERENCES DEGENTE(CODICE), PRIMARY KEY (CODICE,CODICE_DEGENTE))";
 			// in mansione 0 è medico, 1 è infermiere, 2 è segretario
-			stmt.executeUpdate(sql);
+			// in urgenza 0 è verde, 1 è giallo e 2 è rosso
+			stmt.executeUpdate(tabellapersonale);
+			stmt.executeUpdate(tabelladegente);
+			stmt.executeUpdate(tabelladiaria);
 			stmt.close();
 			conn.close();
 			System.out.println("Table created successfully");
