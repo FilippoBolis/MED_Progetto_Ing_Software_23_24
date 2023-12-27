@@ -11,5 +11,3 @@ public class App
         System.out.println( "Hello World!" );
     }
 }
-
-//Commento prova 1
