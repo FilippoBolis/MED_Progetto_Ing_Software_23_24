@@ -30,9 +30,15 @@ public class CreateDB {
 			String tabelladiaria = "CREATE TABLE DIARIA (CODICE TEXT, CODICE_DEGENTE TEXT, DATA DATE, ORA TIME, NOTE_PARTICOLARI TEXT, IMPORTANTE BOOLEAN, FARMACO TEXT, FOREIGN KEY (CODICE_DEGENTE) REFERENCES DEGENTE(CODICE), PRIMARY KEY (CODICE,CODICE_DEGENTE))";
 			// in mansione 0 è medico, 1 è infermiere, 2 è segretario
 			// in urgenza 0 è verde, 1 è giallo e 2 è rosso
+			String tabellareparto= "CREATE TABLE REPARTO (CODICE TEXT, PRIMARY KEY(CODICE))";	
+			String tabellamodulo= "CREATE TABLE MODULO (CODICE_REPARTO TEXT, NOME TEXT, FOREIGN KEY (CODICE_REPARTO) REFERENCES REPARTO (CODICE), PRIMARY KEY(CODICE_REPARTO,NOME))";
+			String tabellaletto= "CREATE TABLE LETTO (CODICE_REPARTO TEXT, NOME_MODULO TEXT, NUMERO INT, FOREIGN KEY (CODICE_REPARTO) REFERENCES REPARTO(CODICE), FOREIGN KEY(NOME_MODULO) REFERENCES MODULO (NOME), PRIMARY KEY(CODICE_REPARTO,NOME_MODULO,NUMERO))";
 			stmt.executeUpdate(tabellapersonale);
 			stmt.executeUpdate(tabelladegente);
 			stmt.executeUpdate(tabelladiaria);
+			stmt.executeUpdate(tabellareparto);
+			stmt.executeUpdate(tabellamodulo);
+			stmt.executeUpdate(tabellaletto);
 			stmt.close();
 			conn.close();
 			System.out.println("Table created successfully");
