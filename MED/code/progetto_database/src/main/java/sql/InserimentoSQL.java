@@ -3,7 +3,7 @@ package sql;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
-public class Inserimento {
+public class InserimentoSQL {
 
 	public void personale(String codice, String nome, String cognome, String mansione) {
 		try {
@@ -169,7 +169,7 @@ public class Inserimento {
 
 
 	public static void main(String[] args) {
-            Inserimento i= new Inserimento();
+            InserimentoSQL i= new InserimentoSQL();
             i.personale("P1","Daniele","Gotti","M");
             i.personale("P2","Filippo","Bolis","I");
             i.degente("D1","Gabriele","Mazzoleni",0,true);
@@ -180,9 +180,7 @@ public class Inserimento {
             i.assegnazioneLetto("D1","Re1","ModuloA",1,LocalDate.now());
             i.diariaInf("DiariaInf1","D1","P2",LocalDate.now(),LocalTime.now().withNano(0),"Il paziente è diventato enorme dottore",true,"Trembolone");
             i.diariaMed("DiariaMed1","D1","P1","il paziente non soffre di nulla in particolare","Vuole diventare più grosso","Trembolone",LocalDate.now(),LocalTime.now().withNano(0),"nessun allergia");
-            
-            
-            
+                
 	}
 
 }
