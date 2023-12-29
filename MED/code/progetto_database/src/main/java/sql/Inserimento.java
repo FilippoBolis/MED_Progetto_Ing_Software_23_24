@@ -1,7 +1,8 @@
 package sql;
 
 import java.sql.*;
-
+import java.time.LocalDate;
+import java.time.LocalTime;
 public class Inserimento {
 
 	public void personale(String codice, String nome, String cognome, String mansione) {
@@ -10,7 +11,7 @@ public class Inserimento {
 			if (conn != null) {
 				if (mansione == "M" || mansione == "I" || mansione == "S") {
 					Statement stmt = conn.createStatement();
-					String sql = "INSERT INTO PERSONALE VALUES (" + codice + "," + nome + "," + cognome + "," + mansione + ")";
+					String sql = "INSERT INTO PERSONALE(CODICE,NOME,COGNOME,MANSIONE) VALUES ('" + codice + "','" + nome + "','" + cognome + "','" + mansione + "')";
 					stmt.executeUpdate(sql);
 					stmt.close();
 					conn.close();
@@ -20,6 +21,7 @@ public class Inserimento {
 				}
 
 			}
+			else {System.out.println("Non va");}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
@@ -46,11 +48,12 @@ public class Inserimento {
 		}
 	}
 
-	public void rilevazione(String ID, String codDeg, float temp, int press, int glicem, Date data, Time ora, int freqCard, int dol) {try {
+	public void rilevazione(String ID, String codDeg, double temp, int pressMax,int pressMin, int glicem,LocalDate data, LocalTime ora, int freqCard, int dol) {try {
+		
 		Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
 		if (conn != null) {
 			Statement stmt = conn.createStatement();
-			String sql = "INSERT INTO RILEVAZIONE VALUES (" + ID + "," + codDeg +"," + temp + "," +press + "," + glicem+ "," + data + "," + ora+ "," + freqCard+ "," + dol + ")";
+			String sql = "INSERT INTO RILEVAZIONE(ID,CODICE_DEGENTE,TEMPERATURA,PRESSIONE_MAX,PRESSIONE_MIN,GLICEMIA,DATA,ORA,FREQ_CARD,DOLORE) VALUES ('" + ID + "','" + codDeg +"','" + temp + "','" + pressMax + "','" + pressMin + "','" + glicem+ "','" + data + "','" + ora+ "','" + freqCard+ "','" + dol + "')";
 			stmt.executeUpdate(sql);
 			stmt.close();
 			conn.close();
@@ -167,7 +170,19 @@ public class Inserimento {
 
 
 	public static void main(String[] args) {
-
+            Inserimento i= new Inserimento();
+            i.personale("A1","Daniele","Gotti","M");
+          //  i.degente("A21","Gabriele","Mazzoleni",0,true);
+            i.rilevazione("B1","A21",36.8,150,90,100, LocalDate.now(),LocalTime.now().withNano(0),60,5);
+           /* i.reparto();
+            i.modulo();
+            i.letto();
+            i.assegnazioneLetto();
+            i.diariaInf();
+            i.diariaMed();*/
+            
+            
+            
 	}
 
 }
