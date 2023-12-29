@@ -45,7 +45,21 @@ public class Inserimento {
 			System.out.println(e.getMessage());
 		}
 	}
-	public void rilevazione() {
+
+	public void rilevazione(String ID, String codDeg, float temp, int press, int glicem, Date data, Time ora, int freqCard, int dol) {try {
+		Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
+		if (conn != null) {
+			Statement stmt = conn.createStatement();
+			String sql = "INSERT INTO RILEVAZIONE VALUES (" + ID + "," + codDeg +"," + temp + "," +press + "," + glicem+ "," + data + "," + ora+ "," + freqCard+ "," + dol + ")";
+			stmt.executeUpdate(sql);
+			stmt.close();
+			conn.close();
+			System.out.println("Rilevazione inserita con successo");
+
+		}
+	} catch (SQLException e) {
+		System.out.println(e.getMessage());
+	}
 	}
 
 	public void reparto(String codice, String nome) {
@@ -75,11 +89,11 @@ public class Inserimento {
 				stmt.close();
 				conn.close();
 				System.out.println("Modulo inserito con successo");
-
+				}
+			}catch (SQLException e) {
+				System.out.println(e.getMessage());
 			}
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-		}
+		
 	}
 
 	public void letto(String codRep, String nomeMod, int numero) {
@@ -96,7 +110,7 @@ public class Inserimento {
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-		}
+		}	
 	}
 
 	public void assegnazioneLetto(String codDeg, String codRep, String nomeMod, int numero, Date dataAss) {
@@ -115,6 +129,42 @@ public class Inserimento {
 			System.out.println(e.getMessage());
 		}	
 	}
+
+	public void diariaInf(String codice, String codiceDegente, String codiceInfermiere, Date data, Time ora, String noteParticolari, Boolean importante, String farmaco) {
+		try {
+			Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
+			if (conn != null) {
+				Statement stmt = conn.createStatement();
+				String sql = "INSERT INTO DIARIAINF VALUES (" + codice + "," + codiceDegente + "," + codiceInfermiere + "," + data + "," + ora + "," + noteParticolari + "," + importante + "," + farmaco + ")";
+				stmt.executeUpdate(sql);
+				stmt.close();
+				conn.close();
+				System.out.println("DiaraInf inserita con successo");
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	public void diariaMed(String codice, String codiceDegente, String codiceMedico, String storico, String motivo, String farmaci, Date data, String ora, String allergie) {
+		try {
+			Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
+			if (conn != null) {
+				Statement stmt = conn.createStatement();
+				String sql = "INSERT INTO DIARIAINF VALUES (" + codice + "," + codiceDegente + "," + codiceMedico + "," + storico + "," + motivo + "," + farmaci + "," + data + "," + ora + "," + allergie + ")";
+				stmt.executeUpdate(sql);
+				stmt.close();
+				conn.close();
+				System.out.println("DiaraMed inserita con successo");
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+
+
+
 
 	public static void main(String[] args) {
 
