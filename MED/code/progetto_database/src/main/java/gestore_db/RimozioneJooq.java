@@ -29,9 +29,16 @@ public class RimozioneJooq {
 			Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
 			if (conn != null) {
 				DSLContext delete = DSL.using(conn, SQLDialect.SQLITE);
+				//cancellazione del singolo degente
 				int result = delete.deleteFrom(Degente.DEGENTE).where(Degente.DEGENTE.CODICE.eq(codice)).execute();
-				System.out.println(result);
-				//cancellazione delle entità daboli diaria med e inf e assLetto da implementare
+				
+				//cancellazione delle entità daboli: diaria med, diaria inf, assLetto e rilevazione
+				int result1= delete.deleteFrom(Diariamed.DIARIAMED).where(Diariamed.DIARIAMED.CODICE_DEGENTE.eq(codice)).execute();
+				int result2= delete.deleteFrom(Diariainf.DIARIAINF).where(Diariainf.DIARIAINF.CODICE_DEGENTE.eq(codice)).execute();
+				int result3= delete.deleteFrom(Assegnazioneletto.ASSEGNAZIONELETTO).where(Assegnazioneletto.ASSEGNAZIONELETTO.CODICE_DEGENTE.eq(codice)).execute();
+				int result4= delete.deleteFrom(Rilevazione.RILEVAZIONE).where(Rilevazione.RILEVAZIONE.CODICE_DEGENTE.eq(codice)).execute();
+				
+				System.out.println(result+ " "+ result1+ " "+ result2+ " "+ result3+ " "+ result4);
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -59,8 +66,14 @@ public class RimozioneJooq {
 				DSLContext delete = DSL.using(conn, SQLDialect.SQLITE);
 				//cancello il reparto
 				int result = delete.deleteFrom(Reparto.REPARTO).where(Reparto.REPARTO.CODICE.eq(codice)).execute();
-				System.out.println(result);
-				//cancellazione di entità deboli da implementare
+				
+				//cancellazione di entità deboli: modulo, letto e assegnazione letto
+				int result1= delete.deleteFrom(Modulo.MODULO).where(Modulo.MODULO.CODICE_REPARTO.eq(codice)).execute();
+				int result2= delete.deleteFrom(Letto.LETTO).where(Letto.LETTO.CODICE_REPARTO.eq(codice)).execute();
+				int result3= delete.deleteFrom(Assegnazioneletto.ASSEGNAZIONELETTO).where(Assegnazioneletto.ASSEGNAZIONELETTO.CODICE_REPARTO.eq(codice)).execute();
+				
+				//stampa a video dei risultati delle varie operazioni di rimozione
+				System.out.println(result + " "+ result1+ " "+ result2+ " "+ result3);
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -73,8 +86,11 @@ public class RimozioneJooq {
 			if (conn != null) {
 				DSLContext delete = DSL.using(conn, SQLDialect.SQLITE);
 				int result = delete.deleteFrom(Modulo.MODULO).where(Modulo.MODULO.CODICE_REPARTO.eq(codRep), Modulo.MODULO.NOME.eq(nome)).execute();
-				System.out.println(result);
-				//cancelazione entità deboli da implementare
+				
+				//cancelazione entità deboli: letto e assegnazione letto
+				int result1= delete.deleteFrom(Letto.LETTO).where(Letto.LETTO.NOME_MODULO.eq(nome)).execute();
+				int result2= delete.deleteFrom(Assegnazioneletto.ASSEGNAZIONELETTO).where(Assegnazioneletto.ASSEGNAZIONELETTO.NOME_MODULO.eq(nome)).execute();
+				System.out.println(result+ " "+ result1+ " "+ result2);
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -87,8 +103,11 @@ public class RimozioneJooq {
 			if (conn != null) {
 				DSLContext delete = DSL.using(conn, SQLDialect.SQLITE);
 				int result = delete.deleteFrom(Letto.LETTO).where(Letto.LETTO.CODICE_REPARTO.eq(codRep), Letto.LETTO.NOME_MODULO.eq(nomeMod), Letto.LETTO.NUMERO.eq(numero)).execute();
-				System.out.println(result);
-				//rimozione dell'entità debole assegnazione letto da implementare
+				
+				//rimozione dell'entità debole: assegnazione letto
+				int result1 = delete.deleteFrom(Assegnazioneletto.ASSEGNAZIONELETTO).where(Assegnazioneletto.ASSEGNAZIONELETTO.CODICE_REPARTO.eq(codRep), Assegnazioneletto.ASSEGNAZIONELETTO.NOME_MODULO.eq(nomeMod), Assegnazioneletto.ASSEGNAZIONELETTO.NUMERO_LETTO.eq(numero)).execute();
+				
+				System.out.println(result+" "+ result1);
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -138,15 +157,15 @@ public class RimozioneJooq {
 
 	public static void main(String[] args) {
 		RimozioneJooq rm= new RimozioneJooq();
-		rm.personale("P2");
-		rm.rilevazione("Ri1","D1");
-		rm.degente("D1");
-		rm.reparto("Re1");
-		rm.modulo("Re1","ModuloA");
-		rm.letto("Re1", "ModuloA", 1);
-		rm.assegnazioneLetto("D1","Re1", "ModuloA", 1);
-		rm.diariaInf("DiariaInf1", "D1");
-		rm.diariaMed("DiariaMed1","D1");
+		//rm.personale("P2");
+		//rm.rilevazione("Ri1","D1");
+		//rm.degente("D1");
+		//rm.reparto("Re1");
+		//rm.modulo("Re1","ModuloA");
+		//rm.letto("Re1", "ModuloA", 1);
+		//rm.assegnazioneLetto("D1","Re1", "ModuloA", 1);
+		//rm.diariaInf("DiariaInf1", "D1");
+		//rm.diariaMed("DiariaMed1","D1");
 
 	}
 
