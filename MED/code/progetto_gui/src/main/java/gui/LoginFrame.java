@@ -7,8 +7,6 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 
-import Modelli.modelloLogicaLogin;
-
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
@@ -19,11 +17,12 @@ import javax.swing.JPasswordField;
 @SuppressWarnings("serial")
 public class LoginFrame extends JFrame {
 
-	ImageIcon docImage = new ImageIcon("./src/main/resources/doc.png");
-	ImageIcon keyImage = new ImageIcon("./src/main/resources/key.png");
-	ImageIcon sfondoImage = new ImageIcon("./src/main/resources/sfondo.png");
-	private JTextField userField;
-	private JPasswordField passwordField;
+	ImageIcon docImage = new ImageIcon("../progetto_gui/src/main/resources/doc.png");
+	ImageIcon keyImage = new ImageIcon("../progetto_gui/src/main/resources/key.png");
+	ImageIcon sfondoImage = new ImageIcon("../progetto_gui/src/main/resources/sfondo.png");
+	public JTextField userField;
+	public JPasswordField passwordField;
+	public JButton loginButton;
 	
 	public LoginFrame() {
 
@@ -109,7 +108,7 @@ public class LoginFrame extends JFrame {
 		passwordField.setColumns(20);
 		destraPanel.add(passwordField);
 		
-		JButton loginButton = new JButton("Login");
+		loginButton = new JButton("Login");
 		loginButton.setBounds(41, 260, 235, 40);
 		loginButton.setBackground(Stile.AZZURRO.getColore());
 		loginButton.setForeground(Color.WHITE);

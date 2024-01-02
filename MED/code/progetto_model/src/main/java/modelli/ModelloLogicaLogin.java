@@ -1,6 +1,6 @@
-package Modelli;
+package modelli;
 
-public class modelloLogicaLogin {
+public class ModelloLogicaLogin {
 	public void modellotest() {
 		System.out.println("modello test");
 	}
