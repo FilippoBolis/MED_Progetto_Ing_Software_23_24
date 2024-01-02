@@ -159,7 +159,7 @@ public class RimozioneJooq {
 		RimozioneJooq rm = new RimozioneJooq();
 		//rm.personale("P2");
 		//rm.rilevazione("Ri1","D1");
-		//rm.degente("D1");
+		rm.degente("D1");
 		//rm.reparto("Re1");
 		//rm.modulo("Re1","ModuloA");
 		//rm.letto("Re1", "ModuloA", 1);

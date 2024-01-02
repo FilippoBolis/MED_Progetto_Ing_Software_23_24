@@ -47,7 +47,7 @@ public class Keys {
     public static final UniqueKey<DiariamedRecord> DIARIAMED__PK_DIARIAMED = Internal.createUniqueKey(Diariamed.DIARIAMED, DSL.name("pk_DIARIAMED"), new TableField[] { Diariamed.DIARIAMED.CODICE, Diariamed.DIARIAMED.CODICE_DEGENTE }, true);
     public static final UniqueKey<LettoRecord> LETTO__PK_LETTO = Internal.createUniqueKey(Letto.LETTO, DSL.name("pk_LETTO"), new TableField[] { Letto.LETTO.CODICE_REPARTO, Letto.LETTO.NOME_MODULO, Letto.LETTO.NUMERO }, true);
     public static final UniqueKey<ModuloRecord> MODULO__PK_MODULO = Internal.createUniqueKey(Modulo.MODULO, DSL.name("pk_MODULO"), new TableField[] { Modulo.MODULO.CODICE_REPARTO, Modulo.MODULO.NOME }, true);
-    public static final UniqueKey<PersonaleRecord> PERSONALE__PK_PERSONALE = Internal.createUniqueKey(Personale.PERSONALE, DSL.name("pk_PERSONALE"), new TableField[] { Personale.PERSONALE.CODICE }, true);
+    public static final UniqueKey<PersonaleRecord> PERSONALE__PK_PERSONALE = Internal.createUniqueKey(Personale.PERSONALE, DSL.name("pk_PERSONALE"), new TableField[] { Personale.PERSONALE.CODICE, Personale.PERSONALE.PASSWORD }, true);
     public static final UniqueKey<RepartoRecord> REPARTO__PK_REPARTO = Internal.createUniqueKey(Reparto.REPARTO, DSL.name("pk_REPARTO"), new TableField[] { Reparto.REPARTO.CODICE }, true);
     public static final UniqueKey<RilevazioneRecord> RILEVAZIONE__PK_RILEVAZIONE = Internal.createUniqueKey(Rilevazione.RILEVAZIONE, DSL.name("pk_RILEVAZIONE"), new TableField[] { Rilevazione.RILEVAZIONE.ID, Rilevazione.RILEVAZIONE.CODICE_DEGENTE }, true);
 

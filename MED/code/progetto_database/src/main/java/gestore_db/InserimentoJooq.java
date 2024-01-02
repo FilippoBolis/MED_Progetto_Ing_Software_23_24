@@ -15,7 +15,7 @@ import med_db.jooq.generated.tables.records.*;
 
 public class InserimentoJooq {
 	
-	public void personale(String codice, String nome, String cognome, String mansione) {
+	public void personale(String codice, String nome, String cognome, String mansione, String password) {
 		
 		try {
 			Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
@@ -23,7 +23,7 @@ public class InserimentoJooq {
 				if (mansione == "M" || mansione == "I" || mansione == "S") {
 					DSLContext create = DSL.using(conn, SQLDialect.SQLITE);
 
-					PersonaleRecord persona = new PersonaleRecord(codice, nome, cognome, mansione);
+					PersonaleRecord persona = new PersonaleRecord(codice, nome, cognome, mansione, password);
 
 					int result = create.insertInto(Personale.PERSONALE).set(persona).execute();
 
@@ -141,8 +141,11 @@ public class InserimentoJooq {
 				AssegnazionelettoRecord assLetto = new AssegnazionelettoRecord(codDeg, codRep, nomeMod, numero, dataAss);
 
 				int result = create.insertInto(Assegnazioneletto.ASSEGNAZIONELETTO).set(assLetto).execute();
+				
+				//se assegno un letto, il degente non è più in attesa
+				int result1= create.update(Degente.DEGENTE).set(Degente.DEGENTE.IN_ATTESA, false).where(Degente.DEGENTE.CODICE.eq(codDeg)).execute();
 
-				System.out.println(result);
+				System.out.println(result+ " "+result1);
 
 			}
 		} catch (SQLException e) {
@@ -186,8 +189,8 @@ public class InserimentoJooq {
 
 	public static void main(String[] args) {
 		InserimentoJooq i= new InserimentoJooq();
-        i.personale("P1","Daniele","Gotti","M");
-        i.personale("P2","Filippo","Bolis","I");
+        i.personale("P1","Daniele","Gotti","M", "SpostamiSeCiRiesci");
+        i.personale("P2","Filippo","Bolis","I","HaiGiocatoAdOuterWilds");
         i.degente("D1","Gabriele","Mazzoleni",0,true);
         i.rilevazione("Ri1","D1",36.8,150,90,100, LocalDate.now(),LocalTime.now().withNano(0),60,5);
         i.reparto("Re1","Cardiologia");
