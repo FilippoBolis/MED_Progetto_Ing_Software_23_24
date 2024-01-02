@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import com.formdev.flatlaf.FlatIntelliJLaf;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
@@ -21,7 +22,7 @@ public class LoginFrame extends JFrame {
 	ImageIcon sfondoImage = new ImageIcon("./src/main/resources/sfondo.png");
 	private JTextField userField;
 	private JPasswordField passwordField;
-
+	
 	public LoginFrame() {
 
 		try {
@@ -112,7 +113,6 @@ public class LoginFrame extends JFrame {
 		loginButton.setForeground(Color.WHITE);
 		loginButton.setFont(Stile.SOTTOTITOLO.getFont());
 		destraPanel.add(loginButton);
-
 		sfondoFrame.setVisible(true);
 	}
 	
