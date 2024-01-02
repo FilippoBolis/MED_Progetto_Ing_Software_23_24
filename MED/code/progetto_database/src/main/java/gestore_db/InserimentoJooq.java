@@ -196,6 +196,5 @@ public class InserimentoJooq {
         i.assegnazioneLetto("D1","Re1","ModuloA",1,LocalDate.now());
         i.diariaInf("DiariaInf1","D1","P2",LocalDate.now(),LocalTime.now().withNano(0),"Il paziente è diventato enorme dottore",true,"Trembolone");
         i.diariaMed("DiariaMed1","D1","P1","il paziente non soffre di nulla in particolare","Vuole diventare più grosso","Trembolone",LocalDate.now(),LocalTime.now().withNano(0),"nessun allergia");
-
 	}
 }

@@ -156,7 +156,7 @@ public class RimozioneJooq {
 	
 
 	public static void main(String[] args) {
-		RimozioneJooq rm= new RimozioneJooq();
+		RimozioneJooq rm = new RimozioneJooq();
 		//rm.personale("P2");
 		//rm.rilevazione("Ri1","D1");
 		//rm.degente("D1");
