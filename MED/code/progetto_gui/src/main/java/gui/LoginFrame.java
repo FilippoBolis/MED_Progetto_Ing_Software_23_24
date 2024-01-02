@@ -6,6 +6,9 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import com.formdev.flatlaf.FlatIntelliJLaf;
+
+import logicheButton.LogicaLogin;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
@@ -22,7 +25,7 @@ public class LoginFrame extends JFrame {
 	private JTextField userField;
 	private JPasswordField passwordField;
 
-	public LoginFrame() {
+	public LoginFrame(LogicaLogin logicalogin) {
 
 		try {
 			UIManager.setLookAndFeel(new FlatIntelliJLaf());
@@ -112,12 +115,13 @@ public class LoginFrame extends JFrame {
 		loginButton.setForeground(Color.WHITE);
 		loginButton.setFont(Stile.SOTTOTITOLO.getFont());
 		destraPanel.add(loginButton);
+		loginButton.addActionListener(e -> logicalogin.premuto(userField.getText(), new String(passwordField.getPassword())));
 
 		sfondoFrame.setVisible(true);
 	}
 	
 	public static void main(String[] args) throws Exception {
-		new LoginFrame();
+		new LoginFrame(new LogicaLogin());
 
 	}
 }
