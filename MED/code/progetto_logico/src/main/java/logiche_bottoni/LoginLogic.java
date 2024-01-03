@@ -1,4 +1,4 @@
-package logiche_bottoni_login;
+package logiche_bottoni;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,13 +14,13 @@ import org.jooq.impl.DSL;
 import gui.*;
 import med_db.jooq.generated.tables.Personale;
 
-public class loginLogic {
+public class LoginLogic {
 	
 	LoginFrame view;
 	public static String DB_REL_FILELOGIC = "../progetto_database/db/db.db3";
 	public static String DB_URLLOGIC = "jdbc:sqlite:" + DB_REL_FILELOGIC;
 	
-	public loginLogic(LoginFrame v) {
+	public LoginLogic(LoginFrame v) {
 		// prede i refs
 		view = v;
 		registerLogin();
@@ -44,6 +44,7 @@ public class loginLogic {
 							}
 							else {
 								System.out.println("non ok");
+								new ErroreFrame(view.sfondoFrame, "Username o Password errati");
 							}
 						}
 					} catch (SQLException ev) {
