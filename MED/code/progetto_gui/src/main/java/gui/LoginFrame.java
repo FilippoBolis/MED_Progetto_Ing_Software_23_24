@@ -16,6 +16,7 @@ import javax.swing.JPasswordField;
 
 @SuppressWarnings("serial")
 public class LoginFrame extends JFrame {
+	
 
 	ImageIcon docImage = new ImageIcon("../progetto_gui/src/main/resources/doc.png");
 	ImageIcon keyImage = new ImageIcon("../progetto_gui/src/main/resources/key.png");
@@ -23,16 +24,15 @@ public class LoginFrame extends JFrame {
 	public JTextField userField;
 	public JPasswordField passwordField;
 	public JButton loginButton;
-	
+	public JFrame sfondoFrame;
 	public LoginFrame() {
-
+		
 		try {
 			UIManager.setLookAndFeel(new FlatIntelliJLaf());
 		} catch (UnsupportedLookAndFeelException e) {
 			e.printStackTrace();
 		}
-
-		JFrame sfondoFrame = new JFrame();
+		sfondoFrame = new JFrame();
 		sfondoFrame.setSize(680, 400);
 		sfondoFrame.setTitle("<html><font color='white'>M.E.D Login</font></html>");
 		sfondoFrame.getRootPane().setBackground(Stile.AZZURRO.getColore());
@@ -40,7 +40,7 @@ public class LoginFrame extends JFrame {
 		sfondoFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		sfondoFrame.setLocationRelativeTo(null);
 		sfondoFrame.setResizable(false);
-
+		
 		JPanel sfondoPanel = new JPanel();
 		sfondoFrame.getContentPane().add(sfondoPanel);
 		sfondoPanel.setLayout(null);
