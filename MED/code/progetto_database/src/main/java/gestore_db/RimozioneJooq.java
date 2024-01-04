@@ -10,6 +10,14 @@ import org.jooq.impl.DSL;
 import med_db.jooq.generated.tables.*;
 
 public class RimozioneJooq {
+	//pattern singleton
+	private static RimozioneJooq istanza=new RimozioneJooq();
+	
+	private RimozioneJooq() {}
+	
+	public static RimozioneJooq getIstanza() {
+		return istanza;
+	}
 	
 	public void personale(String codice) {
 		try {
@@ -156,16 +164,16 @@ public class RimozioneJooq {
 	
 
 	public static void main(String[] args) {
-		RimozioneJooq rm = new RimozioneJooq();
-		//rm.personale("P2");
-		//rm.rilevazione("Ri1","D1");
-		rm.degente("D1");
-		//rm.reparto("Re1");
-		//rm.modulo("Re1","ModuloA");
-		//rm.letto("Re1", "ModuloA", 1);
-		//rm.assegnazioneLetto("D1","Re1", "ModuloA", 1);
-		//rm.diariaInf("DiariaInf1", "D1");
-		//rm.diariaMed("DiariaMed1","D1");
+
+		//getIstanza().personale("P2");
+		//getIstanza().rilevazione("Ri1","D1");
+		getIstanza().degente("D1");
+		//getIstanza().reparto("Re1");
+		//getIstanza().modulo("Re1","ModuloA");
+		//getIstanza().letto("Re1", "ModuloA", 1);
+		//getIstanza().assegnazioneLetto("D1","Re1", "ModuloA", 1);
+		//getIstanza().diariaInf("DiariaInf1", "D1");
+		//getIstanza().diariaMed("DiariaMed1","D1");
 
 	}
 

@@ -14,7 +14,15 @@ import med_db.jooq.generated.tables.records.*;
 
 
 public class InserimentoJooq {
+	//pattern singleton
+	private static InserimentoJooq istanza= new InserimentoJooq();
 	
+	private InserimentoJooq() {}
+	
+	public static InserimentoJooq getIstanza() {
+		return istanza;
+	}
+
 	public void personale(String codice, String nome, String cognome, String mansione, String password) {
 		
 		try {
@@ -188,17 +196,17 @@ public class InserimentoJooq {
 	}
 
 	public static void main(String[] args) {
-		InserimentoJooq i= new InserimentoJooq();
-        i.personale("P1","Daniele","Gotti","M", "SpostamiSeCiRiesci");
-        i.personale("P2","Filippo","Bolis","I","HaiGiocatoAdOuterWilds");
-        i.degente("D1","Gabriele","Mazzoleni",0,true);
-        i.rilevazione("Ri1","D1",36.8,150,90,100, LocalDate.now(),LocalTime.now().withNano(0),60,5);
-        i.reparto("Re1","Cardiologia");
-        i.modulo("Re1","ModuloA");
-        i.letto("Re1","ModuloA",1);
-        i.assegnazioneLetto("D1","Re1","ModuloA",1,LocalDate.now());
-        i.diariaInf("DiariaInf1","D1","P2",LocalDate.now(),LocalTime.now().withNano(0),"Il paziente è diventato enorme dottore",true,"Trembolone");
-        i.diariaMed("DiariaMed1","D1","P1","il paziente non soffre di nulla in particolare","Vuole diventare più grosso","Trembolone",LocalDate.now(),LocalTime.now().withNano(0),"nessun allergia");
+
+		//getIstanza().personale("P1","Daniele","Gotti","M", "SpostamiSeCiRiesci");
+		//getIstanza().personale("P2","Filippo","Bolis","I","HaiGiocatoAdOuterWilds");
+		getIstanza().degente("D1","Gabriele","Mazzoleni",0,true);
+		getIstanza().rilevazione("Ri1","D1",36.8,150,90,100, LocalDate.now(),LocalTime.now().withNano(0),60,5);
+		//getIstanza().reparto("Re1","Cardiologia");
+		//getIstanza().modulo("Re1","ModuloA");
+		//getIstanza().letto("Re1","ModuloA",1);
+		getIstanza().assegnazioneLetto("D1","Re1","ModuloA",1,LocalDate.now());
+		getIstanza().diariaInf("DiariaInf1","D1","P2",LocalDate.now(),LocalTime.now().withNano(0),"Il paziente è diventato enorme dottore",true,"Trembolone");
+		getIstanza().diariaMed("DiariaMed1","D1","P1","il paziente non soffre di nulla in particolare","Vuole diventare più grosso","Trembolone",LocalDate.now(),LocalTime.now().withNano(0),"nessun allergia");
 	}
 
 }
