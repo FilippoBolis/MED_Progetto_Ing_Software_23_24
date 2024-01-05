@@ -8,8 +8,8 @@ public enum Stile {
     BLU(new Color(26, 69, 120)),
     BLU_SCURO(new Color(17, 45, 78)),
     AZZURRO(new Color(63, 114, 175)),
+	AZZURRO_TRASP(new Color(63, 114, 175, 100)),
 	VERDE(new Color(60, 179, 113)),
-    
 
 	SPECIALE(new Font("sanserif", Font.BOLD, 40)),
 	TITOLO(new Font("sanserif", Font.BOLD, 30)),

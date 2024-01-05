@@ -42,8 +42,9 @@ public class LoginFrame extends JFrame {
 		sfondoFrame.setResizable(false);
 		
 		JPanel sfondoPanel = new JPanel();
-		sfondoFrame.getContentPane().add(sfondoPanel);
 		sfondoPanel.setLayout(null);
+		sfondoFrame.getContentPane().add(sfondoPanel);
+		
 
 		JPanel sinistraPanel = new JPanel();
 		sinistraPanel.setBounds(0, 0, 330, 363);
@@ -119,6 +120,5 @@ public class LoginFrame extends JFrame {
 	
 	public static void main(String[] args) throws Exception {
 		new LoginFrame();
-
 	}
 }
