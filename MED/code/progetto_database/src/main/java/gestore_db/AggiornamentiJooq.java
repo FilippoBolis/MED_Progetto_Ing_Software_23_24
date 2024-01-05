@@ -53,13 +53,28 @@ public class AggiornamentiJooq {
 				 * il relativo campo del degente identificato dal codice*/
 				switch(attr) {
 				case "urgenza":
-					int resultU= cambiaVal.update(Degente.DEGENTE).set(Degente.DEGENTE.URGENZA, Integer.parseInt(newVal)).where(Degente.DEGENTE.CODICE.eq(codice)).execute();
-					System.out.println(resultU);
+					if(Integer.parseInt(newVal) >= 0 && Integer.parseInt(newVal)<= 2) {
+						int resultU= cambiaVal.update(Degente.DEGENTE).set(Degente.DEGENTE.URGENZA, Integer.parseInt(newVal)).where(Degente.DEGENTE.CODICE.eq(codice)).execute();
+						System.out.println(resultU);	
+					}
+					else
+						System.out.println("Urgenza richiesta non ammessa");
+					
 					break;
 					
 				case "in attesa": //teoricamente non serve, l'attesa viene già modificata quando viene assegnato un letto
 					int resultA= cambiaVal.update(Degente.DEGENTE).set(Degente.DEGENTE.IN_ATTESA, Boolean.parseBoolean(newVal)).where(Degente.DEGENTE.CODICE.eq(codice)).execute();
 					System.out.println(resultA);
+					break;
+					
+				case "sesso":
+					if(newVal=="M" || newVal=="F") {
+						int resultS= cambiaVal.update(Degente.DEGENTE).set(Degente.DEGENTE.SESSO, newVal).where(Degente.DEGENTE.CODICE.eq(codice)).execute();
+						System.out.println(resultS);	
+					}
+					else
+						System.out.println("Sesso del paziente richiesto non ammesso");
+					
 					break;
 					
 				default:
@@ -136,7 +151,7 @@ public class AggiornamentiJooq {
 	
 	public static void main(String[] args) {
 		//getIstanza().personale("P2", "CaviAreMyLife");
-		//getIstanza().degente("D1","urgenza","5");
+		//getIstanza().degente("D1","urgenza","2");
 		//getIstanza().diariaInf("DiariaInf1", "D1", "false");
 		//getIstanza().diariaMed("DiariaMed1", "D1", "storico", "Il paziente era diventato gigagrosso");
 		//getIstanza().diariaMed("DiariaMed1", "D1", "motivo", "Il paziente deve ridursi un pelo");

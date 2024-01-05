@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+
 import org.jooq.DSLContext;
 import org.jooq.SQLDialect;
 import org.jooq.impl.DSL;
@@ -47,20 +48,20 @@ public class InserimentoJooq {
 		}
 	}
 
-	public void degente(String codice, String nome, String cognome, int urgenza, boolean attesa) {
+	public void degente(String codice, String nome, String cognome, String sesso, LocalDate dataArrivo, LocalTime oraArrivo,  int urgenza, boolean attesa) {
 		try {
 			Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
 			if (conn != null) {
-				if (urgenza >= 0 && urgenza <= 2) {
+				if ((urgenza >= 0 && urgenza <= 2) && (sesso=="M" || sesso=="F")) {
 					DSLContext create = DSL.using(conn, SQLDialect.SQLITE);
 
-					DegenteRecord degente = new DegenteRecord(codice, nome, cognome, urgenza, attesa);
+					DegenteRecord degente = new DegenteRecord(codice, nome, cognome, sesso, dataArrivo, oraArrivo, urgenza, attesa);
 
 					int result = create.insertInto(Degente.DEGENTE).set(degente).execute();
 
 					System.out.println(result);
 				} else {
-					System.out.println("urgenza non valida");
+					System.out.println("urgenza e/o sesso inseriti non validi");
 				}
 
 			}
@@ -199,14 +200,14 @@ public class InserimentoJooq {
 
 		//getIstanza().personale("P1","Daniele","Gotti","M", "SpostamiSeCiRiesci");
 		//getIstanza().personale("P2","Filippo","Bolis","I","HaiGiocatoAdOuterWilds");
-		getIstanza().degente("D1","Gabriele","Mazzoleni",0,true);
-		getIstanza().rilevazione("Ri1","D1",36.8,150,90,100, LocalDate.now(),LocalTime.now().withNano(0),60,5);
+		//getIstanza().degente("D1","Gabriele","Mazzoleni","M",LocalDate.now(), LocalTime.now().withNano(0),0,true);
+		//getIstanza().rilevazione("Ri1","D1",36.8,150,90,100, LocalDate.now(),LocalTime.now().withNano(0),60,5);
 		//getIstanza().reparto("Re1","Cardiologia");
 		//getIstanza().modulo("Re1","ModuloA");
 		//getIstanza().letto("Re1","ModuloA",1);
-		getIstanza().assegnazioneLetto("D1","Re1","ModuloA",1,LocalDate.now());
-		getIstanza().diariaInf("DiariaInf1","D1","P2",LocalDate.now(),LocalTime.now().withNano(0),"Il paziente è diventato enorme dottore",true,"Trembolone");
-		getIstanza().diariaMed("DiariaMed1","D1","P1","il paziente non soffre di nulla in particolare","Vuole diventare più grosso","Trembolone",LocalDate.now(),LocalTime.now().withNano(0),"nessun allergia");
+		//getIstanza().assegnazioneLetto("D1","Re1","ModuloA",1,LocalDate.now());
+		//getIstanza().diariaInf("DiariaInf1","D1","P2",LocalDate.now(),LocalTime.now().withNano(0),"Il paziente è diventato enorme dottore",true,"Trembolone");
+		//getIstanza().diariaMed("DiariaMed1","D1","P1","il paziente non soffre di nulla in particolare","Vuole diventare più grosso","Trembolone",LocalDate.now(),LocalTime.now().withNano(0),"nessun allergia");
 	}
 
 }

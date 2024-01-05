@@ -4,6 +4,8 @@
 package med_db.jooq.generated.tables;
 
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.function.Function;
 
 import med_db.jooq.generated.DefaultSchema;
@@ -12,11 +14,11 @@ import med_db.jooq.generated.tables.records.DegenteRecord;
 
 import org.jooq.Field;
 import org.jooq.ForeignKey;
-import org.jooq.Function5;
+import org.jooq.Function8;
 import org.jooq.Name;
 import org.jooq.Record;
 import org.jooq.Records;
-import org.jooq.Row5;
+import org.jooq.Row8;
 import org.jooq.Schema;
 import org.jooq.SelectField;
 import org.jooq.Table;
@@ -63,6 +65,21 @@ public class Degente extends TableImpl<DegenteRecord> {
      * The column <code>DEGENTE.COGNOME</code>.
      */
     public final TableField<DegenteRecord, String> COGNOME = createField(DSL.name("COGNOME"), SQLDataType.CLOB, this, "");
+
+    /**
+     * The column <code>DEGENTE.SESSO</code>.
+     */
+    public final TableField<DegenteRecord, String> SESSO = createField(DSL.name("SESSO"), SQLDataType.CLOB, this, "");
+
+    /**
+     * The column <code>DEGENTE.DATA_ARRIVO</code>.
+     */
+    public final TableField<DegenteRecord, LocalDate> DATA_ARRIVO = createField(DSL.name("DATA_ARRIVO"), SQLDataType.LOCALDATE, this, "");
+
+    /**
+     * The column <code>DEGENTE.ORA_ARRIVO</code>.
+     */
+    public final TableField<DegenteRecord, LocalTime> ORA_ARRIVO = createField(DSL.name("ORA_ARRIVO"), SQLDataType.LOCALTIME, this, "");
 
     /**
      * The column <code>DEGENTE.URGENZA</code>.
@@ -157,18 +174,18 @@ public class Degente extends TableImpl<DegenteRecord> {
     }
 
     // -------------------------------------------------------------------------
-    // Row5 type methods
+    // Row8 type methods
     // -------------------------------------------------------------------------
 
     @Override
-    public Row5<String, String, String, Integer, Boolean> fieldsRow() {
-        return (Row5) super.fieldsRow();
+    public Row8<String, String, String, String, LocalDate, LocalTime, Integer, Boolean> fieldsRow() {
+        return (Row8) super.fieldsRow();
     }
 
     /**
      * Convenience mapping calling {@link SelectField#convertFrom(Function)}.
      */
-    public <U> SelectField<U> mapping(Function5<? super String, ? super String, ? super String, ? super Integer, ? super Boolean, ? extends U> from) {
+    public <U> SelectField<U> mapping(Function8<? super String, ? super String, ? super String, ? super String, ? super LocalDate, ? super LocalTime, ? super Integer, ? super Boolean, ? extends U> from) {
         return convertFrom(Records.mapping(from));
     }
 
@@ -176,7 +193,7 @@ public class Degente extends TableImpl<DegenteRecord> {
      * Convenience mapping calling {@link SelectField#convertFrom(Class,
      * Function)}.
      */
-    public <U> SelectField<U> mapping(Class<U> toType, Function5<? super String, ? super String, ? super String, ? super Integer, ? super Boolean, ? extends U> from) {
+    public <U> SelectField<U> mapping(Class<U> toType, Function8<? super String, ? super String, ? super String, ? super String, ? super LocalDate, ? super LocalTime, ? super Integer, ? super Boolean, ? extends U> from) {
         return convertFrom(toType, Records.mapping(from));
     }
 }
