@@ -15,6 +15,9 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableRowSorter;
 
 import com.formdev.flatlaf.FlatIntelliJLaf;
+
+import modelli.modelloLogicaPazienti;
+
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.BorderLayout;
@@ -25,14 +28,14 @@ public class PazientiFrame {
 	private final int HEIGHT = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 	public JFrame sfondoFrame;
 	public String infoPaziente = "Seleziona un paziente nel database";
-	public String mansioneUtente = "Dott.";
-	public String cognomeUtente = "Gotti";
-	public DefaultTableModel tableModel;
-	public JTable table;
+	private DefaultTableModel tableModel;
+	private JTable table;
+	private JLabel utenteLabel = new JLabel();
+	modelloLogicaPazienti modello;
 
 	@SuppressWarnings("serial")
-	public PazientiFrame() {
-		
+	public PazientiFrame(modelloLogicaPazienti modello) {
+		this.modello = modello;
 		try {
 			UIManager.setLookAndFeel(new FlatIntelliJLaf());
 		} catch (UnsupportedLookAndFeelException e) {
@@ -57,7 +60,6 @@ public class PazientiFrame {
         infoPanel.setLayout(null);
         sfondoPanel.add(infoPanel);
         
-        JLabel utenteLabel = new JLabel("Utente: " + mansioneUtente + " " + cognomeUtente);
         utenteLabel.setBounds(20, 0, (int) (WIDTH * 0.75) - 40, (int) (infoPanel.getHeight() * 0.25));
         utenteLabel.setForeground(Stile.BLU_SCURO.getColore());
         utenteLabel.setFont(Stile.TESTO.getFont());
@@ -115,12 +117,11 @@ public class PazientiFrame {
 		sfondoPanel.add(centroPanel);
 		
         tableModel = new DefaultTableModel();
-        tableModel.addColumn("Codice");
-        tableModel.addColumn("Cognome");
         tableModel.addColumn("Nome");
+        tableModel.addColumn("Cognome");
         tableModel.addColumn("Sesso");
-        tableModel.addColumn("Data");
-        tableModel.addColumn("Ora");
+        tableModel.addColumn("Data di Arrivo");
+        tableModel.addColumn("Ora di Arrivo");
         tableModel.addColumn("Urgenza");
         
         table = new JTable(tableModel) {
@@ -135,11 +136,11 @@ public class PazientiFrame {
         table.setSelectionBackground(Stile.AZZURRO_TRASP.getColore());
         
         //TOGLIERE solo di prova
-        tableModel.addRow(new Object[]{"1", "2", "1", "2", "1", "2", "1"});
+        /*tableModel.addRow(new Object[]{"1", "2", "1", "2", "1", "2", "1"});
         tableModel.addRow(new Object[]{"2", "1", "2", "1", "2", "1", "2"});
         for (int i = 0; i < 30; i++) {
             tableModel.addRow(new Object[]{"3", "3", "3", "3", "3", "3", "3"});
-        }
+        }*/
         
 		JScrollPane scrollPanel = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         scrollPanel.setBounds(20, 20, (int) (WIDTH * 0.75) - 40, (int) (HEIGHT * 0.75) - 60);
@@ -160,12 +161,13 @@ public class PazientiFrame {
 		sfondoFrame.setVisible(true);
 	}
 	
-	public void updateStringaUtente() {
-		//FILIPPO
-		//Crea e collega il modello a questa funzione come nell'esempio calculator
-		//All'avvio del frame la variabile mansioneUtente (se M metti Dott., se I metti Inf.) e cognomeUtente vanno inserite correttamente in base al Login
-		//(ho messo le stringhe dichiarate con valori a caso in alto, poi toglile quando hai fatto)
-		//Appariranno nel label utenteLabel
+	public void updateViewUtente() {
+		utenteLabel.setText(modello.getUtente());
+	}
+	public void updateViewTabellaProntoSoccorso() {
+		for (int i=0; i<modello.getTableNomi().size(); i++) {
+			tableModel.addRow(new Object[] {modello.getTableNomi().get(i),modello.getTableCognomi().get(i),modello.getTableSesso().get(i),modello.getTableDateArrivo().get(i),modello.getTableOraArrivo().get(i),modello.getTableUrgenza().get(i)});
+		}
 	}
 	
 	public void updateStringaPaziente() {
@@ -180,6 +182,6 @@ public class PazientiFrame {
 	//Sotto al logo che pulsanti metto?
 	
 	public static void main(String[] args) throws Exception {
-		new PazientiFrame();
+		//new PazientiFrame();
 	}
 }
