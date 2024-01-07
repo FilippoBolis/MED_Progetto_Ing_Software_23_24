@@ -1,6 +1,5 @@
 package logiche_bottoni;
 
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -15,9 +14,9 @@ import org.jooq.SQLDialect;
 import org.jooq.impl.DSL;
 
 import gui.*;
-import logiche_frame_pronto_soccorso.tabellaLogicProntoSoccorso;
+import logiche_frame_pronto_soccorso.TabellaLogicProntoSoccorso;
 import med_db.jooq.generated.tables.Personale;
-import modelli.modelloLogicaPazienti;
+import modelli.ModelloGestoreLogicaGenerale;
 
 public class LoginLogic {
 	
@@ -30,15 +29,15 @@ public class LoginLogic {
 	private String mansione;
 	private String nome;
 	private String cognome;
-	private modelloLogicaPazienti modello;
-	private tabellaLogicProntoSoccorso tabellaProntoSoccorso;
+	private ModelloGestoreLogicaGenerale modello;
+	private TabellaLogicProntoSoccorso tabellaProntoSoccorso;
 	
-	public LoginLogic(LoginFrame v, PazientiFrame v2, modelloLogicaPazienti m) {
+	public LoginLogic(LoginFrame v, PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		// prede i refs
 		loginFrame = v;
 		prontoSoccorso = v2;
 		modello = m;
-		tabellaProntoSoccorso = new tabellaLogicProntoSoccorso(prontoSoccorso, modello);
+		tabellaProntoSoccorso = new TabellaLogicProntoSoccorso(prontoSoccorso, modello);
 		registerLogin();
 	}
 	
@@ -48,35 +47,35 @@ public class LoginLogic {
 		loginFrame.loginButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-					try {
-						Connection conn = DriverManager.getConnection(DB_URLLOGIC);
-						if (conn != null) {
-							DSLContext contesto = DSL.using(conn, SQLDialect.SQLITE);
-							utente = loginFrame.userField.getText();
-							password = new String(loginFrame.passwordField.getPassword());
-							int result = contesto.select().from(Personale.PERSONALE).where(Personale.PERSONALE.PASSWORD.eq(password).and(Personale.PERSONALE.CODICE.eq(utente))).execute();
-							if (result == 1) {
-						    	cognome = contesto.select(Personale.PERSONALE.COGNOME).from(Personale.PERSONALE).where(Personale.PERSONALE.CODICE.eq(utente)).fetchOneInto(String.class);
-						    	nome = contesto.select(Personale.PERSONALE.NOME).from(Personale.PERSONALE).where(Personale.PERSONALE.CODICE.eq(utente)).fetchOneInto(String.class);
-						    	mansione = contesto.select(Personale.PERSONALE.MANSIONE).from(Personale.PERSONALE).where(Personale.PERSONALE.CODICE.eq(utente)).fetchOneInto(String.class);
-						    	modello.setUtente(mansione,nome,cognome,utente);
-						    	tabellaProntoSoccorso.update();
-						    	SwingUtilities.invokeLater(new Runnable() {
-								    @Override
-								    public void run() {
-								    	loginFrame.sfondoFrame.setVisible(false);
-								    	prontoSoccorso.updateViewUtente();
-								    	prontoSoccorso.sfondoFrame.setVisible(true);
-								    }
-								});
-							}
-							else {
-								new ErroreFrame(loginFrame.sfondoFrame, "Username o Password errati");
-							}
+				try {
+					Connection conn = DriverManager.getConnection(DB_URLLOGIC);
+					if (conn != null) {
+						DSLContext contesto = DSL.using(conn, SQLDialect.SQLITE);
+						utente = loginFrame.userField.getText();
+						password = new String(loginFrame.passwordField.getPassword());
+						int result = contesto.select().from(Personale.PERSONALE).where(Personale.PERSONALE.PASSWORD.eq(password).and(Personale.PERSONALE.CODICE.eq(utente))).execute();
+						if (result == 1) {
+						   	cognome = contesto.select(Personale.PERSONALE.COGNOME).from(Personale.PERSONALE).where(Personale.PERSONALE.CODICE.eq(utente)).fetchOneInto(String.class);
+						   	nome = contesto.select(Personale.PERSONALE.NOME).from(Personale.PERSONALE).where(Personale.PERSONALE.CODICE.eq(utente)).fetchOneInto(String.class);
+						   	mansione = contesto.select(Personale.PERSONALE.MANSIONE).from(Personale.PERSONALE).where(Personale.PERSONALE.CODICE.eq(utente)).fetchOneInto(String.class);
+						   	modello.modelloGestoreUtente.setUtente(mansione,nome,cognome,utente);
+						   	tabellaProntoSoccorso.update();
+						   	SwingUtilities.invokeLater(new Runnable() {
+							    @Override
+							    public void run() {
+							    	loginFrame.sfondoFrame.setVisible(false);
+							    	prontoSoccorso.updateViewUtente();
+							    	prontoSoccorso.sfondoFrame.setVisible(true);
+							    }
+							});
 						}
-					} catch (SQLException ev) {
-						System.out.println(ev.getMessage());
+						else {
+							new ErroreFrame(loginFrame.sfondoFrame, "Username o Password errati");
+						}
 					}
+				} catch (SQLException ev) {
+					System.out.println(ev.getMessage());
+				}	
 			}
 		});
 	}

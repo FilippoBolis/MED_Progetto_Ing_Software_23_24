@@ -18,12 +18,12 @@ import javax.swing.table.TableRowSorter;
 
 import com.formdev.flatlaf.FlatIntelliJLaf;
 
-import modelli.modelloLogicaPazienti;
+import modelli.ModelloGestoreLogicaGenerale;
 
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import java.awt.BorderLayout;
-import javax.swing.JFormattedTextField;
+import javax.swing.SwingUtilities;
+
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JToggleButton;
@@ -35,12 +35,14 @@ public class PazientiFrame {
 	public JFrame sfondoFrame;
 	public String infoPaziente = "Seleziona un paziente nel database";
 	private DefaultTableModel tableModel;
-	private JTable table;
+	public JTable table;
 	private JLabel utenteLabel;
-	modelloLogicaPazienti modello;
+	private JLabel pazienteTitoloLabel;
+	private ModelloGestoreLogicaGenerale modello;
+    public boolean updating = false;
 
 	@SuppressWarnings("serial")
-	public PazientiFrame(modelloLogicaPazienti modello) {
+	public PazientiFrame(ModelloGestoreLogicaGenerale modello) {
 		this.modello = modello;
 		try {
 			UIManager.setLookAndFeel(new FlatIntelliJLaf());
@@ -78,7 +80,7 @@ public class PazientiFrame {
         pazientePanel.setLayout(null);
         infoPanel.add(pazientePanel);
         
-        JLabel pazienteTitoloLabel = new JLabel("Paziente");
+        pazienteTitoloLabel = new JLabel("Paziente");
         pazienteTitoloLabel.setVerticalAlignment(SwingConstants.BOTTOM);
         pazienteTitoloLabel.setBounds(20, 0, (int) (pazientePanel.getWidth() - 20), (int) (pazientePanel.getHeight() * 0.5));
         pazienteTitoloLabel.setForeground(Color.WHITE);
@@ -216,6 +218,7 @@ public class PazientiFrame {
         tableModel.addColumn("Data di Arrivo");
         tableModel.addColumn("Ora di Arrivo");
         tableModel.addColumn("Urgenza");
+        tableModel.addColumn("Codice");
         
         table = new JTable(tableModel) {
             @Override
@@ -227,13 +230,6 @@ public class PazientiFrame {
         table.setShowHorizontalLines(true);
         table.setShowVerticalLines(true);
         table.setSelectionBackground(Stile.AZZURRO_TRASP.getColore());
-        
-        //TOGLIERE solo di prova
-        /*tableModel.addRow(new Object[]{"1", "2", "1", "2", "1", "2", "1"});
-        tableModel.addRow(new Object[]{"2", "1", "2", "1", "2", "1", "2"});
-        for (int i = 0; i < 30; i++) {
-            tableModel.addRow(new Object[]{"3", "3", "3", "3", "3", "3", "3"});
-        }*/
         
 		JScrollPane scrollPanel = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPanel.setBounds(0, filtriPanel.getHeight(), centroPanel.getWidth(), centroPanel.getHeight());
@@ -255,24 +251,23 @@ public class PazientiFrame {
 	}
 	
 	public void updateViewUtente() {
-		utenteLabel.setText(modello.getUtente());
+		utenteLabel.setText(modello.modelloGestoreUtente.getUtente());
 	}
-	public void updateViewTabellaProntoSoccorso() {
-		for (int i=0; i<modello.getTableNomi().size(); i++) {
-			tableModel.addRow(new Object[] {modello.getTableNomi().get(i),modello.getTableCognomi().get(i),modello.getTableSesso().get(i),modello.getTableDateArrivo().get(i),modello.getTableOraArrivo().get(i),modello.getTableUrgenza().get(i)});
-		}
+	public synchronized  void updateViewTabellaProntoSoccorso() {
+			if (updating) {
+                return;
+            }
+			updating = true;
+			tableModel.setRowCount(0);
+			for (int i=0; i<modello.modelloGestoreTabella.getTableNomi().size(); i++) {
+	    	   tableModel.addRow(new Object[] {modello.modelloGestoreTabella.getTableNomi().get(i),modello.modelloGestoreTabella.getTableCognomi().get(i),modello.modelloGestoreTabella.getTableSesso().get(i),modello.modelloGestoreTabella.getTableDateArrivo().get(i),modello.modelloGestoreTabella.getTableOraArrivo().get(i),modello.modelloGestoreTabella.getTableUrgenza().get(i),modello.modelloGestoreTabella.getTableCodice().get(i)});
+			}
+			updating = false;
 	}
 	
 	public void updateStringaPaziente() {
-		//FILIPPO
-		//Crea e collega il modello a questa funzione come nell'esempio calculator
-		//Se l'utente non ha neancora cliccato sul paziente viene visualizzata la frase: "Selezionare un paziente nel database" nel label pazienteLabel
-		//(ho messo la stringa dichiarata con valori a caso in alto, poi toglila quando hai fatto)
-		//Se l'utente clicca sulla tabella viene visualizzata una stringa con tutti i dati: "Codice: 3123 Cognome: Gotti ecc..."
+		pazienteTitoloLabel.setText(modello.modelloGestoreStringaPaziente.getDatiPaziente());
+		System.out.println(modello.modelloGestoreStringaPaziente.getDatiPaziente());
 	}
 	
-	
-	public static void main(String[] args) throws Exception {
-		//new PazientiFrame();
-	}
 }
