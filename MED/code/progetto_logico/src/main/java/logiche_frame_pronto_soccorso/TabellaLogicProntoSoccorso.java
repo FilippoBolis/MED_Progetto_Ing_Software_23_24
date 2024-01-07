@@ -30,7 +30,7 @@ public class TabellaLogicProntoSoccorso{
 	private List<String> sesso;							//quindi ogni volta che premevi il pulsante
 	private List<LocalDate> dateArrivo;					//nonostante fosse in mutua esclusione per i lock
 	private List<LocalTime> oreArrivo;					//comunque venivano accumulati i dati nelle liste (sovrapposizione)
-	private List<Integer> urgenza;						//creandoli dentro update ora il problema è risolto
+	private List<String> urgenza;						//creandoli dentro update ora il problema è risolto
 	private List<String> codice;
 	
 	public TabellaLogicProntoSoccorso(PazientiFrame p, ModelloGestoreLogicaGenerale m) {
@@ -47,12 +47,12 @@ public class TabellaLogicProntoSoccorso{
 	            List<String> sesso = new ArrayList<>();
 	            List<LocalDate> dateArrivo = new ArrayList<>();
 	            List<LocalTime> oreArrivo = new ArrayList<>();
-	            List<Integer> urgenza = new ArrayList<>();
+	            List<String> urgenza = new ArrayList<>();
 				Connection conn = DriverManager.getConnection(DB_URLLOGIC);
 				if (conn != null) {
 					DSLContext contesto = DSL.using(conn, SQLDialect.SQLITE);
-					Result<Record7<String,String,String,LocalDate,LocalTime,Integer,String>> degenti = contesto.select(Degente.DEGENTE.NOME,Degente.DEGENTE.COGNOME,Degente.DEGENTE.SESSO,Degente.DEGENTE.DATA_ARRIVO,Degente.DEGENTE.ORA_ARRIVO,Degente.DEGENTE.URGENZA,Degente.DEGENTE.CODICE).from(Degente.DEGENTE).fetch(); //poi aggiungi la condizione che mette gab
-					for (Record7<String, String, String, LocalDate, LocalTime, Integer,String> degenteRecord : degenti) {
+					Result<Record7<String,String,String,LocalDate,LocalTime,String,String>> degenti = contesto.select(Degente.DEGENTE.NOME,Degente.DEGENTE.COGNOME,Degente.DEGENTE.SESSO,Degente.DEGENTE.DATA_ARRIVO,Degente.DEGENTE.ORA_ARRIVO,Degente.DEGENTE.URGENZA,Degente.DEGENTE.CODICE).from(Degente.DEGENTE).where(Degente.DEGENTE.POSIZIONE.eq("in Pronto Soccorso")).fetch();
+					for (Record7<String, String, String, LocalDate, LocalTime, String,String> degenteRecord : degenti) {
 					    nomi.add(degenteRecord.value1());
 					    cognomi.add(degenteRecord.value2());
 					    sesso.add(degenteRecord.value3());

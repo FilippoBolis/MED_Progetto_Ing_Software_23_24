@@ -198,7 +198,8 @@ public class InserimentoJooq {
 	}
 
 	public static void main(String[] args) {
-
+		
+		//getIstanza().degente("D2","Gabriele","Masinari","M",LocalDate.now(), LocalTime.now().withNano(0),"rosso");
 		//getIstanza().personale("P1","Daniele","Gotti","M", "SpostamiSeCiRiesci");
 		//getIstanza().personale("P2","Filippo","Bolis","I","HaiGiocatoAdOuterWilds");
 		//getIstanza().personale("P3","Gabriele","Masinari","S","pw");
