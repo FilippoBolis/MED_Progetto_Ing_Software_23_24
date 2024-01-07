@@ -23,7 +23,7 @@ public class modelloLogicaPazienti {
 	
 	
 	// per il personale (LOGIN)
-	public void setUtente(String mansione, String nome, String cognome,String utente) {
+	public void setUtente(String mansione, String nome, String cognome, String utente) {
 		this.mansione = mansione;
 		this.nome = nome;
 		this.cognome = cognome;
