@@ -53,8 +53,8 @@ public class AggiornamentiJooq {
 				 * il relativo campo del degente identificato dal codice*/
 				switch(attr) {
 				case "urgenza":
-					if(Integer.parseInt(newVal) >= 0 && Integer.parseInt(newVal)<= 2) {
-						int resultU= cambiaVal.update(Degente.DEGENTE).set(Degente.DEGENTE.URGENZA, Integer.parseInt(newVal)).where(Degente.DEGENTE.CODICE.eq(codice)).execute();
+					if(newVal=="verde" || newVal=="giallo" || newVal=="rosso") {
+						int resultU= cambiaVal.update(Degente.DEGENTE).set(Degente.DEGENTE.URGENZA, newVal).where(Degente.DEGENTE.CODICE.eq(codice)).execute();
 						System.out.println(resultU);	
 					}
 					else
@@ -62,8 +62,8 @@ public class AggiornamentiJooq {
 					
 					break;
 					
-				case "in attesa": //teoricamente non serve, l'attesa viene già modificata quando viene assegnato un letto
-					int resultA= cambiaVal.update(Degente.DEGENTE).set(Degente.DEGENTE.IN_ATTESA, Boolean.parseBoolean(newVal)).where(Degente.DEGENTE.CODICE.eq(codice)).execute();
+				case "posizione": //deve essere chiamata SOLO all'inserimento di un letto o di una diaria medica
+					int resultA= cambiaVal.update(Degente.DEGENTE).set(Degente.DEGENTE.POSIZIONE, newVal).where(Degente.DEGENTE.CODICE.eq(codice)).execute();
 					System.out.println(resultA);
 					break;
 					

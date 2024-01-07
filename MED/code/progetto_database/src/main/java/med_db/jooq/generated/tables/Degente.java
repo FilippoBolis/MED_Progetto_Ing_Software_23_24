@@ -84,12 +84,12 @@ public class Degente extends TableImpl<DegenteRecord> {
     /**
      * The column <code>DEGENTE.URGENZA</code>.
      */
-    public final TableField<DegenteRecord, Integer> URGENZA = createField(DSL.name("URGENZA"), SQLDataType.INTEGER, this, "");
+    public final TableField<DegenteRecord, String> URGENZA = createField(DSL.name("URGENZA"), SQLDataType.CLOB, this, "");
 
     /**
-     * The column <code>DEGENTE.IN_ATTESA</code>.
+     * The column <code>DEGENTE.POSIZIONE</code>.
      */
-    public final TableField<DegenteRecord, Boolean> IN_ATTESA = createField(DSL.name("IN_ATTESA"), SQLDataType.BOOLEAN, this, "");
+    public final TableField<DegenteRecord, String> POSIZIONE = createField(DSL.name("POSIZIONE"), SQLDataType.CLOB, this, "");
 
     private Degente(Name alias, Table<DegenteRecord> aliased) {
         this(alias, aliased, null);
@@ -178,14 +178,14 @@ public class Degente extends TableImpl<DegenteRecord> {
     // -------------------------------------------------------------------------
 
     @Override
-    public Row8<String, String, String, String, LocalDate, LocalTime, Integer, Boolean> fieldsRow() {
+    public Row8<String, String, String, String, LocalDate, LocalTime, String, String> fieldsRow() {
         return (Row8) super.fieldsRow();
     }
 
     /**
      * Convenience mapping calling {@link SelectField#convertFrom(Function)}.
      */
-    public <U> SelectField<U> mapping(Function8<? super String, ? super String, ? super String, ? super String, ? super LocalDate, ? super LocalTime, ? super Integer, ? super Boolean, ? extends U> from) {
+    public <U> SelectField<U> mapping(Function8<? super String, ? super String, ? super String, ? super String, ? super LocalDate, ? super LocalTime, ? super String, ? super String, ? extends U> from) {
         return convertFrom(Records.mapping(from));
     }
 
@@ -193,7 +193,7 @@ public class Degente extends TableImpl<DegenteRecord> {
      * Convenience mapping calling {@link SelectField#convertFrom(Class,
      * Function)}.
      */
-    public <U> SelectField<U> mapping(Class<U> toType, Function8<? super String, ? super String, ? super String, ? super String, ? super LocalDate, ? super LocalTime, ? super Integer, ? super Boolean, ? extends U> from) {
+    public <U> SelectField<U> mapping(Class<U> toType, Function8<? super String, ? super String, ? super String, ? super String, ? super LocalDate, ? super LocalTime, ? super String, ? super String, ? extends U> from) {
         return convertFrom(toType, Records.mapping(from));
     }
 }

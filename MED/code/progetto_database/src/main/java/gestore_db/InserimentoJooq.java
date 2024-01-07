@@ -48,14 +48,14 @@ public class InserimentoJooq {
 		}
 	}
 
-	public void degente(String codice, String nome, String cognome, String sesso, LocalDate dataArrivo, LocalTime oraArrivo,  int urgenza, boolean attesa) {
+	public void degente(String codice, String nome, String cognome, String sesso, LocalDate dataArrivo, LocalTime oraArrivo,  String urgenza) {
 		try {
 			Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
 			if (conn != null) {
-				if ((urgenza >= 0 && urgenza <= 2) && (sesso=="M" || sesso=="F")) {
+				if ((urgenza=="verde" || urgenza=="giallo" || urgenza=="rosso") && (sesso=="M" || sesso=="F")) {
 					DSLContext create = DSL.using(conn, SQLDialect.SQLITE);
-
-					DegenteRecord degente = new DegenteRecord(codice, nome, cognome, sesso, dataArrivo, oraArrivo, urgenza, attesa);
+					//il degente è in pronto soccorso all'inserimento nel DB
+					DegenteRecord degente = new DegenteRecord(codice, nome, cognome, sesso, dataArrivo, oraArrivo, urgenza, "in Pronto Soccorso");
 
 					int result = create.insertInto(Degente.DEGENTE).set(degente).execute();
 
@@ -151,10 +151,9 @@ public class InserimentoJooq {
 
 				int result = create.insertInto(Assegnazioneletto.ASSEGNAZIONELETTO).set(assLetto).execute();
 				
-				//se assegno un letto, il degente non è più in attesa
-				int result1= create.update(Degente.DEGENTE).set(Degente.DEGENTE.IN_ATTESA, false).where(Degente.DEGENTE.CODICE.eq(codDeg)).execute();
-
-				System.out.println(result+ " "+result1);
+				//se assegno un letto, il degente non è più in attesa, bensì in reparto
+				AggiornamentiJooq.getIstanza().degente(codDeg,"posizione", "in reparto");
+				System.out.println(result);
 
 			}
 		} catch (SQLException e) {
@@ -188,6 +187,8 @@ public class InserimentoJooq {
 				DiariamedRecord diariaMed = new DiariamedRecord(codice, codiceDegente, codiceMedico, storico, motivo, farmaci, data, ora, allergie);
 
 				int result = create.insertInto(Diariamed.DIARIAMED).set(diariaMed).execute();
+				//alla scrittura della diaria medica, il degente viene posto in attesa finchè non gli viene assegnato il letto
+				AggiornamentiJooq.getIstanza().degente(codiceDegente, "posizione", "in attesa");
 
 				System.out.println(result);
 			}
@@ -200,7 +201,8 @@ public class InserimentoJooq {
 
 		//getIstanza().personale("P1","Daniele","Gotti","M", "SpostamiSeCiRiesci");
 		//getIstanza().personale("P2","Filippo","Bolis","I","HaiGiocatoAdOuterWilds");
-		//getIstanza().degente("D1","Gabriele","Mazzoleni","M",LocalDate.now(), LocalTime.now().withNano(0),0,true);
+		//getIstanza().personale("P3","Gabriele","Masinari","S","pw");
+		//getIstanza().degente("D1","Gabriele","Mazzoleni","M",LocalDate.now(), LocalTime.now().withNano(0),"verde");
 		//getIstanza().rilevazione("Ri1","D1",36.8,150,90,100, LocalDate.now(),LocalTime.now().withNano(0),60,5);
 		//getIstanza().reparto("Re1","Cardiologia");
 		//getIstanza().modulo("Re1","ModuloA");
