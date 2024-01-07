@@ -13,7 +13,7 @@ public class ModelloGestoreTabella {
 	private List<String> sesso = new ArrayList<>();
 	private List<LocalDate> dateArrivo = new ArrayList<>();
 	private List<LocalTime> oreArrivo = new ArrayList<>();
-	private List<Integer> urgenza = new ArrayList<>();
+	private List<String> urgenza = new ArrayList<>();
 	
 	public void setTableNomi(List<String> nomi) {
 		this.nomi = nomi;
@@ -39,7 +39,7 @@ public class ModelloGestoreTabella {
 		this.oreArrivo = oreArrivo;
 	}
 	
-	public void setTableUrgenza(List<Integer> urgenza) {
+	public void setTableUrgenza(List<String> urgenza) {
 		this.urgenza = urgenza;
 	}
 	
@@ -67,7 +67,7 @@ public class ModelloGestoreTabella {
 		return oreArrivo;
 	}
 	
-	public List<Integer> getTableUrgenza(){
+	public List<String> getTableUrgenza(){
 		return urgenza;
 	}
 }
