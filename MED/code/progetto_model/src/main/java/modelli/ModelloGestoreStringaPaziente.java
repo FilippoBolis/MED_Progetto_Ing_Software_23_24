@@ -15,10 +15,10 @@ public class ModelloGestoreStringaPaziente {
 	
 	public String getDatiPaziente() {
 		if(sesso.equals("M")) {
-			return "Paziente: Signor " + nome + " " + cognome + " ( Codice" + codice + " )";
+			return "Paziente: Signor " + nome + " " + cognome + " ( Codice " + codice + " )";
 		}
 		else if (sesso.equals("F")) {
-			return "Paziente: Signora "  + nome + " " + cognome + " ( Codice" + codice + " )";
+			return "Paziente: Signora "  + nome + " " + cognome + " ( Codice " + codice + " )";
 		}
 		else {
 			return "Paziente: " + nome + " " + cognome + " ( Codice " + codice + " )";

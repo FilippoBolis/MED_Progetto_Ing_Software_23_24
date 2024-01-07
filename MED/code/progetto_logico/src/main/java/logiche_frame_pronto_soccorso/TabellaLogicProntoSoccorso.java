@@ -26,14 +26,6 @@ public class TabellaLogicProntoSoccorso{
 	private static String DB_URLLOGIC = "jdbc:sqlite:" + DB_REL_FILELOGIC;
 	private ModelloGestoreLogicaGenerale modello;
 	
-	private List<String> nomi;							//il problema era che le variabili
-	private List<String> cognomi;						//erano tutte condivise nel metodo di update
-	private List<String> sesso;							//quindi ogni volta che premevi il pulsante
-	private List<LocalDate> dateArrivo;					//nonostante fosse in mutua esclusione per i lock
-	private List<LocalTime> oreArrivo;					//comunque venivano accumulati i dati nelle liste (sovrapposizione)
-	private List<String> urgenza;						//creandoli dentro update ora il problema è risolto
-	private List<String> codice;
-	
 	public TabellaLogicProntoSoccorso(PazientiFrame p, ModelloGestoreLogicaGenerale m) {
 		prontoSoccorso = p;
 		modello = m;

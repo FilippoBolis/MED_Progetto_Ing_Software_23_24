@@ -32,6 +32,7 @@ public class LoginLogic {
 	private String cognome;
 	private ModelloGestoreLogicaGenerale modello;
 	private TabellaLogicProntoSoccorso tabellaProntoSoccorso;
+	private StringaPaziente controlloTabella;
 	
 	public LoginLogic(LoginFrame v, PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		// prede i refs
@@ -40,6 +41,7 @@ public class LoginLogic {
 		modello = m;
 		tabellaProntoSoccorso = new TabellaLogicProntoSoccorso(prontoSoccorso, modello);
 		registerLogin();
+	   	controlloTabella = new StringaPaziente(prontoSoccorso,modello);
 	}
 	
 	private void registerLogin() {
@@ -61,8 +63,6 @@ public class LoginLogic {
 						   	mansione = contesto.select(Personale.PERSONALE.MANSIONE).from(Personale.PERSONALE).where(Personale.PERSONALE.CODICE.eq(utente)).fetchOneInto(String.class);
 						   	modello.modelloGestoreUtente.setUtente(mansione,nome,cognome,utente);
 						   	tabellaProntoSoccorso.update();
-						   	//StringaPaziente stringa = new StringaPaziente();
-						   	//stringa.updateStringaPaziente();
 						   	SwingUtilities.invokeLater(new Runnable() {
 							    @Override
 							    public void run() {

@@ -161,7 +161,12 @@ public class PazientiFrame {
         
         //FILIPPO
         //Qui domani metto i pulsanti a sinistra: 
-        //Diaria medica, Farmaci, Rilevazioni, Dimissione, Info
+        
+        //Per pronto soccorso metti: Inserisci Paziente, Inserisci prima Diaria medica
+        
+        //Per da prendere in carico metti: Assegna posto letto
+        
+        //Per reparto: Modifica diaria medica, Inserisci diaria infermieristica, Visualizza storico, Visualizza Farmaci, Visualizza informazioni, Dimetti paziente
 		
 		JPanel centroPanel = new JPanel();
 		centroPanel.setBounds(sinistraPanel.getWidth(), (int) (HEIGHT * 0.25), (int) (WIDTH * 0.85), (int) (HEIGHT * 0.75));
@@ -195,8 +200,6 @@ public class PazientiFrame {
 		urgenzaLabel.setForeground(Color.WHITE);
 		filtriPanel.add(urgenzaLabel);
 		
-		//FILIPPO
-		//Urgenza sono i colori? In caso cambia tu le stringhe
 		JComboBox<String> urgenzaComboBox = new JComboBox<String>();
 		urgenzaComboBox.setBounds(urgenzaLabel.getX() + urgenzaLabel.getWidth(), (cercaLabel.getHeight() - 24) / 2, cercaLabel.getWidth(), 24);
 	    urgenzaComboBox.addItem(" ");
@@ -267,7 +270,6 @@ public class PazientiFrame {
 	
 	public void updateStringaPaziente() {
 		pazienteTitoloLabel.setText(modello.modelloGestoreStringaPaziente.getDatiPaziente());
-		System.out.println(modello.modelloGestoreStringaPaziente.getDatiPaziente());
 	}
 	
 }
