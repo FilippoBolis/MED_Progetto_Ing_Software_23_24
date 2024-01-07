@@ -4,7 +4,7 @@ import javax.swing.SwingUtilities;
 
 import gui.*;
 import logiche_bottoni.*;
-import modelli.modelloLogicaPazienti;
+import modelli.ModelloGestoreLogicaGenerale;
 
 public class Main {
 
@@ -13,7 +13,7 @@ public class Main {
 	            @Override
 	            public void run() {
 	            	try {
-	            		modelloLogicaPazienti modello = new modelloLogicaPazienti();
+	            		ModelloGestoreLogicaGenerale modello = new ModelloGestoreLogicaGenerale();
 	        			LoginFrame frameLogin = new LoginFrame();
 	        			PazientiFrame pazientiFrame = new PazientiFrame(modello);
 	        			new LoginLogic(frameLogin,pazientiFrame,modello);
