@@ -14,6 +14,7 @@ import org.jooq.SQLDialect;
 import org.jooq.impl.DSL;
 
 import gui.*;
+import logiche_frame_pronto_soccorso.StringaPaziente;
 import logiche_frame_pronto_soccorso.TabellaLogicProntoSoccorso;
 import med_db.jooq.generated.tables.Personale;
 import modelli.ModelloGestoreLogicaGenerale;
@@ -60,6 +61,8 @@ public class LoginLogic {
 						   	mansione = contesto.select(Personale.PERSONALE.MANSIONE).from(Personale.PERSONALE).where(Personale.PERSONALE.CODICE.eq(utente)).fetchOneInto(String.class);
 						   	modello.modelloGestoreUtente.setUtente(mansione,nome,cognome,utente);
 						   	tabellaProntoSoccorso.update();
+						   	//StringaPaziente stringa = new StringaPaziente();
+						   	//stringa.updateStringaPaziente();
 						   	SwingUtilities.invokeLater(new Runnable() {
 							    @Override
 							    public void run() {

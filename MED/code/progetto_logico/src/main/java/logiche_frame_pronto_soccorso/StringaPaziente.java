@@ -27,7 +27,7 @@ public class StringaPaziente {
 	private String sesso;
 	
 	
-	private void updateStringaPaziente() {
+	public void updateStringaPaziente() {
 		// si registra al mouse nella tabella
 		prontoSoccorso.table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			@Override

@@ -25,6 +25,7 @@ public class TabellaLogicProntoSoccorso{
 	private static String DB_REL_FILELOGIC = "../progetto_database/db/db.db3";
 	private static String DB_URLLOGIC = "jdbc:sqlite:" + DB_REL_FILELOGIC;
 	private ModelloGestoreLogicaGenerale modello;
+	
 	private List<String> nomi;							//il problema era che le variabili
 	private List<String> cognomi;						//erano tutte condivise nel metodo di update
 	private List<String> sesso;							//quindi ogni volta che premevi il pulsante
