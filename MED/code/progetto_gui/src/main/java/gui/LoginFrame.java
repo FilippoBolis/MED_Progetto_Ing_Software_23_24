@@ -16,7 +16,6 @@ import javax.swing.JPasswordField;
 
 @SuppressWarnings("serial")
 public class LoginFrame extends JFrame {
-	
 
 	ImageIcon docImage = new ImageIcon("../progetto_gui/src/main/resources/doc.png");
 	ImageIcon keyImage = new ImageIcon("../progetto_gui/src/main/resources/key.png");

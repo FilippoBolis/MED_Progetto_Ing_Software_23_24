@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -18,6 +19,7 @@ import javax.swing.table.TableRowSorter;
 
 import com.formdev.flatlaf.FlatIntelliJLaf;
 
+//import logiche_bottoni.LoginLogic;
 import modelli.ModelloGestoreLogicaGenerale;
 
 import javax.swing.JLabel;
@@ -30,6 +32,8 @@ import javax.swing.JToggleButton;
 
 public class PazientiFrame {
 	
+	ImageIcon ripristinaImage = new ImageIcon("../progetto_gui/src/main/resources/ripristina.png");
+	ImageIcon cercaImage = new ImageIcon("../progetto_gui/src/main/resources/cerca.png");
 	private final int WIDTH = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
 	private final int HEIGHT = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 	public JFrame sfondoFrame;
@@ -113,21 +117,21 @@ public class PazientiFrame {
         
         JToggleButton prontoSoccorsoToggleButton = new JToggleButton("IN PRONTO SOCCORSO");
         prontoSoccorsoToggleButton.setBounds(0, 0, (int) (menuPanel.getWidth() * 0.34), menuPanel.getHeight());
-        prontoSoccorsoToggleButton.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 2, Color.LIGHT_GRAY)); 
+        prontoSoccorsoToggleButton.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 1, Color.LIGHT_GRAY)); 
         prontoSoccorsoToggleButton.setForeground(Stile.BLU_SCURO.getColore());
         prontoSoccorsoToggleButton.setFont(Stile.TESTO.getFont());
         menuPanel.add(prontoSoccorsoToggleButton);
         
         JToggleButton inCaricoToggleButton = new JToggleButton("DA PRENDERE IN CARICO");
         inCaricoToggleButton.setBounds(prontoSoccorsoToggleButton.getWidth(), 0, (int) (menuPanel.getWidth() * 0.34), menuPanel.getHeight());
-        inCaricoToggleButton.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 2, Color.LIGHT_GRAY)); 
+        inCaricoToggleButton.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 1, Color.LIGHT_GRAY)); 
         inCaricoToggleButton.setForeground(Stile.BLU_SCURO.getColore());
         inCaricoToggleButton.setFont(Stile.TESTO.getFont());
         menuPanel.add(inCaricoToggleButton);
         
         JToggleButton repartoToggleButton = new JToggleButton("IN REPARTO");
         repartoToggleButton.setBounds(inCaricoToggleButton.getWidth() * 2, 0, (int) (menuPanel.getWidth() * 0.34), menuPanel.getHeight());
-        repartoToggleButton.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 2, Color.LIGHT_GRAY)); 
+        repartoToggleButton.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 1, Color.LIGHT_GRAY)); 
         repartoToggleButton.setForeground(Stile.BLU_SCURO.getColore());
         repartoToggleButton.setFont(Stile.TESTO.getFont());
         menuPanel.add(repartoToggleButton);
@@ -159,17 +163,104 @@ public class PazientiFrame {
         logoLabel.setBorder(new LineBorder(Color.RED, 4));
         logoPanel.add(logoLabel);
         
-        //FILIPPO
-        //Qui domani metto i pulsanti a sinistra: 
-        
-        //Per pronto soccorso metti: Inserisci Paziente, Inserisci prima Diaria medica
-        
-        //Per da prendere in carico metti: Assegna posto letto
-        
-        //Per reparto: Modifica diaria medica, Inserisci diaria infermieristica, Visualizza storico, Visualizza Farmaci, Visualizza informazioni, Dimetti paziente
+        //FILIPPO: METTERE setVIsible(false) QUESTO PANEL SE NON IN PRONTO SOCCORSO
+		JPanel prontoSoccorsoBottoniPanel = new JPanel();
+		prontoSoccorsoBottoniPanel.setBounds(0, (int) (sinistraPanel.getHeight() * 0.35), sinistraPanel.getWidth(), (int) (sinistraPanel.getHeight() * 0.65));
+		prontoSoccorsoBottoniPanel.setBackground(Stile.BLU_SCURO.getColore()); 
+		prontoSoccorsoBottoniPanel.setLayout(null);
+		prontoSoccorsoBottoniPanel.setVisible(true);
+		sinistraPanel.add(prontoSoccorsoBottoniPanel);
 		
+		JButton inserisciPazienteButton = new JButton("Inserisci nuovo paziente");
+		inserisciPazienteButton.setBounds(0, 0, prontoSoccorsoBottoniPanel.getWidth(), 40);
+		inserisciPazienteButton.setBackground(Stile.BLU_SCURO.getColore());
+		inserisciPazienteButton.setForeground(Color.WHITE);
+		inserisciPazienteButton.setFont(Stile.TESTO.getFont());
+        inserisciPazienteButton.setBorder(BorderFactory.createMatteBorder(2, 0, 0, 0, Stile.BLU.getColore()));
+		prontoSoccorsoBottoniPanel.add(inserisciPazienteButton);
+		
+		JButton inserisciDiariaButton = new JButton("Inserisci prima diaria medica");
+		inserisciDiariaButton.setBounds(0, inserisciPazienteButton.getHeight(), prontoSoccorsoBottoniPanel.getWidth(), 40);
+		inserisciDiariaButton.setBackground(Stile.BLU_SCURO.getColore());
+		inserisciDiariaButton.setForeground(Color.WHITE);
+		inserisciDiariaButton.setFont(Stile.TESTO.getFont());
+        inserisciDiariaButton.setBorder(BorderFactory.createMatteBorder(2, 0, 2, 0, Stile.BLU.getColore()));
+		prontoSoccorsoBottoniPanel.add(inserisciDiariaButton);
+		
+        //FILIPPO: METTERE setVIsible(false) QUESTO PANEL SE NON IN DA PRENDERE IN CARICO
+		JPanel prendereCaricoBottoniPanel = new JPanel();
+		prendereCaricoBottoniPanel.setBounds(0, (int) (sinistraPanel.getHeight() * 0.35), sinistraPanel.getWidth(), (int) (sinistraPanel.getHeight() * 0.65));
+		prendereCaricoBottoniPanel.setBackground(Stile.BLU_SCURO.getColore()); 
+		prendereCaricoBottoniPanel.setLayout(null);
+		prendereCaricoBottoniPanel.setVisible(false);
+		sinistraPanel.add(prendereCaricoBottoniPanel);
+		
+		JButton assegnaLettoButton = new JButton("Assegna posto letto");
+		assegnaLettoButton.setBounds(0, 0, prendereCaricoBottoniPanel.getWidth(), 40);
+		assegnaLettoButton.setBackground(Stile.BLU_SCURO.getColore());
+		assegnaLettoButton.setForeground(Color.WHITE);
+		assegnaLettoButton.setFont(Stile.TESTO.getFont());
+        assegnaLettoButton.setBorder(BorderFactory.createMatteBorder(2, 0, 2, 0, Stile.BLU.getColore()));
+		prendereCaricoBottoniPanel.add(assegnaLettoButton);
+		
+		 //FILIPPO: METTERE setVIsible(false) QUESTO PANEL SE NON IN REPARTO
+		JPanel repartoBottoniPanel = new JPanel();
+		repartoBottoniPanel.setBounds(0, (int) (sinistraPanel.getHeight() * 0.35), sinistraPanel.getWidth(), (int) (sinistraPanel.getHeight() * 0.65));
+		repartoBottoniPanel.setBackground(Stile.BLU_SCURO.getColore()); 
+		repartoBottoniPanel.setLayout(null);
+		repartoBottoniPanel.setVisible(false);
+		sinistraPanel.add(repartoBottoniPanel);
+		
+		JButton modificaDiariaMedButton = new JButton("Modifica diaria medica");
+		modificaDiariaMedButton.setBounds(0, 0, repartoBottoniPanel.getWidth(), 40);
+		modificaDiariaMedButton.setBackground(Stile.BLU_SCURO.getColore());
+		modificaDiariaMedButton.setForeground(Color.WHITE);
+		modificaDiariaMedButton.setFont(Stile.TESTO.getFont());
+        modificaDiariaMedButton.setBorder(BorderFactory.createMatteBorder(2, 0, 0, 0, Stile.BLU.getColore()));
+		repartoBottoniPanel.add(modificaDiariaMedButton);
+		
+		JButton inserisciDiariaInfButton = new JButton("Inserisci diaria infermieristica");
+		inserisciDiariaInfButton.setBounds(0, modificaDiariaMedButton.getHeight(), repartoBottoniPanel.getWidth(), 40);
+		inserisciDiariaInfButton.setBackground(Stile.BLU_SCURO.getColore());
+		inserisciDiariaInfButton.setForeground(Color.WHITE);
+		inserisciDiariaInfButton.setFont(Stile.TESTO.getFont());
+        inserisciDiariaInfButton.setBorder(BorderFactory.createMatteBorder(2, 0, 0, 0, Stile.BLU.getColore()));
+		repartoBottoniPanel.add(inserisciDiariaInfButton);
+		
+		JButton visualizzaStoricoButton = new JButton("Visualizza storico");
+		visualizzaStoricoButton.setBounds(0, modificaDiariaMedButton.getHeight() * 2, repartoBottoniPanel.getWidth(), 40);
+		visualizzaStoricoButton.setBackground(Stile.BLU_SCURO.getColore());
+		visualizzaStoricoButton.setForeground(Color.WHITE);
+		visualizzaStoricoButton.setFont(Stile.TESTO.getFont());
+        visualizzaStoricoButton.setBorder(BorderFactory.createMatteBorder(2, 0, 0, 0, Stile.BLU.getColore()));
+		repartoBottoniPanel.add(visualizzaStoricoButton);
+		
+		JButton visualizzaFarmaciButton = new JButton("Visualizza farmaci");
+		visualizzaFarmaciButton.setBounds(0, modificaDiariaMedButton.getHeight() * 3, repartoBottoniPanel.getWidth(), 40);
+		visualizzaFarmaciButton.setBackground(Stile.BLU_SCURO.getColore());
+		visualizzaFarmaciButton.setForeground(Color.WHITE);
+		visualizzaFarmaciButton.setFont(Stile.TESTO.getFont());
+        visualizzaFarmaciButton.setBorder(BorderFactory.createMatteBorder(2, 0, 0, 0, Stile.BLU.getColore()));
+		repartoBottoniPanel.add(visualizzaFarmaciButton);
+		
+		JButton visualizzaInformazioniButton = new JButton("Visualizza informazioni");
+		visualizzaInformazioniButton.setBounds(0, modificaDiariaMedButton.getHeight() * 4, repartoBottoniPanel.getWidth(), 40);
+		visualizzaInformazioniButton.setBackground(Stile.BLU_SCURO.getColore());
+		visualizzaInformazioniButton.setForeground(Color.WHITE);
+		visualizzaInformazioniButton.setFont(Stile.TESTO.getFont());
+        visualizzaInformazioniButton.setBorder(BorderFactory.createMatteBorder(2, 0, 0, 0, Stile.BLU.getColore()));
+		repartoBottoniPanel.add(visualizzaInformazioniButton);
+		
+		JButton dimettiButton = new JButton("Dimetti paziente");
+		dimettiButton.setBounds(0, modificaDiariaMedButton.getHeight() * 5, repartoBottoniPanel.getWidth(), 40);
+		dimettiButton.setBackground(Stile.BLU_SCURO.getColore());
+		dimettiButton.setForeground(Color.WHITE);
+		dimettiButton.setFont(Stile.TESTO.getFont());
+        dimettiButton.setBorder(BorderFactory.createMatteBorder(2, 0, 2, 0, Stile.BLU.getColore()));
+		repartoBottoniPanel.add(dimettiButton);
+        
 		JPanel centroPanel = new JPanel();
-		centroPanel.setBounds(sinistraPanel.getWidth(), (int) (HEIGHT * 0.25), (int) (WIDTH * 0.85), (int) (HEIGHT * 0.75));
+		centroPanel.setBounds(prendereCaricoBottoniPanel.getWidth(), (int) (HEIGHT * 0.25), (int) (WIDTH * 0.85), (int) (HEIGHT * 0.75));
         centroPanel.setLayout(null);
 		sfondoPanel.add(centroPanel);
 		
@@ -189,9 +280,10 @@ public class PazientiFrame {
 		cercaTextField.setBounds(cercaLabel.getWidth() + 20, (cercaLabel.getHeight() - 24) / 2, cercaLabel.getWidth(), 24);
 		filtriPanel.add(cercaTextField);
 		
-		//DEVO METTERE IMMAGINE
 		JButton cercaButton = new JButton();
 		cercaButton.setBounds(cercaTextField.getX() + cercaTextField.getWidth(), (cercaLabel.getHeight() - 24) / 2, 24, 24);
+		cercaButton.setBackground(Stile.AZZURRO.getColore());
+		cercaButton.setIcon(cercaImage);
         cercaButton.setBorder(BorderFactory.createEmptyBorder());
 		filtriPanel.add(cercaButton);
 		
@@ -207,10 +299,11 @@ public class PazientiFrame {
         urgenzaComboBox.addItem("GIALLO");
         urgenzaComboBox.addItem("VERDE");
 		filtriPanel.add(urgenzaComboBox);
-		
-		//DEVO METTERE IMMAGINE
+
 		JButton indietroButton = new JButton();
-		indietroButton.setBounds(filtriPanel.getWidth() - 40, (cercaLabel.getHeight() - 24) / 2, 24, 24);
+		indietroButton.setBounds(filtriPanel.getWidth() - 36, (cercaLabel.getHeight() - 24) / 2, 24, 24);
+		indietroButton.setBackground(Stile.AZZURRO.getColore());
+		indietroButton.setIcon(ripristinaImage);
 	    indietroButton.setBorder(BorderFactory.createEmptyBorder());
 		filtriPanel.add(indietroButton);
 		
@@ -272,4 +365,36 @@ public class PazientiFrame {
 		pazienteTitoloLabel.setText(modello.modelloGestoreStringaPaziente.getDatiPaziente());
 	}
 	
+	/*
+	//NON CANCELLARE, ROBA CHE MI SERVIRA' PER METTERE ICONE NELLA TABELLA  
+    static class IconRenderer extends DefaultTableCellRenderer {
+        private final ImageIcon iconA = new ImageIcon("path-to-icon1.png");
+        private final ImageIcon iconB = new ImageIcon("path-to-icon2.png");
+
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+
+            // Verifica se il valore nella cella è una stringa
+            if (value instanceof String) {
+                // Confronta il valore con "A" o "B" e imposta l'icona corrispondente
+                if ("A".equals(value)) {
+                    setIcon(iconA);
+                    setText(""); // Rimuovi il testo
+                } else if ("B".equals(value)) {
+                    setIcon(iconB);
+                    setText(""); // Rimuovi il testo
+                }
+            }
+
+            return component;
+        }
+    }
+	*/
+	
+	/*
+	public static void main(String[] args) {
+		new PazientiFrame();
+	}
+	*/
 }
