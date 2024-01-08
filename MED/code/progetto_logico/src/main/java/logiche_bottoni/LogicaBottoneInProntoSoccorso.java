@@ -29,11 +29,15 @@ public class LogicaBottoneInProntoSoccorso {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 			frameDeiPazienti.urgenzaComboBox.setSelectedItem(" ");
+			frameDeiPazienti.cercaTextField.setText("");
 			tabellaProntoSoccorso.update();
 			SwingUtilities.invokeLater(new Runnable() {
 			@Override
 				public void run() {
-					frameDeiPazienti.updateViewTabellaProntoSoccorso();
+					frameDeiPazienti.repartoBottoniPanel.setVisible(false);
+					frameDeiPazienti.prendereCaricoBottoniPanel.setVisible(false);
+					frameDeiPazienti.prontoSoccorsoBottoniPanel.setVisible(true);
+					frameDeiPazienti.updateViewTabella();
 				}
 			});
 			}

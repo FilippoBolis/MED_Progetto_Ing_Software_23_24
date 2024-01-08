@@ -21,20 +21,20 @@ import med_db.jooq.generated.tables.Degente;
 import modelli.ModelloGestoreLogicaGenerale;
 
 public class LogicaDellUrgenzaPazienteTabella{
-	private PazientiFrame prontoSoccorso;
+	private PazientiFrame frameDeiPazienti;
 	private static String DB_REL_FILELOGIC = "../progetto_database/db/db.db3";
 	private static String DB_URLLOGIC = "jdbc:sqlite:" + DB_REL_FILELOGIC;
 	private ModelloGestoreLogicaGenerale modello;
 	private String filtro;
 	
 	public LogicaDellUrgenzaPazienteTabella(PazientiFrame p, ModelloGestoreLogicaGenerale m, String filtro) {
-		prontoSoccorso = p;
+		frameDeiPazienti = p;
 		modello = m;
 		this.filtro=filtro;
 	}
 	
 	public void update() {
-		if(!prontoSoccorso.updating) {
+		if(!frameDeiPazienti.updating) {
 			try {
 				List<String> nomi = new ArrayList<>();
 				List<String> codice = new ArrayList<>();
@@ -46,7 +46,7 @@ public class LogicaDellUrgenzaPazienteTabella{
 				Connection conn = DriverManager.getConnection(DB_URLLOGIC);
 				if (conn != null) {
 					DSLContext contesto = DSL.using(conn, SQLDialect.SQLITE);
-					Result<Record7<String,String,String,LocalDate,LocalTime,String,String>> degenti = contesto.select(Degente.DEGENTE.NOME,Degente.DEGENTE.COGNOME,Degente.DEGENTE.SESSO,Degente.DEGENTE.DATA_ARRIVO,Degente.DEGENTE.ORA_ARRIVO,Degente.DEGENTE.URGENZA,Degente.DEGENTE.CODICE).from(Degente.DEGENTE).where(Degente.DEGENTE.URGENZA.eq(filtro),Degente.DEGENTE.POSIZIONE.eq(prontoSoccorso.posizioneAttuale)).fetch();
+					Result<Record7<String,String,String,LocalDate,LocalTime,String,String>> degenti = contesto.select(Degente.DEGENTE.NOME,Degente.DEGENTE.COGNOME,Degente.DEGENTE.SESSO,Degente.DEGENTE.DATA_ARRIVO,Degente.DEGENTE.ORA_ARRIVO,Degente.DEGENTE.URGENZA,Degente.DEGENTE.CODICE).from(Degente.DEGENTE).where(Degente.DEGENTE.URGENZA.eq(filtro),Degente.DEGENTE.POSIZIONE.eq(frameDeiPazienti.posizioneAttuale)).fetch();
 					for (Record7<String, String, String, LocalDate, LocalTime, String,String> degenteRecord : degenti) {
 					    nomi.add(degenteRecord.value1());
 					    cognomi.add(degenteRecord.value2());
@@ -66,7 +66,7 @@ public class LogicaDellUrgenzaPazienteTabella{
 					SwingUtilities.invokeLater(new Runnable() {
 					    @Override
 					    public void run() {
-					    	prontoSoccorso.updateViewTabellaProntoSoccorso();
+					    	frameDeiPazienti.updateViewTabella();
 					    }
 					});
 				}

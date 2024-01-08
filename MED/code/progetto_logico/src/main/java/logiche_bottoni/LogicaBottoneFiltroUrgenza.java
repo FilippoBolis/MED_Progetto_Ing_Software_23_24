@@ -51,10 +51,11 @@ public class LogicaBottoneFiltroUrgenza {
                     		
                     }
                 }
+				frameDeiPazienti.cercaTextField.setText("");
 				SwingUtilities.invokeLater(new Runnable() {
 					@Override
 				public void run() {
-					frameDeiPazienti.updateViewTabellaProntoSoccorso();
+					frameDeiPazienti.updateViewTabella();
 				}
 				});
 			}

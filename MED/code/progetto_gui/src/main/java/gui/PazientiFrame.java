@@ -24,7 +24,6 @@ import modelli.ModelloGestoreLogicaGenerale;
 
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
 
 import javax.swing.JComboBox;
 import javax.swing.JButton;
@@ -42,7 +41,14 @@ public class PazientiFrame {
 	public JToggleButton inCaricoToggleButton;
 	public JComboBox<String> urgenzaComboBox;
 	public JTable table;
+	public JPanel prontoSoccorsoBottoniPanel;
+	public JPanel prendereCaricoBottoniPanel;
+	public JPanel repartoBottoniPanel;
 	public String posizioneAttuale;
+	public JTextField cercaTextField;
+	public JButton cercaButton;
+	public JButton indietroButton;
+	private JLabel pazienteLabel;
 	private String infoPaziente = "Seleziona un paziente nel database";
 	private DefaultTableModel tableModel;
 	private JLabel utenteLabel;
@@ -96,7 +102,7 @@ public class PazientiFrame {
         pazienteTitoloLabel.setFont(Stile.TITOLO_FINE.getFont());
         pazientePanel.add(pazienteTitoloLabel);
         
-        JLabel pazienteLabel = new JLabel(infoPaziente);
+        pazienteLabel = new JLabel(infoPaziente);
         pazienteLabel.setVerticalAlignment(SwingConstants.TOP);
         pazienteLabel.setBounds(20, pazienteTitoloLabel.getHeight(), (int) (pazientePanel.getWidth() - 20), (int) (pazientePanel.getHeight() * 0.5));
         pazienteLabel.setForeground(Color.WHITE);
@@ -169,7 +175,7 @@ public class PazientiFrame {
         logoPanel.add(logoLabel);
         
         //FILIPPO: METTERE setVIsible(false) QUESTO PANEL SE NON IN PRONTO SOCCORSO
-		JPanel prontoSoccorsoBottoniPanel = new JPanel();
+		prontoSoccorsoBottoniPanel = new JPanel();
 		prontoSoccorsoBottoniPanel.setBounds(0, (int) (sinistraPanel.getHeight() * 0.35), sinistraPanel.getWidth(), (int) (sinistraPanel.getHeight() * 0.65));
 		prontoSoccorsoBottoniPanel.setBackground(Stile.BLU_SCURO.getColore()); 
 		prontoSoccorsoBottoniPanel.setLayout(null);
@@ -193,7 +199,7 @@ public class PazientiFrame {
 		prontoSoccorsoBottoniPanel.add(inserisciDiariaButton);
 		
         //FILIPPO: METTERE setVIsible(false) QUESTO PANEL SE NON IN DA PRENDERE IN CARICO
-		JPanel prendereCaricoBottoniPanel = new JPanel();
+		prendereCaricoBottoniPanel = new JPanel();
 		prendereCaricoBottoniPanel.setBounds(0, (int) (sinistraPanel.getHeight() * 0.35), sinistraPanel.getWidth(), (int) (sinistraPanel.getHeight() * 0.65));
 		prendereCaricoBottoniPanel.setBackground(Stile.BLU_SCURO.getColore()); 
 		prendereCaricoBottoniPanel.setLayout(null);
@@ -209,7 +215,7 @@ public class PazientiFrame {
 		prendereCaricoBottoniPanel.add(assegnaLettoButton);
 		
 		 //FILIPPO: METTERE setVIsible(false) QUESTO PANEL SE NON IN REPARTO
-		JPanel repartoBottoniPanel = new JPanel();
+		repartoBottoniPanel = new JPanel();
 		repartoBottoniPanel.setBounds(0, (int) (sinistraPanel.getHeight() * 0.35), sinistraPanel.getWidth(), (int) (sinistraPanel.getHeight() * 0.65));
 		repartoBottoniPanel.setBackground(Stile.BLU_SCURO.getColore()); 
 		repartoBottoniPanel.setLayout(null);
@@ -281,11 +287,11 @@ public class PazientiFrame {
 		cercaLabel.setForeground(Color.WHITE);
 		filtriPanel.add(cercaLabel);
         
-        JTextField cercaTextField = new JTextField();
+        cercaTextField = new JTextField();
 		cercaTextField.setBounds(cercaLabel.getWidth() + 20, (cercaLabel.getHeight() - 24) / 2, cercaLabel.getWidth(), 24);
 		filtriPanel.add(cercaTextField);
 		
-		JButton cercaButton = new JButton();
+		cercaButton = new JButton();
 		cercaButton.setBounds(cercaTextField.getX() + cercaTextField.getWidth(), (cercaLabel.getHeight() - 24) / 2, 24, 24);
 		cercaButton.setBackground(Stile.AZZURRO.getColore());
 		cercaButton.setIcon(cercaImage);
@@ -305,7 +311,7 @@ public class PazientiFrame {
         urgenzaComboBox.addItem("VERDE");
 		filtriPanel.add(urgenzaComboBox);
 
-		JButton indietroButton = new JButton();
+		indietroButton = new JButton();
 		indietroButton.setBounds(filtriPanel.getWidth() - 36, (cercaLabel.getHeight() - 24) / 2, 24, 24);
 		indietroButton.setBackground(Stile.AZZURRO.getColore());
 		indietroButton.setIcon(ripristinaImage);
@@ -354,7 +360,7 @@ public class PazientiFrame {
 	public void updateViewUtente() {
 		utenteLabel.setText(modello.modelloGestoreUtente.getUtente());
 	}
-	public synchronized  void updateViewTabellaProntoSoccorso() {
+	public synchronized  void updateViewTabella() {
 			if (updating) {
                 return;
             }
@@ -368,6 +374,7 @@ public class PazientiFrame {
 	
 	public void updateStringaPaziente() {
 		pazienteTitoloLabel.setText(modello.modelloGestoreStringaPaziente.getDatiPaziente());
+		pazienteLabel.setText("");
 	}
 	
 	/*

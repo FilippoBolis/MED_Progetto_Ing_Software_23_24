@@ -9,34 +9,31 @@ import gui.*;
 import logiche_frame_pronto_soccorso.LogicaDellaPosizionePazienteTabella;
 import modelli.ModelloGestoreLogicaGenerale;
 
-public class LogicaBottoneInReparto {
+public class LogicaBottoneRefresh {
 	
 	private PazientiFrame frameDeiPazienti;
 	private ModelloGestoreLogicaGenerale modello;
-	private LogicaDellaPosizionePazienteTabella tabellaInReparto;
+	private LogicaDellaPosizionePazienteTabella tabellaProntoSoccorso;
 	
-	public LogicaBottoneInReparto(PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
+	public LogicaBottoneRefresh(PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		// prede i refs
 		frameDeiPazienti = v2;
 		modello = m;
-		tabellaInReparto = new LogicaDellaPosizionePazienteTabella(frameDeiPazienti, modello,"in Reparto");
 		start();
 	}
 	
 	private void start() {
 		//si registra al bottone prontoSoccorsoToggleButton
-		frameDeiPazienti.repartoToggleButton.addActionListener(new ActionListener() {
+		frameDeiPazienti.indietroButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+			tabellaProntoSoccorso = new LogicaDellaPosizionePazienteTabella(frameDeiPazienti, modello,frameDeiPazienti.posizioneAttuale);
+			tabellaProntoSoccorso.update();
 			frameDeiPazienti.urgenzaComboBox.setSelectedItem(" ");
 			frameDeiPazienti.cercaTextField.setText("");
-			tabellaInReparto.update();
 			SwingUtilities.invokeLater(new Runnable() {
 			@Override
 				public void run() {
-					frameDeiPazienti.prendereCaricoBottoniPanel.setVisible(false);
-					frameDeiPazienti.prontoSoccorsoBottoniPanel.setVisible(false);
-					frameDeiPazienti.repartoBottoniPanel.setVisible(true);
 					frameDeiPazienti.updateViewTabella();
 				}
 			});

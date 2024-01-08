@@ -67,7 +67,7 @@ public class LogicaDellaPosizionePazienteTabella{
 					SwingUtilities.invokeLater(new Runnable() {
 					    @Override
 					    public void run() {
-					    	frameDeiPazienti.updateViewTabellaProntoSoccorso();
+					    	frameDeiPazienti.updateViewTabella();
 					    }
 					});
 				}

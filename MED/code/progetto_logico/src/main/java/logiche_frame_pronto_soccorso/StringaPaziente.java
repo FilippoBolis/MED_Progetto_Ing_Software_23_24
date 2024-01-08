@@ -24,7 +24,6 @@ public class StringaPaziente {
 	private String codice;
 	private String nome;
 	private String cognome;
-	private String sesso;
 	
 	
 	public StringaPaziente(PazientiFrame f, ModelloGestoreLogicaGenerale m) {
@@ -47,8 +46,7 @@ public class StringaPaziente {
 							codice = (String) prontoSoccorso.table.getValueAt(row, 6);
 							cognome = contesto.select(Degente.DEGENTE.COGNOME).from(Degente.DEGENTE).where(Degente.DEGENTE.CODICE.eq(codice)).fetchOneInto(String.class);
 						   	nome = contesto.select(Degente.DEGENTE.NOME).from(Degente.DEGENTE).where(Degente.DEGENTE.CODICE.eq(codice)).fetchOneInto(String.class);
-						   	sesso = contesto.select(Degente.DEGENTE.SESSO).from(Degente.DEGENTE).where(Degente.DEGENTE.CODICE.eq(codice)).fetchOneInto(String.class);
-						   	modello.modelloGestoreStringaPaziente.setDatiPaziente(codice, cognome, nome, sesso);
+						   	modello.modelloGestoreStringaPaziente.setDatiPaziente(codice, cognome, nome);
 						   	prontoSoccorso.updateStringaPaziente();
 						}
 					}

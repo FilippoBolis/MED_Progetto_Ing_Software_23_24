@@ -29,11 +29,15 @@ public class LogicaBottoneDaPrendereInCarico {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 			frameDeiPazienti.urgenzaComboBox.setSelectedItem(" ");
+			frameDeiPazienti.cercaTextField.setText("");
 			tabellaInReparto.update();
 			SwingUtilities.invokeLater(new Runnable() {
 			@Override
 				public void run() {
-					frameDeiPazienti.updateViewTabellaProntoSoccorso();
+					frameDeiPazienti.repartoBottoniPanel.setVisible(false);
+					frameDeiPazienti.prontoSoccorsoBottoniPanel.setVisible(false);
+					frameDeiPazienti.prendereCaricoBottoniPanel.setVisible(true);
+					frameDeiPazienti.updateViewTabella();
 				}
 			});
 			}
