@@ -16,7 +16,7 @@ public class Main {
 	            		ModelloGestoreLogicaGenerale modello = new ModelloGestoreLogicaGenerale();
 	        			LoginFrame frameLogin = new LoginFrame();
 	        			PazientiFrame pazientiFrame = new PazientiFrame(modello);
-	        			new LoginLogic(frameLogin,pazientiFrame,modello);
+	        			GestoreLogicaAttivazionePulsanti ge = new GestoreLogicaAttivazionePulsanti(frameLogin,pazientiFrame,modello);
 	        		} catch (Exception e) {
 	        			e.printStackTrace();
 	        		}

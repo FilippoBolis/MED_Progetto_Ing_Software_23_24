@@ -20,19 +20,21 @@ import gui.PazientiFrame;
 import med_db.jooq.generated.tables.Degente;
 import modelli.ModelloGestoreLogicaGenerale;
 
-public class TabellaLogicProntoSoccorso{
-	private PazientiFrame prontoSoccorso;
+public class LogicaDellaPosizionePazienteTabella{
+	private PazientiFrame frameDeiPazienti;
 	private static String DB_REL_FILELOGIC = "../progetto_database/db/db.db3";
 	private static String DB_URLLOGIC = "jdbc:sqlite:" + DB_REL_FILELOGIC;
 	private ModelloGestoreLogicaGenerale modello;
+	private String filtro;
 	
-	public TabellaLogicProntoSoccorso(PazientiFrame p, ModelloGestoreLogicaGenerale m) {
-		prontoSoccorso = p;
+	public LogicaDellaPosizionePazienteTabella(PazientiFrame p, ModelloGestoreLogicaGenerale m, String filtro) {
+		frameDeiPazienti = p;
 		modello = m;
+		this.filtro=filtro;
 	}
 	
 	public void update() {
-		if(!prontoSoccorso.updating) {
+		if(!frameDeiPazienti.updating) {
 			try {
 				List<String> nomi = new ArrayList<>();
 				List<String> codice = new ArrayList<>();
@@ -44,7 +46,7 @@ public class TabellaLogicProntoSoccorso{
 				Connection conn = DriverManager.getConnection(DB_URLLOGIC);
 				if (conn != null) {
 					DSLContext contesto = DSL.using(conn, SQLDialect.SQLITE);
-					Result<Record7<String,String,String,LocalDate,LocalTime,String,String>> degenti = contesto.select(Degente.DEGENTE.NOME,Degente.DEGENTE.COGNOME,Degente.DEGENTE.SESSO,Degente.DEGENTE.DATA_ARRIVO,Degente.DEGENTE.ORA_ARRIVO,Degente.DEGENTE.URGENZA,Degente.DEGENTE.CODICE).from(Degente.DEGENTE).where(Degente.DEGENTE.POSIZIONE.eq("in Pronto Soccorso")).fetch();
+					Result<Record7<String,String,String,LocalDate,LocalTime,String,String>> degenti = contesto.select(Degente.DEGENTE.NOME,Degente.DEGENTE.COGNOME,Degente.DEGENTE.SESSO,Degente.DEGENTE.DATA_ARRIVO,Degente.DEGENTE.ORA_ARRIVO,Degente.DEGENTE.URGENZA,Degente.DEGENTE.CODICE).from(Degente.DEGENTE).where(Degente.DEGENTE.POSIZIONE.eq(filtro)).fetch();
 					for (Record7<String, String, String, LocalDate, LocalTime, String,String> degenteRecord : degenti) {
 					    nomi.add(degenteRecord.value1());
 					    cognomi.add(degenteRecord.value2());
@@ -61,10 +63,11 @@ public class TabellaLogicProntoSoccorso{
 					modello.modelloGestoreTabella.setTableOreArrivo(oreArrivo);
 					modello.modelloGestoreTabella.setTableUrgenza(urgenza);
 					modello.modelloGestoreTabella.setTableCodice(codice);
+					frameDeiPazienti.posizioneAttuale=filtro;
 					SwingUtilities.invokeLater(new Runnable() {
 					    @Override
 					    public void run() {
-					    	prontoSoccorso.updateViewTabellaProntoSoccorso();
+					    	frameDeiPazienti.updateViewTabellaProntoSoccorso();
 					    }
 					});
 				}

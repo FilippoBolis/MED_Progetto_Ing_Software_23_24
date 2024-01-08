@@ -14,8 +14,7 @@ import org.jooq.SQLDialect;
 import org.jooq.impl.DSL;
 
 import gui.*;
-import logiche_frame_pronto_soccorso.StringaPaziente;
-import logiche_frame_pronto_soccorso.TabellaLogicProntoSoccorso;
+import logiche_frame_pronto_soccorso.LogicaDellaPosizionePazienteTabella;
 import med_db.jooq.generated.tables.Personale;
 import modelli.ModelloGestoreLogicaGenerale;
 
@@ -31,17 +30,15 @@ public class LoginLogic {
 	private String nome;
 	private String cognome;
 	private ModelloGestoreLogicaGenerale modello;
-	private TabellaLogicProntoSoccorso tabellaProntoSoccorso;
-	private StringaPaziente controlloTabella;
+	private LogicaDellaPosizionePazienteTabella tabellaProntoSoccorso;
 	
 	public LoginLogic(LoginFrame v, PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		// prede i refs
 		loginFrame = v;
 		prontoSoccorso = v2;
 		modello = m;
-		tabellaProntoSoccorso = new TabellaLogicProntoSoccorso(prontoSoccorso, modello);
+		tabellaProntoSoccorso = new LogicaDellaPosizionePazienteTabella(prontoSoccorso, modello,"in Pronto Soccorso");
 		registerLogin();
-	   	controlloTabella = new StringaPaziente(prontoSoccorso,modello);
 	}
 	
 	private void registerLogin() {

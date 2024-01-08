@@ -37,9 +37,14 @@ public class PazientiFrame {
 	private final int WIDTH = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
 	private final int HEIGHT = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 	public JFrame sfondoFrame;
-	public String infoPaziente = "Seleziona un paziente nel database";
-	private DefaultTableModel tableModel;
+	public JToggleButton prontoSoccorsoToggleButton;
+	public JToggleButton repartoToggleButton;
+	public JToggleButton inCaricoToggleButton;
+	public JComboBox<String> urgenzaComboBox;
 	public JTable table;
+	public String posizioneAttuale;
+	private String infoPaziente = "Seleziona un paziente nel database";
+	private DefaultTableModel tableModel;
 	private JLabel utenteLabel;
 	private JLabel pazienteTitoloLabel;
 	private ModelloGestoreLogicaGenerale modello;
@@ -115,21 +120,21 @@ public class PazientiFrame {
         //oppure se ho cercato un nome paziente che non esiste.
         //Direi di gestirli tutti cosi, in questo modo basta chiamare la classe errere e scrivere il messaggio da visualizzare come errore
         
-        JToggleButton prontoSoccorsoToggleButton = new JToggleButton("IN PRONTO SOCCORSO");
+        prontoSoccorsoToggleButton = new JToggleButton("IN PRONTO SOCCORSO");
         prontoSoccorsoToggleButton.setBounds(0, 0, (int) (menuPanel.getWidth() * 0.34), menuPanel.getHeight());
         prontoSoccorsoToggleButton.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 1, Color.LIGHT_GRAY)); 
         prontoSoccorsoToggleButton.setForeground(Stile.BLU_SCURO.getColore());
         prontoSoccorsoToggleButton.setFont(Stile.TESTO.getFont());
         menuPanel.add(prontoSoccorsoToggleButton);
         
-        JToggleButton inCaricoToggleButton = new JToggleButton("DA PRENDERE IN CARICO");
+        inCaricoToggleButton = new JToggleButton("DA PRENDERE IN CARICO");
         inCaricoToggleButton.setBounds(prontoSoccorsoToggleButton.getWidth(), 0, (int) (menuPanel.getWidth() * 0.34), menuPanel.getHeight());
         inCaricoToggleButton.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 1, Color.LIGHT_GRAY)); 
         inCaricoToggleButton.setForeground(Stile.BLU_SCURO.getColore());
         inCaricoToggleButton.setFont(Stile.TESTO.getFont());
         menuPanel.add(inCaricoToggleButton);
         
-        JToggleButton repartoToggleButton = new JToggleButton("IN REPARTO");
+        repartoToggleButton = new JToggleButton("IN REPARTO");
         repartoToggleButton.setBounds(inCaricoToggleButton.getWidth() * 2, 0, (int) (menuPanel.getWidth() * 0.34), menuPanel.getHeight());
         repartoToggleButton.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 1, Color.LIGHT_GRAY)); 
         repartoToggleButton.setForeground(Stile.BLU_SCURO.getColore());
@@ -292,7 +297,7 @@ public class PazientiFrame {
 		urgenzaLabel.setForeground(Color.WHITE);
 		filtriPanel.add(urgenzaLabel);
 		
-		JComboBox<String> urgenzaComboBox = new JComboBox<String>();
+		urgenzaComboBox = new JComboBox<String>();
 		urgenzaComboBox.setBounds(urgenzaLabel.getX() + urgenzaLabel.getWidth(), (cercaLabel.getHeight() - 24) / 2, cercaLabel.getWidth(), 24);
 	    urgenzaComboBox.addItem(" ");
         urgenzaComboBox.addItem("ROSSO");
