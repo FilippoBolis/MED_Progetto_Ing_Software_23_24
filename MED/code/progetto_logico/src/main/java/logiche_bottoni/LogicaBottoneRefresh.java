@@ -27,6 +27,8 @@ public class LogicaBottoneRefresh {
 		frameDeiPazienti.indietroButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+			modello.modelloGestorePaziente.deselezionaPaziente();
+			frameDeiPazienti.updateStringaPaziente();
 			tabellaProntoSoccorso = new LogicaDellaPosizionePazienteTabella(frameDeiPazienti, modello,frameDeiPazienti.posizioneAttuale);
 			tabellaProntoSoccorso.update();
 			frameDeiPazienti.urgenzaComboBox.setSelectedItem(" ");
