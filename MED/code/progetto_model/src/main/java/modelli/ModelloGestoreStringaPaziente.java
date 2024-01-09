@@ -12,6 +12,6 @@ public class ModelloGestoreStringaPaziente {
 	}
 	
 	public String getDatiPaziente() {
-		return "Paziente: " + nome + " " + cognome + " ( Codice " + codice + " )";
+		return "Paziente: " + nome + " " + cognome + " (Codice " + codice + ")";
 	}
 }

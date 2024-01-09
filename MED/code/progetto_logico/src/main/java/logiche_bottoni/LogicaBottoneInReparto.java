@@ -28,6 +28,9 @@ public class LogicaBottoneInReparto {
 		frameDeiPazienti.repartoToggleButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+			frameDeiPazienti.prontoSoccorsoToggleButton.setSelected(false);
+			frameDeiPazienti.inCaricoToggleButton.setSelected(false);
+			frameDeiPazienti.repartoToggleButton.setSelected(true);
 			frameDeiPazienti.urgenzaComboBox.setSelectedItem(" ");
 			frameDeiPazienti.cercaTextField.setText("");
 			tabellaInReparto.update();

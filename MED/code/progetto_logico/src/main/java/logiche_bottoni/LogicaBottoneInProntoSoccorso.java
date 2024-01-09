@@ -24,10 +24,16 @@ public class LogicaBottoneInProntoSoccorso {
 	}
 	
 	private void start() {
+		frameDeiPazienti.prontoSoccorsoToggleButton.setSelected(true);
+		frameDeiPazienti.inCaricoToggleButton.setSelected(false);
+		frameDeiPazienti.repartoToggleButton.setSelected(false);
 		//si registra al bottone prontoSoccorsoToggleButton
 		frameDeiPazienti.prontoSoccorsoToggleButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+			frameDeiPazienti.prontoSoccorsoToggleButton.setSelected(true);
+			frameDeiPazienti.inCaricoToggleButton.setSelected(false);
+			frameDeiPazienti.repartoToggleButton.setSelected(false);
 			frameDeiPazienti.urgenzaComboBox.setSelectedItem(" ");
 			frameDeiPazienti.cercaTextField.setText("");
 			tabellaProntoSoccorso.update();

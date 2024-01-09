@@ -24,6 +24,7 @@ public class LoginFrame extends JFrame {
 	public JPasswordField passwordField;
 	public JButton loginButton;
 	public JFrame sfondoFrame;
+	
 	public LoginFrame() {
 		
 		try {
