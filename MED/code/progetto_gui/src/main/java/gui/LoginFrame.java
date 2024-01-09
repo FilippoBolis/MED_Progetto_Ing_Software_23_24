@@ -44,7 +44,6 @@ public class LoginFrame extends JFrame {
 		JPanel sfondoPanel = new JPanel();
 		sfondoPanel.setLayout(null);
 		sfondoFrame.getContentPane().add(sfondoPanel);
-		
 
 		JPanel sinistraPanel = new JPanel();
 		sinistraPanel.setBounds(0, 0, 330, 363);
