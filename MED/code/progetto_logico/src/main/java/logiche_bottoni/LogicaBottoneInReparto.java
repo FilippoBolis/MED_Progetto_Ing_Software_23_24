@@ -33,6 +33,7 @@ public class LogicaBottoneInReparto {
 			frameDeiPazienti.repartoToggleButton.setSelected(true);
 			frameDeiPazienti.urgenzaComboBox.setSelectedItem(" ");
 			frameDeiPazienti.cercaTextField.setText("");
+			modello.modelloGestorePaziente.deselezionaPaziente();
 			tabellaInReparto.update();
 			SwingUtilities.invokeLater(new Runnable() {
 			@Override
@@ -41,6 +42,7 @@ public class LogicaBottoneInReparto {
 					frameDeiPazienti.prontoSoccorsoBottoniPanel.setVisible(false);
 					frameDeiPazienti.repartoBottoniPanel.setVisible(true);
 					frameDeiPazienti.updateViewTabella();
+					frameDeiPazienti.updateStringaPaziente();
 				}
 			});
 			}

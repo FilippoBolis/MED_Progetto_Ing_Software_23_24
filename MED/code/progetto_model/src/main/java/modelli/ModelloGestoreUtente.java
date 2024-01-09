@@ -24,4 +24,16 @@ public class ModelloGestoreUtente {
 			return "Utente: Operatore " + nome + " " + cognome + " (" + utente + ")";
 		}
 	}
+	
+	public String getMansioneUtente() {
+		if(mansione.equals("M")) {
+			return "Medico";
+		}
+		else if (mansione.equals("I")) {
+			return "Infermiere";
+		}
+		else {
+			return "Operatore";
+		}
+	}
 }

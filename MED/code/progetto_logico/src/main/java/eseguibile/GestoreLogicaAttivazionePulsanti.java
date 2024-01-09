@@ -2,22 +2,16 @@ package eseguibile;
 
 import gui.LoginFrame;
 import gui.PazientiFrame;
-import logiche_bottoni.LogicaBottoneDaPrendereInCarico;
-import logiche_bottoni.LogicaBottoneFiltroNomeCognome;
-import logiche_bottoni.LogicaBottoneFiltroUrgenza;
-import logiche_bottoni.LogicaBottoneInProntoSoccorso;
-import logiche_bottoni.LogicaBottoneInReparto;
-import logiche_bottoni.LogicaBottoneRefresh;
-import logiche_bottoni.LoginLogic;
-import logiche_frame_pronto_soccorso.StringaPaziente;
+import logiche_bottoni.*;
+import logiche_frame_pronto_soccorso.LogicaDellaStringaPaziente;
 import modelli.ModelloGestoreLogicaGenerale;
 
 public class GestoreLogicaAttivazionePulsanti {
 	
 	private LoginFrame loginFrame;
-	private PazientiFrame prontoSoccorso;
-	private ModelloGestoreLogicaGenerale modello;
-	private StringaPaziente controlloTabella;
+	private PazientiFrame mainFrameUnit;
+	private ModelloGestoreLogicaGenerale mainModelUnit;
+	private LogicaDellaStringaPaziente controlloTabella;
 	private LoginLogic l;
 	private LogicaBottoneInProntoSoccorso bottoneInProntoSoccorso;
 	private LogicaBottoneInReparto bottoneInReparto;
@@ -25,20 +19,38 @@ public class GestoreLogicaAttivazionePulsanti {
 	private LogicaBottoneFiltroUrgenza filtroUrgenza;
 	private LogicaBottoneFiltroNomeCognome logicaFiltroNomeCognome;
 	private LogicaBottoneRefresh logicaBottoneRefresh;
+	private LogicaBottoneDimetti logicaBottoneDimetti;
+	private LogicaBottoneVisualizzaInformazioni logicaBottoneVisualizzaInformazioni;
+	private LogicaBottoneVisualizzaFarmaci logicaBottoneVisualizzaFarmaci;
+	private LogicaBottoneVisualizzaStorico logicaBottoneVisualizzaStorico;
+	private LogicaBottoneInserisciDiariaInfermieristica logicaBottoneInserisciDiariaInfermieristica;
+	private LogicaBottoneInserisciDiariaMedica logicaBottoneInserisciDiariaMedica;
+	private LogicaBottoneAssegnaLetto logicaBottoneAssegnaLetto;
+	private LogicaBottoneModificaDiariaMedica logicaBottoneModificaDiariaMedica;
+	private LogicaBottoneInserisciPaziente logicaBottoneInserisciPaziente;
 	
 	
 	public GestoreLogicaAttivazionePulsanti(LoginFrame v, PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		// prede i refs
 		loginFrame = v;
-		prontoSoccorso = v2;
-		modello = m;
-		logicaBottoneRefresh = new LogicaBottoneRefresh(prontoSoccorso,modello);
-		logicaFiltroNomeCognome = new LogicaBottoneFiltroNomeCognome(prontoSoccorso,modello);
-		filtroUrgenza = new LogicaBottoneFiltroUrgenza(prontoSoccorso,modello);
-	   	controlloTabella = new StringaPaziente(prontoSoccorso,modello);
-	   	bottoneInReparto = new LogicaBottoneInReparto(prontoSoccorso,modello);
-	   	bottoneDaPrendereInCarico = new LogicaBottoneDaPrendereInCarico(prontoSoccorso,modello);
-		bottoneInProntoSoccorso = new LogicaBottoneInProntoSoccorso(prontoSoccorso,modello);
+		mainFrameUnit = v2;
+		mainModelUnit = m;
+		logicaBottoneInserisciPaziente = new LogicaBottoneInserisciPaziente(mainFrameUnit,mainModelUnit);
+		logicaBottoneModificaDiariaMedica = new LogicaBottoneModificaDiariaMedica(mainFrameUnit,mainModelUnit);
+		logicaBottoneAssegnaLetto = new LogicaBottoneAssegnaLetto(mainFrameUnit,mainModelUnit);
+		logicaBottoneInserisciDiariaMedica = new LogicaBottoneInserisciDiariaMedica(mainFrameUnit,mainModelUnit);
+		logicaBottoneInserisciDiariaInfermieristica = new LogicaBottoneInserisciDiariaInfermieristica(mainFrameUnit,mainModelUnit);
+		logicaBottoneVisualizzaStorico = new LogicaBottoneVisualizzaStorico(mainFrameUnit,mainModelUnit);
+		logicaBottoneVisualizzaFarmaci = new LogicaBottoneVisualizzaFarmaci(mainFrameUnit,mainModelUnit);
+		logicaBottoneVisualizzaInformazioni = new LogicaBottoneVisualizzaInformazioni(mainFrameUnit,mainModelUnit);
+		logicaBottoneDimetti = new LogicaBottoneDimetti(mainFrameUnit,mainModelUnit);
+		logicaBottoneRefresh = new LogicaBottoneRefresh(mainFrameUnit,mainModelUnit);
+		logicaFiltroNomeCognome = new LogicaBottoneFiltroNomeCognome(mainFrameUnit,mainModelUnit);
+		filtroUrgenza = new LogicaBottoneFiltroUrgenza(mainFrameUnit,mainModelUnit);
+	   	controlloTabella = new LogicaDellaStringaPaziente(mainFrameUnit,mainModelUnit);
+	   	bottoneInReparto = new LogicaBottoneInReparto(mainFrameUnit,mainModelUnit);
+	   	bottoneDaPrendereInCarico = new LogicaBottoneDaPrendereInCarico(mainFrameUnit,mainModelUnit);
+		bottoneInProntoSoccorso = new LogicaBottoneInProntoSoccorso(mainFrameUnit,mainModelUnit);
 	   	l = new LoginLogic(v,v2,m);
 	}
 	

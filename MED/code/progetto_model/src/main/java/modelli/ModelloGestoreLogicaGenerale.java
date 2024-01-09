@@ -4,5 +4,6 @@ public class ModelloGestoreLogicaGenerale {
 	
 	public ModelloGestoreUtente modelloGestoreUtente = new ModelloGestoreUtente();
 	public ModelloGestoreTabella modelloGestoreTabella = new ModelloGestoreTabella();
-	public ModelloGestoreStringaPaziente modelloGestoreStringaPaziente = new ModelloGestoreStringaPaziente();
+	public ModelloGestoreVisualizzazioneDatiPaziente modelloGestoreVisualizzazioneDatiPaziente = new ModelloGestoreVisualizzazioneDatiPaziente();
+	public ModelloGestorePaziente modelloGestorePaziente = new ModelloGestorePaziente(modelloGestoreVisualizzazioneDatiPaziente);
 }

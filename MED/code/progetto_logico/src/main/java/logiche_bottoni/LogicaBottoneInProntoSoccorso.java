@@ -36,6 +36,7 @@ public class LogicaBottoneInProntoSoccorso {
 			frameDeiPazienti.repartoToggleButton.setSelected(false);
 			frameDeiPazienti.urgenzaComboBox.setSelectedItem(" ");
 			frameDeiPazienti.cercaTextField.setText("");
+			modello.modelloGestorePaziente.deselezionaPaziente();
 			tabellaProntoSoccorso.update();
 			SwingUtilities.invokeLater(new Runnable() {
 			@Override
@@ -44,6 +45,7 @@ public class LogicaBottoneInProntoSoccorso {
 					frameDeiPazienti.prendereCaricoBottoniPanel.setVisible(false);
 					frameDeiPazienti.prontoSoccorsoBottoniPanel.setVisible(true);
 					frameDeiPazienti.updateViewTabella();
+					frameDeiPazienti.updateStringaPaziente();
 				}
 			});
 			}

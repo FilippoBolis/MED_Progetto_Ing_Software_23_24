@@ -50,17 +50,26 @@ public class PazientiFrame {
 	public JTextField cercaTextField;
 	public JButton cercaButton;
 	public JButton indietroButton;
+	public JButton dimettiButton;
+	public JButton visualizzaInformazioniButton;
+	public JButton visualizzaFarmaciButton;
+	public JButton visualizzaStoricoButton;
+	public JButton inserisciDiariaInfButton;
+	public JButton modificaDiariaMedButton;
+	public JButton assegnaLettoButton;
+	public JButton inserisciDiariaButton;
+	public JButton inserisciPazienteButton;
+    private JLabel dataPazienteLabel;
+    private JLabel diariaInfoLabel;
 	private JLabel pazienteLabel;
-	private String infoPaziente = "Seleziona un paziente nel database";
+	private String infoPazienteDefault = ""; // DANIELE a cosa serve? si collide con data e ora
 	private DefaultTableModel tableModel;
 	private JLabel utenteLabel;
 	private JLabel pazienteTitoloLabel;
-    public JLabel unitaPazienteLabel;
-    public JLabel diariaInfoLabel;
 	private ModelloGestoreLogicaGenerale modello;
     public boolean updating = false;
-    public String unitaPaziente = "data e ora";
-    public String diariaInfoPaziente = "Mi sono fatto male";
+    private String datiArrivoDefault = ""; // DANIELE anche questo per me si può silurare
+    private String diariaInfoPazienteDefault = ""; //idem
 
 	@SuppressWarnings("serial")
 	public PazientiFrame(ModelloGestoreLogicaGenerale modello) {
@@ -101,14 +110,14 @@ public class PazientiFrame {
         pazientePanel.setLayout(null);
         infoPanel.add(pazientePanel);
         
-        pazienteTitoloLabel = new JLabel("Paziente");
+        pazienteTitoloLabel = new JLabel("Selezionare un paziente");
         pazienteTitoloLabel.setBounds(20, 0, (int) (pazientePanel.getWidth() - 20), (int) (pazientePanel.getHeight() * 0.5));
         pazienteTitoloLabel.setVerticalAlignment(SwingConstants.BOTTOM);
         pazienteTitoloLabel.setForeground(Color.WHITE);
         pazienteTitoloLabel.setFont(Stile.TITOLO_FINE.getFont());
         pazientePanel.add(pazienteTitoloLabel);
 
-        pazienteLabel = new JLabel(infoPaziente);
+        pazienteLabel = new JLabel(infoPazienteDefault);
         pazienteLabel.setVerticalAlignment(SwingConstants.TOP);
         pazienteLabel.setBounds(20, pazienteTitoloLabel.getHeight(), (int) (pazientePanel.getWidth() - 20), 30);
         pazienteLabel.setForeground(Color.WHITE);
@@ -116,16 +125,15 @@ public class PazientiFrame {
         pazientePanel.add(pazienteLabel);
 
         //Filippo: collega unitaPaziente al paziente e rendila visibile solo se paziente selezionato
-        unitaPazienteLabel = new JLabel("Unità: " + unitaPaziente);
-        unitaPazienteLabel.setBounds(20, pazienteTitoloLabel.getHeight(), (int) (pazientePanel.getWidth() - 20), 30);
-        unitaPazienteLabel.setVerticalAlignment(SwingConstants.TOP);
-        unitaPazienteLabel.setForeground(Color.WHITE);
-        unitaPazienteLabel.setFont(Stile.TESTO_FINE.getFont());
-        pazientePanel.add(unitaPazienteLabel);
+        dataPazienteLabel = new JLabel(datiArrivoDefault);
+        dataPazienteLabel.setBounds(20, pazienteTitoloLabel.getHeight(), (int) (pazientePanel.getWidth() - 20), 30);
+        dataPazienteLabel.setVerticalAlignment(SwingConstants.TOP);
+        dataPazienteLabel.setForeground(Color.WHITE);
+        dataPazienteLabel.setFont(Stile.TESTO_FINE.getFont());
+        pazientePanel.add(dataPazienteLabel);
        
-        //Filippo: collega diariaInfoPaziente al paziente e rendila visibile solo se paziente selezionato
-        diariaInfoLabel = new JLabel(diariaInfoPaziente);
-        diariaInfoLabel.setBounds(20, pazienteTitoloLabel.getHeight() + unitaPazienteLabel.getHeight(), (int) (pazientePanel.getWidth() - 20), 30);
+        diariaInfoLabel = new JLabel(diariaInfoPazienteDefault);
+        diariaInfoLabel.setBounds(20, pazienteTitoloLabel.getHeight() + dataPazienteLabel.getHeight(), (int) (pazientePanel.getWidth() - 20), 30);
         diariaInfoLabel.setVerticalAlignment(SwingConstants.TOP);
         diariaInfoLabel.setForeground(Color.WHITE);
         diariaInfoLabel.setFont(Stile.SOTTOTITOLO_FINE.getFont());
@@ -136,14 +144,7 @@ public class PazientiFrame {
         menuPanel.setBackground(Color.WHITE);
         menuPanel.setLayout(null);
         pazientePanel.add(menuPanel);
-          
-        //IMPORTANTE
-        //In generale in ogni frame direi di mettere tutti i bottoni possibili sempre visibili per tutti, doc, infermiera, segreteria.
-        //Se poi ad esempio un infermiera clicca su pulsante riservato a dottore facciamo uscire l'errore con ErroreFrame,
-        //oppure anche se per esempio vuoi compilare la diaria ma non hai neancora selezionato il paziente,
-        //oppure se ho cercato un nome paziente che non esiste.
-        //Direi di gestirli tutti cosi, in questo modo basta chiamare la classe errere e scrivere il messaggio da visualizzare come errore
-        
+         
         prontoSoccorsoToggleButton = new JToggleButton("IN PRONTO SOCCORSO");
         prontoSoccorsoToggleButton.setBounds(0, 0, (int) (menuPanel.getWidth() * 0.34), menuPanel.getHeight());
         prontoSoccorsoToggleButton.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 1, Color.LIGHT_GRAY)); 
@@ -195,7 +196,7 @@ public class PazientiFrame {
 		prontoSoccorsoBottoniPanel.setVisible(true);
 		sinistraPanel.add(prontoSoccorsoBottoniPanel);
 		
-		JButton inserisciPazienteButton = new JButton("Inserisci nuovo paziente");
+		inserisciPazienteButton = new JButton("Inserisci nuovo paziente");
 		inserisciPazienteButton.setBounds(0, 0, prontoSoccorsoBottoniPanel.getWidth(), 40);
 		inserisciPazienteButton.setBackground(Stile.BLU_SCURO.getColore());
 		inserisciPazienteButton.setForeground(Color.WHITE);
@@ -203,7 +204,7 @@ public class PazientiFrame {
         inserisciPazienteButton.setBorder(BorderFactory.createMatteBorder(2, 0, 1, 0, Stile.BLU.getColore()));
 		prontoSoccorsoBottoniPanel.add(inserisciPazienteButton);
 		
-		JButton inserisciDiariaButton = new JButton("Inserisci prima diaria medica");
+		inserisciDiariaButton = new JButton("Inserisci prima diaria medica");
 		inserisciDiariaButton.setBounds(0, inserisciPazienteButton.getHeight(), prontoSoccorsoBottoniPanel.getWidth(), 40);
 		inserisciDiariaButton.setBackground(Stile.BLU_SCURO.getColore());
 		inserisciDiariaButton.setForeground(Color.WHITE);
@@ -218,7 +219,7 @@ public class PazientiFrame {
 		prendereCaricoBottoniPanel.setVisible(false);
 		sinistraPanel.add(prendereCaricoBottoniPanel);
 		
-		JButton assegnaLettoButton = new JButton("Assegna posto letto");
+		assegnaLettoButton = new JButton("Assegna posto letto");
 		assegnaLettoButton.setBounds(0, 0, prendereCaricoBottoniPanel.getWidth(), 40);
 		assegnaLettoButton.setBackground(Stile.BLU_SCURO.getColore());
 		assegnaLettoButton.setForeground(Color.WHITE);
@@ -233,7 +234,7 @@ public class PazientiFrame {
 		repartoBottoniPanel.setVisible(false);
 		sinistraPanel.add(repartoBottoniPanel);
 		
-		JButton modificaDiariaMedButton = new JButton("Modifica diaria medica");
+		modificaDiariaMedButton = new JButton("Modifica diaria medica");
 		modificaDiariaMedButton.setBounds(0, 0, repartoBottoniPanel.getWidth(), 40);
 		modificaDiariaMedButton.setBackground(Stile.BLU_SCURO.getColore());
 		modificaDiariaMedButton.setForeground(Color.WHITE);
@@ -241,7 +242,7 @@ public class PazientiFrame {
         modificaDiariaMedButton.setBorder(BorderFactory.createMatteBorder(2, 0, 1, 0, Stile.BLU.getColore()));
 		repartoBottoniPanel.add(modificaDiariaMedButton);
 		
-		JButton inserisciDiariaInfButton = new JButton("Inserisci diaria infermieristica");
+		inserisciDiariaInfButton = new JButton("Inserisci diaria infermieristica");
 		inserisciDiariaInfButton.setBounds(0, modificaDiariaMedButton.getHeight(), repartoBottoniPanel.getWidth(), 40);
 		inserisciDiariaInfButton.setBackground(Stile.BLU_SCURO.getColore());
 		inserisciDiariaInfButton.setForeground(Color.WHITE);
@@ -249,7 +250,7 @@ public class PazientiFrame {
         inserisciDiariaInfButton.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Stile.BLU.getColore()));
 		repartoBottoniPanel.add(inserisciDiariaInfButton);
 		
-		JButton visualizzaStoricoButton = new JButton("Visualizza storico");
+		visualizzaStoricoButton = new JButton("Visualizza storico");
 		visualizzaStoricoButton.setBounds(0, modificaDiariaMedButton.getHeight() * 2, repartoBottoniPanel.getWidth(), 40);
 		visualizzaStoricoButton.setBackground(Stile.BLU_SCURO.getColore());
 		visualizzaStoricoButton.setForeground(Color.WHITE);
@@ -257,7 +258,7 @@ public class PazientiFrame {
         visualizzaStoricoButton.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Stile.BLU.getColore()));
 		repartoBottoniPanel.add(visualizzaStoricoButton);
 		
-		JButton visualizzaFarmaciButton = new JButton("Visualizza farmaci");
+		visualizzaFarmaciButton = new JButton("Visualizza farmaci");
 		visualizzaFarmaciButton.setBounds(0, modificaDiariaMedButton.getHeight() * 3, repartoBottoniPanel.getWidth(), 40);
 		visualizzaFarmaciButton.setBackground(Stile.BLU_SCURO.getColore());
 		visualizzaFarmaciButton.setForeground(Color.WHITE);
@@ -265,7 +266,7 @@ public class PazientiFrame {
         visualizzaFarmaciButton.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Stile.BLU.getColore()));
 		repartoBottoniPanel.add(visualizzaFarmaciButton);
 		
-		JButton visualizzaInformazioniButton = new JButton("Visualizza informazioni");
+		visualizzaInformazioniButton = new JButton("Visualizza informazioni");
 		visualizzaInformazioniButton.setBounds(0, modificaDiariaMedButton.getHeight() * 4, repartoBottoniPanel.getWidth(), 40);
 		visualizzaInformazioniButton.setBackground(Stile.BLU_SCURO.getColore());
 		visualizzaInformazioniButton.setForeground(Color.WHITE);
@@ -273,7 +274,7 @@ public class PazientiFrame {
         visualizzaInformazioniButton.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Stile.BLU.getColore()));
 		repartoBottoniPanel.add(visualizzaInformazioniButton);
 		
-		JButton dimettiButton = new JButton("Dimetti paziente");
+		dimettiButton = new JButton("Dimetti paziente");
 		dimettiButton.setBounds(0, modificaDiariaMedButton.getHeight() * 5, repartoBottoniPanel.getWidth(), 40);
 		dimettiButton.setBackground(Stile.BLU_SCURO.getColore());
 		dimettiButton.setForeground(Color.WHITE);
@@ -374,6 +375,7 @@ public class PazientiFrame {
 	
 	public void updateViewUtente() {
 		utenteLabel.setText(modello.modelloGestoreUtente.getUtente());
+		
 	}
 	
 	public synchronized  void updateViewTabella() {
@@ -392,8 +394,9 @@ public class PazientiFrame {
 	}
 	
 	public void updateStringaPaziente() {
-		pazienteTitoloLabel.setText(modello.modelloGestoreStringaPaziente.getDatiPaziente());
-		pazienteLabel.setText("");
+		pazienteTitoloLabel.setText(modello.modelloGestoreVisualizzazioneDatiPaziente.getStringaDatiPaziente());
+		dataPazienteLabel.setText(modello.modelloGestoreVisualizzazioneDatiPaziente.getStringaArrivoPaziente());
+		diariaInfoLabel.setText(modello.modelloGestoreVisualizzazioneDatiPaziente.getStringaCondizionePaziente());
 	}
 	
     @SuppressWarnings("serial")
