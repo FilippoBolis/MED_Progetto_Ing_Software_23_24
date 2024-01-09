@@ -166,9 +166,9 @@ public class RimozioneJooq {
 	public static void main(String[] args) {
 
 		//getIstanza().personale("P2");
-		//getIstanza().rilevazione("Ri1","D1");
+		//getIstanza().rilevazione("Ri3","D1");
 		//getIstanza().degente("D1");
-		//getIstanza().reparto("Re1");
+		//getIstanza().reparto("R5");
 		//getIstanza().modulo("Re1","ModuloA");
 		//getIstanza().letto("Re1", "ModuloA", 1);
 		//getIstanza().assegnazioneLetto("D1","Re1", "ModuloA", 1);

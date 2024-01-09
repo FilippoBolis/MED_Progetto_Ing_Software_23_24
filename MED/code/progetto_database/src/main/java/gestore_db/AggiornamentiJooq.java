@@ -26,24 +26,27 @@ public class AggiornamentiJooq {
 	}
 
 
-	public void personale(String ID, String newVal) {
+	public int personale(String ID, String newVal) {
+		int result=0;
 		try {
 			Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
 			if (conn != null) {
 				/*nel caso del personale non si può modificare altro che la password, 
 				non serve includere un attributo per la selezione */
 					DSLContext cambiaPW = DSL.using(conn, SQLDialect.SQLITE);
-					int result= cambiaPW.update(Personale.PERSONALE).set(Personale.PERSONALE.PASSWORD, newVal).where(Personale.PERSONALE.CODICE.eq(ID)).execute();
-					System.out.println(result);
+					result= cambiaPW.update(Personale.PERSONALE).set(Personale.PERSONALE.PASSWORD, newVal).where(Personale.PERSONALE.CODICE.eq(ID)).execute();
+
 		
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
+		return result;
 	}
 	
 	
-	public void degente(String codice, String attr, String newVal) {
+	public int degente(String codice, String attr, String newVal) {
+		int result=0;
 		try {
 			Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
 			if (conn != null) {
@@ -54,8 +57,7 @@ public class AggiornamentiJooq {
 				switch(attr) {
 				case "urgenza":
 					if(newVal=="verde" || newVal=="giallo" || newVal=="rosso") {
-						int resultU= cambiaVal.update(Degente.DEGENTE).set(Degente.DEGENTE.URGENZA, newVal).where(Degente.DEGENTE.CODICE.eq(codice)).execute();
-						System.out.println(resultU);	
+						result= cambiaVal.update(Degente.DEGENTE).set(Degente.DEGENTE.URGENZA, newVal).where(Degente.DEGENTE.CODICE.eq(codice)).execute();
 					}
 					else
 						System.out.println("Urgenza richiesta non ammessa");
@@ -63,14 +65,12 @@ public class AggiornamentiJooq {
 					break;
 					
 				case "posizione": //deve essere chiamata SOLO all'inserimento di un letto o di una diaria medica
-					int resultA= cambiaVal.update(Degente.DEGENTE).set(Degente.DEGENTE.POSIZIONE, newVal).where(Degente.DEGENTE.CODICE.eq(codice)).execute();
-					System.out.println(resultA);
+					result= cambiaVal.update(Degente.DEGENTE).set(Degente.DEGENTE.POSIZIONE, newVal).where(Degente.DEGENTE.CODICE.eq(codice)).execute();
 					break;
 					
 				case "sesso":
 					if(newVal=="M" || newVal=="F") {
-						int resultS= cambiaVal.update(Degente.DEGENTE).set(Degente.DEGENTE.SESSO, newVal).where(Degente.DEGENTE.CODICE.eq(codice)).execute();
-						System.out.println(resultS);	
+						result= cambiaVal.update(Degente.DEGENTE).set(Degente.DEGENTE.SESSO, newVal).where(Degente.DEGENTE.CODICE.eq(codice)).execute();	
 					}
 					else
 						System.out.println("Sesso del paziente richiesto non ammesso");
@@ -86,27 +86,31 @@ public class AggiornamentiJooq {
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
+		
+		return result;
 	}
 	
-	public void diariaInf(String codice ,String codDeg, String newVal) {
+	public int diariaInf(String codice ,String codDeg, String newVal) {
+		int result=0;
 		try {
 			Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
 			if (conn != null) {
 				DSLContext cambiaVal = DSL.using(conn, SQLDialect.SQLITE);
 				/*l'unico attributo per cui è ammissibile la modifica è il flag d'importanza
 				 non è necessario includere una variabile di selezione*/
-				int result= cambiaVal.update(Diariainf.DIARIAINF).set(Diariainf.DIARIAINF.IMPORTANTE, Boolean.parseBoolean(newVal)).where(Diariainf.DIARIAINF.CODICE_DEGENTE.eq(codDeg), Diariainf.DIARIAINF.CODICE.eq(codice)).execute();
-				System.out.println(result);
+				if(newVal=="true" || newVal=="flase") {
+					result= cambiaVal.update(Diariainf.DIARIAINF).set(Diariainf.DIARIAINF.IMPORTANTE, Boolean.parseBoolean(newVal)).where(Diariainf.DIARIAINF.CODICE_DEGENTE.eq(codDeg), Diariainf.DIARIAINF.CODICE.eq(codice)).execute();	
+				}
 				
-				
-		
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
+		return result;
 	}
 	
-	public void diariaMed(String codice ,String codDeg, String attr, String newVal) {
+	public int diariaMed(String codice ,String codDeg, String attr, String newVal) {
+		int result=0;
 		try {
 			Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
 			if (conn != null) {
@@ -118,23 +122,19 @@ public class AggiornamentiJooq {
 				   per ogni modifica viene aggiornata anche la data e l'ora a quella corrente*/
 				
 				case "storico":
-					int resultS= cambiaVal.update(Diariamed.DIARIAMED).set(Diariamed.DIARIAMED.STORICO, newVal).set(Diariamed.DIARIAMED.DATA, LocalDate.now()).set(Diariamed.DIARIAMED.ORA, LocalTime.now().withNano(0)).where(Diariamed.DIARIAMED.CODICE_DEGENTE.eq(codDeg), Diariamed.DIARIAMED.CODICE.eq(codice)).execute();
-					System.out.println(resultS);
+					result= cambiaVal.update(Diariamed.DIARIAMED).set(Diariamed.DIARIAMED.STORICO, newVal).set(Diariamed.DIARIAMED.DATA, LocalDate.now()).set(Diariamed.DIARIAMED.ORA, LocalTime.now().withNano(0)).where(Diariamed.DIARIAMED.CODICE_DEGENTE.eq(codDeg), Diariamed.DIARIAMED.CODICE.eq(codice)).execute();
 					break;
 					
 				case "motivo":
-					int resultM= cambiaVal.update(Diariamed.DIARIAMED).set(Diariamed.DIARIAMED.MOTIVO, newVal).set(Diariamed.DIARIAMED.DATA, LocalDate.now()).set(Diariamed.DIARIAMED.ORA, LocalTime.now().withNano(0)).where(Diariamed.DIARIAMED.CODICE_DEGENTE.eq(codDeg), Diariamed.DIARIAMED.CODICE.eq(codice)).execute();
-					System.out.println(resultM);
+					result= cambiaVal.update(Diariamed.DIARIAMED).set(Diariamed.DIARIAMED.MOTIVO, newVal).set(Diariamed.DIARIAMED.DATA, LocalDate.now()).set(Diariamed.DIARIAMED.ORA, LocalTime.now().withNano(0)).where(Diariamed.DIARIAMED.CODICE_DEGENTE.eq(codDeg), Diariamed.DIARIAMED.CODICE.eq(codice)).execute();
 					break;
 					
 				case "farmaci":
-					int resultF= cambiaVal.update(Diariamed.DIARIAMED).set(Diariamed.DIARIAMED.FARMACI, newVal).set(Diariamed.DIARIAMED.DATA, LocalDate.now()).set(Diariamed.DIARIAMED.ORA, LocalTime.now().withNano(0)).where(Diariamed.DIARIAMED.CODICE_DEGENTE.eq(codDeg), Diariamed.DIARIAMED.CODICE.eq(codice)).execute();
-					System.out.println(resultF);
+					result= cambiaVal.update(Diariamed.DIARIAMED).set(Diariamed.DIARIAMED.FARMACI, newVal).set(Diariamed.DIARIAMED.DATA, LocalDate.now()).set(Diariamed.DIARIAMED.ORA, LocalTime.now().withNano(0)).where(Diariamed.DIARIAMED.CODICE_DEGENTE.eq(codDeg), Diariamed.DIARIAMED.CODICE.eq(codice)).execute();
 					break;
 					
 				case "allergie":
-					int resultA= cambiaVal.update(Diariamed.DIARIAMED).set(Diariamed.DIARIAMED.ALLERGIE, newVal).set(Diariamed.DIARIAMED.DATA, LocalDate.now()).set(Diariamed.DIARIAMED.ORA, LocalTime.now().withNano(0)).where(Diariamed.DIARIAMED.CODICE_DEGENTE.eq(codDeg), Diariamed.DIARIAMED.CODICE.eq(codice)).execute();
-					System.out.println(resultA);
+					result= cambiaVal.update(Diariamed.DIARIAMED).set(Diariamed.DIARIAMED.ALLERGIE, newVal).set(Diariamed.DIARIAMED.DATA, LocalDate.now()).set(Diariamed.DIARIAMED.ORA, LocalTime.now().withNano(0)).where(Diariamed.DIARIAMED.CODICE_DEGENTE.eq(codDeg), Diariamed.DIARIAMED.CODICE.eq(codice)).execute();
 					break;
 					
 				default:
@@ -146,6 +146,7 @@ public class AggiornamentiJooq {
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
+		return result;
 	}
 	
 	

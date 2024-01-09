@@ -24,8 +24,8 @@ public class InserimentoJooq {
 		return istanza;
 	}
 
-	public void personale(String codice, String nome, String cognome, String mansione, String password) {
-		
+	public int personale(String codice, String nome, String cognome, String mansione, String password) {
+		int result=0;
 		try {
 			Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
 			if (conn != null) {
@@ -34,9 +34,8 @@ public class InserimentoJooq {
 
 					PersonaleRecord persona = new PersonaleRecord(codice, nome, cognome, mansione, password);
 
-					int result = create.insertInto(Personale.PERSONALE).set(persona).execute();
+					result = create.insertInto(Personale.PERSONALE).set(persona).execute();
 
-					System.out.println(result);
 					//System.out.println("Membro del personale inserito con successo");
 				} else {
 					System.out.println("mansione del membro del personale non valida");
@@ -46,9 +45,12 @@ public class InserimentoJooq {
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
+		
+		return result;
 	}
 
-	public void degente(String codice, String nome, String cognome, String sesso, LocalDate dataArrivo, LocalTime oraArrivo,  String urgenza) {
+	public int degente(String codice, String nome, String cognome, String sesso, LocalDate dataArrivo, LocalTime oraArrivo,  String urgenza) {
+		int result=0;
 		try {
 			Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
 			if (conn != null) {
@@ -57,9 +59,8 @@ public class InserimentoJooq {
 					//il degente è in pronto soccorso all'inserimento nel DB
 					DegenteRecord degente = new DegenteRecord(codice, nome, cognome, sesso, dataArrivo, oraArrivo, urgenza, "in Pronto Soccorso");
 
-					int result = create.insertInto(Degente.DEGENTE).set(degente).execute();
+					result = create.insertInto(Degente.DEGENTE).set(degente).execute();
 
-					System.out.println(result);
 				} else {
 					System.out.println("urgenza e/o sesso inseriti non validi");
 				}
@@ -68,27 +69,31 @@ public class InserimentoJooq {
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
+		return result;
 	}
 	
-	public void rilevazione(String ID, String codDeg, double temp, int pressMax,int pressMin, int glicem,LocalDate data, LocalTime ora, int freqCard, int dol) {
+	public int rilevazione(String ID, String codDeg, double temp, int pressMax,int pressMin, int glicem,LocalDate data, LocalTime ora, int freqCard, int dol) {
+		int result=0;
 		try {
 		Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
 		if (conn != null) {
 			DSLContext create = DSL.using(conn, SQLDialect.SQLITE);
+			if (create.select(Degente.DEGENTE.CODICE).from(Degente.DEGENTE).where(Degente.DEGENTE.CODICE.eq(codDeg)).fetch().isNotEmpty()) {
+				RilevazioneRecord rilevazione = new RilevazioneRecord(ID, codDeg, temp, pressMax, pressMin, glicem, data, ora, freqCard, dol);
+				result = create.insertInto(Rilevazione.RILEVAZIONE).set(rilevazione).execute();	
+			}
+			
 
-			RilevazioneRecord rilevazione = new RilevazioneRecord(ID, codDeg, temp, pressMax, pressMin, glicem, data, ora, freqCard, dol);
-
-			int result = create.insertInto(Rilevazione.RILEVAZIONE).set(rilevazione).execute();
-
-			System.out.println(result);
-
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
 		}
-	} catch (SQLException e) {
-	System.out.println(e.getMessage());
-	}
+		
+		return result;
 }
 
-	public void reparto(String codice, String nome) {
+	public int reparto(String codice, String nome) {
+		int result=0;
 		try {
 			Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
 			if (conn != null) {
@@ -96,105 +101,115 @@ public class InserimentoJooq {
 
 				RepartoRecord reparto = new RepartoRecord(codice, nome);
 
-				int result = create.insertInto(Reparto.REPARTO).set(reparto).execute();
-
-				System.out.println(result);
+				result = create.insertInto(Reparto.REPARTO).set(reparto).execute();
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
+		return result;
 	}
 	
-	public void modulo(String codRep, String nome) {
+	public int modulo(String codRep, String nome) {
+		int result=0;
 		try {
 			Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
 			if (conn != null) {
 				DSLContext create = DSL.using(conn, SQLDialect.SQLITE);
-
-				ModuloRecord modulo = new ModuloRecord(codRep, nome);
-
-				int result = create.insertInto(Modulo.MODULO).set(modulo).execute();
-
-				System.out.println(result);
+				if (create.select(Reparto.REPARTO.CODICE).from(Reparto.REPARTO).where(Reparto.REPARTO.CODICE.eq(codRep)).fetch().isNotEmpty()) {
+					ModuloRecord modulo = new ModuloRecord(codRep, nome);
+					result = create.insertInto(Modulo.MODULO).set(modulo).execute();	
+					}
 				}
 			}catch (SQLException e) {
 				System.out.println(e.getMessage());
 			}
-		
+		return result;
 	}
 	
-	public void letto(String codRep, String nomeMod, int numero) {
+	public int letto(String codRep, String nomeMod, int numero) {
+		int result=0;
 		try {
 			Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
 			if (conn != null) {
 				DSLContext create = DSL.using(conn, SQLDialect.SQLITE);
+				if (create.select(Modulo.MODULO.NOME).from(Modulo.MODULO).where(Modulo.MODULO.CODICE_REPARTO.eq(codRep), Modulo.MODULO.NOME.eq(nomeMod)).fetch().isNotEmpty()) {
 
 				LettoRecord letto = new LettoRecord(codRep, nomeMod, numero);
-
-				int result = create.insertInto(Letto.LETTO).set(letto).execute();
-
-				System.out.println(result);
-
+				result = create.insertInto(Letto.LETTO).set(letto).execute();
+				}
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-		}	
+		}
+		
+		return result;
 	}
 	
-	public void assegnazioneLetto(String codDeg, String codRep, String nomeMod, int numero, LocalDate dataAss) {
+	public int assegnazioneLetto(String codDeg, String codRep, String nomeMod, int numero, LocalDate dataAss) {
+		int result=0;
 		try {
 			Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
 			if (conn != null) {
 				DSLContext create = DSL.using(conn, SQLDialect.SQLITE);
 
-				AssegnazionelettoRecord assLetto = new AssegnazionelettoRecord(codDeg, codRep, nomeMod, numero, dataAss);
+				//se il degente scelto non esiste è impossibile assegnargli un letto, allo stesso modo non si può assegnare un letto che non esiste
+				if (create.select(Degente.DEGENTE.CODICE).from(Degente.DEGENTE).where(Degente.DEGENTE.CODICE.eq(codDeg)).fetch().isNotEmpty() &&
+						create.select(Letto.LETTO.NUMERO).from(Letto.LETTO).where(Letto.LETTO.CODICE_REPARTO.eq(codRep), Letto.LETTO.NOME_MODULO.eq(nomeMod),Letto.LETTO.NUMERO.eq(numero)).fetch().isNotEmpty()) {
+					
+					AssegnazionelettoRecord assLetto = new AssegnazionelettoRecord(codDeg, codRep, nomeMod, numero, dataAss);
+					result = create.insertInto(Assegnazioneletto.ASSEGNAZIONELETTO).set(assLetto).execute();
+					//se assegno un letto, il degente non è più in attesa, bensì in reparto
+					AggiornamentiJooq.getIstanza().degente(codDeg,"posizione", "in Reparto");
+				}
 
-				int result = create.insertInto(Assegnazioneletto.ASSEGNAZIONELETTO).set(assLetto).execute();
+
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}	
+		return result;
+	}
+	
+	public int diariaInf(String codice, String codiceDegente, String codiceInfermiere, LocalDate data, LocalTime ora, String noteParticolari, Boolean importante, String farmaco) {
+		int result=0;
+		try {
+			Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
+			if (conn != null) {
+				DSLContext create = DSL.using(conn, SQLDialect.SQLITE);
 				
-				//se assegno un letto, il degente non è più in attesa, bensì in reparto
-				AggiornamentiJooq.getIstanza().degente(codDeg,"posizione", "in Reparto");
-				System.out.println(result);
+				//se il degente scelto non esiste è impossibile aggiungergli una diaria
+				if (create.select(Degente.DEGENTE.CODICE).from(Degente.DEGENTE).where(Degente.DEGENTE.CODICE.eq(codiceDegente)).fetch().isNotEmpty()) {
+					DiariainfRecord diariaInf = new DiariainfRecord(codice, codiceDegente, codiceInfermiere, data, ora, noteParticolari, importante, farmaco);
+					result = create.insertInto(Diariainf.DIARIAINF).set(diariaInf).execute();
+				}
 
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-		}	
+		}
+		return result;
 	}
 	
-	public void diariaInf(String codice, String codiceDegente, String codiceInfermiere, LocalDate data, LocalTime ora, String noteParticolari, Boolean importante, String farmaco) {
+	public int diariaMed(String codice, String codiceDegente, String codiceMedico, String storico, String motivo, String farmaci, LocalDate data, LocalTime ora, String allergie) {
+		int result=0;
 		try {
 			Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
 			if (conn != null) {
 				DSLContext create = DSL.using(conn, SQLDialect.SQLITE);
 
-				DiariainfRecord diariaInf = new DiariainfRecord(codice, codiceDegente, codiceInfermiere, data, ora, noteParticolari, importante, farmaco);
+				if (create.select(Degente.DEGENTE.CODICE).from(Degente.DEGENTE).where(Degente.DEGENTE.CODICE.eq(codiceDegente)).fetch().isNotEmpty()) {
+					DiariamedRecord diariaMed = new DiariamedRecord(codice, codiceDegente, codiceMedico, storico, motivo, farmaci, data, ora, allergie);
 
-				int result = create.insertInto(Diariainf.DIARIAINF).set(diariaInf).execute();
-
-				System.out.println(result);
+					result = create.insertInto(Diariamed.DIARIAMED).set(diariaMed).execute();
+					//alla scrittura della diaria medica, il degente viene posto in attesa finchè non gli viene assegnato il letto
+					AggiornamentiJooq.getIstanza().degente(codiceDegente, "posizione", "in Attesa");
+				}
+				
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
-	}
-	
-	public void diariaMed(String codice, String codiceDegente, String codiceMedico, String storico, String motivo, String farmaci, LocalDate data, LocalTime ora, String allergie) {
-		try {
-			Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
-			if (conn != null) {
-				DSLContext create = DSL.using(conn, SQLDialect.SQLITE);
-
-				DiariamedRecord diariaMed = new DiariamedRecord(codice, codiceDegente, codiceMedico, storico, motivo, farmaci, data, ora, allergie);
-
-				int result = create.insertInto(Diariamed.DIARIAMED).set(diariaMed).execute();
-				//alla scrittura della diaria medica, il degente viene posto in attesa finchè non gli viene assegnato il letto
-				AggiornamentiJooq.getIstanza().degente(codiceDegente, "posizione", "in Attesa");
-
-				System.out.println(result);
-			}
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-		}
+		return result;
 	}
 
 	public static void main(String[] args) {
