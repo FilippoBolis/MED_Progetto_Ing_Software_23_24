@@ -213,8 +213,6 @@ public class InserimentoJooq{
 	}
 
 	public static void main(String[] args) {
-		
-
 		getIstanza().degente("D3","Lara","Longhi","F",LocalDate.now(), LocalTime.now().withNano(0),"giallo");
 		getIstanza().degente("D2","Jacopo","Bellosi","M",LocalDate.now(), LocalTime.now().withNano(0),"rosso");
 		getIstanza().personale("P1","Daniele","Gotti","M", "SpostamiSeCiRiesci");
