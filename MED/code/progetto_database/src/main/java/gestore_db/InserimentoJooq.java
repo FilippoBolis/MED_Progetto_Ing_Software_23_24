@@ -220,6 +220,7 @@ public class InserimentoJooq{
 		getIstanza().personale("P3","Gabriele","Masinari","S","pw");
 		getIstanza().degente("D1","Gabriele","Mazzoleni","M",LocalDate.now(), LocalTime.now().withNano(0),"verde");
 		getIstanza().diariaMed("DiariaMed1","D1","P1","il paziente non soffre di nulla in particolare","Vuole diventare più grosso","Cardiologia","Trembolone",LocalDate.now(),LocalTime.now().withNano(0),"nessun allergia");
+		getIstanza().diariaMed("DiariaMed1","D3","P1","il paziente va messo in attesa","E' super simpatica","Cardiologia","Aspirina",LocalDate.now(),LocalTime.now().withNano(0),"nessun allergia");
 		getIstanza().rilevazione("Ri1","D1",36.8,150,90,100, LocalDate.now(),LocalTime.now().withNano(0),60,5);
 		getIstanza().reparto("Re1","Cardiologia");
 		getIstanza().modulo("Re1","ModuloA");
