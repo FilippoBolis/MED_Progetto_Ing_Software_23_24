@@ -52,10 +52,11 @@ public class Test_Inserimenti implements MetodiDaTestare{
 	public void testDIariaMed() {
 		int risultato;
 		//primo test: inserimento corretto
-		risultato=InserimentoJooq.getIstanza().diariaMed("DiariaMed2", "D2", "P1", "Il paziente soffre di allergia agli anticoagulanti?", "Necessaria cura", "Antiallergene", LocalDate.now(), LocalTime.now().withNano(0), "anticoagulanti");
+		risultato=InserimentoJooq.getIstanza().diariaMed("DiariaMed2", "D2", "P1", "Il paziente soffre di allergia agli anticoagulanti?", "Necessaria cura","fisioterapia", "Antiallergene", LocalDate.now(), LocalTime.now().withNano(0), "anticoagulanti");
 		assertEquals(1,risultato);
 		//secondo test: tentativo di inserimento con dati scorretti
-		//risultato=InserimentoJooq.getIstanza().diariaMed("DiariaMed1", "D8", "P1", "Il paziente soffre di allergia agli anticoagulanti?", "Necessaria cura", "Antiallergene", LocalDate.now(), LocalTime.now().withNano(0), "anticoagulanti");
+		//risultato=InserimentoJooq.getIstanza().diariaMed("DiariaMed1", "D8", "P1", "Il paziente soffre di allergia agli anticoagulanti?", "Necessaria cura","fisioterapia","Antiallergene", LocalDate.now(), LocalTime.now().withNano(0), "anticoagulanti");
+
 		//assertEquals(1,risultato);
 		
 	}

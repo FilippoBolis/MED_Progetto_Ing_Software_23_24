@@ -190,7 +190,7 @@ public class InserimentoJooq{
 		return result;
 	}
 	
-	public int diariaMed(String codice, String codiceDegente, String codiceMedico, String storico, String motivo, String farmaci, LocalDate data, LocalTime ora, String allergie) {
+	public int diariaMed(String codice, String codiceDegente, String codiceMedico, String storico, String motivo, String reparto, String farmaci, LocalDate data, LocalTime ora, String allergie) {
 		int result=0;
 		try {
 			Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
@@ -198,7 +198,7 @@ public class InserimentoJooq{
 				DSLContext create = DSL.using(conn, SQLDialect.SQLITE);
 
 				if (create.select(Degente.DEGENTE.CODICE).from(Degente.DEGENTE).where(Degente.DEGENTE.CODICE.eq(codiceDegente)).fetch().isNotEmpty()) {
-					DiariamedRecord diariaMed = new DiariamedRecord(codice, codiceDegente, codiceMedico, storico, motivo, farmaci, data, ora, allergie);
+					DiariamedRecord diariaMed = new DiariamedRecord(codice, codiceDegente, codiceMedico, storico, motivo, reparto,farmaci, data, ora, allergie);
 
 					result = create.insertInto(Diariamed.DIARIAMED).set(diariaMed).execute();
 					//alla scrittura della diaria medica, il degente viene posto in attesa finchè non gli viene assegnato il letto
@@ -214,19 +214,21 @@ public class InserimentoJooq{
 
 	public static void main(String[] args) {
 		
-		//getIstanza().degente("D3","Lara","Longhi","F",LocalDate.now(), LocalTime.now().withNano(0),"giallo");
-		//getIstanza().degente("D4","Giorgia" ,"Mezzera" ,"F",LocalDate.now(), LocalTime.now().withNano(0), "giallo");
-		//getIstanza().personale("P1","Daniele","Gotti","M", "SpostamiSeCiRiesci");
-		//getIstanza().personale("P2","Filippo","Bolis","I","HaiGiocatoAdOuterWilds");
-		//getIstanza().personale("P3","Gabriele","Masinari","S","pw");
-		//getIstanza().degente("D1","Gabriele","Mazzoleni","M",LocalDate.now(), LocalTime.now().withNano(0),"verde");
-		//getIstanza().diariaMed("DiariaMed1","D1","P1","il paziente non soffre di nulla in particolare","Vuole diventare più grosso","Trembolone",LocalDate.now(),LocalTime.now().withNano(0),"nessun allergia");
-		//getIstanza().rilevazione("Ri1","D1",36.8,150,90,100, LocalDate.now(),LocalTime.now().withNano(0),60,5);
-		//getIstanza().reparto("Re1","Cardiologia");
-		//getIstanza().modulo("Re1","ModuloA");
-		//getIstanza().letto("Re1","ModuloA",1);
-		//getIstanza().assegnazioneLetto("D1","Re1","ModuloA",1,LocalDate.now());
-		//getIstanza().diariaInf("DiariaInf1","D1","P2",LocalDate.now(),LocalTime.now().withNano(0),"Il paziente è diventato enorme dottore",true,"Trembolone");
+
+		getIstanza().degente("D3","Lara","Longhi","F",LocalDate.now(), LocalTime.now().withNano(0),"giallo");
+		getIstanza().degente("D2","Jacopo","Bellosi","M",LocalDate.now(), LocalTime.now().withNano(0),"rosso");
+		getIstanza().personale("P1","Daniele","Gotti","M", "SpostamiSeCiRiesci");
+		getIstanza().personale("P2","Filippo","Bolis","I","HaiGiocatoAdOuterWilds");
+		getIstanza().personale("P3","Gabriele","Masinari","S","pw");
+		getIstanza().degente("D1","Gabriele","Mazzoleni","M",LocalDate.now(), LocalTime.now().withNano(0),"verde");
+		getIstanza().diariaMed("DiariaMed1","D1","P1","il paziente non soffre di nulla in particolare","Vuole diventare più grosso","Cardiologia","Trembolone",LocalDate.now(),LocalTime.now().withNano(0),"nessun allergia");
+		getIstanza().rilevazione("Ri1","D1",36.8,150,90,100, LocalDate.now(),LocalTime.now().withNano(0),60,5);
+		getIstanza().reparto("Re1","Cardiologia");
+		getIstanza().modulo("Re1","ModuloA");
+		getIstanza().letto("Re1","ModuloA",1);
+		getIstanza().assegnazioneLetto("D1","Re1","ModuloA",1,LocalDate.now());
+		getIstanza().diariaInf("DiariaInf1","D1","P2",LocalDate.now(),LocalTime.now().withNano(0),"Il paziente è diventato enorme dottore",true,"Trembolone");
+
 	}
 
 }

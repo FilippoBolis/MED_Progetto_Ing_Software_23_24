@@ -16,11 +16,11 @@ import med_db.jooq.generated.tables.records.DiariamedRecord;
 
 import org.jooq.Field;
 import org.jooq.ForeignKey;
-import org.jooq.Function9;
+import org.jooq.Function10;
 import org.jooq.Name;
 import org.jooq.Record;
 import org.jooq.Records;
-import org.jooq.Row9;
+import org.jooq.Row10;
 import org.jooq.Schema;
 import org.jooq.SelectField;
 import org.jooq.Table;
@@ -77,6 +77,11 @@ public class Diariamed extends TableImpl<DiariamedRecord> {
      * The column <code>DIARIAMED.MOTIVO</code>.
      */
     public final TableField<DiariamedRecord, String> MOTIVO = createField(DSL.name("MOTIVO"), SQLDataType.CLOB, this, "");
+
+    /**
+     * The column <code>DIARIAMED.REPARTO_CONSIGLIATO</code>.
+     */
+    public final TableField<DiariamedRecord, String> REPARTO_CONSIGLIATO = createField(DSL.name("REPARTO_CONSIGLIATO"), SQLDataType.CLOB, this, "");
 
     /**
      * The column <code>DIARIAMED.FARMACI</code>.
@@ -198,18 +203,18 @@ public class Diariamed extends TableImpl<DiariamedRecord> {
     }
 
     // -------------------------------------------------------------------------
-    // Row9 type methods
+    // Row10 type methods
     // -------------------------------------------------------------------------
 
     @Override
-    public Row9<String, String, String, String, String, String, LocalDate, LocalTime, String> fieldsRow() {
-        return (Row9) super.fieldsRow();
+    public Row10<String, String, String, String, String, String, String, LocalDate, LocalTime, String> fieldsRow() {
+        return (Row10) super.fieldsRow();
     }
 
     /**
      * Convenience mapping calling {@link SelectField#convertFrom(Function)}.
      */
-    public <U> SelectField<U> mapping(Function9<? super String, ? super String, ? super String, ? super String, ? super String, ? super String, ? super LocalDate, ? super LocalTime, ? super String, ? extends U> from) {
+    public <U> SelectField<U> mapping(Function10<? super String, ? super String, ? super String, ? super String, ? super String, ? super String, ? super String, ? super LocalDate, ? super LocalTime, ? super String, ? extends U> from) {
         return convertFrom(Records.mapping(from));
     }
 
@@ -217,7 +222,7 @@ public class Diariamed extends TableImpl<DiariamedRecord> {
      * Convenience mapping calling {@link SelectField#convertFrom(Class,
      * Function)}.
      */
-    public <U> SelectField<U> mapping(Class<U> toType, Function9<? super String, ? super String, ? super String, ? super String, ? super String, ? super String, ? super LocalDate, ? super LocalTime, ? super String, ? extends U> from) {
+    public <U> SelectField<U> mapping(Class<U> toType, Function10<? super String, ? super String, ? super String, ? super String, ? super String, ? super String, ? super String, ? super LocalDate, ? super LocalTime, ? super String, ? extends U> from) {
         return convertFrom(toType, Records.mapping(from));
     }
 }
