@@ -30,7 +30,9 @@ public class LogicaBottoneFiltroUrgenza {
 		frameDeiPazienti.urgenzaComboBox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent  e) {
 				if (e.getStateChange() == ItemEvent.SELECTED) {
-                    opzione = (String) frameDeiPazienti.urgenzaComboBox.getSelectedItem();
+					modello.modelloGestorePaziente.deselezionaPaziente();
+					frameDeiPazienti.updateStringaPaziente();
+					opzione = (String) frameDeiPazienti.urgenzaComboBox.getSelectedItem();
                     switch(opzione) {
                     	case "ROSSO":
                     		tabellaFiltrataUrgenza = new LogicaDellUrgenzaPazienteTabella(frameDeiPazienti, modello,"rosso");

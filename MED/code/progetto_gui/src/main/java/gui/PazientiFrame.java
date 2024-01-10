@@ -384,11 +384,20 @@ public class PazientiFrame {
             }
 			updating = true;
 			tableModel.setRowCount(0);
+			if (!posizioneAttuale.equals("in Reparto")) {
+				tableModel.setColumnCount(7);
+			}
+			else {
+				tableModel.addColumn("Reparto");
+		        tableModel.addColumn("Modulo");
+		        tableModel.addColumn("Letto");
+		        tableModel.setColumnCount(10);
+			}
 			for (int i = 0; i < modello.modelloGestoreTabella.getTableNomi().size(); i++) {
-	    	   tableModel.addRow(new Object[] {modello.modelloGestoreTabella.getTableNomi().get(i), modello.modelloGestoreTabella.getTableCognomi().get(i), 
-	    			   modello.modelloGestoreTabella.getTableSesso().get(i), modello.modelloGestoreTabella.getTableDateArrivo().get(i),
-	    			   modello.modelloGestoreTabella.getTableOraArrivo().get(i), modello.modelloGestoreTabella.getTableUrgenza().get(i), 
-	    			   modello.modelloGestoreTabella.getTableCodice().get(i)});
+		    	   tableModel.addRow(new Object[] {modello.modelloGestoreTabella.getTableNomi().get(i), modello.modelloGestoreTabella.getTableCognomi().get(i), 
+		    			   modello.modelloGestoreTabella.getTableSesso().get(i), modello.modelloGestoreTabella.getTableDateArrivo().get(i),
+		    			   modello.modelloGestoreTabella.getTableOraArrivo().get(i), modello.modelloGestoreTabella.getTableUrgenza().get(i), 
+		    			   modello.modelloGestoreTabella.getTableCodice().get(i), modello.modelloGestoreTabella.getTableReparto().get(i), modello.modelloGestoreTabella.getTableModulo().get(i), modello.modelloGestoreTabella.getTableNumeroLetto().get(i)});
 			}
 			updating = false;
 	}
@@ -425,10 +434,10 @@ public class PazientiFrame {
                     setText("");  
                 } else if ("M".equals(value)) {
                     setIcon(maschioImage);
-                    setText("");  
+                    setText("");
                 } else if ("F".equals(value)) {
                     setIcon(femminaImage);
-                    setText("");  
+                    setText("");
                 }
                 
             }

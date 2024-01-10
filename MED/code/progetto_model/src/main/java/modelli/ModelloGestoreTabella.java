@@ -14,7 +14,22 @@ public class ModelloGestoreTabella {
 	private List<LocalDate> dateArrivo = new ArrayList<>();
 	private List<LocalTime> oreArrivo = new ArrayList<>();
 	private List<String> urgenza = new ArrayList<>();
+	private List<String> reparto = new ArrayList<>();
+    private List<String> modulo = new ArrayList<>();
+    private List<Integer> numeroLetto = new ArrayList<>();
 	
+    public void setNumeroLetto(List<Integer> numeroLetto) {
+		this.numeroLetto = numeroLetto;
+	}
+    
+    public void setTableReparto(List<String> reparto) {
+		this.reparto = reparto;
+	}
+	
+    public void setTableModulo(List<String> modulo) {
+		this.modulo = modulo;
+	}
+    
 	public void setTableNomi(List<String> nomi) {
 		this.nomi = nomi;
 	}
@@ -70,4 +85,17 @@ public class ModelloGestoreTabella {
 	public List<String> getTableUrgenza(){
 		return urgenza;
 	}
+	
+	public List<String> getTableReparto(){
+		return reparto;
+	}
+	
+	public List<String> getTableModulo(){
+		return modulo;
+	}
+	
+	public List<Integer> getTableNumeroLetto(){
+		return numeroLetto;
+	}
+	
 }

@@ -55,7 +55,9 @@ public class LogicaBottoneFiltroNomeCognome {
 	            List<LocalDate> dateArrivo = new ArrayList<>();
 	            List<LocalTime> oreArrivo = new ArrayList<>();
 	            List<String> urgenza = new ArrayList<>();
-				if (conn != null) {								//ipotizzio che un paziente abbia un nome e un cognome, quelli con il doppio nome putroppo si dovrà cercare per cognome, stessa cosa per le persone con il doppio cognome che si dovrà cercare per nome
+	            modello.modelloGestorePaziente.deselezionaPaziente();
+				frameDeiPazienti.updateStringaPaziente();
+	            if (conn != null) {								//ipotizzio che un paziente abbia un nome e un cognome, quelli con il doppio nome putroppo si dovrà cercare per cognome, stessa cosa per le persone con il doppio cognome che si dovrà cercare per nome
 				DSLContext contesto = DSL.using(conn, SQLDialect.SQLITE);
 				if(!frameDeiPazienti.cercaTextField.getText().isEmpty()) {
 					sezioni = frameDeiPazienti.cercaTextField.getText().split(" ");
@@ -89,7 +91,7 @@ public class LogicaBottoneFiltroNomeCognome {
 						    sesso.add(degenteRecord.value3());
 						    dateArrivo.add(degenteRecord.value4());
 						    oreArrivo.add(degenteRecord.value5());
-							   urgenza.add(degenteRecord.value6());
+							urgenza.add(degenteRecord.value6());
 						    codice.add(degenteRecord.value7());
 						}
 						modello.modelloGestoreTabella.setTableNomi(nomi);
