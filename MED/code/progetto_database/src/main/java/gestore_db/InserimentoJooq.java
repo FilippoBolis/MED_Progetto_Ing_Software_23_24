@@ -14,7 +14,7 @@ import med_db.jooq.generated.tables.*;
 import med_db.jooq.generated.tables.records.*;
 
 
-public class InserimentoJooq {
+public class InserimentoJooq{
 	//pattern singleton
 	private static InserimentoJooq istanza= new InserimentoJooq();
 	
@@ -215,7 +215,7 @@ public class InserimentoJooq {
 	public static void main(String[] args) {
 		
 		//getIstanza().degente("D3","Lara","Longhi","F",LocalDate.now(), LocalTime.now().withNano(0),"giallo");
-		//getIstanza().degente("D2","Jacopo","Bellosi","M",LocalDate.now(), LocalTime.now().withNano(0),"rosso");
+		//getIstanza().degente("D4","Giorgia" ,"Mezzera" ,"F",LocalDate.now(), LocalTime.now().withNano(0), "giallo");
 		//getIstanza().personale("P1","Daniele","Gotti","M", "SpostamiSeCiRiesci");
 		//getIstanza().personale("P2","Filippo","Bolis","I","HaiGiocatoAdOuterWilds");
 		//getIstanza().personale("P3","Gabriele","Masinari","S","pw");

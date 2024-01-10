@@ -19,146 +19,157 @@ public class RimozioneJooq {
 		return istanza;
 	}
 	
-	public void personale(String codice) {
+	public int personale(String codice) {
+		int result=0;
 		try {
 			Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
 			if (conn != null) {
 				DSLContext delete = DSL.using(conn, SQLDialect.SQLITE);
-				int result = delete.deleteFrom(Personale.PERSONALE).where(Personale.PERSONALE.CODICE.eq(codice)).execute();
-				System.out.println(result);
+				result = delete.deleteFrom(Personale.PERSONALE).where(Personale.PERSONALE.CODICE.eq(codice)).execute();
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
+		return result;
 	}
 	
-	public void degente(String codice) {
+	public int degente(String codice) {
+		int result=0;
 		try {
 			Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
 			if (conn != null) {
 				DSLContext delete = DSL.using(conn, SQLDialect.SQLITE);
 				//cancellazione del singolo degente
-				int result = delete.deleteFrom(Degente.DEGENTE).where(Degente.DEGENTE.CODICE.eq(codice)).execute();
+				result = delete.deleteFrom(Degente.DEGENTE).where(Degente.DEGENTE.CODICE.eq(codice)).execute();
 				
 				//cancellazione delle entità daboli: diaria med, diaria inf, assLetto e rilevazione
-				int result1= delete.deleteFrom(Diariamed.DIARIAMED).where(Diariamed.DIARIAMED.CODICE_DEGENTE.eq(codice)).execute();
-				int result2= delete.deleteFrom(Diariainf.DIARIAINF).where(Diariainf.DIARIAINF.CODICE_DEGENTE.eq(codice)).execute();
-				int result3= delete.deleteFrom(Assegnazioneletto.ASSEGNAZIONELETTO).where(Assegnazioneletto.ASSEGNAZIONELETTO.CODICE_DEGENTE.eq(codice)).execute();
-				int result4= delete.deleteFrom(Rilevazione.RILEVAZIONE).where(Rilevazione.RILEVAZIONE.CODICE_DEGENTE.eq(codice)).execute();
-				
-				System.out.println(result+ " "+ result1+ " "+ result2+ " "+ result3+ " "+ result4);
+				result+= delete.deleteFrom(Diariamed.DIARIAMED).where(Diariamed.DIARIAMED.CODICE_DEGENTE.eq(codice)).execute();
+				result+= delete.deleteFrom(Diariainf.DIARIAINF).where(Diariainf.DIARIAINF.CODICE_DEGENTE.eq(codice)).execute();
+				result+= delete.deleteFrom(Assegnazioneletto.ASSEGNAZIONELETTO).where(Assegnazioneletto.ASSEGNAZIONELETTO.CODICE_DEGENTE.eq(codice)).execute();
+				result+= delete.deleteFrom(Rilevazione.RILEVAZIONE).where(Rilevazione.RILEVAZIONE.CODICE_DEGENTE.eq(codice)).execute();
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
+		return result;
 	}
 	
 	
-	public void rilevazione(String ID, String codDeg) {
+	public int rilevazione(String ID, String codDeg) {
+		int result=0;
 		try {
 			Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
 			if (conn != null) {
 				DSLContext delete = DSL.using(conn, SQLDialect.SQLITE);
-				int result = delete.deleteFrom(Rilevazione.RILEVAZIONE).where(Rilevazione.RILEVAZIONE.ID.eq(ID), Rilevazione.RILEVAZIONE.CODICE_DEGENTE.eq(codDeg)).execute();
-				System.out.println(result);
+				result = delete.deleteFrom(Rilevazione.RILEVAZIONE).where(Rilevazione.RILEVAZIONE.ID.eq(ID), Rilevazione.RILEVAZIONE.CODICE_DEGENTE.eq(codDeg)).execute();
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
+		
+		return result;
 	}
 	
-	public void reparto(String codice) {
+	public int reparto(String codice) {
+		int result=0;
 		try {
 			Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
 			if (conn != null) {
 				DSLContext delete = DSL.using(conn, SQLDialect.SQLITE);
 				//cancello il reparto
-				int result = delete.deleteFrom(Reparto.REPARTO).where(Reparto.REPARTO.CODICE.eq(codice)).execute();
+				result = delete.deleteFrom(Reparto.REPARTO).where(Reparto.REPARTO.CODICE.eq(codice)).execute();
 				
 				//cancellazione di entità deboli: modulo, letto e assegnazione letto
-				int result1= delete.deleteFrom(Modulo.MODULO).where(Modulo.MODULO.CODICE_REPARTO.eq(codice)).execute();
-				int result2= delete.deleteFrom(Letto.LETTO).where(Letto.LETTO.CODICE_REPARTO.eq(codice)).execute();
-				int result3= delete.deleteFrom(Assegnazioneletto.ASSEGNAZIONELETTO).where(Assegnazioneletto.ASSEGNAZIONELETTO.CODICE_REPARTO.eq(codice)).execute();
-				
-				//stampa a video dei risultati delle varie operazioni di rimozione
-				System.out.println(result + " "+ result1+ " "+ result2+ " "+ result3);
+				result+= delete.deleteFrom(Modulo.MODULO).where(Modulo.MODULO.CODICE_REPARTO.eq(codice)).execute();
+				result+= delete.deleteFrom(Letto.LETTO).where(Letto.LETTO.CODICE_REPARTO.eq(codice)).execute();
+				result+= delete.deleteFrom(Assegnazioneletto.ASSEGNAZIONELETTO).where(Assegnazioneletto.ASSEGNAZIONELETTO.CODICE_REPARTO.eq(codice)).execute();
+				//il risultato restituito dalla funzione è utilizzato nelle fasi di testing
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
+		return result;
 	}
 	
-	public void modulo(String codRep, String nome) {
+	public int modulo(String codRep, String nome) {
+		int result=0;
 		try {
 			Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
 			if (conn != null) {
 				DSLContext delete = DSL.using(conn, SQLDialect.SQLITE);
-				int result = delete.deleteFrom(Modulo.MODULO).where(Modulo.MODULO.CODICE_REPARTO.eq(codRep), Modulo.MODULO.NOME.eq(nome)).execute();
+				result = delete.deleteFrom(Modulo.MODULO).where(Modulo.MODULO.CODICE_REPARTO.eq(codRep),Modulo.MODULO.NOME.eq(nome)).execute();
 				
 				//cancelazione entità deboli: letto e assegnazione letto
-				int result1= delete.deleteFrom(Letto.LETTO).where(Letto.LETTO.NOME_MODULO.eq(nome)).execute();
-				int result2= delete.deleteFrom(Assegnazioneletto.ASSEGNAZIONELETTO).where(Assegnazioneletto.ASSEGNAZIONELETTO.NOME_MODULO.eq(nome)).execute();
-				System.out.println(result+ " "+ result1+ " "+ result2);
+				result+= delete.deleteFrom(Letto.LETTO).where(Letto.LETTO.CODICE_REPARTO.eq(codRep),Letto.LETTO.NOME_MODULO.eq(nome)).execute();
+				result+= delete.deleteFrom(Assegnazioneletto.ASSEGNAZIONELETTO).where(Assegnazioneletto.ASSEGNAZIONELETTO.NOME_MODULO.eq(nome),Assegnazioneletto.ASSEGNAZIONELETTO.CODICE_REPARTO.eq(codRep)).execute();
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
+		
+		return result;
 	}
 	
-	public void letto(String codRep, String nomeMod, int numero) {
+	public int letto(String codRep, String nomeMod, int numero) {
+		int result=0;
 		try {
 			Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
 			if (conn != null) {
 				DSLContext delete = DSL.using(conn, SQLDialect.SQLITE);
-				int result = delete.deleteFrom(Letto.LETTO).where(Letto.LETTO.CODICE_REPARTO.eq(codRep), Letto.LETTO.NOME_MODULO.eq(nomeMod), Letto.LETTO.NUMERO.eq(numero)).execute();
+				result = delete.deleteFrom(Letto.LETTO).where(Letto.LETTO.CODICE_REPARTO.eq(codRep), Letto.LETTO.NOME_MODULO.eq(nomeMod), Letto.LETTO.NUMERO.eq(numero)).execute();
 				
 				//rimozione dell'entità debole: assegnazione letto
-				int result1 = delete.deleteFrom(Assegnazioneletto.ASSEGNAZIONELETTO).where(Assegnazioneletto.ASSEGNAZIONELETTO.CODICE_REPARTO.eq(codRep), Assegnazioneletto.ASSEGNAZIONELETTO.NOME_MODULO.eq(nomeMod), Assegnazioneletto.ASSEGNAZIONELETTO.NUMERO_LETTO.eq(numero)).execute();
-				
-				System.out.println(result+" "+ result1);
+				result+= delete.deleteFrom(Assegnazioneletto.ASSEGNAZIONELETTO).where(Assegnazioneletto.ASSEGNAZIONELETTO.CODICE_REPARTO.eq(codRep), Assegnazioneletto.ASSEGNAZIONELETTO.NOME_MODULO.eq(nomeMod), Assegnazioneletto.ASSEGNAZIONELETTO.NUMERO_LETTO.eq(numero)).execute();
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
+		
+		return result;
 	}
 	
-	public void assegnazioneLetto(String codDeg, String codRep, String nomeMod, int numLetto) {
+	public int assegnazioneLetto(String codDeg, String codRep, String nomeMod, int numLetto) {
+		int result=0;
 		try {
 			Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
 			if (conn != null) {
 				DSLContext delete = DSL.using(conn, SQLDialect.SQLITE);
-				int result = delete.deleteFrom(Assegnazioneletto.ASSEGNAZIONELETTO).where(Assegnazioneletto.ASSEGNAZIONELETTO.CODICE_DEGENTE.eq(codDeg) ,Assegnazioneletto.ASSEGNAZIONELETTO.CODICE_REPARTO.eq(codRep), Assegnazioneletto.ASSEGNAZIONELETTO.NOME_MODULO.eq(nomeMod), Assegnazioneletto.ASSEGNAZIONELETTO.NUMERO_LETTO.eq(numLetto)).execute();
-				System.out.println(result);
+				result = delete.deleteFrom(Assegnazioneletto.ASSEGNAZIONELETTO).where(Assegnazioneletto.ASSEGNAZIONELETTO.CODICE_DEGENTE.eq(codDeg) ,Assegnazioneletto.ASSEGNAZIONELETTO.CODICE_REPARTO.eq(codRep), Assegnazioneletto.ASSEGNAZIONELETTO.NOME_MODULO.eq(nomeMod), Assegnazioneletto.ASSEGNAZIONELETTO.NUMERO_LETTO.eq(numLetto)).execute();
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
+		return result;
 	}
 	
-	public void diariaMed(String codice, String codDeg) {
+	public int diariaMed(String codice, String codDeg) {
+		int result=0;
 		try {
 			Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
 			if (conn != null) {
 				DSLContext delete = DSL.using(conn, SQLDialect.SQLITE);
-				int result = delete.deleteFrom(Diariamed.DIARIAMED).where(Diariamed.DIARIAMED.CODICE.eq(codice), Diariamed.DIARIAMED.CODICE_DEGENTE.eq(codDeg)).execute();
-				System.out.println(result);
+				result = delete.deleteFrom(Diariamed.DIARIAMED).where(Diariamed.DIARIAMED.CODICE.eq(codice), Diariamed.DIARIAMED.CODICE_DEGENTE.eq(codDeg)).execute();
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
+		
+		return result;
 	}
 	
-	public void diariaInf(String codice, String codDeg) {
+	public int diariaInf(String codice, String codDeg) {
+		int result=0;
 		try {
 			Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
 			if (conn != null) {
 				DSLContext delete = DSL.using(conn, SQLDialect.SQLITE);
-				int result = delete.deleteFrom(Diariainf.DIARIAINF).where(Diariainf.DIARIAINF.CODICE.eq(codice), Diariainf.DIARIAINF.CODICE_DEGENTE.eq(codDeg)).execute();
-				System.out.println(result);
+				result = delete.deleteFrom(Diariainf.DIARIAINF).where(Diariainf.DIARIAINF.CODICE.eq(codice), Diariainf.DIARIAINF.CODICE_DEGENTE.eq(codDeg)).execute();
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
+		
+		return result;
 	}
 	
 	
