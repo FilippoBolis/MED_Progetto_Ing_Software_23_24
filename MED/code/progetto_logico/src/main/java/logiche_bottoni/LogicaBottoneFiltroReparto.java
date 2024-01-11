@@ -40,6 +40,7 @@ public class LogicaBottoneFiltroReparto extends LogicaBottone{
 					}
                 }
 				frameDeiPazienti.cercaTextField.setText("");
+				frameDeiPazienti.urgenzaComboBox.setSelectedItem(" ");
 				SwingUtilities.invokeLater(new Runnable() {
 					@Override
 				public void run() {

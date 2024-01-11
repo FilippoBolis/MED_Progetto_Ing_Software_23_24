@@ -102,6 +102,6 @@ public class DiariaInfermieristicaFrame {
 
 	}
 	/*
-	 *public static void main(String[] args) { new DiariaInfermieristicaFrame(); }
-	 */
+	public static void main(String[] args) { new DiariaInfermieristicaFrame(); }
+	*/ 
 }

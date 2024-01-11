@@ -60,7 +60,7 @@ public class LogicaBottoneFiltroNomeCognome extends LogicaBottone{
 	            List<Integer> letto = new ArrayList<>();
 	            modello.modelloGestorePaziente.deselezionaPaziente();
 				frameDeiPazienti.updateStringaPaziente();
-	            if (conn != null) {								//ipotizzio che un paziente abbia un nome e un cognome, quelli con il doppio nome putroppo si dovrà cercare per cognome, stessa cosa per le persone con il doppio cognome che si dovrà cercare per nome
+				if (conn != null) {								//ipotizzio che un paziente abbia un nome e un cognome, quelli con il doppio nome putroppo si dovrà cercare per cognome, stessa cosa per le persone con il doppio cognome che si dovrà cercare per nome
 				DSLContext contesto = DSL.using(conn, SQLDialect.SQLITE);
 				if(!frameDeiPazienti.cercaTextField.getText().isEmpty()) {
 					sezioni = frameDeiPazienti.cercaTextField.getText().split(" ");
@@ -147,7 +147,10 @@ public class LogicaBottoneFiltroNomeCognome extends LogicaBottone{
 					tabellaDeiPazienti = new LogicaDellaPosizionePazienteTabella(frameDeiPazienti, modello, frameDeiPazienti.posizioneAttuale);
 					tabellaDeiPazienti.update();
 				}
+				// non so perchè danno problemi ste cose sotto (se cambi il paziente mentre è attivo un altro filtro non lo cambia, devi rifarlo dopo è come se facesse un clear ma nell'if ci entra non so)
 				frameDeiPazienti.urgenzaComboBox.setSelectedItem(" ");
+				frameDeiPazienti.repartoComboBox.setSelectedItem(" ");
+				// non so perchè danno problemi le cose sopra
 				SwingUtilities.invokeLater(new Runnable() {
 					@Override
 					public void run() {

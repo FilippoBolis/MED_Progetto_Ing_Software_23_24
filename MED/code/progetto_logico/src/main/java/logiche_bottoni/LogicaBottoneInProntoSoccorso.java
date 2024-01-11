@@ -32,11 +32,14 @@ public class LogicaBottoneInProntoSoccorso extends LogicaBottone{
 			frameDeiPazienti.repartoToggleButton.setSelected(false);
 			frameDeiPazienti.urgenzaComboBox.setSelectedItem(" ");
 			frameDeiPazienti.cercaTextField.setText("");
+			frameDeiPazienti.repartoComboBox.setSelectedItem(" ");
 			modello.modelloGestorePaziente.deselezionaPaziente();
 			tabellaProntoSoccorso.update();
 			SwingUtilities.invokeLater(new Runnable() {
 			@Override
 				public void run() {
+					frameDeiPazienti.repartoComboBox.setVisible(false);
+					frameDeiPazienti.repartoLabel.setVisible(false);
 					frameDeiPazienti.repartoBottoniPanel.setVisible(false);
 					frameDeiPazienti.prendereCaricoBottoniPanel.setVisible(false);
 					frameDeiPazienti.prontoSoccorsoBottoniPanel.setVisible(true);

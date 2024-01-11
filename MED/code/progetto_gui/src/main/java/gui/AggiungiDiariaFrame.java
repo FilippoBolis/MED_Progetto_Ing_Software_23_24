@@ -28,6 +28,7 @@ public class AggiungiDiariaFrame {
 	public JTextField motivoTextField;
 	public JTextField storicoTextField;
 	public JButton avantiButton;
+	public JTextArea farmaciTextArea;
 	
 	public AggiungiDiariaFrame(ModelloGestoreLogicaGenerale modello) {
 		
@@ -100,7 +101,7 @@ public class AggiungiDiariaFrame {
 		farmaciLabel.setBounds(10, 230, 128, 27);
 		diariaPanel.add(farmaciLabel);
 		
-		JTextArea farmaciTextArea = new JTextArea();
+		farmaciTextArea = new JTextArea();
 		farmaciTextArea.setBounds(165, 231, 218, 30);
 		farmaciTextArea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
         farmaciTextArea.setLineWrap(true); // Abilita il riavvolgimento automatico delle righe
@@ -114,10 +115,6 @@ public class AggiungiDiariaFrame {
         avantiButton = new JButton("Avanti");
 		avantiButton.setBounds(440, 309, 89, 23);
 		diariaPanel.add(avantiButton);
-		
-		JButton annullaButton = new JButton("Annulla");
-		annullaButton.setBounds(294, 306, 89, 23);
-		diariaPanel.add(annullaButton);
 
 		sfondoFrame.setVisible(true);
 	

@@ -50,6 +50,7 @@ public class LogicaBottoneFiltroUrgenza extends LogicaBottone{
                     }
                 }
 				frameDeiPazienti.cercaTextField.setText("");
+				frameDeiPazienti.repartoComboBox.setSelectedItem(" ");
 				SwingUtilities.invokeLater(new Runnable() {
 					@Override
 				public void run() {

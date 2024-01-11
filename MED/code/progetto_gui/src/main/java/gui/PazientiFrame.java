@@ -60,6 +60,7 @@ public class PazientiFrame {
 	public JButton inserisciDiariaButton;
 	public JButton inserisciPazienteButton;
 	public JComboBox<String> repartoComboBox;
+	public JLabel repartoLabel;
     private JLabel dataPazienteLabel;
     private JLabel motivoPazienteLabel;
 	private JLabel pazienteLabel;
@@ -340,9 +341,10 @@ public class PazientiFrame {
         urgenzaComboBox.addItem("Verde");
 		filtriPanel.add(urgenzaComboBox);
 		
-		JLabel repartoLabel = new JLabel("Reparto");
+		repartoLabel = new JLabel("Reparto");
 		repartoLabel.setBounds(urgenzaComboBox.getX() + urgenzaComboBox.getWidth() + 30, 0, 50, filtriPanel.getHeight());
 		repartoLabel.setForeground(Color.WHITE);
+		repartoLabel.setVisible(false);
 		filtriPanel.add(repartoLabel);
 		
 		repartoComboBox = new JComboBox<String>();
@@ -351,16 +353,8 @@ public class PazientiFrame {
 		for (String nomeReparto : modello.modelloGestoreLogistica.getNomiReparti()) {
 			repartoComboBox.addItem(nomeReparto);
 		}
+		repartoComboBox.setVisible(false);
 		filtriPanel.add(repartoComboBox);
-		
-		JLabel moduloLabel = new JLabel("Modulo");
-		moduloLabel.setBounds(repartoComboBox.getX() + repartoComboBox.getWidth() + 30, 0, 50, filtriPanel.getHeight());
-		moduloLabel.setForeground(Color.WHITE);
-		filtriPanel.add(moduloLabel);
-		
-		JComboBox<String> moduloComboBox = new JComboBox<String>();
-		moduloComboBox.setBounds(moduloLabel.getX() + moduloLabel.getWidth(), (cercaLabel.getHeight() - 24) / 2, cercaLabel.getWidth(), 24);
-		filtriPanel.add(moduloComboBox);
 
 		indietroButton = new JButton();
 		indietroButton.setBounds(filtriPanel.getWidth() - 36, (cercaLabel.getHeight() - 24) / 2, 24, 24);

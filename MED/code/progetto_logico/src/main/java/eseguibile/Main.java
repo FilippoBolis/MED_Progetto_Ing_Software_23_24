@@ -23,7 +23,8 @@ public class Main {
 
 }
 
-/*
- * 
- * 
-*/
+/*	InserimentoJooq.getIstanza().personale("m","ADMIN","medico","M", "m");
+ *	int qualcosa = funzione se esce 1 è giusto se 0 è sbagliato
+ *	Non puoi inserire qualcosa che non è m i o s
+ *	
+*/  

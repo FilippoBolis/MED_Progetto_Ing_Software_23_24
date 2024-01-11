@@ -78,6 +78,7 @@ public class LogicaDelReparto extends LogicaFrame{
 					    }
 					});
 				}
+				
 			} catch (SQLException ev) {
 				System.out.println(ev.getMessage());
 			}

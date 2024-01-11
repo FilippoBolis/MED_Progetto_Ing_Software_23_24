@@ -53,10 +53,6 @@ public class DimettiPazienteFrame {
 		dimettiPazienteLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		dimettiPazPanel.add(dimettiPazienteLabel);
 
-		JButton annullaButton = new JButton("Annulla");
-		annullaButton.setBounds(256, 309, 89, 23);
-		dimettiPazPanel.add(annullaButton);
-
 		JButton confermaButton = new JButton("Conferma");
 		confermaButton.setBounds(440, 309, 89, 23);
 		dimettiPazPanel.add(confermaButton);

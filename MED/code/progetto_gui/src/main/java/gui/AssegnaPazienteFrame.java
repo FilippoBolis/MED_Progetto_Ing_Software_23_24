@@ -78,17 +78,13 @@ public class AssegnaPazienteFrame {
 		PazientePanel.add(textField_1);
 		textField_1.setColumns(10);
 
-		JButton annullaButton = new JButton("Annulla");
-		annullaButton.setBounds(256, 309, 89, 23);
-		PazientePanel.add(annullaButton);
-
 		confermaButton = new JButton("Conferma");
 		confermaButton.setBounds(440, 309, 89, 23);
 		PazientePanel.add(confermaButton);
 		sfondoFrame.setVisible(true);
 
 	}
-	
+	/*
 	 public static void main(String[] args) { new AssegnaPazienteFrame(); }
-	 
+	*/
 }
