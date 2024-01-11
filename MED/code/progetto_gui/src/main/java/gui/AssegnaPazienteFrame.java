@@ -14,14 +14,14 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 
-public class AssegnaPaziente {
+public class AssegnaPazienteFrame {
 
-	ImageIcon PazienteImage = new ImageIcon("../progetto_gui/src/main/resources/diaria.png");
+	ImageIcon assPazienteImage = new ImageIcon("../progetto_gui/src/main/resources/diaria.png");
 	public JFrame sfondoFrame;
 	private JTextField textField;
 	private JTextField textField_1;
 
-	public AssegnaPaziente() {
+	public AssegnaPazienteFrame() {
 
 		try {
 			UIManager.setLookAndFeel(new FlatIntelliJLaf());
@@ -47,16 +47,16 @@ public class AssegnaPaziente {
 		PazientePanel.setLayout(null);
 		sfondoPanel.add(PazientePanel);
 
-		JLabel AssegnaPazienteLabel = new JLabel("Assegna Paziente");
-		AssegnaPazienteLabel.setBounds(10, 11, 296, 40);
-		AssegnaPazienteLabel.setForeground(Stile.BLU_SCURO.getColore());
-		AssegnaPazienteLabel.setFont(Stile.TITOLO.getFont());
-		AssegnaPazienteLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		PazientePanel.add(AssegnaPazienteLabel);
+		JLabel assegnaPazienteLabel = new JLabel("Assegna Paziente");
+		assegnaPazienteLabel.setBounds(10, 11, 261, 40);
+		assegnaPazienteLabel.setForeground(Stile.BLU_SCURO.getColore());
+		assegnaPazienteLabel.setFont(Stile.TITOLO.getFont());
+		assegnaPazienteLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		PazientePanel.add(assegnaPazienteLabel);
 
 		JLabel immagineLabel = new JLabel();
 		immagineLabel.setBounds(316, 14, 48, 48);
-		immagineLabel.setIcon(PazienteImage);
+		immagineLabel.setIcon(assPazienteImage);
 		PazientePanel.add(immagineLabel);
 
 		JLabel moduloLabel = new JLabel("Modulo");
@@ -84,6 +84,10 @@ public class AssegnaPaziente {
 		JButton confermaButton = new JButton("Conferma");
 		confermaButton.setBounds(440, 309, 89, 23);
 		PazientePanel.add(confermaButton);
+		sfondoFrame.setVisible(true);
 
 	}
+	/*
+	 * public static void main(String[] args) { new AssegnaPazienteFrame(); }
+	 */
 }
