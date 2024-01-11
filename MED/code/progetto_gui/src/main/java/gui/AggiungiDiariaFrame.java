@@ -5,6 +5,7 @@ import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -21,9 +22,8 @@ public class AggiungiDiariaFrame {
 
 	ImageIcon diariaImage = new ImageIcon("../progetto_gui/src/main/resources/diaria.png");
 	public JFrame sfondoFrame;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField motivoTextField;
+	private JTextField storicoTextField;
 	
 	public AggiungiDiariaFrame() {
 		
@@ -51,12 +51,12 @@ public class AggiungiDiariaFrame {
 		diariaPanel.setLayout(null);
 		sfondoPanel.add(diariaPanel);
 		
-		JLabel loginLabel = new JLabel("Diaria Medica");
-		loginLabel.setBounds(10, 11, 296, 40);
-		loginLabel.setForeground(Stile.BLU_SCURO.getColore());
-		loginLabel.setFont(Stile.TITOLO.getFont());
-		loginLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		diariaPanel.add(loginLabel);
+		JLabel titoloLabel = new JLabel("Diaria Medica");
+		titoloLabel.setBounds(10, 11, 296, 40);
+		titoloLabel.setForeground(Stile.BLU_SCURO.getColore());
+		titoloLabel.setFont(Stile.TITOLO.getFont());
+		titoloLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		diariaPanel.add(titoloLabel);
 		
 		JLabel immagineLabel = new JLabel();
 		immagineLabel.setBounds(316, 14, 48, 48);
@@ -67,50 +67,49 @@ public class AggiungiDiariaFrame {
 		motivoLabel.setBounds(10, 74, 116, 21);
 		diariaPanel.add(motivoLabel);
 		
-		textField = new JTextField();
-		textField.setBounds(153, 74, 96, 20);
-		diariaPanel.add(textField);
-		textField.setColumns(10);
+		motivoTextField = new JTextField();
+		motivoTextField.setBounds(153, 74, 96, 20);
+		diariaPanel.add(motivoTextField);
+		motivoTextField.setColumns(10);
 		
 		JLabel storicoLabel = new JLabel("Storico");
 		storicoLabel.setBounds(10, 120, 137, 21);
 		diariaPanel.add(storicoLabel);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(153, 120, 96, 20);
-		diariaPanel.add(textField_1);
-		textField_1.setColumns(10);
+		storicoTextField = new JTextField();
+		storicoTextField.setBounds(153, 120, 96, 20);
+		diariaPanel.add(storicoTextField);
+		storicoTextField.setColumns(10);
 		
-		JLabel allergieLabel = new JLabel("Allergie");
-		allergieLabel.setBounds(10, 169, 137, 21);
-		diariaPanel.add(allergieLabel);
+		JLabel repartoLabel = new JLabel("Reparto consigliato");
+		repartoLabel.setBounds(10, 168, 137, 21);
+		diariaPanel.add(repartoLabel);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(153, 169, 96, 20);
-		diariaPanel.add(textField_2);
-		textField_2.setColumns(10);
+		JComboBox<String> repartoComboBox = new JComboBox<String>();
+		repartoComboBox.setBounds(153, 168, 100, 21);
+		diariaPanel.add(repartoComboBox);
 		
 		JLabel farmaciLabel = new JLabel("Farmaci");
 		farmaciLabel.setBounds(10, 230, 128, 27);
 		diariaPanel.add(farmaciLabel);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(165, 231, 218, 64);
-		textArea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
-        textArea.setLineWrap(true); // Abilita il riavvolgimento automatico delle righe
-        textArea.setWrapStyleWord(true); // Abilita il riavvolgimento delle parole
-		diariaPanel.add(textArea);
+		JTextArea farmaciTextArea = new JTextArea();
+		farmaciTextArea.setBounds(165, 231, 218, 30);
+		farmaciTextArea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
+        farmaciTextArea.setLineWrap(true); // Abilita il riavvolgimento automatico delle righe
+        farmaciTextArea.setWrapStyleWord(true); // Abilita il riavvolgimento delle parole
+		diariaPanel.add(farmaciTextArea);
 
-        JScrollPane scrollPane = new JScrollPane(textArea);
+        JScrollPane scrollPane = new JScrollPane(farmaciTextArea);
 		scrollPane.setBounds(165, 231, 218, 64);
         diariaPanel.add(scrollPane);
 		
-        JButton confermaButton = new JButton("Conferma");
-		confermaButton.setBounds(440, 309, 89, 23);
-		diariaPanel.add(confermaButton);
+        JButton avantiButton = new JButton("Avanti");
+		avantiButton.setBounds(440, 309, 89, 23);
+		diariaPanel.add(avantiButton);
 		
 		JButton annullaButton = new JButton("Annulla");
-		annullaButton.setBounds(256, 309, 89, 23);
+		annullaButton.setBounds(294, 306, 89, 23);
 		diariaPanel.add(annullaButton);
 
 		sfondoFrame.setVisible(true);
@@ -119,5 +118,6 @@ public class AggiungiDiariaFrame {
 	/*
 	public static void main(String[] args) {
 		new AggiungiDiariaFrame();
-	}*/
+	}
+	*/
 }

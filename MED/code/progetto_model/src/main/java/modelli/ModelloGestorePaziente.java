@@ -22,16 +22,16 @@ public class ModelloGestorePaziente {
 		this.ora = ora;
 		this.condizione = condizione;
 		selezionato = true;
-		modelloView.setStringaAnagraficaPaziente("Paziente: " + nome + " " + cognome + " Codice:" + codice);
-		modelloView.setStringaArrivoPaziente("Data arrivo in struttura: " + data + " alle: " + ora);
-		modelloView.setStringaCondizionePaziente("Motivo: " + condizione);
+		modelloView.setStringaAnagraficaPaziente("Paziente: " + nome + " " + cognome + " (Codice: " + codice + ")");
+		modelloView.setStringaArrivoPaziente("    Data arrivo in struttura: " + data + ", alle: " + ora);
+		modelloView.setStringaCondizionePaziente("    Motivo: " + condizione);
 	}
 	
 	public void deselezionaPaziente() {
 		selezionato = false;
 		modelloView.setStringaAnagraficaPaziente("Selezionare un paziente");
-		modelloView.setStringaArrivoPaziente("");
-		modelloView.setStringaCondizionePaziente("");
+		modelloView.setStringaArrivoPaziente("    Data arrivo in struttura: ...");
+		modelloView.setStringaCondizionePaziente("    Motivo: ...");
 	}
 	
 	public boolean qualcunoSelezionato() {

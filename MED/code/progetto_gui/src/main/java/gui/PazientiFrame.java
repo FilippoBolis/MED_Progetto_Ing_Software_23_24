@@ -34,7 +34,7 @@ public class PazientiFrame {
 	
 	private final ImageIcon ripristinaImage = new ImageIcon("../progetto_gui/src/main/resources/ripristina.png");
 	private final ImageIcon cercaImage = new ImageIcon("../progetto_gui/src/main/resources/cerca.png");
-	//private final ImageIcon logoImage = new ImageIcon("../progetto_gui/src/main/resources/logo.png");
+	private final ImageIcon logoImage = new ImageIcon("../progetto_gui/src/main/resources/logo.png");
 	private final int WIDTH = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
 	private final int HEIGHT = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 	public JFrame sfondoFrame;
@@ -60,16 +60,13 @@ public class PazientiFrame {
 	public JButton inserisciDiariaButton;
 	public JButton inserisciPazienteButton;
     private JLabel dataPazienteLabel;
-    private JLabel diariaInfoLabel;
+    private JLabel motivoPazienteLabel;
 	private JLabel pazienteLabel;
-	private String infoPazienteDefault = ""; // DANIELE a cosa serve? si collide con data e ora
 	private DefaultTableModel tableModel;
 	private JLabel utenteLabel;
 	private JLabel pazienteTitoloLabel;
 	private ModelloGestoreLogicaGenerale modello;
     public boolean updating = false;
-    private String datiArrivoDefault = ""; // DANIELE anche questo per me si può silurare
-    private String diariaInfoPazienteDefault = ""; //idem
 
 	@SuppressWarnings("serial")
 	public PazientiFrame(ModelloGestoreLogicaGenerale modello) {
@@ -98,56 +95,63 @@ public class PazientiFrame {
         infoPanel.setLayout(null);
         sfondoPanel.add(infoPanel);
         
-        utenteLabel = new JLabel();
-        utenteLabel.setBounds(20, 0, WIDTH, (int) (infoPanel.getHeight() * 0.2));
-        utenteLabel.setForeground(Stile.BLU_SCURO.getColore());
-        utenteLabel.setFont(Stile.TESTO.getFont());
-        infoPanel.add(utenteLabel);
-        
         JPanel pazientePanel = new JPanel();
-        pazientePanel.setBounds(0, utenteLabel.getHeight(), WIDTH, (int) (infoPanel.getHeight() * 0.8));
+        pazientePanel.setBounds(0, 0, WIDTH, (int) (infoPanel.getHeight() * 0.8));
         pazientePanel.setBackground(Stile.BLU.getColore());
         pazientePanel.setLayout(null);
         infoPanel.add(pazientePanel);
         
         pazienteTitoloLabel = new JLabel("Selezionare un paziente");
-        pazienteTitoloLabel.setBounds(20, 0, (int) (pazientePanel.getWidth() - 20), (int) (pazientePanel.getHeight() * 0.5));
+        pazienteTitoloLabel.setBounds(20, 0, (int) (pazientePanel.getWidth() - 20), (int) (pazientePanel.getHeight() * 0.4));
         pazienteTitoloLabel.setVerticalAlignment(SwingConstants.BOTTOM);
         pazienteTitoloLabel.setForeground(Color.WHITE);
         pazienteTitoloLabel.setFont(Stile.TITOLO_FINE.getFont());
         pazientePanel.add(pazienteTitoloLabel);
 
-        pazienteLabel = new JLabel(infoPazienteDefault);
+        pazienteLabel = new JLabel();
         pazienteLabel.setVerticalAlignment(SwingConstants.TOP);
         pazienteLabel.setBounds(20, pazienteTitoloLabel.getHeight(), (int) (pazientePanel.getWidth() - 20), 30);
         pazienteLabel.setForeground(Color.WHITE);
         pazienteLabel.setFont(Stile.SOTTOTITOLO_FINE.getFont());
         pazientePanel.add(pazienteLabel);
 
-        //Filippo: collega unitaPaziente al paziente e rendila visibile solo se paziente selezionato
-        dataPazienteLabel = new JLabel(datiArrivoDefault);
-        dataPazienteLabel.setBounds(20, pazienteTitoloLabel.getHeight(), (int) (pazientePanel.getWidth() - 20), 30);
-        dataPazienteLabel.setVerticalAlignment(SwingConstants.TOP);
+        dataPazienteLabel = new JLabel("    Data arrivo in struttura: ...");
+        dataPazienteLabel.setBounds(20, pazienteTitoloLabel.getHeight(), (int) (pazientePanel.getWidth() / 2 - 20), 30);
+        dataPazienteLabel.setBorder(BorderFactory.createMatteBorder(2, 2, 0, 1, Color.LIGHT_GRAY));
         dataPazienteLabel.setForeground(Color.WHITE);
         dataPazienteLabel.setFont(Stile.TESTO_FINE.getFont());
         pazientePanel.add(dataPazienteLabel);
        
-        diariaInfoLabel = new JLabel(diariaInfoPazienteDefault);
-        diariaInfoLabel.setBounds(20, pazienteTitoloLabel.getHeight() + dataPazienteLabel.getHeight(), (int) (pazientePanel.getWidth() - 20), 30);
-        diariaInfoLabel.setVerticalAlignment(SwingConstants.TOP);
-        diariaInfoLabel.setForeground(Color.WHITE);
-        diariaInfoLabel.setFont(Stile.SOTTOTITOLO_FINE.getFont());
-        pazientePanel.add(diariaInfoLabel);
+        motivoPazienteLabel = new JLabel("    Motivo: ...");
+        motivoPazienteLabel.setBounds(20, pazienteTitoloLabel.getHeight() + dataPazienteLabel.getHeight() , dataPazienteLabel.getWidth(), 30);
+        motivoPazienteLabel.setBorder(BorderFactory.createMatteBorder(0, 2, 2, 1, Color.LIGHT_GRAY));
+        motivoPazienteLabel.setForeground(Color.WHITE);
+        motivoPazienteLabel.setFont(Stile.TESTO_FINE.getFont());
+        pazientePanel.add(motivoPazienteLabel);
+        
+        JLabel titoloDocumPazienteLabel = new JLabel("    Nuova Documentazione");
+        titoloDocumPazienteLabel.setBounds(dataPazienteLabel.getWidth() + 20, pazienteTitoloLabel.getHeight(), (int) (pazientePanel.getWidth() / 2 - 20), 30);
+        titoloDocumPazienteLabel.setBorder(BorderFactory.createMatteBorder(2, 1, 0, 2, Color.LIGHT_GRAY));
+        titoloDocumPazienteLabel.setForeground(Color.WHITE);
+        titoloDocumPazienteLabel.setFont(Stile.TESTO.getFont());
+        pazientePanel.add(titoloDocumPazienteLabel);
+        
+        JLabel documentoPazienteLabel = new JLabel("    Documento: ...");
+        documentoPazienteLabel.setBounds(dataPazienteLabel.getWidth() + 20, pazienteTitoloLabel.getHeight() + dataPazienteLabel.getHeight() , dataPazienteLabel.getWidth(), 30);
+        documentoPazienteLabel.setBorder(BorderFactory.createMatteBorder(0, 1, 2, 2, Color.LIGHT_GRAY));
+        documentoPazienteLabel.setForeground(Color.WHITE);
+        documentoPazienteLabel.setFont(Stile.TESTO_FINE.getFont());
+        pazientePanel.add(documentoPazienteLabel);
         
         JPanel menuPanel = new JPanel();
-        menuPanel.setBounds((int) (WIDTH * 0.5), pazientePanel.getHeight() - ((int) (pazientePanel.getHeight() * 0.2)), (int) (WIDTH * 0.5), (int) (pazientePanel.getHeight() * 0.2));
+        menuPanel.setBounds((int) (WIDTH * 0.5), infoPanel.getHeight() - ((int) (infoPanel.getHeight() * 0.2)), (int) (WIDTH * 0.5), (int) (infoPanel.getHeight() * 0.2));
         menuPanel.setBackground(Color.WHITE);
         menuPanel.setLayout(null);
-        pazientePanel.add(menuPanel);
+        infoPanel.add(menuPanel);
          
         prontoSoccorsoToggleButton = new JToggleButton("IN PRONTO SOCCORSO");
         prontoSoccorsoToggleButton.setBounds(0, 0, (int) (menuPanel.getWidth() * 0.34), menuPanel.getHeight());
-        prontoSoccorsoToggleButton.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 1, Color.LIGHT_GRAY)); 
+        prontoSoccorsoToggleButton.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 1, Color.LIGHT_GRAY)); 
         prontoSoccorsoToggleButton.setForeground(Stile.BLU_SCURO.getColore());
         prontoSoccorsoToggleButton.setFont(Stile.TESTO.getFont());
         menuPanel.add(prontoSoccorsoToggleButton);
@@ -167,30 +171,54 @@ public class PazientiFrame {
         menuPanel.add(repartoToggleButton);
         
 		JPanel sinistraPanel = new JPanel();
-		sinistraPanel.setBounds(0, (int) (HEIGHT * 0.25), (int) (WIDTH * 0.15), (int) (HEIGHT * 0.75));
+		sinistraPanel.setBounds(0, pazientePanel.getHeight(), (int) (WIDTH * 0.15), HEIGHT - pazientePanel.getHeight());
 		sinistraPanel.setBackground(Stile.BLU_SCURO.getColore());
 		sinistraPanel.setLayout(null);
 		sfondoPanel.add(sinistraPanel);
 		
+		JPanel centroPanel = new JPanel();
+		centroPanel.setBounds(sinistraPanel.getWidth(), (int) (HEIGHT * 0.25), (int) (WIDTH * 0.85), (int) (HEIGHT * 0.75));
+        centroPanel.setLayout(null);
+		sfondoPanel.add(centroPanel);
+		
+		JPanel filtriPanel = new JPanel();
+		filtriPanel.setBounds(0, 0, centroPanel.getWidth(), (int) (centroPanel.getHeight() * 0.1));
+		filtriPanel.setBackground(Stile.AZZURRO.getColore());
+        filtriPanel.setBorder(BorderFactory.createMatteBorder(2, 0, 0, 0, Color.LIGHT_GRAY));
+        filtriPanel.setLayout(null);
+        centroPanel.add(filtriPanel);
+        
+		JPanel spazioPanel = new JPanel();
+        spazioPanel.setBounds(0, menuPanel.getY(), sinistraPanel.getWidth(), menuPanel.getHeight());
+        spazioPanel.setBackground(Stile.BLU_SCURO.getColore());
+        spazioPanel.setLayout(null);
+        infoPanel.add(spazioPanel);
+		
 		JPanel logoPanel = new JPanel();
-        logoPanel.setBounds(0, 0, sinistraPanel.getWidth(), 60);
+        logoPanel.setBounds(0, spazioPanel.getHeight(), sinistraPanel.getWidth(), filtriPanel.getHeight());
         logoPanel.setBackground(Stile.BLU_SCURO.getColore());
         logoPanel.setLayout(null);
         sinistraPanel.add(logoPanel);
         
-        JLabel logoLabel = new JLabel("logo");
-        logoLabel.setBounds(20, 10, 155, 40);
-        //logoLabel.setIcon(logoImage);
+        JLabel logoLabel = new JLabel();
+        logoLabel.setBounds(20, (int) ((logoPanel.getHeight() - 40) / 2), 155, 40);
+        logoLabel.setIcon(logoImage);
         logoPanel.add(logoLabel);
         
         JLabel titoloLabel = new JLabel("<html>Medical<br>Environment<br>Database</html>");
-        titoloLabel.setBounds(20, (int) (sinistraPanel.getHeight() / 2 * 0.25), sinistraPanel.getWidth(), 100);
+        titoloLabel.setBounds(20, logoPanel.getY() + logoPanel.getHeight() + 30, sinistraPanel.getWidth() - 20, 56);
         titoloLabel.setForeground(Color.WHITE);
         titoloLabel.setFont(Stile.SOTTOTITOLO.getFont());
         sinistraPanel.add(titoloLabel);
         
+        utenteLabel = new JLabel();
+        utenteLabel.setBounds(sinistraPanel.getWidth() + 20, menuPanel.getY(), WIDTH - sinistraPanel.getWidth() - menuPanel.getWidth() - 20, menuPanel.getHeight());
+        utenteLabel.setForeground(Stile.BLU_SCURO.getColore());
+        utenteLabel.setFont(Stile.TESTO_FINE.getFont());
+        infoPanel.add(utenteLabel);
+		
 		prontoSoccorsoBottoniPanel = new JPanel();
-		prontoSoccorsoBottoniPanel.setBounds(0, (int) (sinistraPanel.getHeight() * 0.35), sinistraPanel.getWidth(), (int) (sinistraPanel.getHeight() * 0.65));
+		prontoSoccorsoBottoniPanel.setBounds(0, (int) (sinistraPanel.getHeight() * 0.38), sinistraPanel.getWidth(), (int) (sinistraPanel.getHeight() * 0.65));
 		prontoSoccorsoBottoniPanel.setBackground(Stile.BLU_SCURO.getColore()); 
 		prontoSoccorsoBottoniPanel.setLayout(null);
 		prontoSoccorsoBottoniPanel.setVisible(true);
@@ -201,7 +229,7 @@ public class PazientiFrame {
 		inserisciPazienteButton.setBackground(Stile.BLU_SCURO.getColore());
 		inserisciPazienteButton.setForeground(Color.WHITE);
 		inserisciPazienteButton.setFont(Stile.TESTO.getFont());
-        inserisciPazienteButton.setBorder(BorderFactory.createMatteBorder(2, 0, 1, 0, Stile.BLU.getColore()));
+		inserisciPazienteButton.setBorder(BorderFactory.createMatteBorder(1, 0, 1, 0, Stile.BLU.getColore()));
 		prontoSoccorsoBottoniPanel.add(inserisciPazienteButton);
 		
 		inserisciDiariaButton = new JButton("Inserisci prima diaria medica");
@@ -209,11 +237,11 @@ public class PazientiFrame {
 		inserisciDiariaButton.setBackground(Stile.BLU_SCURO.getColore());
 		inserisciDiariaButton.setForeground(Color.WHITE);
 		inserisciDiariaButton.setFont(Stile.TESTO.getFont());
-        inserisciDiariaButton.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Stile.BLU.getColore()));
+		inserisciDiariaButton.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Stile.BLU.getColore()));
 		prontoSoccorsoBottoniPanel.add(inserisciDiariaButton);
 		
 		prendereCaricoBottoniPanel = new JPanel();
-		prendereCaricoBottoniPanel.setBounds(0, (int) (sinistraPanel.getHeight() * 0.35), sinistraPanel.getWidth(), (int) (sinistraPanel.getHeight() * 0.65));
+		prendereCaricoBottoniPanel.setBounds(0, (int) (sinistraPanel.getHeight() * 0.38), sinistraPanel.getWidth(), (int) (sinistraPanel.getHeight() * 0.65));
 		prendereCaricoBottoniPanel.setBackground(Stile.BLU_SCURO.getColore()); 
 		prendereCaricoBottoniPanel.setLayout(null);
 		prendereCaricoBottoniPanel.setVisible(false);
@@ -224,11 +252,11 @@ public class PazientiFrame {
 		assegnaLettoButton.setBackground(Stile.BLU_SCURO.getColore());
 		assegnaLettoButton.setForeground(Color.WHITE);
 		assegnaLettoButton.setFont(Stile.TESTO.getFont());
-        assegnaLettoButton.setBorder(BorderFactory.createMatteBorder(2, 0, 1, 0, Stile.BLU.getColore()));
+        assegnaLettoButton.setBorder(BorderFactory.createMatteBorder(1, 0, 1, 0, Stile.BLU.getColore()));
 		prendereCaricoBottoniPanel.add(assegnaLettoButton);
 		
 		repartoBottoniPanel = new JPanel();
-		repartoBottoniPanel.setBounds(0, (int) (sinistraPanel.getHeight() * 0.35), sinistraPanel.getWidth(), (int) (sinistraPanel.getHeight() * 0.65));
+		repartoBottoniPanel.setBounds(0, (int) (sinistraPanel.getHeight() * 0.38), sinistraPanel.getWidth(), (int) (sinistraPanel.getHeight() * 0.65));
 		repartoBottoniPanel.setBackground(Stile.BLU_SCURO.getColore()); 
 		repartoBottoniPanel.setLayout(null);
 		repartoBottoniPanel.setVisible(false);
@@ -239,7 +267,7 @@ public class PazientiFrame {
 		modificaDiariaMedButton.setBackground(Stile.BLU_SCURO.getColore());
 		modificaDiariaMedButton.setForeground(Color.WHITE);
 		modificaDiariaMedButton.setFont(Stile.TESTO.getFont());
-        modificaDiariaMedButton.setBorder(BorderFactory.createMatteBorder(2, 0, 1, 0, Stile.BLU.getColore()));
+        modificaDiariaMedButton.setBorder(BorderFactory.createMatteBorder(1, 0, 1, 0, Stile.BLU.getColore()));
 		repartoBottoniPanel.add(modificaDiariaMedButton);
 		
 		inserisciDiariaInfButton = new JButton("Inserisci diaria infermieristica");
@@ -281,26 +309,14 @@ public class PazientiFrame {
 		dimettiButton.setFont(Stile.TESTO.getFont());
         dimettiButton.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Stile.BLU.getColore()));
 		repartoBottoniPanel.add(dimettiButton);
-        
-		JPanel centroPanel = new JPanel();
-		centroPanel.setBounds(prendereCaricoBottoniPanel.getWidth(), (int) (HEIGHT * 0.25), (int) (WIDTH * 0.85), (int) (HEIGHT * 0.75));
-        centroPanel.setLayout(null);
-		sfondoPanel.add(centroPanel);
 		
-		JPanel filtriPanel = new JPanel();
-		filtriPanel.setBounds(0, 0, centroPanel.getWidth(), (int) (centroPanel.getHeight() * 0.1));
-		filtriPanel.setBackground(Stile.AZZURRO.getColore());
-        filtriPanel.setBorder(BorderFactory.createMatteBorder(2, 0, 0, 0, Color.LIGHT_GRAY));
-        filtriPanel.setLayout(null);
-        centroPanel.add(filtriPanel);
-		
-		JLabel cercaLabel = new JLabel("Cerca inserendo Nome e Cognome");
-		cercaLabel.setBounds(20, 0, 200, filtriPanel.getHeight());
+		JLabel cercaLabel = new JLabel("Cerca Nome e Cognome");
+		cercaLabel.setBounds(20, 0, 130, filtriPanel.getHeight());
 		cercaLabel.setForeground(Color.WHITE);
 		filtriPanel.add(cercaLabel);
         
         cercaTextField = new JTextField();
-		cercaTextField.setBounds(cercaLabel.getWidth() + 20, (cercaLabel.getHeight() - 24) / 2, cercaLabel.getWidth(), 24);
+		cercaTextField.setBounds(cercaLabel.getWidth() + 40, (cercaLabel.getHeight() - 24) / 2, 200, 24);
 		filtriPanel.add(cercaTextField);
 		
 		cercaButton = new JButton();
@@ -310,8 +326,8 @@ public class PazientiFrame {
         cercaButton.setBorder(BorderFactory.createEmptyBorder());
 		filtriPanel.add(cercaButton);
 		
-		JLabel urgenzaLabel = new JLabel("Filtra per urgenza");
-		urgenzaLabel.setBounds(centroPanel.getWidth() / 2, 0, 100, filtriPanel.getHeight());
+		JLabel urgenzaLabel = new JLabel("Urgenza");
+		urgenzaLabel.setBounds(cercaButton.getX() + cercaButton.getWidth() + 30, 0, 50, filtriPanel.getHeight());
 		urgenzaLabel.setForeground(Color.WHITE);
 		filtriPanel.add(urgenzaLabel);
 		
@@ -322,6 +338,24 @@ public class PazientiFrame {
         urgenzaComboBox.addItem("GIALLO");
         urgenzaComboBox.addItem("VERDE");
 		filtriPanel.add(urgenzaComboBox);
+		
+		JLabel repartoLabel = new JLabel("Reparto");
+		repartoLabel.setBounds(urgenzaComboBox.getX() + urgenzaComboBox.getWidth() + 30, 0, 50, filtriPanel.getHeight());
+		repartoLabel.setForeground(Color.WHITE);
+		filtriPanel.add(repartoLabel);
+		
+		JComboBox<String> repartoComboBox = new JComboBox<String>();
+		repartoComboBox.setBounds(repartoLabel.getX() + urgenzaLabel.getWidth(), (cercaLabel.getHeight() - 24) / 2, cercaLabel.getWidth(), 24);
+		filtriPanel.add(repartoComboBox);
+		
+		JLabel moduloLabel = new JLabel("Modulo");
+		moduloLabel.setBounds(repartoComboBox.getX() + repartoComboBox.getWidth() + 30, 0, 50, filtriPanel.getHeight());
+		moduloLabel.setForeground(Color.WHITE);
+		filtriPanel.add(moduloLabel);
+		
+		JComboBox<String> moduloComboBox = new JComboBox<String>();
+		moduloComboBox.setBounds(moduloLabel.getX() + moduloLabel.getWidth(), (cercaLabel.getHeight() - 24) / 2, cercaLabel.getWidth(), 24);
+		filtriPanel.add(moduloComboBox);
 
 		indietroButton = new JButton();
 		indietroButton.setBounds(filtriPanel.getWidth() - 36, (cercaLabel.getHeight() - 24) / 2, 24, 24);
@@ -399,13 +433,16 @@ public class PazientiFrame {
 		    			   modello.modelloGestoreTabella.getTableOraArrivo().get(i), modello.modelloGestoreTabella.getTableUrgenza().get(i), 
 		    			   modello.modelloGestoreTabella.getTableCodice().get(i), modello.modelloGestoreTabella.getTableReparto().get(i), modello.modelloGestoreTabella.getTableModulo().get(i), modello.modelloGestoreTabella.getTableNumeroLetto().get(i)});
 			}
+	        for(int i = 0; i < tableModel.getColumnCount(); i++) {
+	            table.getColumnModel().getColumn(i).setCellRenderer(new TabellaRenderer());
+	        }
 			updating = false;
 	}
 	
 	public void updateStringaPaziente() {
 		pazienteTitoloLabel.setText(modello.modelloGestoreVisualizzazioneDatiPaziente.getStringaDatiPaziente());
 		dataPazienteLabel.setText(modello.modelloGestoreVisualizzazioneDatiPaziente.getStringaArrivoPaziente());
-		diariaInfoLabel.setText(modello.modelloGestoreVisualizzazioneDatiPaziente.getStringaCondizionePaziente());
+		motivoPazienteLabel.setText(modello.modelloGestoreVisualizzazioneDatiPaziente.getStringaCondizionePaziente());
 	}
 	
     @SuppressWarnings("serial")
@@ -445,10 +482,8 @@ public class PazientiFrame {
         }
     }
 	
-	
-    /*
+	/*
 	public static void main(String[] args) {
 		new PazientiFrame();
-	}
-	*/
+	}*/
 }
