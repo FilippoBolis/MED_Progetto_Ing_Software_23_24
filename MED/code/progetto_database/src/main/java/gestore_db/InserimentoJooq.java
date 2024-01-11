@@ -213,6 +213,12 @@ public class InserimentoJooq{
 	}
 
 	public static void main(String[] args) {
+		
+		/*
+		getIstanza().personale("m","ADMIN","medico","M", "m");
+		getIstanza().personale("i","ADMIN","infermiere","I", "i");
+		getIstanza().personale("o","ADMIN","operatore","S", "o");
+		
 		getIstanza().degente("D3","Lara","Longhi","F",LocalDate.now(), LocalTime.now().withNano(0),"giallo");
 		getIstanza().degente("D2","Jacopo","Bellosi","M",LocalDate.now(), LocalTime.now().withNano(0),"rosso");
 		getIstanza().personale("P1","Daniele","Gotti","M", "SpostamiSeCiRiesci");
@@ -227,7 +233,7 @@ public class InserimentoJooq{
 		getIstanza().letto("Re1","ModuloA",1);
 		getIstanza().assegnazioneLetto("D1","Re1","ModuloA",1,LocalDate.now());
 		getIstanza().diariaInf("DiariaInf1","D1","P2",LocalDate.now(),LocalTime.now().withNano(0),"Il paziente è diventato enorme dottore",true,"Trembolone");
-
+		*/
 	}
 
 }

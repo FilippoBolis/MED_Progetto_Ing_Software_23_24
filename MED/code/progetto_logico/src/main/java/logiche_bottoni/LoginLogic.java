@@ -15,13 +15,13 @@ import org.jooq.impl.DSL;
 
 import gui.*;
 import logiche_frame_pronto_soccorso.LogicaDellaPosizionePazienteTabella;
+import logiche_frame_pronto_soccorso.LogicaDellaStringaPaziente;
 import med_db.jooq.generated.tables.Personale;
 import modelli.ModelloGestoreLogicaGenerale;
 
 public class LoginLogic {
 	
 	private LoginFrame loginFrame;
-	private PazientiFrame prontoSoccorso;
 	private static String DB_REL_FILELOGIC = "../progetto_database/db/db.db3";
 	private static String DB_URLLOGIC = "jdbc:sqlite:" + DB_REL_FILELOGIC;
 	private String utente;
@@ -30,19 +30,15 @@ public class LoginLogic {
 	private String nome;
 	private String cognome;
 	private ModelloGestoreLogicaGenerale modello;
-	private LogicaDellaPosizionePazienteTabella tabellaProntoSoccorso;
 	
-	public LoginLogic(LoginFrame v, PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
+	public LoginLogic(LoginFrame v, ModelloGestoreLogicaGenerale m) {
 		// prede i refs
 		loginFrame = v;
-		prontoSoccorso = v2;
 		modello = m;
-		tabellaProntoSoccorso = new LogicaDellaPosizionePazienteTabella(prontoSoccorso, modello,"in Pronto Soccorso");
 		registerLogin();
 	}
 	
 	private void registerLogin() {
-		prontoSoccorso.sfondoFrame.setVisible(false);
 		// si registra al bottone loginButton
 		loginFrame.loginButton.addActionListener(new ActionListener() {
 			@Override
@@ -58,14 +54,33 @@ public class LoginLogic {
 						   	cognome = contesto.select(Personale.PERSONALE.COGNOME).from(Personale.PERSONALE).where(Personale.PERSONALE.CODICE.eq(utente)).fetchOneInto(String.class);
 						   	nome = contesto.select(Personale.PERSONALE.NOME).from(Personale.PERSONALE).where(Personale.PERSONALE.CODICE.eq(utente)).fetchOneInto(String.class);
 						   	mansione = contesto.select(Personale.PERSONALE.MANSIONE).from(Personale.PERSONALE).where(Personale.PERSONALE.CODICE.eq(utente)).fetchOneInto(String.class);
+						   	//setup della view
 						   	modello.modelloGestoreUtente.setUtente(mansione,nome,cognome,utente);
-						   	tabellaProntoSoccorso.update();
+						   	PazientiFrame pazientiFrame = new PazientiFrame(modello);
+						   	LogicaDellaPosizionePazienteTabella tabella	= new LogicaDellaPosizionePazienteTabella(pazientiFrame, modello,"in Pronto Soccorso");
+						   	new LogicaBottoneFiltroReparto(pazientiFrame,modello);
+						   	new LogicaBottoneInserisciPaziente(pazientiFrame,modello);
+							new LogicaBottoneModificaDiariaMedica(pazientiFrame,modello);
+							new LogicaBottoneAssegnaLetto(pazientiFrame,modello);
+							new LogicaBottoneInserisciDiariaMedica(pazientiFrame,modello);
+							new LogicaBottoneInserisciDiariaInfermieristica(pazientiFrame,modello);
+							new LogicaBottoneVisualizzaStorico(pazientiFrame,modello);
+							new LogicaBottoneVisualizzaFarmaci(pazientiFrame,modello);
+							new LogicaBottoneVisualizzaInformazioni(pazientiFrame,modello);
+							new LogicaBottoneDimetti(pazientiFrame,modello);
+							new LogicaBottoneRefresh(pazientiFrame,modello);
+							new LogicaBottoneFiltroNomeCognome(pazientiFrame,modello);
+							new LogicaBottoneFiltroUrgenza(pazientiFrame,modello);
+						   	new LogicaDellaStringaPaziente(pazientiFrame,modello);
+						   	new LogicaBottoneInReparto(pazientiFrame,modello);
+						   	new LogicaBottoneDaPrendereInCarico(pazientiFrame,modello);
+							new LogicaBottoneInProntoSoccorso(pazientiFrame,modello);
 						   	SwingUtilities.invokeLater(new Runnable() {
 							    @Override
 							    public void run() {
-							    	loginFrame.sfondoFrame.setVisible(false);
-							    	prontoSoccorso.updateViewUtente();
-							    	prontoSoccorso.sfondoFrame.setVisible(true);
+							    	loginFrame.sfondoFrame.dispose();
+							    	tabella.update();
+							    	pazientiFrame.updateViewUtente();
 							    }
 							});
 						}

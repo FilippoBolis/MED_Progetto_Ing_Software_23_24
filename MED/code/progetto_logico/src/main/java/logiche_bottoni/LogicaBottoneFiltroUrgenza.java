@@ -30,15 +30,15 @@ public class LogicaBottoneFiltroUrgenza extends LogicaBottone{
 					frameDeiPazienti.updateStringaPaziente();
 					opzione = (String) frameDeiPazienti.urgenzaComboBox.getSelectedItem();
                     switch(opzione) {
-                    	case "ROSSO":
+                    	case "Rosso":
                     		tabellaFiltrataUrgenza = new LogicaDellUrgenzaPazienteTabella(frameDeiPazienti, modello,"rosso");
                         	tabellaFiltrataUrgenza.update();
                         	break;
-                    	case "GIALLO":
+                    	case "Giallo":
                     		tabellaFiltrataUrgenza = new LogicaDellUrgenzaPazienteTabella(frameDeiPazienti, modello,"giallo");
                         	tabellaFiltrataUrgenza.update();
                         	break;
-                    	case "VERDE":
+                    	case "Verde":
                     		tabellaFiltrataUrgenza = new LogicaDellUrgenzaPazienteTabella(frameDeiPazienti, modello,"verde");
                     		tabellaFiltrataUrgenza.update();
                     		break;

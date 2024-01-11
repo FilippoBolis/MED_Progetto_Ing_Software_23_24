@@ -20,6 +20,7 @@ public class AssegnaPazienteFrame {
 	public JFrame sfondoFrame;
 	private JTextField textField;
 	private JTextField textField_1;
+	public JButton confermaButton;
 
 	public AssegnaPazienteFrame() {
 
@@ -33,7 +34,7 @@ public class AssegnaPazienteFrame {
 		sfondoFrame.setTitle("<html><font color='white'>M.E.D Assegna Paziente </font></html>");
 		sfondoFrame.getRootPane().setBackground(Stile.AZZURRO.getColore());
 		sfondoFrame.getRootPane().setForeground(Color.WHITE);
-		sfondoFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		sfondoFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		sfondoFrame.setLocationRelativeTo(null);
 		sfondoFrame.setResizable(false);
 
@@ -81,13 +82,13 @@ public class AssegnaPazienteFrame {
 		annullaButton.setBounds(256, 309, 89, 23);
 		PazientePanel.add(annullaButton);
 
-		JButton confermaButton = new JButton("Conferma");
+		confermaButton = new JButton("Conferma");
 		confermaButton.setBounds(440, 309, 89, 23);
 		PazientePanel.add(confermaButton);
 		sfondoFrame.setVisible(true);
 
 	}
-	/*
-	 * public static void main(String[] args) { new AssegnaPazienteFrame(); }
-	 */
+	
+	 public static void main(String[] args) { new AssegnaPazienteFrame(); }
+	 
 }

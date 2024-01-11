@@ -13,9 +13,7 @@ public class Main {
 	            public void run() {
 	            	try {
 	            		ModelloGestoreLogicaGenerale modello = new ModelloGestoreLogicaGenerale();
-	        			LoginFrame frameLogin = new LoginFrame();
-	        			PazientiFrame pazientiFrame = new PazientiFrame(modello);
-	        			new GestoreLogicaAttivazionePulsanti(frameLogin,pazientiFrame,modello);
+	        			new GestoreLogicaSetup(modello);
 	        		} catch (Exception e) {
 	        			e.printStackTrace();
 	        		}
@@ -24,3 +22,8 @@ public class Main {
 	}
 
 }
+
+/*
+ * 
+ * 
+*/

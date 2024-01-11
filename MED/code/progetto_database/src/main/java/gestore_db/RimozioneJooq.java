@@ -175,7 +175,10 @@ public class RimozioneJooq {
 	
 
 	public static void main(String[] args) {
-
+		
+		//getIstanza().personale("m");
+		//getIstanza().personale("i");
+		//getIstanza().personale("o");
 		//getIstanza().personale("P2");
 		//getIstanza().rilevazione("Ri3","D1");
 		//getIstanza().degente("D1");

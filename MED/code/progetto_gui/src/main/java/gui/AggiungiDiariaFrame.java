@@ -16,16 +16,20 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import com.formdev.flatlaf.FlatIntelliJLaf;
+
+import modelli.ModelloGestoreLogicaGenerale;
+
 import javax.swing.JTextArea;
 
 public class AggiungiDiariaFrame {
 
 	ImageIcon diariaImage = new ImageIcon("../progetto_gui/src/main/resources/diaria.png");
 	public JFrame sfondoFrame;
-	private JTextField motivoTextField;
-	private JTextField storicoTextField;
+	public JTextField motivoTextField;
+	public JTextField storicoTextField;
+	public JButton avantiButton;
 	
-	public AggiungiDiariaFrame() {
+	public AggiungiDiariaFrame(ModelloGestoreLogicaGenerale modello) {
 		
 		try {
 			UIManager.setLookAndFeel(new FlatIntelliJLaf());
@@ -37,7 +41,7 @@ public class AggiungiDiariaFrame {
 		sfondoFrame.setTitle("<html><font color='white'>M.E.D Aggiungi Diaria</font></html>");
 		sfondoFrame.getRootPane().setBackground(Stile.AZZURRO.getColore());
 		sfondoFrame.getRootPane().setForeground(Color.WHITE);
-		sfondoFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		sfondoFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		sfondoFrame.setLocationRelativeTo(null);
 		sfondoFrame.setResizable(false);
 		
@@ -86,6 +90,9 @@ public class AggiungiDiariaFrame {
 		diariaPanel.add(repartoLabel);
 		
 		JComboBox<String> repartoComboBox = new JComboBox<String>();
+		for (String nomeReparto : modello.modelloGestoreLogistica.getNomiReparti()) {
+			repartoComboBox.addItem(nomeReparto);
+		}
 		repartoComboBox.setBounds(153, 168, 100, 21);
 		diariaPanel.add(repartoComboBox);
 		
@@ -104,7 +111,7 @@ public class AggiungiDiariaFrame {
 		scrollPane.setBounds(165, 231, 218, 64);
         diariaPanel.add(scrollPane);
 		
-        JButton avantiButton = new JButton("Avanti");
+        avantiButton = new JButton("Avanti");
 		avantiButton.setBounds(440, 309, 89, 23);
 		diariaPanel.add(avantiButton);
 		

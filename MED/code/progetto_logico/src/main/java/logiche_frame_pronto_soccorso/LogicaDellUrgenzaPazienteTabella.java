@@ -11,13 +11,17 @@ import java.util.List;
 import javax.swing.SwingUtilities;
 
 import org.jooq.DSLContext;
+import org.jooq.Record10;
 import org.jooq.Record7;
 import org.jooq.Result;
 import org.jooq.SQLDialect;
 import org.jooq.impl.DSL;
 
 import gui.PazientiFrame;
+import med_db.jooq.generated.tables.Assegnazioneletto;
 import med_db.jooq.generated.tables.Degente;
+import med_db.jooq.generated.tables.Modulo;
+import med_db.jooq.generated.tables.Reparto;
 import modelli.ModelloGestoreLogicaGenerale;
 
 public class LogicaDellUrgenzaPazienteTabella extends LogicaFrame{
@@ -39,18 +43,41 @@ public class LogicaDellUrgenzaPazienteTabella extends LogicaFrame{
 	            List<LocalDate> dateArrivo = new ArrayList<>();
 	            List<LocalTime> oreArrivo = new ArrayList<>();
 	            List<String> urgenza = new ArrayList<>();
+	            List<String> reparto = new ArrayList<>();
+	            List<String> modulo = new ArrayList<>();
+	            List<Integer> letto = new ArrayList<>();
 				Connection conn = DriverManager.getConnection(DB_URLLOGIC);
 				if (conn != null) {
 					DSLContext contesto = DSL.using(conn, SQLDialect.SQLITE);
-					Result<Record7<String,String,String,LocalDate,LocalTime,String,String>> degenti = contesto.select(Degente.DEGENTE.NOME,Degente.DEGENTE.COGNOME,Degente.DEGENTE.SESSO,Degente.DEGENTE.DATA_ARRIVO,Degente.DEGENTE.ORA_ARRIVO,Degente.DEGENTE.URGENZA,Degente.DEGENTE.CODICE).from(Degente.DEGENTE).where(Degente.DEGENTE.URGENZA.eq(filtro),Degente.DEGENTE.POSIZIONE.eq(frameDeiPazienti.posizioneAttuale)).fetch();
-					for (Record7<String, String, String, LocalDate, LocalTime, String,String> degenteRecord : degenti) {
-					    nomi.add(degenteRecord.value1());
-					    cognomi.add(degenteRecord.value2());
-					    sesso.add(degenteRecord.value3());
-					    dateArrivo.add(degenteRecord.value4());
-					    oreArrivo.add(degenteRecord.value5());
-					    urgenza.add(degenteRecord.value6());
-					    codice.add(degenteRecord.value7());
+					if (contesto.select(Degente.DEGENTE.CODICE).from(Degente.DEGENTE,Assegnazioneletto.ASSEGNAZIONELETTO).where(Degente.DEGENTE.POSIZIONE.eq(frameDeiPazienti.posizioneAttuale),Degente.DEGENTE.CODICE.eq(Assegnazioneletto.ASSEGNAZIONELETTO.CODICE_DEGENTE)).fetch().isNotEmpty()) {
+						Result<Record10<String, String, String, LocalDate, LocalTime, String, String, String, String, Integer>> degenti = contesto.selectDistinct(Degente.DEGENTE.NOME,Degente.DEGENTE.COGNOME,Degente.DEGENTE.SESSO,Degente.DEGENTE.DATA_ARRIVO,Degente.DEGENTE.ORA_ARRIVO,Degente.DEGENTE.URGENZA,Degente.DEGENTE.CODICE,Reparto.REPARTO.NOME_REPARTO,Assegnazioneletto.ASSEGNAZIONELETTO.NOME_MODULO,Assegnazioneletto.ASSEGNAZIONELETTO.NUMERO_LETTO).from(Degente.DEGENTE,Reparto.REPARTO,Assegnazioneletto.ASSEGNAZIONELETTO).where(Degente.DEGENTE.URGENZA.eq(filtro),Degente.DEGENTE.POSIZIONE.eq(frameDeiPazienti.posizioneAttuale),Degente.DEGENTE.CODICE.eq(Assegnazioneletto.ASSEGNAZIONELETTO.CODICE_DEGENTE),Assegnazioneletto.ASSEGNAZIONELETTO.CODICE_REPARTO.eq(Reparto.REPARTO.CODICE)).fetch();
+						for (Record10<String, String, String, LocalDate, LocalTime, String,String,String,String,Integer> degenteRecord : degenti) {
+						    nomi.add(degenteRecord.value1());
+						    cognomi.add(degenteRecord.value2());
+						    sesso.add(degenteRecord.value3());
+						    dateArrivo.add(degenteRecord.value4());
+						    oreArrivo.add(degenteRecord.value5());
+						    urgenza.add(degenteRecord.value6());
+						    codice.add(degenteRecord.value7());
+						    reparto.add(degenteRecord.value8());
+						    modulo.add(degenteRecord.value9());
+						    letto.add(degenteRecord.value10());
+						}
+					}
+					else {
+						Result<Record7<String,String,String,LocalDate,LocalTime,String,String>> degenti = contesto.select(Degente.DEGENTE.NOME,Degente.DEGENTE.COGNOME,Degente.DEGENTE.SESSO,Degente.DEGENTE.DATA_ARRIVO,Degente.DEGENTE.ORA_ARRIVO,Degente.DEGENTE.URGENZA,Degente.DEGENTE.CODICE).from(Degente.DEGENTE).where(Degente.DEGENTE.URGENZA.eq(filtro),Degente.DEGENTE.POSIZIONE.eq(frameDeiPazienti.posizioneAttuale)).fetch();
+						for (Record7<String, String, String, LocalDate, LocalTime, String,String> degenteRecord : degenti) {
+						    nomi.add(degenteRecord.value1());
+						    cognomi.add(degenteRecord.value2());
+						    sesso.add(degenteRecord.value3());
+						    dateArrivo.add(degenteRecord.value4());
+						    oreArrivo.add(degenteRecord.value5());
+						    urgenza.add(degenteRecord.value6());
+						    codice.add(degenteRecord.value7());
+						    modulo.add("Nessun modulo");
+						    reparto.add("Nessun reparto");
+						    letto.add(0);
+						}
 					}
 					modello.modelloGestoreTabella.setTableNomi(nomi);
 					modello.modelloGestoreTabella.setTableCognomi(cognomi);
@@ -59,6 +86,9 @@ public class LogicaDellUrgenzaPazienteTabella extends LogicaFrame{
 					modello.modelloGestoreTabella.setTableOreArrivo(oreArrivo);
 					modello.modelloGestoreTabella.setTableUrgenza(urgenza);
 					modello.modelloGestoreTabella.setTableCodice(codice);
+					modello.modelloGestoreTabella.setTableReparto(reparto);
+					modello.modelloGestoreTabella.setTableModulo(modulo);
+					modello.modelloGestoreTabella.setNumeroLetto(letto);
 					SwingUtilities.invokeLater(new Runnable() {
 					    @Override
 					    public void run() {

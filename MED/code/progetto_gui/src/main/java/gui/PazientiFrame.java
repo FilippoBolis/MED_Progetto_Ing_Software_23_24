@@ -59,6 +59,7 @@ public class PazientiFrame {
 	public JButton assegnaLettoButton;
 	public JButton inserisciDiariaButton;
 	public JButton inserisciPazienteButton;
+	public JComboBox<String> repartoComboBox;
     private JLabel dataPazienteLabel;
     private JLabel motivoPazienteLabel;
 	private JLabel pazienteLabel;
@@ -334,9 +335,9 @@ public class PazientiFrame {
 		urgenzaComboBox = new JComboBox<String>();
 		urgenzaComboBox.setBounds(urgenzaLabel.getX() + urgenzaLabel.getWidth(), (cercaLabel.getHeight() - 24) / 2, cercaLabel.getWidth(), 24);
 	    urgenzaComboBox.addItem(" ");
-        urgenzaComboBox.addItem("ROSSO");
-        urgenzaComboBox.addItem("GIALLO");
-        urgenzaComboBox.addItem("VERDE");
+        urgenzaComboBox.addItem("Rosso");
+        urgenzaComboBox.addItem("Giallo");
+        urgenzaComboBox.addItem("Verde");
 		filtriPanel.add(urgenzaComboBox);
 		
 		JLabel repartoLabel = new JLabel("Reparto");
@@ -344,8 +345,12 @@ public class PazientiFrame {
 		repartoLabel.setForeground(Color.WHITE);
 		filtriPanel.add(repartoLabel);
 		
-		JComboBox<String> repartoComboBox = new JComboBox<String>();
+		repartoComboBox = new JComboBox<String>();
 		repartoComboBox.setBounds(repartoLabel.getX() + urgenzaLabel.getWidth(), (cercaLabel.getHeight() - 24) / 2, cercaLabel.getWidth(), 24);
+		repartoComboBox.addItem(" ");
+		for (String nomeReparto : modello.modelloGestoreLogistica.getNomiReparti()) {
+			repartoComboBox.addItem(nomeReparto);
+		}
 		filtriPanel.add(repartoComboBox);
 		
 		JLabel moduloLabel = new JLabel("Modulo");
