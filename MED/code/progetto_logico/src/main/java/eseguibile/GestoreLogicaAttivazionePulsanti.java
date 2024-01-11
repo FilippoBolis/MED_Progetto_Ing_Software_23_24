@@ -13,25 +13,25 @@ public class GestoreLogicaAttivazionePulsanti {
 	private ModelloGestoreLogicaGenerale mainModelUnit;
 	private LogicaDellaStringaPaziente controlloTabella;
 	private LoginLogic l;
-	private LogicaBottoneInProntoSoccorso bottoneInProntoSoccorso;
-	private LogicaBottoneInReparto bottoneInReparto;
-	private LogicaBottoneDaPrendereInCarico bottoneDaPrendereInCarico;
-	private LogicaBottoneFiltroUrgenza filtroUrgenza;
-	private LogicaBottoneFiltroNomeCognome logicaFiltroNomeCognome;
-	private LogicaBottoneRefresh logicaBottoneRefresh;
-	private LogicaBottoneDimetti logicaBottoneDimetti;
-	private LogicaBottoneVisualizzaInformazioni logicaBottoneVisualizzaInformazioni;
-	private LogicaBottoneVisualizzaFarmaci logicaBottoneVisualizzaFarmaci;
-	private LogicaBottoneVisualizzaStorico logicaBottoneVisualizzaStorico;
-	private LogicaBottoneInserisciDiariaInfermieristica logicaBottoneInserisciDiariaInfermieristica;
-	private LogicaBottoneInserisciDiariaMedica logicaBottoneInserisciDiariaMedica;
-	private LogicaBottoneAssegnaLetto logicaBottoneAssegnaLetto;
-	private LogicaBottoneModificaDiariaMedica logicaBottoneModificaDiariaMedica;
-	private LogicaBottoneInserisciPaziente logicaBottoneInserisciPaziente;
+	private LogicaBottone bottoneInProntoSoccorso;
+	private LogicaBottone bottoneInReparto;
+	private LogicaBottone bottoneDaPrendereInCarico;
+	private LogicaBottone filtroUrgenza;
+	private LogicaBottone logicaFiltroNomeCognome;
+	private LogicaBottone logicaBottoneRefresh;
+	private LogicaBottone logicaBottoneDimetti;
+	private LogicaBottone logicaBottoneVisualizzaInformazioni;
+	private LogicaBottone logicaBottoneVisualizzaFarmaci;
+	private LogicaBottone logicaBottoneVisualizzaStorico;
+	private LogicaBottone logicaBottoneInserisciDiariaInfermieristica;
+	private LogicaBottone logicaBottoneInserisciDiariaMedica;
+	private LogicaBottone logicaBottoneAssegnaLetto;
+	private LogicaBottone logicaBottoneModificaDiariaMedica;
+	private LogicaBottone logicaBottoneInserisciPaziente;
 	
 	
 	public GestoreLogicaAttivazionePulsanti(LoginFrame v, PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
-		// prede i refs
+		// prende i riferimenti e avvia tutti i bottoni della GUI
 		loginFrame = v;
 		mainFrameUnit = v2;
 		mainModelUnit = m;

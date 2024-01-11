@@ -9,19 +9,15 @@ import gui.*;
 import logiche_frame_pronto_soccorso.LogicaDellaPosizionePazienteTabella;
 import modelli.ModelloGestoreLogicaGenerale;
 
-public class LogicaBottoneVisualizzaInformazioni {
+public class LogicaBottoneVisualizzaInformazioni extends LogicaBottone{
 	
-	private PazientiFrame frameDeiPazienti;
-	private ModelloGestoreLogicaGenerale modello;
 	
 	public LogicaBottoneVisualizzaInformazioni(PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
-		// prede i refs
-		frameDeiPazienti = v2;
-		modello = m;
+		super(v2,m);
 		start();
 	}
 	
-	private void start() {
+	protected void start() {
 		//si registra al bottone prontoSoccorsoToggleButton
 		frameDeiPazienti.visualizzaInformazioniButton.addActionListener(new ActionListener() {
 			@Override

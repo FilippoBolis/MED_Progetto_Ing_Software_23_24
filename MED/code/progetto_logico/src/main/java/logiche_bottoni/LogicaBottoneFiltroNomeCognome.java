@@ -23,10 +23,8 @@ import logiche_frame_pronto_soccorso.LogicaDellaPosizionePazienteTabella;
 import med_db.jooq.generated.tables.Degente;
 import modelli.ModelloGestoreLogicaGenerale;
 
-public class LogicaBottoneFiltroNomeCognome {
+public class LogicaBottoneFiltroNomeCognome extends LogicaBottone{
 	
-	private PazientiFrame frameDeiPazienti;
-	private ModelloGestoreLogicaGenerale modello;
 	private static String DB_REL_FILELOGIC = "../progetto_database/db/db.db3";
 	private static String DB_URLLOGIC = "jdbc:sqlite:" + DB_REL_FILELOGIC;
 	private String[] sezioni;
@@ -35,13 +33,11 @@ public class LogicaBottoneFiltroNomeCognome {
 	private LogicaDellaPosizionePazienteTabella tabellaDeiPazienti;
 	
 	public LogicaBottoneFiltroNomeCognome(PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
-		// prede i refs
-		frameDeiPazienti = v2;
-		modello = m;
+		super(v2,m);
 		start();
 	}
 	
-	private void start() {
+	protected void start() {
 		//si registra al bottone prontoSoccorsoToggleButton
 		frameDeiPazienti.cercaButton.addActionListener(new ActionListener() {
 			@Override

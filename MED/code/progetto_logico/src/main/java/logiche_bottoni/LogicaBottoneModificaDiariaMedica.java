@@ -8,19 +8,15 @@ import javax.swing.SwingUtilities;
 import gui.*;
 import modelli.ModelloGestoreLogicaGenerale;
 
-public class LogicaBottoneModificaDiariaMedica {
+public class LogicaBottoneModificaDiariaMedica extends LogicaBottone{
 	
-	private PazientiFrame frameDeiPazienti;
-	private ModelloGestoreLogicaGenerale modello;
 	
 	public LogicaBottoneModificaDiariaMedica(PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
-		// prede i refs
-		frameDeiPazienti = v2;
-		modello = m;
+		super(v2,m);
 		start();
 	}
 	
-	private void start() {
+	protected void start() {
 		//si registra al bottone prontoSoccorsoToggleButton
 		frameDeiPazienti.modificaDiariaMedButton.addActionListener(new ActionListener() {
 			@Override

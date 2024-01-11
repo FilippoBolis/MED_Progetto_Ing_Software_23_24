@@ -10,22 +10,18 @@ import logiche_frame_pronto_soccorso.LogicaDellUrgenzaPazienteTabella;
 import logiche_frame_pronto_soccorso.LogicaDellaPosizionePazienteTabella;
 import modelli.ModelloGestoreLogicaGenerale;
 
-public class LogicaBottoneFiltroUrgenza {
+public class LogicaBottoneFiltroUrgenza extends LogicaBottone{
 	
-	private PazientiFrame frameDeiPazienti;
-	private ModelloGestoreLogicaGenerale modello;
 	private LogicaDellUrgenzaPazienteTabella tabellaFiltrataUrgenza;
 	private LogicaDellaPosizionePazienteTabella tabellaPosizioneNonFiltrata;
 	private String opzione;
 	
 	public LogicaBottoneFiltroUrgenza(PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
-		// prede i refs
-		frameDeiPazienti = v2;
-		modello = m;
+		super(v2,m);
 		start();
 	}
 	
-	private void start() {
+	protected void start() {
 		//si registra al bottone prontoSoccorsoToggleButton
 		frameDeiPazienti.urgenzaComboBox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent  e) {

@@ -20,16 +20,12 @@ import gui.PazientiFrame;
 import med_db.jooq.generated.tables.Degente;
 import modelli.ModelloGestoreLogicaGenerale;
 
-public class LogicaDellUrgenzaPazienteTabella{
-	private PazientiFrame frameDeiPazienti;
-	private static String DB_REL_FILELOGIC = "../progetto_database/db/db.db3";
-	private static String DB_URLLOGIC = "jdbc:sqlite:" + DB_REL_FILELOGIC;
-	private ModelloGestoreLogicaGenerale modello;
+public class LogicaDellUrgenzaPazienteTabella extends LogicaFrame{
+
 	private String filtro;
 	
 	public LogicaDellUrgenzaPazienteTabella(PazientiFrame p, ModelloGestoreLogicaGenerale m, String filtro) {
-		frameDeiPazienti = p;
-		modello = m;
+		super(p,m);
 		this.filtro=filtro;
 	}
 	

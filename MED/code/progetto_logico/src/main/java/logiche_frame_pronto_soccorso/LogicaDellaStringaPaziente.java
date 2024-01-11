@@ -16,12 +16,9 @@ import med_db.jooq.generated.tables.Degente;
 import med_db.jooq.generated.tables.Diariamed;
 import modelli.ModelloGestoreLogicaGenerale;
 
-public class LogicaDellaStringaPaziente {
+public class LogicaDellaStringaPaziente extends LogicaFrame{
 	
-	private PazientiFrame frameDeiPazienti;
-	private ModelloGestoreLogicaGenerale modello;
-	private static String DB_REL_FILELOGIC = "../progetto_database/db/db.db3";
-	private static String DB_URLLOGIC = "jdbc:sqlite:" + DB_REL_FILELOGIC;
+
 	int row;
 	private String codice;
 	private String nome;
@@ -31,9 +28,8 @@ public class LogicaDellaStringaPaziente {
 	private String condizione;
 	
 	
-	public LogicaDellaStringaPaziente(PazientiFrame f, ModelloGestoreLogicaGenerale m) {
-		modello = m;
-		frameDeiPazienti = f;
+	public LogicaDellaStringaPaziente(PazientiFrame p, ModelloGestoreLogicaGenerale m) {
+		super(p,m);
 		updateStringaPaziente();
 	}
 	
