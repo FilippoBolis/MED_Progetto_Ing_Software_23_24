@@ -118,14 +118,14 @@ public class PazientiFrame {
         pazientePanel.add(pazienteLabel);
 
         dataPazienteLabel = new JLabel("    Data arrivo in struttura: ...");
-        dataPazienteLabel.setBounds(20, pazienteTitoloLabel.getHeight(), (int) (pazientePanel.getWidth() - 40), 30);
+        dataPazienteLabel.setBounds(20, pazienteTitoloLabel.getHeight() + 10, (int) (pazientePanel.getWidth() - 40), 30);
         dataPazienteLabel.setBorder(BorderFactory.createMatteBorder(2, 2, 0, 2, Color.LIGHT_GRAY));
         dataPazienteLabel.setForeground(Color.WHITE);
         dataPazienteLabel.setFont(Stile.SOTTOTITOLO_FINE.getFont());
         pazientePanel.add(dataPazienteLabel);
        
         motivoPazienteLabel = new JLabel("    Motivo: ...");
-        motivoPazienteLabel.setBounds(20, pazienteTitoloLabel.getHeight() + dataPazienteLabel.getHeight() , dataPazienteLabel.getWidth(), 30);
+        motivoPazienteLabel.setBounds(20, pazienteTitoloLabel.getHeight() + dataPazienteLabel.getHeight() + 10, dataPazienteLabel.getWidth(), 30);
         motivoPazienteLabel.setBorder(BorderFactory.createMatteBorder(0, 2, 2, 2, Color.LIGHT_GRAY));
         motivoPazienteLabel.setForeground(Color.WHITE);
         motivoPazienteLabel.setFont(Stile.SOTTOTITOLO_FINE.getFont());

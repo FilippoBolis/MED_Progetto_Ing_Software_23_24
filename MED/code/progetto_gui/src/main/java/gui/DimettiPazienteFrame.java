@@ -1,17 +1,14 @@
 package gui;
 
 import java.awt.Color;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import javax.swing.JTextField;
 
@@ -61,14 +58,12 @@ public class DimettiPazienteFrame {
 		tipoTextField.setBounds(137, 95, 86, 20);
 		dimettiPanel.add(tipoTextField);
 		tipoTextField.setColumns(10);
-		sfondoFrame.setVisible(true);
 		
 		JButton confermaButton = new JButton("Conferma");
 		confermaButton.setBounds(440, 309, 89, 23);
 		dimettiPanel.add(confermaButton);
+		
+		sfondoFrame.setVisible(true);
 
 	}
-	/*
-	 * public static void main(String[] args) { new DimettiPazienteFrame(); }
-	 */
 }

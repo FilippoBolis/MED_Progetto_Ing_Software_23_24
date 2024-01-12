@@ -1,26 +1,20 @@
 package gui;
 
 import java.awt.Color;
-import java.awt.Component;
-
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-
 import com.formdev.flatlaf.FlatIntelliJLaf;
 
 public class AggiungiInfoPazienteFrame {
-	private ImageIcon diariaImage = new ImageIcon("../progetto_gui/src/main/resources/aggiungi_info.png");
+	private ImageIcon aggiungiInfoImage = new ImageIcon("../progetto_gui/src/main/resources/aggiungi_info.png");
 	public JFrame sfondoFrame;
 	public JTextArea informazioniTextArea;
 	public JButton confermaButton;
@@ -60,7 +54,7 @@ public class AggiungiInfoPazienteFrame {
 		
 		JLabel immagineLabel = new JLabel();
 		immagineLabel.setBounds(539, 29, 48, 48);
-		immagineLabel.setIcon(diariaImage);
+		immagineLabel.setIcon(aggiungiInfoImage);
 		infoPanel.add(immagineLabel);
 		
 		JLabel informazioniLabel = new JLabel("Informazioni");
@@ -70,8 +64,8 @@ public class AggiungiInfoPazienteFrame {
 		JTextArea informazioniTextArea = new JTextArea();
 		informazioniTextArea.setBounds(143, 99, 218, 92);
 		informazioniTextArea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
-        informazioniTextArea.setLineWrap(true); // Abilita il riavvolgimento automatico delle righe
-        informazioniTextArea.setWrapStyleWord(true); // Abilita il riavvolgimento delle parole
+        informazioniTextArea.setLineWrap(true); 
+        informazioniTextArea.setWrapStyleWord(true); 
 		infoPanel.add(informazioniTextArea);
 		
         confermaButton = new JButton("Conferma");
@@ -81,9 +75,4 @@ public class AggiungiInfoPazienteFrame {
 		sfondoFrame.setVisible(true);
 	
 	}
-	/*
-	public static void main(String[] args) {
-		new AggiungiInfoPazienteFrame();
-	}
-	*/
 }

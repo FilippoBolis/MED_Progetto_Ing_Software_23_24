@@ -1,14 +1,11 @@
 package gui;
 
 import java.awt.Color;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -17,7 +14,7 @@ import javax.swing.JComboBox;
 
 public class AssegnaPazienteFrame {
 
-	ImageIcon assPazienteImage = new ImageIcon("../progetto_gui/src/main/resources/sposta_paziente.png");
+	ImageIcon assegnaPazienteImage = new ImageIcon("../progetto_gui/src/main/resources/sposta_paziente.png");
 	public JFrame sfondoFrame;
 	public JComboBox<String> repartoComboBox;
 	public JComboBox<String> moduloComboBox;
@@ -59,7 +56,7 @@ public class AssegnaPazienteFrame {
 
 		JLabel immagineLabel = new JLabel();
 		immagineLabel.setBounds(316, 14, 48, 48);
-		immagineLabel.setIcon(assPazienteImage);
+		immagineLabel.setIcon(assegnaPazienteImage);
 		PazientePanel.add(immagineLabel);
 		
 		JLabel repartoLabel = new JLabel("Reparto");
@@ -85,11 +82,12 @@ public class AssegnaPazienteFrame {
 		postoComboBox = new JComboBox<String>();
 		postoComboBox.setBounds(148, 188, 137, 22);
 		PazientePanel.add(postoComboBox);
-		sfondoFrame.setVisible(true);
 
 		confermaButton = new JButton("Conferma");
 		confermaButton.setBounds(440, 309, 89, 23);
 		PazientePanel.add(confermaButton);
+		
+		sfondoFrame.setVisible(true);
 
 	}
 }

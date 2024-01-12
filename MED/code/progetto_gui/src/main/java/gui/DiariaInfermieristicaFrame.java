@@ -1,7 +1,6 @@
 package gui;
 
 import java.awt.Color;
-
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -9,17 +8,15 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import javax.swing.JTextArea;
 
 public class DiariaInfermieristicaFrame {
 
-	ImageIcon diariaInfImage = new ImageIcon("../progetto_gui/src/main/resources/diaria.png");
+	ImageIcon diariaImage = new ImageIcon("../progetto_gui/src/main/resources/diaria.png");
 	public JFrame sfondoFrame;
 	public JTextArea noteTextArea;
 	public JComboBox<String> importanteComboBox;
@@ -61,7 +58,7 @@ public class DiariaInfermieristicaFrame {
 
 		JLabel immagineLabel = new JLabel();
 		immagineLabel.setBounds(316, 14, 48, 48);
-		immagineLabel.setIcon(diariaInfImage);
+		immagineLabel.setIcon(diariaImage);
 		diariaInfPanel.add(immagineLabel);
 		
 		JLabel noteLabel = new JLabel("Note particolari");
@@ -93,17 +90,12 @@ public class DiariaInfermieristicaFrame {
 		farmacoTextArea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
 		farmacoTextArea.setLineWrap(true); 
 		farmacoTextArea.setWrapStyleWord(true);
-		diariaInfPanel.add(farmacoTextArea);
-		sfondoFrame.setVisible(true);
 
 		JButton confermaButton = new JButton("Conferma");
 		confermaButton.setBounds(440, 309, 89, 23);
 		diariaInfPanel.add(confermaButton);
 
-
+		diariaInfPanel.add(farmacoTextArea);
 
 	}
-	/*
-	public static void main(String[] args) { new DiariaInfermieristicaFrame(); }
-	*/ 
 }

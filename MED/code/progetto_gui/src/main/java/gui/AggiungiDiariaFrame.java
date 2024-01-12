@@ -1,7 +1,6 @@
 package gui;
 
 import java.awt.Color;
-
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,16 +13,13 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-
 import com.formdev.flatlaf.FlatIntelliJLaf;
-
 import modelli.ModelloGestoreLogicaGenerale;
-
 import javax.swing.JTextArea;
 
 public class AggiungiDiariaFrame {
 
-	ImageIcon diariaImage = new ImageIcon("../progetto_gui/src/main/resources/aggiungi_diaria.png");
+	ImageIcon aggiungiDiariaImage = new ImageIcon("../progetto_gui/src/main/resources/aggiungi_diaria.png");
 	public JFrame sfondoFrame;
 	public JTextField motivoTextField;
 	public JTextField storicoTextField;
@@ -65,7 +61,7 @@ public class AggiungiDiariaFrame {
 		
 		JLabel immagineLabel = new JLabel();
 		immagineLabel.setBounds(316, 14, 48, 48);
-		immagineLabel.setIcon(diariaImage);
+		immagineLabel.setIcon(aggiungiDiariaImage);
 		diariaPanel.add(immagineLabel);
 		
 		JLabel motivoLabel = new JLabel("Motivo");
@@ -104,8 +100,8 @@ public class AggiungiDiariaFrame {
 		farmaciTextArea = new JTextArea();
 		farmaciTextArea.setBounds(165, 231, 218, 30);
 		farmaciTextArea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
-        farmaciTextArea.setLineWrap(true); // Abilita il riavvolgimento automatico delle righe
-        farmaciTextArea.setWrapStyleWord(true); // Abilita il riavvolgimento delle parole
+        farmaciTextArea.setLineWrap(true); 
+        farmaciTextArea.setWrapStyleWord(true);
 		diariaPanel.add(farmaciTextArea);
 
         JScrollPane scrollPane = new JScrollPane(farmaciTextArea);
@@ -119,9 +115,4 @@ public class AggiungiDiariaFrame {
 		sfondoFrame.setVisible(true);
 	
 	}
-	/*
-	public static void main(String[] args) {
-		new AggiungiDiariaFrame();
-	}
-	*/
 }

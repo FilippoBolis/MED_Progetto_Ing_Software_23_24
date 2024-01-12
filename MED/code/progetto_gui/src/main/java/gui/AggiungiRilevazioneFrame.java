@@ -1,7 +1,6 @@
 package gui;
 
 import java.awt.Color;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,8 +12,8 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 
-public class InserisciRilevazioneFrame {
-	ImageIcon insRilevazioneImage = new ImageIcon("../progetto_gui/src/main/resources/rilevazioni.png");
+public class AggiungiRilevazioneFrame {
+	ImageIcon insRilevazioneImage = new ImageIcon("../progetto_gui/src/main/resources/aggiungi_rilevazioni.png");
 	public JFrame sfondoFrame;
 	public JTextField glicemiaTextField;
 	public JTextField temperaturaTextField;
@@ -22,7 +21,7 @@ public class InserisciRilevazioneFrame {
 	public JTextField frequenzaTextField;
 	public JTextField doloreTextField;
 
-	public InserisciRilevazioneFrame() {
+	public AggiungiRilevazioneFrame() {
 
 		try {
 			UIManager.setLookAndFeel(new FlatIntelliJLaf());
