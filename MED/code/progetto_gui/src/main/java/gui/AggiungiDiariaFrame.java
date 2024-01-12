@@ -23,7 +23,7 @@ import javax.swing.JTextArea;
 
 public class AggiungiDiariaFrame {
 
-	ImageIcon diariaImage = new ImageIcon("../progetto_gui/src/main/resources/diaria.png");
+	ImageIcon diariaImage = new ImageIcon("../progetto_gui/src/main/resources/aggiungi_diaria.png");
 	public JFrame sfondoFrame;
 	public JTextField motivoTextField;
 	public JTextField storicoTextField;

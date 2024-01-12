@@ -5,6 +5,7 @@ import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,8 +21,9 @@ public class DiariaInfermieristicaFrame {
 
 	ImageIcon diariaInfImage = new ImageIcon("../progetto_gui/src/main/resources/diaria.png");
 	public JFrame sfondoFrame;
-	private JTextField textField;
-	private JTextField textField_1;
+	public JTextArea noteTextArea;
+	public JComboBox<String> importanteComboBox;
+	public JTextArea farmacoTextArea;
 
 	
 	public DiariaInfermieristicaFrame() {
@@ -45,7 +47,7 @@ public class DiariaInfermieristicaFrame {
 		sfondoPanel.setLayout(null);
 
 		JPanel diariaInfPanel = new JPanel();
-		diariaInfPanel.setBounds(10, 10, 646, 342);
+		diariaInfPanel.setBounds(10, 11, 646, 342);
 		diariaInfPanel.setBackground(Color.WHITE);
 		diariaInfPanel.setLayout(null);
 		sfondoPanel.add(diariaInfPanel);
@@ -61,44 +63,44 @@ public class DiariaInfermieristicaFrame {
 		immagineLabel.setBounds(316, 14, 48, 48);
 		immagineLabel.setIcon(diariaInfImage);
 		diariaInfPanel.add(immagineLabel);
+		
+		JLabel noteLabel = new JLabel("Note particolari");
+		noteLabel.setBounds(10, 85, 96, 14);
+		diariaInfPanel.add(noteLabel);
+
+		noteTextArea = new JTextArea();
+		noteTextArea.setBounds(116, 81, 108, 69);
+		noteTextArea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
+		noteTextArea.setLineWrap(true); 
+		noteTextArea.setWrapStyleWord(true);
+		diariaInfPanel.add(noteTextArea);
+		sfondoFrame.setVisible(true);
 
 		JLabel importanteLabel = new JLabel("Importante");
 		importanteLabel.setBounds(10, 160, 137, 21);
 		diariaInfPanel.add(importanteLabel);
+		
+		importanteComboBox = new JComboBox<String>();
+		importanteComboBox.setBounds(137, 159, 149, 22);
+		diariaInfPanel.add(importanteComboBox);
 
-		JLabel farmacoLabel = new JLabel("Farmaco");
+		JLabel farmacoLabel = new JLabel("Farmaci");
 		farmacoLabel.setBounds(10, 189, 96, 20);
 		diariaInfPanel.add(farmacoLabel);
-
-		textField = new JTextField();
-		textField.setBounds(127, 160, 86, 20);
-		diariaInfPanel.add(textField);
-		textField.setColumns(10);
-
-		textField_1 = new JTextField();
-		textField_1.setBounds(127, 189, 86, 20);
-		diariaInfPanel.add(textField_1);
-		textField_1.setColumns(10);
-
-		JButton annullaButton = new JButton("Annulla");
-		annullaButton.setBounds(256, 309, 89, 23);
-		diariaInfPanel.add(annullaButton);
+		
+		farmacoTextArea = new JTextArea();
+		farmacoTextArea.setBounds(116, 199, 108, 69);
+		farmacoTextArea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
+		farmacoTextArea.setLineWrap(true); 
+		farmacoTextArea.setWrapStyleWord(true);
+		diariaInfPanel.add(farmacoTextArea);
+		sfondoFrame.setVisible(true);
 
 		JButton confermaButton = new JButton("Conferma");
 		confermaButton.setBounds(440, 309, 89, 23);
 		diariaInfPanel.add(confermaButton);
 
-		JLabel noteLabel = new JLabel("Note particolari");
-		noteLabel.setBounds(10, 85, 96, 14);
-		diariaInfPanel.add(noteLabel);
 
-		JTextArea noteTextArea = new JTextArea();
-		noteTextArea.setBounds(127, 80, 108, 69);
-		noteTextArea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
-		noteTextArea.setLineWrap(true); // Abilita il riavvolgimento automatico delle righe
-		noteTextArea.setWrapStyleWord(true);
-		diariaInfPanel.add(noteTextArea);
-		sfondoFrame.setVisible(true);
 
 	}
 	/*

@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Component;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -19,9 +20,9 @@ import javax.swing.UnsupportedLookAndFeelException;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 
 public class AggiungiInfoPazienteFrame {
-	private ImageIcon diariaImage = new ImageIcon("../progetto_gui/src/main/resources/diaria.png");
+	private ImageIcon diariaImage = new ImageIcon("../progetto_gui/src/main/resources/aggiungi_info.png");
 	public JFrame sfondoFrame;
-	public JTextField allergieTextField;
+	public JTextArea informazioniTextArea;
 	public JButton confermaButton;
 	
 	public AggiungiInfoPazienteFrame() {
@@ -58,26 +59,24 @@ public class AggiungiInfoPazienteFrame {
 		infoPanel.add(titoloLabel);
 		
 		JLabel immagineLabel = new JLabel();
-		immagineLabel.setBounds(316, 14, 48, 48);
+		immagineLabel.setBounds(539, 29, 48, 48);
 		immagineLabel.setIcon(diariaImage);
 		infoPanel.add(immagineLabel);
 		
-		JLabel allergieLabel = new JLabel("Informazioni");
-		allergieLabel.setBounds(22, 88, 137, 21);
-		infoPanel.add(allergieLabel);
+		JLabel informazioniLabel = new JLabel("Informazioni");
+		informazioniLabel.setBounds(22, 88, 137, 21);
+		infoPanel.add(informazioniLabel);
 		
-		allergieTextField = new JTextField();
-		allergieTextField.setBounds(177, 88, 96, 20);
-		infoPanel.add(allergieTextField);
-		allergieTextField.setColumns(10);
+		JTextArea informazioniTextArea = new JTextArea();
+		informazioniTextArea.setBounds(143, 99, 218, 92);
+		informazioniTextArea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
+        informazioniTextArea.setLineWrap(true); // Abilita il riavvolgimento automatico delle righe
+        informazioniTextArea.setWrapStyleWord(true); // Abilita il riavvolgimento delle parole
+		infoPanel.add(informazioniTextArea);
 		
         confermaButton = new JButton("Conferma");
 		confermaButton.setBounds(440, 309, 89, 23);
 		infoPanel.add(confermaButton);
-		
-		JButton annullaButton = new JButton("Annulla");
-		annullaButton.setBounds(294, 306, 89, 23);
-		infoPanel.add(annullaButton);
 
 		sfondoFrame.setVisible(true);
 	

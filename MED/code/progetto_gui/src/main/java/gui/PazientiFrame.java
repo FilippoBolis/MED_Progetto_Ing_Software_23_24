@@ -118,32 +118,18 @@ public class PazientiFrame {
         pazientePanel.add(pazienteLabel);
 
         dataPazienteLabel = new JLabel("    Data arrivo in struttura: ...");
-        dataPazienteLabel.setBounds(20, pazienteTitoloLabel.getHeight(), (int) (pazientePanel.getWidth() / 2 - 20), 30);
-        dataPazienteLabel.setBorder(BorderFactory.createMatteBorder(2, 2, 0, 1, Color.LIGHT_GRAY));
+        dataPazienteLabel.setBounds(20, pazienteTitoloLabel.getHeight(), (int) (pazientePanel.getWidth() - 40), 30);
+        dataPazienteLabel.setBorder(BorderFactory.createMatteBorder(2, 2, 0, 2, Color.LIGHT_GRAY));
         dataPazienteLabel.setForeground(Color.WHITE);
-        dataPazienteLabel.setFont(Stile.TESTO_FINE.getFont());
+        dataPazienteLabel.setFont(Stile.SOTTOTITOLO_FINE.getFont());
         pazientePanel.add(dataPazienteLabel);
        
         motivoPazienteLabel = new JLabel("    Motivo: ...");
         motivoPazienteLabel.setBounds(20, pazienteTitoloLabel.getHeight() + dataPazienteLabel.getHeight() , dataPazienteLabel.getWidth(), 30);
-        motivoPazienteLabel.setBorder(BorderFactory.createMatteBorder(0, 2, 2, 1, Color.LIGHT_GRAY));
+        motivoPazienteLabel.setBorder(BorderFactory.createMatteBorder(0, 2, 2, 2, Color.LIGHT_GRAY));
         motivoPazienteLabel.setForeground(Color.WHITE);
-        motivoPazienteLabel.setFont(Stile.TESTO_FINE.getFont());
+        motivoPazienteLabel.setFont(Stile.SOTTOTITOLO_FINE.getFont());
         pazientePanel.add(motivoPazienteLabel);
-        
-        JLabel titoloDocumPazienteLabel = new JLabel("    Nuova Documentazione");
-        titoloDocumPazienteLabel.setBounds(dataPazienteLabel.getWidth() + 20, pazienteTitoloLabel.getHeight(), (int) (pazientePanel.getWidth() / 2 - 20), 30);
-        titoloDocumPazienteLabel.setBorder(BorderFactory.createMatteBorder(2, 1, 0, 2, Color.LIGHT_GRAY));
-        titoloDocumPazienteLabel.setForeground(Color.WHITE);
-        titoloDocumPazienteLabel.setFont(Stile.TESTO.getFont());
-        pazientePanel.add(titoloDocumPazienteLabel);
-        
-        JLabel documentoPazienteLabel = new JLabel("    Documento: ...");
-        documentoPazienteLabel.setBounds(dataPazienteLabel.getWidth() + 20, pazienteTitoloLabel.getHeight() + dataPazienteLabel.getHeight() , dataPazienteLabel.getWidth(), 30);
-        documentoPazienteLabel.setBorder(BorderFactory.createMatteBorder(0, 1, 2, 2, Color.LIGHT_GRAY));
-        documentoPazienteLabel.setForeground(Color.WHITE);
-        documentoPazienteLabel.setFont(Stile.TESTO_FINE.getFont());
-        pazientePanel.add(documentoPazienteLabel);
         
         JPanel menuPanel = new JPanel();
         menuPanel.setBounds((int) (WIDTH * 0.5), infoPanel.getHeight() - ((int) (infoPanel.getHeight() * 0.2)), (int) (WIDTH * 0.5), (int) (infoPanel.getHeight() * 0.2));

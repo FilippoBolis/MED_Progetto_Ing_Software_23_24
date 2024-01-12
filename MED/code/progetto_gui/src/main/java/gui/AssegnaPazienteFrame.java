@@ -13,13 +13,15 @@ import com.formdev.flatlaf.FlatIntelliJLaf;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 
 public class AssegnaPazienteFrame {
 
-	ImageIcon assPazienteImage = new ImageIcon("../progetto_gui/src/main/resources/diaria.png");
+	ImageIcon assPazienteImage = new ImageIcon("../progetto_gui/src/main/resources/sposta_paziente.png");
 	public JFrame sfondoFrame;
-	private JTextField textField;
-	private JTextField textField_1;
+	public JComboBox<String> repartoComboBox;
+	public JComboBox<String> moduloComboBox;
+	public JComboBox<String> postoComboBox;
 	public JButton confermaButton;
 
 	public AssegnaPazienteFrame() {
@@ -59,32 +61,35 @@ public class AssegnaPazienteFrame {
 		immagineLabel.setBounds(316, 14, 48, 48);
 		immagineLabel.setIcon(assPazienteImage);
 		PazientePanel.add(immagineLabel);
+		
+		JLabel repartoLabel = new JLabel("Reparto");
+		repartoLabel.setBounds(10, 120, 137, 21);
+		PazientePanel.add(repartoLabel);
+		
+		repartoComboBox = new JComboBox<String>();
+		repartoComboBox.setBounds(147, 124, 149, 22);
+		PazientePanel.add(repartoComboBox);
 
 		JLabel moduloLabel = new JLabel("Modulo");
-		moduloLabel.setBounds(10, 93, 137, 21);
+		moduloLabel.setBounds(10, 157, 137, 21);
 		PazientePanel.add(moduloLabel);
+		
+		moduloComboBox = new JComboBox<String>();
+		moduloComboBox.setBounds(147, 156, 149, 22);
+		PazientePanel.add(moduloComboBox);
 
-		JLabel postoLabel = new JLabel("Posto");
-		postoLabel.setBounds(10, 128, 96, 20);
+		JLabel postoLabel = new JLabel("Posto Letto");
+		postoLabel.setBounds(10, 189, 96, 20);
 		PazientePanel.add(postoLabel);
-
-		textField = new JTextField();
-		textField.setBounds(127, 93, 86, 20);
-		PazientePanel.add(textField);
-		textField.setColumns(10);
-
-		textField_1 = new JTextField();
-		textField_1.setBounds(127, 128, 86, 20);
-		PazientePanel.add(textField_1);
-		textField_1.setColumns(10);
+		
+		postoComboBox = new JComboBox<String>();
+		postoComboBox.setBounds(148, 188, 137, 22);
+		PazientePanel.add(postoComboBox);
+		sfondoFrame.setVisible(true);
 
 		confermaButton = new JButton("Conferma");
 		confermaButton.setBounds(440, 309, 89, 23);
 		PazientePanel.add(confermaButton);
-		sfondoFrame.setVisible(true);
 
 	}
-	/*
-	 public static void main(String[] args) { new AssegnaPazienteFrame(); }
-	*/
 }

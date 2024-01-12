@@ -16,9 +16,9 @@ import com.formdev.flatlaf.FlatIntelliJLaf;
 import javax.swing.JTextField;
 
 public class DimettiPazienteFrame {
-	ImageIcon dimettiPazienteImage = new ImageIcon("../progetto_gui/src/main/resources/diaria.png");
+	ImageIcon dimettiPazienteImage = new ImageIcon("../progetto_gui/src/main/resources/dimetti_paziente.png");
 	public JFrame sfondoFrame;
-	private JTextField textField;
+	private JTextField tipoTextField;
 
 	public DimettiPazienteFrame() {
 
@@ -40,32 +40,32 @@ public class DimettiPazienteFrame {
 		sfondoFrame.getContentPane().add(sfondoPanel);
 		sfondoPanel.setLayout(null);
 
-		JPanel dimettiPazPanel = new JPanel();
-		dimettiPazPanel.setBounds(10, 10, 646, 342);
-		dimettiPazPanel.setBackground(Color.WHITE);
-		dimettiPazPanel.setLayout(null);
-		sfondoPanel.add(dimettiPazPanel);
+		JPanel dimettiPanel = new JPanel();
+		dimettiPanel.setBounds(10, 10, 646, 342);
+		dimettiPanel.setBackground(Color.WHITE);
+		dimettiPanel.setLayout(null);
+		sfondoPanel.add(dimettiPanel);
 
-		JLabel dimettiPazienteLabel = new JLabel("Info Paziente");
+		JLabel dimettiPazienteLabel = new JLabel("Dimetti Paziente");
 		dimettiPazienteLabel.setBounds(10, 11, 261, 40);
 		dimettiPazienteLabel.setForeground(Stile.BLU_SCURO.getColore());
 		dimettiPazienteLabel.setFont(Stile.TITOLO.getFont());
 		dimettiPazienteLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		dimettiPazPanel.add(dimettiPazienteLabel);
-
-		JButton confermaButton = new JButton("Conferma");
-		confermaButton.setBounds(440, 309, 89, 23);
-		dimettiPazPanel.add(confermaButton);
+		dimettiPanel.add(dimettiPazienteLabel);
 
 		JLabel tipoLabel = new JLabel("Tipo");
 		tipoLabel.setBounds(55, 98, 46, 14);
-		dimettiPazPanel.add(tipoLabel);
+		dimettiPanel.add(tipoLabel);
 
-		textField = new JTextField();
-		textField.setBounds(137, 95, 86, 20);
-		dimettiPazPanel.add(textField);
-		textField.setColumns(10);
+		tipoTextField = new JTextField();
+		tipoTextField.setBounds(137, 95, 86, 20);
+		dimettiPanel.add(tipoTextField);
+		tipoTextField.setColumns(10);
 		sfondoFrame.setVisible(true);
+		
+		JButton confermaButton = new JButton("Conferma");
+		confermaButton.setBounds(440, 309, 89, 23);
+		dimettiPanel.add(confermaButton);
 
 	}
 	/*

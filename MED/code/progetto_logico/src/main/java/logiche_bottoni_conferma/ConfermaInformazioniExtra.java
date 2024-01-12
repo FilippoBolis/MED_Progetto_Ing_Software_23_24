@@ -31,7 +31,7 @@ public class ConfermaInformazioniExtra {
 		frame.confermaButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String informazioniString = frame.allergieTextField.getText();
+				String informazioniString = frame.informazioniTextArea.getText();
 				frame.sfondoFrame.dispose();
 			}
 		});
