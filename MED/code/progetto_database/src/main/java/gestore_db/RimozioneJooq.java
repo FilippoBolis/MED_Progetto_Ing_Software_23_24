@@ -175,20 +175,21 @@ public class RimozioneJooq {
 	
 
 	public static void main(String[] args) {
-		
-		//getIstanza().personale("m");
-		//getIstanza().personale("i");
-		//getIstanza().personale("o");
-		//getIstanza().personale("P2");
-		//getIstanza().rilevazione("Ri3","D1");
-		//getIstanza().degente("D1");
-		//getIstanza().reparto("R5");
-		//getIstanza().modulo("Re1","ModuloA");
-		//getIstanza().letto("Re1", "ModuloA", 1);
-		//getIstanza().assegnazioneLetto("D1","Re1", "ModuloA", 1);
-		//getIstanza().diariaInf("DiariaInf1", "D1");
-		//getIstanza().diariaMed("DiariaMed1","D1");
-
+		/*
+		getIstanza().personale("m");
+		getIstanza().personale("i");
+		getIstanza().personale("o");
+		getIstanza().personale("P2");
+		getIstanza().rilevazione("Ri3","D1");
+		getIstanza().degente("D1");
+		getIstanza().reparto("R5");
+		getIstanza().modulo("Re2","ModuloA");
+		getIstanza().modulo("Re1","ModuloA");
+		getIstanza().letto("Re1", "ModuloA", 1);
+		getIstanza().assegnazioneLetto("D1","Re1", "ModuloA", 1);
+		getIstanza().diariaInf("DiariaInf1", "D1");
+		getIstanza().diariaMed("DiariaMed1","D1");
+		*/
 	}
 
 }

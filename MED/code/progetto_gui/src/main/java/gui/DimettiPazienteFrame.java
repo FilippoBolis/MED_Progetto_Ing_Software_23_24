@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 public class DimettiPazienteFrame {
 	ImageIcon dimettiPazienteImage = new ImageIcon("../progetto_gui/src/main/resources/dimetti_paziente.png");
 	public JFrame sfondoFrame;
-	private JTextField tipoTextField;
+	public JButton confermaButton;
 
 	public DimettiPazienteFrame() {
 
@@ -29,7 +29,7 @@ public class DimettiPazienteFrame {
 		sfondoFrame.setTitle("<html><font color='white'>M.E.D Dimetti Paziente </font></html>");
 		sfondoFrame.getRootPane().setBackground(Stile.AZZURRO.getColore());
 		sfondoFrame.getRootPane().setForeground(Color.WHITE);
-		sfondoFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		sfondoFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		sfondoFrame.setLocationRelativeTo(null);
 		sfondoFrame.setResizable(false);
 
@@ -50,16 +50,11 @@ public class DimettiPazienteFrame {
 		dimettiPazienteLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		dimettiPanel.add(dimettiPazienteLabel);
 
-		JLabel tipoLabel = new JLabel("Tipo");
+		JLabel tipoLabel = new JLabel("ATTENZIONE La dimissione non può essere annullata, sei sicuro di voler continuare?");
 		tipoLabel.setBounds(55, 98, 46, 14);
 		dimettiPanel.add(tipoLabel);
-
-		tipoTextField = new JTextField();
-		tipoTextField.setBounds(137, 95, 86, 20);
-		dimettiPanel.add(tipoTextField);
-		tipoTextField.setColumns(10);
 		
-		JButton confermaButton = new JButton("Conferma");
+		confermaButton = new JButton("Conferma");
 		confermaButton.setBounds(440, 309, 89, 23);
 		dimettiPanel.add(confermaButton);
 		

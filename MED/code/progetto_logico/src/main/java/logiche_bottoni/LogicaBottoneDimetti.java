@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import javax.swing.SwingUtilities;
 
 import gui.*;
+import logiche_bottoni_conferma.ConfermaAggiungiDiariaMedica;
+import logiche_bottoni_conferma.ConfermaDimettiPaziente;
 import logiche_frame_pronto_soccorso.LogicaDellaPosizionePazienteTabella;
 import modelli.ModelloGestoreLogicaGenerale;
 
@@ -24,7 +26,9 @@ public class LogicaBottoneDimetti extends LogicaBottone{
 			public void actionPerformed(ActionEvent e) {
 			if(modello.modelloGestorePaziente.qualcunoSelezionato()) {
 				if (modello.modelloGestoreUtente.getMansioneUtente().equals("Medico")) {
-					//per ora vuoto
+					DimettiPazienteFrame frame = new DimettiPazienteFrame();
+					ConfermaDimettiPaziente confermaButton = new ConfermaDimettiPaziente(frame,frameDeiPazienti,modello);
+					
 				}
 				else {
 					new ErroreFrame(frameDeiPazienti.sfondoFrame, "Ci dispiace informarla che, secondo le nostre politiche, il suo account da " + modello.modelloGestoreUtente.getMansioneUtente() + " non è abilitato alla dimissione, contatti un Medico per procedere");

@@ -25,6 +25,7 @@ public class AggiungiDiariaFrame {
 	public JTextField storicoTextField;
 	public JButton avantiButton;
 	public JTextArea farmaciTextArea;
+	public JComboBox<String> repartoComboBox;
 	
 	public AggiungiDiariaFrame(ModelloGestoreLogicaGenerale modello) {
 		
@@ -86,7 +87,7 @@ public class AggiungiDiariaFrame {
 		repartoLabel.setBounds(10, 168, 137, 21);
 		diariaPanel.add(repartoLabel);
 		
-		JComboBox<String> repartoComboBox = new JComboBox<String>();
+		repartoComboBox = new JComboBox<String>();
 		for (String nomeReparto : modello.modelloGestoreLogistica.getNomiReparti()) {
 			repartoComboBox.addItem(nomeReparto);
 		}

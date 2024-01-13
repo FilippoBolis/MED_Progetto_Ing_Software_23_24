@@ -5,12 +5,14 @@ public class ModelloGestoreUtente {
 	private String nome;
 	private String cognome;
 	private String utente;
+	private String codice;
 	
-	public void setUtente(String mansione, String nome, String cognome, String utente) {
+	public void setUtente(String mansione, String nome, String cognome, String utente, String codice) {
 		this.mansione = mansione;
 		this.nome = nome;
 		this.cognome = cognome;
 		this.utente = utente;
+		this.codice = codice;
 	}
 	
 	public String getUtente() {
@@ -23,6 +25,10 @@ public class ModelloGestoreUtente {
 		else {
 			return "Utente: Operatore " + nome + " " + cognome + " (" + utente + ")";
 		}
+	}
+	
+	public String getCodiceUtente() {
+		return codice;
 	}
 	
 	public String getMansioneUtente() {

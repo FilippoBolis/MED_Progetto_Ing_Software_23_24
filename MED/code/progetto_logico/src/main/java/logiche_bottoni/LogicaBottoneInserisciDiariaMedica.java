@@ -25,7 +25,7 @@ public class LogicaBottoneInserisciDiariaMedica extends LogicaBottone{
 			if(modello.modelloGestorePaziente.qualcunoSelezionato()) {
 				if (modello.modelloGestoreUtente.getMansioneUtente().equals("Medico")) {
 					AggiungiDiariaFrame frame = new AggiungiDiariaFrame(modello);
-					ConfermaAggiungiDiariaMedica button = new ConfermaAggiungiDiariaMedica(frame,modello);
+					ConfermaAggiungiDiariaMedica button = new ConfermaAggiungiDiariaMedica(frame,frameDeiPazienti,modello);
 				}
 				else {
 					new ErroreFrame(frameDeiPazienti.sfondoFrame, "Ci dispiace informarla che, secondo le nostre politiche, il suo account da " + modello.modelloGestoreUtente.getMansioneUtente() + " non è abilitato alla creazione di diarie mediche");

@@ -110,6 +110,6 @@ public class AggiungiRilevazioneFrame {
 		rilevazionePanel.add(confermaButton);
 	}
 	/*
-	 * public static void main(String[] args) { new InserisciRilevazioneFrame(); }
-	 */
+	* public static void main(String[] args) { new InserisciRilevazioneFrame(); }
+	*/ 
 }

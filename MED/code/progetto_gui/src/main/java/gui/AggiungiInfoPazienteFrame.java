@@ -45,7 +45,7 @@ public class AggiungiInfoPazienteFrame {
 		infoPanel.setLayout(null);
 		sfondoPanel.add(infoPanel);
 		
-		JLabel titoloLabel = new JLabel("Aggiungi Informazioni Paziente");
+		JLabel titoloLabel = new JLabel("Aggiungi allergie e informazioni per la cura del Paziente");
 		titoloLabel.setBounds(10, 11, 519, 40);
 		titoloLabel.setForeground(Stile.BLU_SCURO.getColore());
 		titoloLabel.setFont(Stile.TITOLO.getFont());
@@ -61,7 +61,7 @@ public class AggiungiInfoPazienteFrame {
 		informazioniLabel.setBounds(22, 88, 137, 21);
 		infoPanel.add(informazioniLabel);
 		
-		JTextArea informazioniTextArea = new JTextArea();
+		informazioniTextArea = new JTextArea();
 		informazioniTextArea.setBounds(143, 99, 218, 92);
 		informazioniTextArea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
         informazioniTextArea.setLineWrap(true); 
