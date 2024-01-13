@@ -62,7 +62,7 @@ public class ConfermaInformazioniExtra {
 					conn = DriverManager.getConnection(CreateDB.DB_URL);
 					String informazioni = frame.informazioniTextArea.getText();
 					DSLContext contesto = DSL.using(conn, SQLDialect.SQLITE);
-					String ultimoCodice = contesto.select(Diariamed.DIARIAMED.CODICE).from(Diariamed.DIARIAMED).orderBy(Diariamed.DIARIAMED.CODICE.desc()).limit(1).fetchOneInto(String.class);
+					int ultimoCodice = contesto.select(Diariamed.DIARIAMED.CODICE).from(Diariamed.DIARIAMED).orderBy(Diariamed.DIARIAMED.CODICE.desc()).limit(1).fetchOneInto(int.class);
 					SwingUtilities.invokeLater(new Runnable() {
 					    @Override
 					    public void run() {

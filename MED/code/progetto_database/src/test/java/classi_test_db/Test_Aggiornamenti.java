@@ -22,13 +22,13 @@ public class Test_Aggiornamenti implements MetodiDaTestare{
 	
 	@Test
 	public void testDiariaInf() {
-		int risultato=AggiornamentiJooq.getIstanza().diariaInf("DiariaInf1", "D1", "true");
+		int risultato=AggiornamentiJooq.getIstanza().diariaInf(1, "D1", "true");
 		assertEquals(1,risultato);
 	}
 	
 	@Test
 	public void testDIariaMed() {
-		int risultato=AggiornamentiJooq.getIstanza().diariaMed("DiariaMed1", "D1", "farmaci", "trembolone");
+		int risultato=AggiornamentiJooq.getIstanza().diariaMed(1, "D1", "farmaci", "trembolone");
 		assertEquals(1,risultato);
 	}
 

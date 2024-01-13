@@ -56,7 +56,7 @@ public class Diariamed extends TableImpl<DiariamedRecord> {
     /**
      * The column <code>DIARIAMED.CODICE</code>.
      */
-    public final TableField<DiariamedRecord, String> CODICE = createField(DSL.name("CODICE"), SQLDataType.CLOB, this, "");
+    public final TableField<DiariamedRecord, Integer> CODICE = createField(DSL.name("CODICE"), SQLDataType.INTEGER, this, "");
 
     /**
      * The column <code>DIARIAMED.CODICE_DEGENTE</code>.
@@ -207,14 +207,14 @@ public class Diariamed extends TableImpl<DiariamedRecord> {
     // -------------------------------------------------------------------------
 
     @Override
-    public Row10<String, String, String, String, String, String, String, LocalDate, LocalTime, String> fieldsRow() {
+    public Row10<Integer, String, String, String, String, String, String, LocalDate, LocalTime, String> fieldsRow() {
         return (Row10) super.fieldsRow();
     }
 
     /**
      * Convenience mapping calling {@link SelectField#convertFrom(Function)}.
      */
-    public <U> SelectField<U> mapping(Function10<? super String, ? super String, ? super String, ? super String, ? super String, ? super String, ? super String, ? super LocalDate, ? super LocalTime, ? super String, ? extends U> from) {
+    public <U> SelectField<U> mapping(Function10<? super Integer, ? super String, ? super String, ? super String, ? super String, ? super String, ? super String, ? super LocalDate, ? super LocalTime, ? super String, ? extends U> from) {
         return convertFrom(Records.mapping(from));
     }
 
@@ -222,7 +222,7 @@ public class Diariamed extends TableImpl<DiariamedRecord> {
      * Convenience mapping calling {@link SelectField#convertFrom(Class,
      * Function)}.
      */
-    public <U> SelectField<U> mapping(Class<U> toType, Function10<? super String, ? super String, ? super String, ? super String, ? super String, ? super String, ? super String, ? super LocalDate, ? super LocalTime, ? super String, ? extends U> from) {
+    public <U> SelectField<U> mapping(Class<U> toType, Function10<? super Integer, ? super String, ? super String, ? super String, ? super String, ? super String, ? super String, ? super LocalDate, ? super LocalTime, ? super String, ? extends U> from) {
         return convertFrom(toType, Records.mapping(from));
     }
 }

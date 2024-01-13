@@ -25,10 +25,10 @@ public class Test_Rimozioni implements MetodiDaTestare{
 	public void testDiariaInf() {
 		int risultato;
 		//rimozione di una diaria inesistente fallisce
-		risultato=RimozioneJooq.getIstanza().diariaInf("DiariaInf1","D4");
+		risultato=RimozioneJooq.getIstanza().diariaInf(1,"D4");
 		assertEquals(1,risultato);
 		//rimozione di una diaria esistente ha successo
-		risultato=RimozioneJooq.getIstanza().diariaInf("DiariaInf2", "D2");
+		risultato=RimozioneJooq.getIstanza().diariaInf(1, "D2");
 		assertEquals(1,risultato);
 		
 		
@@ -41,7 +41,7 @@ public class Test_Rimozioni implements MetodiDaTestare{
 		//risultato=RimozioneJooq.getIstanza().diariaMed("DiariaMed1","D4");
 		//assertEquals(1,risultato);
 		//rimozione di una diaria esistente ha successo
-		risultato=RimozioneJooq.getIstanza().diariaMed("DiariaMed2", "D2");
+		risultato=RimozioneJooq.getIstanza().diariaMed(1, "D2");
 		assertEquals(1,risultato);
 	}
 
@@ -103,7 +103,7 @@ public class Test_Rimozioni implements MetodiDaTestare{
 		//assertEquals(1,risultato);
 										
 		//rimozione di una rilevazione esistente ha successo
-		int risultato=RimozioneJooq.getIstanza().rilevazione("Ri2","D1");
+		int risultato=RimozioneJooq.getIstanza().rilevazione(2,"D1");
 		assertEquals(1,risultato);
 		
 	}

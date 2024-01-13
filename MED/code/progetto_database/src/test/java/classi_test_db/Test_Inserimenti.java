@@ -17,7 +17,7 @@ public class Test_Inserimenti implements MetodiDaTestare{
 		int risultato;
 		//primo test: inserimento corretto  
 		//da giustamente errore a lanci successivi, chiave primaria viene rispettata
-		risultato=InserimentoJooq.getIstanza().degente("D5","Giorgia","Mezzera","F",LocalDate.now(), LocalTime.now().withNano(0),"verde");
+		risultato=InserimentoJooq.getIstanza().degente("D2","Jacopo","Bellosi","M",LocalDate.now(), LocalTime.now().withNano(0),"rosso");
 		assertEquals(1,risultato);
 		//secondo test: tentativo di inserimento con dati scorretti
 		//risultato=InserimentoJooq.getIstanza().degente("D5","Giorgia" ,"Mezzera" ,"F",LocalDate.now(), LocalTime.now().withNano(0), "fuchsia");
@@ -40,7 +40,7 @@ public class Test_Inserimenti implements MetodiDaTestare{
 	public void testDiariaInf() {
 		int risultato;
 		//primo test: inserimento corretto
-		risultato=InserimentoJooq.getIstanza().diariaInf("DiariaInf2", "D2", "P2", LocalDate.now(), LocalTime.now().withNano(0), "Il paziente sembra migliorare", false, "aspirina");
+		risultato=InserimentoJooq.getIstanza().diariaInf(1, "D2", "P2", LocalDate.now(), LocalTime.now().withNano(0), "Il paziente sembra migliorare", false, "aspirina");
 		assertEquals(1,risultato);
 		//secondo test: tentativo di inserimento con dati scorretti
 		//risultato=InserimentoJooq.getIstanza().diariaInf("DiariaInf1", "D8", "P2", LocalDate.now(), LocalTime.now().withNano(0), "Il paziente sembra migliorare", false, "aspirina");
@@ -52,7 +52,7 @@ public class Test_Inserimenti implements MetodiDaTestare{
 	public void testDIariaMed() {
 		int risultato;
 		//primo test: inserimento corretto
-		risultato=InserimentoJooq.getIstanza().diariaMed("DiariaMed2", "D2", "P1", "Il paziente soffre di allergia agli anticoagulanti?", "Necessaria cura","fisioterapia", "Antiallergene", LocalDate.now(), LocalTime.now().withNano(0), "anticoagulanti");
+		risultato=InserimentoJooq.getIstanza().diariaMed(1, "D2", "P1", "Il paziente soffre di allergia agli anticoagulanti?", "Necessaria cura","fisioterapia", "Antiallergene", LocalDate.now(), LocalTime.now().withNano(0), "anticoagulanti");
 		assertEquals(1,risultato);
 		//secondo test: tentativo di inserimento con dati scorretti
 		//risultato=InserimentoJooq.getIstanza().diariaMed("DiariaMed1", "D8", "P1", "Il paziente soffre di allergia agli anticoagulanti?", "Necessaria cura","fisioterapia","Antiallergene", LocalDate.now(), LocalTime.now().withNano(0), "anticoagulanti");
@@ -109,7 +109,7 @@ public class Test_Inserimenti implements MetodiDaTestare{
 	public void testRilevazione() {
 		int risultato;
 		//primo test: inserimento corretto
-		risultato=InserimentoJooq.getIstanza().rilevazione("Ri2","D1", 35, 120, 80, 30, LocalDate.now(), LocalTime.now().withNano(0), 60, 2);
+		risultato=InserimentoJooq.getIstanza().rilevazione(2,"D1", 35, 120, 80, 30, LocalDate.now(), LocalTime.now().withNano(0), 60, 2);
 		assertEquals(1,risultato);
 		//secondo test: tentativo di inserimento con dati scorretti
 		//risultato=InserimentoJooq.getIstanza().rilevazione("Ri2","D8", 35, 75, 110, 30, LocalDate.now(), LocalTime.now().withNano(0), 60, 2);

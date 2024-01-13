@@ -90,7 +90,7 @@ public class AggiornamentiJooq {
 		return result;
 	}
 	
-	public int diariaInf(String codice ,String codDeg, String newVal) {
+	public int diariaInf(int codice ,String codDeg, String newVal) {
 		int result=0;
 		try {
 			Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
@@ -109,7 +109,7 @@ public class AggiornamentiJooq {
 		return result;
 	}
 	
-	public int diariaMed(String codice ,String codDeg, String attr, String newVal) {
+	public int diariaMed(int codice ,String codDeg, String attr, String newVal) {
 		int result=0;
 		try {
 			Connection conn = DriverManager.getConnection(CreateDB.DB_URL);

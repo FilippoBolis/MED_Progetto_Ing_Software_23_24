@@ -55,7 +55,7 @@ public class RimozioneJooq {
 	}
 	
 	
-	public int rilevazione(String ID, String codDeg) {
+	public int rilevazione(int ID, String codDeg) {
 		int result=0;
 		try {
 			Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
@@ -142,7 +142,7 @@ public class RimozioneJooq {
 		return result;
 	}
 	
-	public int diariaMed(String codice, String codDeg) {
+	public int diariaMed(int codice, String codDeg) {
 		int result=0;
 		try {
 			Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
@@ -157,7 +157,7 @@ public class RimozioneJooq {
 		return result;
 	}
 	
-	public int diariaInf(String codice, String codDeg) {
+	public int diariaInf(int codice, String codDeg) {
 		int result=0;
 		try {
 			Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
@@ -175,20 +175,21 @@ public class RimozioneJooq {
 	
 
 	public static void main(String[] args) {
+
 		/*
 		getIstanza().personale("m");
 		getIstanza().personale("i");
 		getIstanza().personale("o");
 		getIstanza().personale("P2");
-		getIstanza().rilevazione("Ri3","D1");
+		getIstanza().rilevazione(1,"D1");
 		getIstanza().degente("D1");
 		getIstanza().reparto("R5");
 		getIstanza().modulo("Re2","ModuloA");
 		getIstanza().modulo("Re1","ModuloA");
 		getIstanza().letto("Re1", "ModuloA", 1);
 		getIstanza().assegnazioneLetto("D1","Re1", "ModuloA", 1);
-		getIstanza().diariaInf("DiariaInf1", "D1");
-		getIstanza().diariaMed("DiariaMed1","D1");
+		getIstanza().diariaInf(1, "D1");
+		getIstanza().diariaMed(1,"D1");
 		*/
 	}
 
