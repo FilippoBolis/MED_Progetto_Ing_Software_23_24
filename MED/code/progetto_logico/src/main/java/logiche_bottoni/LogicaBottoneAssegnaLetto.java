@@ -7,6 +7,8 @@ import javax.swing.SwingUtilities;
 
 import gui.*;
 import logiche_bottoni_conferma.ConfermaAssegnaPaziente;
+import logiche_bottoni_conferma.LogicaBottoneAggiornamentoLettiDisponibili;
+import logiche_bottoni_conferma.LogicaBottoneAggiornamentoModulo;
 import modelli.ModelloGestoreLogicaGenerale;
 
 public class LogicaBottoneAssegnaLetto extends LogicaBottone{
@@ -23,8 +25,10 @@ public class LogicaBottoneAssegnaLetto extends LogicaBottone{
 			public void actionPerformed(ActionEvent e) {
 			if(modello.modelloGestorePaziente.qualcunoSelezionato()) {
 				if (modello.modelloGestoreUtente.getMansioneUtente().equals("Operatore")) {
-					AssegnaPazienteFrame frame = new AssegnaPazienteFrame();
-					ConfermaAssegnaPaziente button = new ConfermaAssegnaPaziente(frame,modello);
+					AssegnaPazienteFrame frame = new AssegnaPazienteFrame(modello);
+					LogicaBottoneAggiornamentoModulo bottoneAggiornamentoModuli = new LogicaBottoneAggiornamentoModulo(frame,modello);
+					LogicaBottoneAggiornamentoLettiDisponibili bottoneAggiornamentoLetti = new LogicaBottoneAggiornamentoLettiDisponibili(frame,modello);
+					ConfermaAssegnaPaziente button = new ConfermaAssegnaPaziente(frame,frameDeiPazienti,modello);
 				}
 				else {
 					new ErroreFrame(frameDeiPazienti.sfondoFrame, "Ci dispiace informarla che, secondo le nostre politiche, il suo account da " + modello.modelloGestoreUtente.getMansioneUtente() + " non è abilitato all'assegnazione di posti letto, provi a contattare il reparto di logistica");

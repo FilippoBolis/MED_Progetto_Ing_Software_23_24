@@ -7,6 +7,9 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import com.formdev.flatlaf.FlatIntelliJLaf;
+
+import modelli.ModelloGestoreLogicaGenerale;
+
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
@@ -18,11 +21,12 @@ public class AssegnaPazienteFrame {
 	public JFrame sfondoFrame;
 	public JComboBox<String> repartoComboBox;
 	public JComboBox<String> moduloComboBox;
-	public JComboBox<String> postoComboBox;
+	public JComboBox<Integer> postoComboBox;
 	public JButton confermaButton;
+	private ModelloGestoreLogicaGenerale modello;
 
-	public AssegnaPazienteFrame() {
-
+	public AssegnaPazienteFrame(ModelloGestoreLogicaGenerale modello) {
+		this.modello=modello;
 		try {
 			UIManager.setLookAndFeel(new FlatIntelliJLaf());
 		} catch (UnsupportedLookAndFeelException e) {
@@ -64,6 +68,10 @@ public class AssegnaPazienteFrame {
 		PazientePanel.add(repartoLabel);
 		
 		repartoComboBox = new JComboBox<String>();
+		repartoComboBox.addItem(" ");
+		for (String nomeReparto : modello.modelloGestoreLogistica.getNomiReparti()) {
+			repartoComboBox.addItem(nomeReparto);
+		}
 		repartoComboBox.setBounds(147, 124, 149, 22);
 		PazientePanel.add(repartoComboBox);
 
@@ -79,7 +87,7 @@ public class AssegnaPazienteFrame {
 		postoLabel.setBounds(10, 189, 96, 20);
 		PazientePanel.add(postoLabel);
 		
-		postoComboBox = new JComboBox<String>();
+		postoComboBox = new JComboBox<Integer>();
 		postoComboBox.setBounds(148, 188, 137, 22);
 		PazientePanel.add(postoComboBox);
 
@@ -90,4 +98,20 @@ public class AssegnaPazienteFrame {
 		sfondoFrame.setVisible(true);
 
 	}
+	
+	public void aggiornaModuliRepartoView() {
+		moduloComboBox.removeAllItems();
+		for (String nomeModulo : modello.modelloGestoreLogistica.getNomiModuli()) {
+			moduloComboBox.addItem(nomeModulo);
+		}
+	}
+	
+	public void aggiornaLettiRepartoView() {
+		postoComboBox.removeAllItems();
+		postoComboBox.addItem(2);
+		for (Integer numeroLetto : modello.modelloGestoreLogistica.getNumeroLettiDisponibili()) {
+			postoComboBox.addItem(numeroLetto);
+		}
+	}
+	
 }

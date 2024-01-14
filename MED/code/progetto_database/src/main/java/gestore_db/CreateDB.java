@@ -8,7 +8,7 @@ import java.sql.*;
 
 public class CreateDB {
 
-	public static String DB_REL_FILE = "./db/db.db3";
+	public static String DB_REL_FILE = "../progetto_database/db/db.db3";
 	public static String DB_URL = "jdbc:sqlite:" + DB_REL_FILE;
 
 	public void creaDB() throws IOException, SQLException {

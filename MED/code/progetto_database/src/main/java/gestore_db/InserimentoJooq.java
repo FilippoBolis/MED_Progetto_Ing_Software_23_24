@@ -214,7 +214,11 @@ public class InserimentoJooq{
 
 	public static void main(String[] args) {
 		
-
+		/*
+		getIstanza().degente("D$","Tizio","Test","M",LocalDate.now(), LocalTime.now().withNano(0),"verde");
+		getIstanza().personale("m","ADMIN","Medico","M", "m");
+		getIstanza().personale("i","ADMIN","Infermiere","I", "i");
+		getIstanza().personale("o","ADMIN","Operatore","S", "o");
 		getIstanza().degente("D3","Lara","Longhi","F",LocalDate.now(), LocalTime.now().withNano(0),"giallo");
 		getIstanza().degente("D2","Jacopo","Bellosi","M",LocalDate.now(), LocalTime.now().withNano(0),"rosso");
 		getIstanza().personale("P1","Daniele","Gotti","M", "SpostamiSeCiRiesci");
@@ -228,10 +232,15 @@ public class InserimentoJooq{
 
 		getIstanza().reparto("Re1","Cardiologia");
 		getIstanza().modulo("Re1","ModuloA");
+		getIstanza().letto("Re1","ModuloA",2);
 		getIstanza().letto("Re1","ModuloA",1);
+		getIstanza().modulo("Re1","ModuloB");
+		getIstanza().letto("Re1","ModuloB",1);
+		getIstanza().modulo("Re1","ModuloC");
+		getIstanza().letto("Re1","ModuloB",2);
 		getIstanza().assegnazioneLetto("D1","Re1","ModuloA",1,LocalDate.now());
 		getIstanza().diariaInf(1,"D1","P2",LocalDate.now(),LocalTime.now().withNano(0),"Il paziente è diventato enorme dottore",true,"Trembolone");
-
+		*/
 
 	}
 
