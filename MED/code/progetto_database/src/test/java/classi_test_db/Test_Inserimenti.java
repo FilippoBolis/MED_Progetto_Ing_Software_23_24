@@ -17,7 +17,7 @@ public class Test_Inserimenti implements MetodiDaTestare{
 		int risultato;
 		//primo test: inserimento corretto  
 		//da giustamente errore a lanci successivi, chiave primaria viene rispettata
-		risultato=InserimentoJooq.getIstanza().degente("D2","Jacopo","Bellosi","M",LocalDate.now(), LocalTime.now().withNano(0),"rosso");
+		risultato=InserimentoJooq.getIstanza().degente("D5","Giorgia","Mezzera","F",LocalDate.now(), LocalTime.now().withNano(0),"giallo");
 		assertEquals(1,risultato);
 		//secondo test: tentativo di inserimento con dati scorretti
 		//risultato=InserimentoJooq.getIstanza().degente("D5","Giorgia" ,"Mezzera" ,"F",LocalDate.now(), LocalTime.now().withNano(0), "fuchsia");

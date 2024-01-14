@@ -108,7 +108,7 @@ public class AssegnaPazienteFrame {
 	
 	public void aggiornaLettiRepartoView() {
 		postoComboBox.removeAllItems();
-		postoComboBox.addItem(2);
+		//postoComboBox.addItem(2);
 		for (Integer numeroLetto : modello.modelloGestoreLogistica.getNumeroLettiDisponibili()) {
 			postoComboBox.addItem(numeroLetto);
 		}
