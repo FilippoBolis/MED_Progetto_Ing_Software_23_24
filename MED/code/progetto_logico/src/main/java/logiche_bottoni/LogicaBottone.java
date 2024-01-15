@@ -8,7 +8,6 @@ public abstract class LogicaBottone {
 	
 	protected PazientiFrame frameDeiPazienti;
 	protected ModelloGestoreLogicaGenerale modello;
-	protected BloccaFramePadre blocca;
 	
 	public LogicaBottone(PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		// prende i riferimenti

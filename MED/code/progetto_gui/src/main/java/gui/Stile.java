@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Panel;
 
 public enum Stile {
 	
@@ -10,7 +11,7 @@ public enum Stile {
     AZZURRO(new Color(63, 114, 175)),
 	AZZURRO_TRASP(new Color(63, 114, 175, 50)),
 	VERDE(new Color(60, 179, 113)),
-
+	
 	SPECIALE(new Font("sanserif", Font.BOLD, 40)),
 	TITOLO(new Font("sanserif", Font.BOLD, 30)),
 	TITOLO_FINE(new Font("sanserif", Font.PLAIN, 30)),

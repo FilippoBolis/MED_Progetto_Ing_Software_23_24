@@ -37,8 +37,8 @@ public class AggiungiDiariaFrame {
 		}
 		
 		sfondoFrame = new JFrame();
-		sfondoFrame.setSize(680, 400);
-		sfondoFrame.setTitle("<html><font color='white'>M.E.D Aggiungi Diaria</font></html>");
+		sfondoFrame.setSize(530, 540);
+		sfondoFrame.setTitle("<html><font color='white'>M.E.D Inserisci Diaria Medica</font></html>");
 		sfondoFrame.getRootPane().setBackground(Stile.AZZURRO.getColore());
 		sfondoFrame.getRootPane().setForeground(Color.WHITE);
 		sfondoFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -50,70 +50,80 @@ public class AggiungiDiariaFrame {
 		sfondoPanel.setLayout(null);
 		
 		JPanel diariaPanel = new JPanel();
-		diariaPanel.setBounds(10, 10, 646, 342);
+		diariaPanel.setBounds(10, 10, 496, 482);
 		diariaPanel.setBackground(Color.WHITE);
 		diariaPanel.setLayout(null);
 		sfondoPanel.add(diariaPanel);
 		
-		JLabel titoloLabel = new JLabel("Diaria Medica");
-		titoloLabel.setBounds(10, 11, 296, 40);
+		JLabel titoloLabel = new JLabel("Inserisci diaria medica");
+		titoloLabel.setBounds(100, 30, 366, 48);
 		titoloLabel.setForeground(Stile.BLU_SCURO.getColore());
 		titoloLabel.setFont(Stile.TITOLO.getFont());
-		titoloLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		titoloLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		diariaPanel.add(titoloLabel);
 		
 		JLabel immagineLabel = new JLabel();
-		immagineLabel.setBounds(316, 14, 48, 48);
+		immagineLabel.setBounds(30, 30, 48, 48);
 		immagineLabel.setIcon(aggiungiDiariaImage);
 		diariaPanel.add(immagineLabel);
 		
 		JLabel motivoLabel = new JLabel("Motivo");
-		motivoLabel.setBounds(10, 74, 116, 21);
+		motivoLabel.setBounds(30, 96, 116, 30);
+		motivoLabel.setForeground(Color.GRAY);
+		motivoLabel.setFont(Stile.TESTO.getFont());
 		diariaPanel.add(motivoLabel);
 		
 		motivoTextField = new JTextField();
-		motivoTextField.setBounds(153, 74, 96, 20);
+		motivoTextField.setBounds(30, 129, 436, 30);
 		diariaPanel.add(motivoTextField);
-		motivoTextField.setColumns(10);
+		motivoTextField.setColumns(30);
 		
 		JLabel storicoLabel = new JLabel("Storico");
-		storicoLabel.setBounds(10, 120, 137, 21);
+		storicoLabel.setBounds(30, 162, 137, 30);
+		storicoLabel.setForeground(Color.GRAY);
+		storicoLabel.setFont(Stile.TESTO.getFont());
 		diariaPanel.add(storicoLabel);
 		
 		storicoTextField = new JTextField();
-		storicoTextField.setBounds(153, 120, 96, 20);
+		storicoTextField.setBounds(30, 195, 436, 30);
 		diariaPanel.add(storicoTextField);
-		storicoTextField.setColumns(10);
+		storicoTextField.setColumns(30);
 		
 		JLabel repartoLabel = new JLabel("Reparto consigliato");
-		repartoLabel.setBounds(10, 168, 137, 21);
+		repartoLabel.setForeground(Color.GRAY);
+		repartoLabel.setFont(Stile.TESTO.getFont());
+		repartoLabel.setBounds(30, 228, 137, 30);
 		diariaPanel.add(repartoLabel);
 		
 		repartoComboBox = new JComboBox<String>();
 		for (String nomeReparto : modello.modelloGestoreLogistica.getNomiReparti()) {
 			repartoComboBox.addItem(nomeReparto);
 		}
-		repartoComboBox.setBounds(153, 168, 100, 21);
+		repartoComboBox.setBounds(30, 261, 436, 30);
 		diariaPanel.add(repartoComboBox);
 		
 		JLabel farmaciLabel = new JLabel("Farmaci");
-		farmaciLabel.setBounds(10, 230, 128, 27);
+		farmaciLabel.setBounds(30, 294, 128, 30);
+		farmaciLabel.setForeground(Color.GRAY);
+		farmaciLabel.setFont(Stile.TESTO.getFont());
 		diariaPanel.add(farmaciLabel);
 		
 		farmaciTextArea = new JTextArea();
 		farmaciTextArea.setBounds(165, 231, 218, 30);
-		farmaciTextArea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
         farmaciTextArea.setLineWrap(true); 
         farmaciTextArea.setWrapStyleWord(true);
 		diariaPanel.add(farmaciTextArea);
 
         JScrollPane scrollPane = new JScrollPane(farmaciTextArea);
-		scrollPane.setBounds(165, 231, 218, 64);
+		scrollPane.setBounds(30, 327, 436, 103);
         diariaPanel.add(scrollPane);
 		
         avantiButton = new JButton("Avanti");
-		avantiButton.setBounds(440, 309, 89, 23);
-		diariaPanel.add(avantiButton);
+        avantiButton.setBounds(346, 441, 120, 30);
+		avantiButton.setBackground(Stile.AZZURRO.getColore());
+		avantiButton.setForeground(Color.WHITE);
+		avantiButton.setFont(Stile.SOTTOTITOLO.getFont());
+        diariaPanel.add(avantiButton);
 
 		sfondoFrame.setVisible(true);
 	
