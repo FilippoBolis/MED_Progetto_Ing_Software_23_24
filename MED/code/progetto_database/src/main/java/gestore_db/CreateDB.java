@@ -7,7 +7,15 @@ import java.sql.SQLException;
 import java.sql.*;
 
 public class CreateDB {
-
+	//pattern singleton
+	private static CreateDB istanza= new CreateDB();
+	
+	private CreateDB() {}
+	
+	public static CreateDB getIstanza() {
+		return istanza;
+	}
+	
 	public static String DB_REL_FILE = "../progetto_database/db/db.db3";
 	public static String DB_URL = "jdbc:sqlite:" + DB_REL_FILE;
 
@@ -52,9 +60,8 @@ public class CreateDB {
 	}
 
 	public static void main(String[] args) throws IOException, SQLException {
-		CreateDB b = new CreateDB();
-		b.creaDB();
-		b.creaTable();
+		getIstanza().creaDB();
+		getIstanza().creaTable();
 
 	}
 
