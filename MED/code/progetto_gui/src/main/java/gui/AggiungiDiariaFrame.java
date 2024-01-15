@@ -5,6 +5,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -28,12 +29,13 @@ public class AggiungiDiariaFrame {
 	public JComboBox<String> repartoComboBox;
 	
 	public AggiungiDiariaFrame(ModelloGestoreLogicaGenerale modello) {
-		
+        
 		try {
 			UIManager.setLookAndFeel(new FlatIntelliJLaf());
 		} catch (UnsupportedLookAndFeelException e) {
 			e.printStackTrace();
 		}
+		
 		sfondoFrame = new JFrame();
 		sfondoFrame.setSize(680, 400);
 		sfondoFrame.setTitle("<html><font color='white'>M.E.D Aggiungi Diaria</font></html>");

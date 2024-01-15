@@ -25,6 +25,7 @@ import gui.AggiungiInfoPazienteFrame;
 import gui.AssegnaPazienteFrame;
 import gui.ErroreFrame;
 import gui.PazientiFrame;
+import logiche_bottoni.BloccaFramePadre;
 import logiche_frame_pronto_soccorso.LogicaDellaPosizionePazienteTabella;
 import med_db.jooq.generated.tables.Diariamed;
 import med_db.jooq.generated.tables.records.DiariamedRecord;
@@ -71,6 +72,8 @@ public class ConfermaInformazioniExtra {
 								frameDeiPazienti.updateStringaPaziente();
 								tabellaInProntoSoccorso.update();
 								frameDeiPazienti.updateViewTabella();
+								BloccaFramePadre b = new BloccaFramePadre();
+								b.setAbilitaComponenti(frameDeiPazienti.sfondoFrame, false);
 							}
 							else {
 								new ErroreFrame(frame.sfondoFrame, "E' avvenuto un problema durante l'aggiunta della diaria medica, se il problema persiste chiamare un tecnico");

@@ -29,6 +29,7 @@ public class LogicaBottoneAssegnaLetto extends LogicaBottone{
 					LogicaBottoneAggiornamentoModulo bottoneAggiornamentoModuli = new LogicaBottoneAggiornamentoModulo(frame,modello);
 					LogicaBottoneAggiornamentoLettiDisponibili bottoneAggiornamentoLetti = new LogicaBottoneAggiornamentoLettiDisponibili(frame,modello);
 					ConfermaAssegnaPaziente button = new ConfermaAssegnaPaziente(frame,frameDeiPazienti,modello);
+
 				}
 				else {
 					new ErroreFrame(frameDeiPazienti.sfondoFrame, "Ci dispiace informarla che, secondo le nostre politiche, il suo account da " + modello.modelloGestoreUtente.getMansioneUtente() + " non è abilitato all'assegnazione di posti letto, provi a contattare il reparto di logistica");

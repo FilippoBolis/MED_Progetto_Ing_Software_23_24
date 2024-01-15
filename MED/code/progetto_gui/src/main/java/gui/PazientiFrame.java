@@ -30,6 +30,7 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JToggleButton;
 
+@SuppressWarnings("serial")
 public class PazientiFrame {
 	
 	private final ImageIcon ripristinaImage = new ImageIcon("../progetto_gui/src/main/resources/ripristina.png");
@@ -70,7 +71,6 @@ public class PazientiFrame {
 	private ModelloGestoreLogicaGenerale modello;
     public boolean updating = false;
 
-	@SuppressWarnings("serial")
 	public PazientiFrame(ModelloGestoreLogicaGenerale modello) {
 		this.modello = modello;
 		try {

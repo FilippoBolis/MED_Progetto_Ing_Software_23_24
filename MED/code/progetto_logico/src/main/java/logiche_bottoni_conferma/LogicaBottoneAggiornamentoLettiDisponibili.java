@@ -20,6 +20,7 @@ import org.jooq.SQLDialect;
 import org.jooq.impl.DSL;
 
 import gui.*;
+import logiche_bottoni.BloccaFramePadre;
 import logiche_frame_pronto_soccorso.LogicaDellUrgenzaPazienteTabella;
 import logiche_frame_pronto_soccorso.LogicaDellaPosizionePazienteTabella;
 import med_db.jooq.generated.tables.Assegnazioneletto;
