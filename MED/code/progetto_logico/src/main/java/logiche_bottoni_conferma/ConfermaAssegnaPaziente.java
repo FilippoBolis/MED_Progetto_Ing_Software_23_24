@@ -6,7 +6,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.LocalTime;
 
 import javax.swing.SwingUtilities;
 
@@ -20,7 +19,6 @@ import gui.AssegnaPazienteFrame;
 import gui.ErroreFrame;
 import gui.PazientiFrame;
 import logiche_frame_pronto_soccorso.LogicaDellaPosizionePazienteTabella;
-import med_db.jooq.generated.tables.Diariamed;
 import med_db.jooq.generated.tables.Reparto;
 import modelli.ModelloGestoreLogicaGenerale;
 
@@ -45,29 +43,39 @@ public class ConfermaAssegnaPaziente {
 			public void actionPerformed(ActionEvent e) {
 				Connection conn;
 				try {
+					int letto;
 					conn = DriverManager.getConnection(CreateDB.DB_URL);
 					String nomeReparto = (String) frame.repartoComboBox.getSelectedItem();
 					String modulo = (String) frame.moduloComboBox.getSelectedItem();
-					int letto = (int) frame.postoComboBox.getSelectedItem();
+					if ((Integer) frame.postoComboBox.getSelectedItem() != null) {
+						letto = ((Integer) frame.postoComboBox.getSelectedItem()).intValue();
+					}
+					else {
+						letto = 0;
+					}
 					DSLContext contesto = DSL.using(conn, SQLDialect.SQLITE);
 					conn = DriverManager.getConnection(CreateDB.DB_URL);
 					String codiceReparto = contesto.select(Reparto.REPARTO.CODICE).from(Reparto.REPARTO).where(Reparto.REPARTO.NOME_REPARTO.eq(nomeReparto)).fetchOneInto(String.class);
-					SwingUtilities.invokeLater(new Runnable() {
-					    @Override
-					    public void run() {
-					    	System.out.println(modello.modelloGestorePaziente.getCodice());
-							if (InserimentoJooq.getIstanza().assegnazioneLetto(modello.modelloGestorePaziente.getCodice(),codiceReparto,modulo,letto,LocalDate.now())==1) {
-								modello.modelloGestorePaziente.deselezionaPaziente();
-								frameDeiPazienti.updateStringaPaziente();
-								tabellaInAttesa.update();
-								frameDeiPazienti.updateViewTabella();
-							}
-							else {
-								new ErroreFrame(frame.sfondoFrame, "E' avvenuto un problema durante l'assegnazione del posto letto, se il problema persiste chiamare un tecnico");
-							}
-							frame.sfondoFrame.dispose();
-					    }
-					});
+					if (!nomeReparto.equals(" ") && !modulo.equals(" ") && letto != 0) {
+						SwingUtilities.invokeLater(new Runnable() {
+							@Override
+						    public void run() {
+								if (InserimentoJooq.getIstanza().assegnazioneLetto(modello.modelloGestorePaziente.getCodice(),codiceReparto,modulo,letto,LocalDate.now())==1) {
+									modello.modelloGestorePaziente.deselezionaPaziente();
+									frameDeiPazienti.updateStringaPaziente();
+									tabellaInAttesa.update();
+									frameDeiPazienti.updateViewTabella();
+								}
+								else {
+									new ErroreFrame(frame.sfondoFrame, "E' avvenuto un problema durante l'assegnazione del posto letto, se il problema persiste chiamare un tecnico");
+								}
+								frame.sfondoFrame.dispose();
+						    }
+						});
+					}
+					else {
+						new ErroreFrame(frame.sfondoFrame, "Alcuni campi sono vuoti");
+					}
 				}catch (SQLException e1) {
 					System.out.println(e1.getMessage());
 				}

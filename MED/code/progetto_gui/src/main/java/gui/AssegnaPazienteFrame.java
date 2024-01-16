@@ -80,6 +80,7 @@ public class AssegnaPazienteFrame {
 		PazientePanel.add(moduloLabel);
 		
 		moduloComboBox = new JComboBox<String>();
+		moduloComboBox.addItem(" ");
 		moduloComboBox.setBounds(147, 156, 149, 22);
 		PazientePanel.add(moduloComboBox);
 
@@ -101,6 +102,8 @@ public class AssegnaPazienteFrame {
 	
 	public void aggiornaModuliRepartoView() {
 		moduloComboBox.removeAllItems();
+		postoComboBox.removeAllItems();
+		moduloComboBox.addItem(" ");
 		for (String nomeModulo : modello.modelloGestoreLogistica.getNomiModuli()) {
 			moduloComboBox.addItem(nomeModulo);
 		}
@@ -108,7 +111,7 @@ public class AssegnaPazienteFrame {
 	
 	public void aggiornaLettiRepartoView() {
 		postoComboBox.removeAllItems();
-		//postoComboBox.addItem(2);
+		postoComboBox.addItem(null);
 		for (Integer numeroLetto : modello.modelloGestoreLogistica.getNumeroLettiDisponibili()) {
 			postoComboBox.addItem(numeroLetto);
 		}

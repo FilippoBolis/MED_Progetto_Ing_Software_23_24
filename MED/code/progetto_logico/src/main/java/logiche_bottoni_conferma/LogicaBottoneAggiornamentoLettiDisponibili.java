@@ -62,9 +62,7 @@ public class LogicaBottoneAggiornamentoLettiDisponibili{
 								    .fetch();
 							for (Record1<Integer> lettoRecord : letto) {
 							    letti.add(lettoRecord.value1());
-							    System.out.println("valore: " + lettoRecord.value1());
 							}
-							System.out.println("valore: " + nomeModulo + nomeReparto);
 							modello.modelloGestoreLogistica.setNumeroLettiDisponibili(letti);
 						}
 						frame.aggiornaLettiRepartoView();
