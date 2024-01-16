@@ -4,6 +4,7 @@ import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,8 +20,9 @@ public class DiariaInfermieristicaFrame {
 	ImageIcon diariaImage = new ImageIcon("../progetto_gui/src/main/resources/diaria.png");
 	public JFrame sfondoFrame;
 	public JTextArea noteTextArea;
-	public JComboBox<String> importanteComboBox;
+	public JCheckBox importanteCheckBox;
 	public JTextArea farmacoTextArea;
+	public JButton confermaButton;
 
 	
 	public DiariaInfermieristicaFrame() {
@@ -77,9 +79,9 @@ public class DiariaInfermieristicaFrame {
 		importanteLabel.setBounds(10, 160, 137, 21);
 		diariaInfPanel.add(importanteLabel);
 		
-		importanteComboBox = new JComboBox<String>();
-		importanteComboBox.setBounds(137, 159, 149, 22);
-		diariaInfPanel.add(importanteComboBox);
+		importanteCheckBox = new JCheckBox("Importante");
+		importanteCheckBox.setBounds(137, 159, 149, 22);
+		diariaInfPanel.add(importanteCheckBox);
 
 		JLabel farmacoLabel = new JLabel("Farmaci");
 		farmacoLabel.setBounds(10, 189, 96, 20);
@@ -91,7 +93,7 @@ public class DiariaInfermieristicaFrame {
 		farmacoTextArea.setLineWrap(true); 
 		farmacoTextArea.setWrapStyleWord(true);
 
-		JButton confermaButton = new JButton("Conferma");
+		confermaButton = new JButton("Conferma");
 		confermaButton.setBounds(440, 309, 89, 23);
 		diariaInfPanel.add(confermaButton);
 

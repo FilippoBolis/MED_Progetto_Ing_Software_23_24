@@ -26,7 +26,7 @@ public class AggiungiPazienteFrame {
 	public JComboBox<String> urgenzaComboBox;
 	public JButton confermaButton;
 	
-	public AggiungiPazienteFrame(ModelloGestoreLogicaGenerale modello) {
+	public AggiungiPazienteFrame() {
 		try {
 			UIManager.setLookAndFeel(new FlatIntelliJLaf());
 		} catch (UnsupportedLookAndFeelException e) {
@@ -97,6 +97,8 @@ public class AggiungiPazienteFrame {
 		aggiungiPazientePanel.add(sessoLabel);
 		
 		sessoComboBox = new JComboBox<String>();
+		sessoComboBox.addItem("maschio");
+		sessoComboBox.addItem("femmina");
 		sessoComboBox.setBounds(149, 203, 100, 21);
 		aggiungiPazientePanel.add(sessoComboBox);
 		
@@ -105,6 +107,9 @@ public class AggiungiPazienteFrame {
 		aggiungiPazientePanel.add(urgenzaLabel);
 		
 		urgenzaComboBox = new JComboBox<String>();
+		urgenzaComboBox.addItem("verde");
+		urgenzaComboBox.addItem("giallo");
+		urgenzaComboBox.addItem("rosso");
 		urgenzaComboBox.setBounds(153, 235, 100, 21);
 		aggiungiPazientePanel.add(urgenzaComboBox);
 		

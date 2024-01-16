@@ -26,6 +26,7 @@ import gui.AssegnaPazienteFrame;
 import gui.ErroreFrame;
 import gui.PazientiFrame;
 import logiche_frame_pronto_soccorso.LogicaDellaPosizionePazienteTabella;
+import med_db.jooq.generated.tables.Degente;
 import med_db.jooq.generated.tables.Diariamed;
 import med_db.jooq.generated.tables.records.DiariamedRecord;
 import modelli.ModelloGestoreLogicaGenerale;
@@ -62,7 +63,7 @@ public class ConfermaInformazioniExtra {
 					conn = DriverManager.getConnection(CreateDB.DB_URL);
 					String informazioni = frame.informazioniTextArea.getText();
 					DSLContext contesto = DSL.using(conn, SQLDialect.SQLITE);
-					int ultimoCodice = contesto.select(Diariamed.DIARIAMED.CODICE).from(Diariamed.DIARIAMED).orderBy(Diariamed.DIARIAMED.CODICE.desc()).limit(1).fetchOneInto(int.class);
+					int ultimoCodice = contesto.select(Diariamed.DIARIAMED.CODICE).from(Diariamed.DIARIAMED).where(Diariamed.DIARIAMED.CODICE_DEGENTE.eq(modello.modelloGestorePaziente.getCodice())).orderBy(Diariamed.DIARIAMED.CODICE.desc()).limit(1).fetchOneInto(int.class);
 					SwingUtilities.invokeLater(new Runnable() {
 					    @Override
 					    public void run() {
