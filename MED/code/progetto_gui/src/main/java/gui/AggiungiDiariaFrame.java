@@ -5,7 +5,6 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -58,7 +57,7 @@ public class AggiungiDiariaFrame {
 		JLabel titoloLabel = new JLabel("Inserisci diaria medica");
 		titoloLabel.setBounds(100, 30, 366, 48);
 		titoloLabel.setForeground(Stile.BLU_SCURO.getColore());
-		titoloLabel.setFont(Stile.TITOLO.getFont());
+		titoloLabel.setFont(Stile.TITOLO_FINESTRE.getFont());
 		titoloLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		diariaPanel.add(titoloLabel);
 		
@@ -110,6 +109,7 @@ public class AggiungiDiariaFrame {
 		
 		farmaciTextArea = new JTextArea();
 		farmaciTextArea.setBounds(165, 231, 218, 30);
+		farmaciTextArea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
         farmaciTextArea.setLineWrap(true); 
         farmaciTextArea.setWrapStyleWord(true);
 		diariaPanel.add(farmaciTextArea);

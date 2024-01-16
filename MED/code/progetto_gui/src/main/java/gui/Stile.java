@@ -2,7 +2,6 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Panel;
 
 public enum Stile {
 	
@@ -15,6 +14,7 @@ public enum Stile {
 	SPECIALE(new Font("sanserif", Font.BOLD, 40)),
 	TITOLO(new Font("sanserif", Font.BOLD, 30)),
 	TITOLO_FINE(new Font("sanserif", Font.PLAIN, 30)),
+	TITOLO_FINESTRE(new Font("sanserif", Font.BOLD, 24)),
     SOTTOTITOLO(new Font("sanserif", Font.BOLD, 16)),
     SOTTOTITOLO_FINE(new Font("sanserif", Font.PLAIN, 16)),
     TESTO(new Font("sanserif", Font.BOLD, 12)),
