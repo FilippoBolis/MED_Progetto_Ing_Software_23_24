@@ -25,7 +25,8 @@ public class LogicaBottoneInserisciDiariaInfermieristica extends LogicaBottone{
 			if(modello.modelloGestorePaziente.qualcunoSelezionato()) {
 				if (!modello.modelloGestoreUtente.getMansioneUtente().equals("Operatore")) {
 					InserisciDiariaInfermieristicaFrame frame = new InserisciDiariaInfermieristicaFrame();
-					ConfermaAggiungiDiariaInfermieristica confermaButton = new ConfermaAggiungiDiariaInfermieristica(frame,frameDeiPazienti,modello);	
+					frameDeiPazienti.sfondoFrame.setEnabled(false);
+					new ConfermaAggiungiDiariaInfermieristica(frame,frameDeiPazienti,modello);	
 				}
 				else {
 					new ErroreFrame(frameDeiPazienti.sfondoFrame, "Ci dispiace informarla che, secondo le nostre politiche, il suo account da " + modello.modelloGestoreUtente.getMansioneUtente() + " non è abilitato alla creazione di diarie infermieristiche");

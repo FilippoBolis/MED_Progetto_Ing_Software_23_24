@@ -83,6 +83,7 @@ public class ConfermaInformazioniExtra {
 							else {
 								new ErroreFrame(frame.sfondoFrame, "E' avvenuto un problema durante l'aggiunta della diaria medica, se il problema persiste chiamare un tecnico");
 							}
+							frameDeiPazienti.sfondoFrame.setEnabled(true);
 							frame.sfondoFrame.dispose();
 					    }
 					});
@@ -91,5 +92,13 @@ public class ConfermaInformazioniExtra {
 				}
 			}
 		});
+		
+		frame.sfondoFrame.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                frameDeiPazienti.sfondoFrame.setEnabled(true);
+                frame.sfondoFrame.dispose();
+            }
+        });
 	}
 }

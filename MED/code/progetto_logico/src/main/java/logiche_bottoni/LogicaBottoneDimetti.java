@@ -26,8 +26,9 @@ public class LogicaBottoneDimetti extends LogicaBottone{
 			public void actionPerformed(ActionEvent e) {
 			if(modello.modelloGestorePaziente.qualcunoSelezionato()) {
 				if (modello.modelloGestoreUtente.getMansioneUtente().equals("Medico")) {
+					frameDeiPazienti.sfondoFrame.setEnabled(false);
 					DimettiPazienteFrame frame = new DimettiPazienteFrame();
-					ConfermaDimettiPaziente confermaButton = new ConfermaDimettiPaziente(frame,frameDeiPazienti,modello);
+					new ConfermaDimettiPaziente(frame,frameDeiPazienti,modello);
 					
 				}
 				else {

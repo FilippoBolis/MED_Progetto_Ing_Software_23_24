@@ -72,6 +72,7 @@ public class ConfermaAggiungiDiariaInfermieristica {
 						else {
 							new ErroreFrame(frame.sfondoFrame, "E' avvenuto un problema nell'inserimento della diaria infermieristica, se il problema persiste chiamare un tecnico");
 						}
+						frameDeiPazienti.sfondoFrame.setEnabled(true);
 						frame.sfondoFrame.dispose();
 					}
 					else {
@@ -82,5 +83,13 @@ public class ConfermaAggiungiDiariaInfermieristica {
 				}
 			}
 		});
+		
+		frame.sfondoFrame.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                frameDeiPazienti.sfondoFrame.setEnabled(true);
+                frame.sfondoFrame.dispose();
+            }
+        });
 	}
 }

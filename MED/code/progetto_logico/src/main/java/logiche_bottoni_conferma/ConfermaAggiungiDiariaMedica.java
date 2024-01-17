@@ -14,33 +14,42 @@ import modelli.ModelloGestoreLogicaGenerale;
 
 public class ConfermaAggiungiDiariaMedica {
 	
-	private InserisciDiariaFrame frameDiaria;
+	private InserisciDiariaFrame frame;
 	private ModelloGestoreLogicaGenerale modello;
 	private PazientiFrame frameDeiPazienti;
 		
 	public ConfermaAggiungiDiariaMedica(InserisciDiariaFrame v1, PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		frameDeiPazienti = v2;
-		frameDiaria = v1;
+		frame = v1;
 		modello = m;
 		start();
 	}
 		
 	protected void start() {
-		frameDiaria.avantiButton.addActionListener(new ActionListener() {
+		frame.avantiButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String motivo = frameDiaria.motivoTextField.getText();
-				String storico = frameDiaria.storicoTextField.getText();
-				String farmaci = frameDiaria.farmaciTextArea.getText();
-				String repartoconsigliato = frameDiaria.repartoComboBox.getSelectedItem().toString();
+				String motivo = frame.motivoTextField.getText();
+				String storico = frame.storicoTextField.getText();
+				String farmaci = frame.farmaciTextArea.getText();
+				String repartoconsigliato = frame.repartoComboBox.getSelectedItem().toString();
 				if(!motivo.isBlank() && !storico.isBlank() && !farmaci.isBlank()) {
 					InserisciInformazioniFrame frameInformazioniExtra = new InserisciInformazioniFrame();
-					ConfermaInformazioniExtra button = new ConfermaInformazioniExtra(frameInformazioniExtra,frameDeiPazienti,modello,motivo,repartoconsigliato,storico,farmaci);
-					frameDiaria.sfondoFrame.dispose();
+					new ConfermaInformazioniExtra(frameInformazioniExtra,frameDeiPazienti,modello,motivo,repartoconsigliato,storico,farmaci);
+					frameDeiPazienti.sfondoFrame.setEnabled(true);
+					frame.sfondoFrame.dispose();
 				}else {
-					new ErroreFrame(frameDiaria.sfondoFrame, "Alcuni campi sono vuoti");
+					new ErroreFrame(frame.sfondoFrame, "Alcuni campi sono vuoti");
 				}
 			}
 		});
+		
+		frame.sfondoFrame.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                frameDeiPazienti.sfondoFrame.setEnabled(true);
+                frame.sfondoFrame.dispose();
+            }
+        });
 	}
 }

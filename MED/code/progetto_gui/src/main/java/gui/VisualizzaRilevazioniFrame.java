@@ -81,7 +81,8 @@ public class VisualizzaRilevazioniFrame {
                 return false;
             }
         };
-        table.setBackground(UIManager.getColor("Panel.background"));
+
+        table.setBackground(Color.WHITE);
         table.setRowHeight(30);
         table.setShowHorizontalLines(true);
         table.setShowVerticalLines(true);
@@ -89,6 +90,7 @@ public class VisualizzaRilevazioniFrame {
         
 		JScrollPane scrollPanel = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPanel.setBounds(30, 129, 666, 323);
+        scrollPanel.getViewport().setBackground(UIManager.getColor("Panel.background"));
         scrollPanel.setBorder(BorderFactory.createEmptyBorder());
         scrollPanel.setViewportView(table);
         rilevazioniPanel.add(scrollPanel);

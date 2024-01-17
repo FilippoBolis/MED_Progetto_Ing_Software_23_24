@@ -45,6 +45,7 @@ public class LogicaBottoneModificaDiariaMedica extends LogicaBottone{
 						frame.farmaciTextArea.setText(farmaci);
 						frame.motivoTextField.setText(motivo);
 						frame.storicoTextField.setText(storico);
+						frameDeiPazienti.sfondoFrame.setEnabled(false);
 					} catch (SQLException e1) {
 						System.out.println(e1.getMessage());
 					}

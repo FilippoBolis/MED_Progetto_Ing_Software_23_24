@@ -25,7 +25,8 @@ public class LogicaBottoneInserisciPaziente extends LogicaBottone{
 				System.out.println("entrato");
 			if (modello.modelloGestoreUtente.getMansioneUtente().equals("Operatore")) {
 				InserisciPazienteFrame frame = new InserisciPazienteFrame();
-				ConfermaAggiungiPaziente confermaButton = new ConfermaAggiungiPaziente(frame,frameDeiPazienti,modello);
+				frameDeiPazienti.sfondoFrame.setEnabled(false);
+				new ConfermaAggiungiPaziente(frame,frameDeiPazienti,modello);
 				
 			}
 			else {

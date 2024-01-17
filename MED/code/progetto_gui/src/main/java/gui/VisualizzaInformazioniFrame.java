@@ -3,7 +3,6 @@ package gui;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -28,7 +27,7 @@ public class VisualizzaInformazioniFrame {
 			e.printStackTrace();
 		}
 		sfondoFrame = new JFrame();
-		sfondoFrame.setSize(530, 540);
+		sfondoFrame.setSize(530, 518);
 		sfondoFrame.setTitle("<html><font color='white'>M.E.D Visualizza informazioni</font></html>");
 		sfondoFrame.getRootPane().setBackground(Stile.AZZURRO.getColore());
 		sfondoFrame.getRootPane().setForeground(Color.WHITE);
@@ -41,7 +40,7 @@ public class VisualizzaInformazioniFrame {
 		sfondoPanel.setLayout(null);
 		
 		JPanel infoPanel = new JPanel();
-		infoPanel.setBounds(10, 10, 496, 482);
+		infoPanel.setBounds(10, 10, 496, 460);
 		infoPanel.setBackground(Color.WHITE);
 		infoPanel.setLayout(null);
 		sfondoPanel.add(infoPanel);
@@ -66,6 +65,7 @@ public class VisualizzaInformazioniFrame {
 		
 		infoTextArea = new JTextArea();
 		infoTextArea.setBounds(30, 129, 436, 301);
+		infoTextArea.setBackground(Color.WHITE);
 		infoTextArea.setLineWrap(true); 
         infoTextArea.setWrapStyleWord(true); 
         infoTextArea.setEditable(false);

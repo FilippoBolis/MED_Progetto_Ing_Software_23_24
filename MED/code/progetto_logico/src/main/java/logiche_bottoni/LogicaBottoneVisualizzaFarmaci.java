@@ -14,6 +14,8 @@ import org.jooq.impl.DSL;
 
 import gestore_db.CreateDB;
 import gui.*;
+import logiche_bottoni_conferma.EsciVisualizzaDiarieInfermieristiche;
+import logiche_bottoni_conferma.EsciVisualizzaFarmaci;
 import med_db.jooq.generated.tables.Diariamed;
 import modelli.ModelloGestoreLogicaGenerale;
 
@@ -33,6 +35,7 @@ public class LogicaBottoneVisualizzaFarmaci extends LogicaBottone{
 			if(modello.modelloGestorePaziente.qualcunoSelezionato()) {
 				if (!modello.modelloGestoreUtente.getMansioneUtente().equals("Operatore")) {
 					VisualizzaFarmaciFrame frame = new VisualizzaFarmaciFrame();
+					new EsciVisualizzaFarmaci(frame, frameDeiPazienti);
 					Connection conn;
 					try {
 						conn = DriverManager.getConnection(CreateDB.DB_URL);
@@ -40,6 +43,7 @@ public class LogicaBottoneVisualizzaFarmaci extends LogicaBottone{
 						String farmaci = contesto.select(Diariamed.DIARIAMED.FARMACI).from(Diariamed.DIARIAMED).where(Diariamed.DIARIAMED.CODICE_DEGENTE.eq(modello.modelloGestorePaziente.getCodice()),Diariamed.DIARIAMED.CODICE.eq(1)).fetchOneInto(String.class);
 						frame.farmaciTextArea.setText(farmaci);
 						frame.setPersonaView(modello.modelloGestorePaziente.getNome() + " " + modello.modelloGestorePaziente.getCognome());
+						frameDeiPazienti.sfondoFrame.setEnabled(false);
 					} catch (SQLException e1) {
 						System.out.println(e1.getMessage());
 					}

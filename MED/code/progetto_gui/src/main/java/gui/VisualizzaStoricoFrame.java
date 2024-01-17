@@ -4,7 +4,6 @@ import java.awt.Color;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -30,7 +29,7 @@ public class VisualizzaStoricoFrame {
 			e.printStackTrace();
 		}
 		sfondoFrame = new JFrame();
-		sfondoFrame.setSize(530, 540);
+		sfondoFrame.setSize(530, 518);
 		sfondoFrame.setTitle("<html><font color='white'>M.E.D Visualizza storico</font></html>");
 		sfondoFrame.getRootPane().setBackground(Stile.AZZURRO.getColore());
 		sfondoFrame.getRootPane().setForeground(Color.WHITE);
@@ -43,7 +42,7 @@ public class VisualizzaStoricoFrame {
 		sfondoPanel.setLayout(null);
 		
 		JPanel storicoPanel = new JPanel();
-		storicoPanel.setBounds(10, 10, 496, 482);
+		storicoPanel.setBounds(10, 10, 496, 460);
 		storicoPanel.setBackground(Color.WHITE);
 		storicoPanel.setLayout(null);
 		sfondoPanel.add(storicoPanel);
@@ -68,6 +67,7 @@ public class VisualizzaStoricoFrame {
 		
 		storicoTextArea = new JTextArea();
 		storicoTextArea.setBounds(30, 129, 436, 301);
+        storicoTextArea.setBackground(Color.WHITE);
 		storicoTextArea.setLineWrap(true); 
         storicoTextArea.setWrapStyleWord(true); 
         storicoTextArea.setEditable(false);

@@ -31,6 +31,7 @@ public class LoginFrame extends JFrame {
 		} catch (UnsupportedLookAndFeelException e) {
 			e.printStackTrace();
 		}
+		
 		sfondoFrame = new JFrame();
 		sfondoFrame.setSize(680, 400);
 		sfondoFrame.setTitle("<html><font color='white'>M.E.D Login</font></html>");

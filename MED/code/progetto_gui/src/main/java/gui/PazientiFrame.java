@@ -75,12 +75,15 @@ public class PazientiFrame {
     public boolean updating = false;
 
 	public PazientiFrame(ModelloGestoreLogicaGenerale modello) {
+		
 		this.modello = modello;
+		
 		try {
 			UIManager.setLookAndFeel(new FlatIntelliJLaf());
 		} catch (UnsupportedLookAndFeelException e) {
 			e.printStackTrace();
 		}
+		
 		sfondoFrame = new JFrame();
 		sfondoFrame.setSize(1280, 720);
 		sfondoFrame.setTitle("<html><font color='white'>M.E.D Pazienti</font></html>");
@@ -415,7 +418,7 @@ public class PazientiFrame {
        
         TableRowSorter<DefaultTableModel> ordineColonna = new TableRowSorter<>(tableModel);
         table.setRowSorter(ordineColonna);
-        
+       
 		sfondoFrame.setVisible(true);
 	}
 	
@@ -457,8 +460,7 @@ public class PazientiFrame {
 		motivoPazienteLabel.setText(modello.modelloGestoreVisualizzazioneDatiPaziente.getStringaCondizionePaziente());
 	}
 	
-    @SuppressWarnings("serial")
-	static class TabellaRenderer extends DefaultTableCellRenderer {
+    static class TabellaRenderer extends DefaultTableCellRenderer {
 
     	private final ImageIcon rossoImage = new ImageIcon("../progetto_gui/src/main/resources/rosso.png");
     	private final ImageIcon gialloImage = new ImageIcon("../progetto_gui/src/main/resources/giallo.png");

@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.SwingUtilities;
 
 import gui.*;
+import logiche_bottoni_conferma.EsciVisualizzaDiarieInfermieristiche;
 import logiche_frame_pronto_soccorso.LogicaDelleDiarieInfermieristicheTabella;
 import modelli.ModelloGestoreLogicaGenerale;
 
@@ -25,7 +26,9 @@ public class LogicaBottoneVisualizzaDiarieInfermieristiche extends LogicaBottone
 			if(modello.modelloGestorePaziente.qualcunoSelezionato()) {
 				if (!modello.modelloGestoreUtente.getMansioneUtente().equals("Operatore")) {
 					VisualizzaDiarieInfFrame frame = new VisualizzaDiarieInfFrame(modello);
-					LogicaDelleDiarieInfermieristicheTabella riempimento = new LogicaDelleDiarieInfermieristicheTabella(frame,modello);
+					frameDeiPazienti.sfondoFrame.setEnabled(false);
+					new LogicaDelleDiarieInfermieristicheTabella(frame,modello);
+					new EsciVisualizzaDiarieInfermieristiche(frame, frameDeiPazienti);
 				}
 				else {
 					new ErroreFrame(frameDeiPazienti.sfondoFrame, "Ci dispiace informarla che, secondo le nostre politiche di privacy, il suo account da " + modello.modelloGestoreUtente.getMansioneUtente() + " non è abilitato alla visualizzazione delle diarie infermieristiche dei pazienti");

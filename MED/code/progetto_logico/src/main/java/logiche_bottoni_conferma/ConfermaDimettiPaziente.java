@@ -39,8 +39,17 @@ public class ConfermaDimettiPaziente {
 				else {
 					new ErroreFrame(frame.sfondoFrame, "E' avvenuto un problema durante la rimozione del paziente, se il problema persiste chiamare un tecnico");
 				}
+				frameDeiPazienti.sfondoFrame.setEnabled(true);
 				frame.sfondoFrame.dispose();
 			}
 		});
+		
+		frame.sfondoFrame.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                frameDeiPazienti.sfondoFrame.setEnabled(true);
+                frame.sfondoFrame.dispose();
+            }
+        });
 	}
 }

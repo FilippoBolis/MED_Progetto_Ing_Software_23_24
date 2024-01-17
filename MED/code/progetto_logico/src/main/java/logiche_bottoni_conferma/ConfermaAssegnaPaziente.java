@@ -69,6 +69,7 @@ public class ConfermaAssegnaPaziente {
 								else {
 									new ErroreFrame(frame.sfondoFrame, "E' avvenuto un problema durante l'assegnazione del posto letto, se il problema persiste chiamare un tecnico");
 								}
+								frameDeiPazienti.sfondoFrame.setEnabled(true);
 								frame.sfondoFrame.dispose();
 						    }
 						});
@@ -81,4 +82,12 @@ public class ConfermaAssegnaPaziente {
 				}
 			}
 		});
+		
+		frame.sfondoFrame.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                frameDeiPazienti.sfondoFrame.setEnabled(true);
+                frame.sfondoFrame.dispose();
+            }
+        });
 }}
