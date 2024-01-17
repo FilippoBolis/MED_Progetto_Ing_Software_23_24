@@ -5,7 +5,6 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,7 +17,7 @@ import com.formdev.flatlaf.FlatIntelliJLaf;
 import modelli.ModelloGestoreLogicaGenerale;
 import javax.swing.JTextArea;
 
-public class AggiungiDiariaFrame {
+public class InserisciDiariaFrame {
 
 	ImageIcon aggiungiDiariaImage = new ImageIcon("../progetto_gui/src/main/resources/aggiungi_diaria.png");
 	public JFrame sfondoFrame;
@@ -28,7 +27,7 @@ public class AggiungiDiariaFrame {
 	public JTextArea farmaciTextArea;
 	public JComboBox<String> repartoComboBox;
 	
-	public AggiungiDiariaFrame(ModelloGestoreLogicaGenerale modello) {
+	public InserisciDiariaFrame(ModelloGestoreLogicaGenerale modello) {
         
 		try {
 			UIManager.setLookAndFeel(new FlatIntelliJLaf());
@@ -38,7 +37,7 @@ public class AggiungiDiariaFrame {
 		
 		sfondoFrame = new JFrame();
 		sfondoFrame.setSize(530, 540);
-		sfondoFrame.setTitle("<html><font color='white'>M.E.D Inserisci Diaria Medica</font></html>");
+		sfondoFrame.setTitle("<html><font color='white'>M.E.D Inserisci diaria medica</font></html>");
 		sfondoFrame.getRootPane().setBackground(Stile.AZZURRO.getColore());
 		sfondoFrame.getRootPane().setForeground(Color.WHITE);
 		sfondoFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -58,7 +57,7 @@ public class AggiungiDiariaFrame {
 		JLabel titoloLabel = new JLabel("Inserisci diaria medica");
 		titoloLabel.setBounds(100, 30, 366, 48);
 		titoloLabel.setForeground(Stile.BLU_SCURO.getColore());
-		titoloLabel.setFont(Stile.TITOLO.getFont());
+		titoloLabel.setFont(Stile.TITOLO_FINESTRE.getFont());
 		titoloLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		diariaPanel.add(titoloLabel);
 		
@@ -68,31 +67,31 @@ public class AggiungiDiariaFrame {
 		diariaPanel.add(immagineLabel);
 		
 		JLabel motivoLabel = new JLabel("Motivo");
-		motivoLabel.setBounds(30, 96, 116, 30);
+		motivoLabel.setBounds(30, 96, 436, 30);
 		motivoLabel.setForeground(Color.GRAY);
 		motivoLabel.setFont(Stile.TESTO.getFont());
 		diariaPanel.add(motivoLabel);
 		
 		motivoTextField = new JTextField();
 		motivoTextField.setBounds(30, 129, 436, 30);
-		diariaPanel.add(motivoTextField);
 		motivoTextField.setColumns(30);
+		diariaPanel.add(motivoTextField);
 		
 		JLabel storicoLabel = new JLabel("Storico");
-		storicoLabel.setBounds(30, 162, 137, 30);
+		storicoLabel.setBounds(30, 162, 436, 30);
 		storicoLabel.setForeground(Color.GRAY);
 		storicoLabel.setFont(Stile.TESTO.getFont());
 		diariaPanel.add(storicoLabel);
 		
 		storicoTextField = new JTextField();
 		storicoTextField.setBounds(30, 195, 436, 30);
-		diariaPanel.add(storicoTextField);
 		storicoTextField.setColumns(30);
+		diariaPanel.add(storicoTextField);
 		
 		JLabel repartoLabel = new JLabel("Reparto consigliato");
+		repartoLabel.setBounds(30, 228, 436, 30);
 		repartoLabel.setForeground(Color.GRAY);
 		repartoLabel.setFont(Stile.TESTO.getFont());
-		repartoLabel.setBounds(30, 228, 137, 30);
 		diariaPanel.add(repartoLabel);
 		
 		repartoComboBox = new JComboBox<String>();
@@ -103,13 +102,14 @@ public class AggiungiDiariaFrame {
 		diariaPanel.add(repartoComboBox);
 		
 		JLabel farmaciLabel = new JLabel("Farmaci");
-		farmaciLabel.setBounds(30, 294, 128, 30);
+		farmaciLabel.setBounds(30, 294, 436, 30);
 		farmaciLabel.setForeground(Color.GRAY);
 		farmaciLabel.setFont(Stile.TESTO.getFont());
 		diariaPanel.add(farmaciLabel);
 		
 		farmaciTextArea = new JTextArea();
 		farmaciTextArea.setBounds(165, 231, 218, 30);
+		farmaciTextArea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
         farmaciTextArea.setLineWrap(true); 
         farmaciTextArea.setWrapStyleWord(true);
 		diariaPanel.add(farmaciTextArea);

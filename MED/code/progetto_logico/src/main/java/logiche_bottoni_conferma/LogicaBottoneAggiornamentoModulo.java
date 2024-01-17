@@ -33,10 +33,10 @@ public class LogicaBottoneAggiornamentoModulo{
 	
 	private static String DB_REL_FILELOGIC = "../progetto_database/db/db.db3";
 	private static String DB_URLLOGIC = "jdbc:sqlite:" + DB_REL_FILELOGIC;
-	private AssegnaPazienteFrame frame;
+	private AssegnaPostoFrame frame;
 	private ModelloGestoreLogicaGenerale modello;
 	
-	public LogicaBottoneAggiornamentoModulo(AssegnaPazienteFrame v2, ModelloGestoreLogicaGenerale m) {
+	public LogicaBottoneAggiornamentoModulo(AssegnaPostoFrame v2, ModelloGestoreLogicaGenerale m) {
 		frame = v2;
 		modello = m;
 		start();

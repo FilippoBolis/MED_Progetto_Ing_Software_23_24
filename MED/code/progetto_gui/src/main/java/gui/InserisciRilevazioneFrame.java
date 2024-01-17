@@ -12,7 +12,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 
-public class AggiungiRilevazioneFrame {
+public class InserisciRilevazioneFrame {
 	ImageIcon insRilevazioneImage = new ImageIcon("../progetto_gui/src/main/resources/aggiungi_rilevazioni.png");
 	public JFrame sfondoFrame;
 	public JTextField glicemiaTextField;
@@ -21,7 +21,7 @@ public class AggiungiRilevazioneFrame {
 	public JTextField frequenzaTextField;
 	public JTextField doloreTextField;
 
-	public AggiungiRilevazioneFrame() {
+	public InserisciRilevazioneFrame() {
 
 		try {
 			UIManager.setLookAndFeel(new FlatIntelliJLaf());
@@ -29,11 +29,11 @@ public class AggiungiRilevazioneFrame {
 			e.printStackTrace();
 		}
 		sfondoFrame = new JFrame();
-		sfondoFrame.setSize(680, 400);
-		sfondoFrame.setTitle("<html><font color='white'>M.E.D Inserisci Rilevazione </font></html>");
+		sfondoFrame.setSize(530, 533);
+		sfondoFrame.setTitle("<html><font color='white'>M.E.D Inserisci rilevazione </font></html>");
 		sfondoFrame.getRootPane().setBackground(Stile.AZZURRO.getColore());
 		sfondoFrame.getRootPane().setForeground(Color.WHITE);
-		sfondoFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		sfondoFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		sfondoFrame.setLocationRelativeTo(null);
 		sfondoFrame.setResizable(false);
 
@@ -42,74 +42,85 @@ public class AggiungiRilevazioneFrame {
 		sfondoPanel.setLayout(null);
 
 		JPanel rilevazionePanel = new JPanel();
-		rilevazionePanel.setBounds(10, 10, 646, 342);
+		rilevazionePanel.setBounds(10, 10, 496, 475);
 		rilevazionePanel.setBackground(Color.WHITE);
 		rilevazionePanel.setLayout(null);
 		sfondoPanel.add(rilevazionePanel);
 
-		JLabel inserisciRilevazioneLabel = new JLabel("Inserisci Rilevazione");
-		inserisciRilevazioneLabel.setBounds(10, 11, 296, 40);
+		JLabel inserisciRilevazioneLabel = new JLabel("Inserisci rilevazione");
+		inserisciRilevazioneLabel.setBounds(100, 30, 366, 48);
 		inserisciRilevazioneLabel.setForeground(Stile.BLU_SCURO.getColore());
-		inserisciRilevazioneLabel.setFont(Stile.TITOLO.getFont());
-		inserisciRilevazioneLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		inserisciRilevazioneLabel.setFont(Stile.TITOLO_FINESTRE.getFont());
+		inserisciRilevazioneLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		rilevazionePanel.add(inserisciRilevazioneLabel);
 
 		JLabel immagineLabel = new JLabel();
-		immagineLabel.setBounds(316, 14, 48, 48);
+		immagineLabel.setBounds(30, 30, 48, 48);
 		immagineLabel.setIcon(insRilevazioneImage);
 		rilevazionePanel.add(immagineLabel);
 
 		JLabel glicemiaLabel = new JLabel("Glicemia");
-		glicemiaLabel.setBounds(10, 93, 137, 21);
+		glicemiaLabel.setBounds(30, 96, 436, 30);
+		glicemiaLabel.setForeground(Color.GRAY);
+		glicemiaLabel.setFont(Stile.TESTO.getFont());
 		rilevazionePanel.add(glicemiaLabel);
 		
 		glicemiaTextField = new JTextField();
-		glicemiaTextField.setBounds(127, 93, 86, 20);
+		glicemiaTextField.setBounds(30, 129, 436, 30);
+		glicemiaTextField.setColumns(30);
 		rilevazionePanel.add(glicemiaTextField);
-		glicemiaTextField.setColumns(10);
 
 		JLabel temperaturaLabel = new JLabel("Temperatura");
-		temperaturaLabel.setBounds(10, 128, 96, 20);
+		temperaturaLabel.setBounds(30, 162, 436, 30);
+		temperaturaLabel.setForeground(Color.GRAY);
+		temperaturaLabel.setFont(Stile.TESTO.getFont());
 		rilevazionePanel.add(temperaturaLabel);
 
 		temperaturaTextField = new JTextField();
-		temperaturaTextField.setBounds(127, 128, 86, 20);
+		temperaturaTextField.setBounds(30, 195, 436, 30);
+		temperaturaTextField.setColumns(30);
 		rilevazionePanel.add(temperaturaTextField);
-		temperaturaTextField.setColumns(10);
 		
 		JLabel pressioneLabel = new JLabel("Pressione");
-		pressioneLabel.setBounds(10, 168, 65, 14);
+		pressioneLabel.setBounds(30, 228, 436, 30);
+		pressioneLabel.setForeground(Color.GRAY);
+		pressioneLabel.setFont(Stile.TESTO.getFont());
 		rilevazionePanel.add(pressioneLabel);
 		
 		pressioneTextField = new JTextField();
-		pressioneTextField.setBounds(127, 165, 86, 20);
+		pressioneTextField.setBounds(30, 261, 436, 30);
+		pressioneTextField.setColumns(30);
 		rilevazionePanel.add(pressioneTextField);
-		pressioneTextField.setColumns(10);
 
 		JLabel frequenzaLabel = new JLabel("Frequenza Cardiaca");
-		frequenzaLabel.setBounds(10, 203, 107, 14);
+		frequenzaLabel.setBounds(30, 294, 436, 30);
+		frequenzaLabel.setForeground(Color.GRAY);
+		frequenzaLabel.setFont(Stile.TESTO.getFont());
 		rilevazionePanel.add(frequenzaLabel);
 		
 		frequenzaTextField = new JTextField();
-		frequenzaTextField.setBounds(127, 200, 86, 20);
+		frequenzaTextField.setBounds(30, 327, 436, 30);
+		frequenzaTextField.setColumns(30);
 		rilevazionePanel.add(frequenzaTextField);
-		frequenzaTextField.setColumns(10);
 
 		JLabel doloreLabel = new JLabel("Dolore");
-		doloreLabel.setBounds(10, 236, 46, 14);
+		doloreLabel.setBounds(30, 360, 436, 30);
+		doloreLabel.setForeground(Color.GRAY);
+		doloreLabel.setFont(Stile.TESTO.getFont());
 		rilevazionePanel.add(doloreLabel);
 		
 		doloreTextField = new JTextField();
-		doloreTextField.setBounds(127, 233, 86, 20);
-		rilevazionePanel.add(doloreTextField);
-		doloreTextField.setColumns(10);
+		doloreTextField.setBounds(30, 393, 436, 30);
 		sfondoFrame.setVisible(true);
+		doloreTextField.setColumns(30);
+		rilevazionePanel.add(doloreTextField);
 
 		JButton confermaButton = new JButton("Conferma");
-		confermaButton.setBounds(440, 309, 89, 23);
+		confermaButton.setBounds(346, 434, 120, 30);
+		confermaButton.setBackground(Stile.AZZURRO.getColore());
+		confermaButton.setForeground(Color.WHITE);
+		confermaButton.setFont(Stile.SOTTOTITOLO.getFont());
 		rilevazionePanel.add(confermaButton);
 	}
-	/*
-	* public static void main(String[] args) { new InserisciRilevazioneFrame(); }
-	*/ 
+
 }

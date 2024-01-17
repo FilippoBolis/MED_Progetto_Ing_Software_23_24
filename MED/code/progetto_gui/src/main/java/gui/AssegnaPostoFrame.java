@@ -15,7 +15,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 
-public class AssegnaPazienteFrame {
+public class AssegnaPostoFrame {
 
 	ImageIcon assegnaPazienteImage = new ImageIcon("../progetto_gui/src/main/resources/sposta_paziente.png");
 	public JFrame sfondoFrame;
@@ -25,16 +25,19 @@ public class AssegnaPazienteFrame {
 	public JButton confermaButton;
 	private ModelloGestoreLogicaGenerale modello;
 
-	public AssegnaPazienteFrame(ModelloGestoreLogicaGenerale modello) {
-		this.modello=modello;
+	public AssegnaPostoFrame(ModelloGestoreLogicaGenerale modello) {
+		
+		this.modello = modello;
+		
 		try {
 			UIManager.setLookAndFeel(new FlatIntelliJLaf());
 		} catch (UnsupportedLookAndFeelException e) {
 			e.printStackTrace();
 		}
+		
 		sfondoFrame = new JFrame();
-		sfondoFrame.setSize(680, 400);
-		sfondoFrame.setTitle("<html><font color='white'>M.E.D Assegna Paziente </font></html>");
+		sfondoFrame.setSize(530, 401);
+		sfondoFrame.setTitle("<html><font color='white'>M.E.D Assegna posto letto</font></html>");
 		sfondoFrame.getRootPane().setBackground(Stile.AZZURRO.getColore());
 		sfondoFrame.getRootPane().setForeground(Color.WHITE);
 		sfondoFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -45,55 +48,65 @@ public class AssegnaPazienteFrame {
 		sfondoFrame.getContentPane().add(sfondoPanel);
 		sfondoPanel.setLayout(null);
 
-		JPanel PazientePanel = new JPanel();
-		PazientePanel.setBounds(10, 10, 646, 342);
-		PazientePanel.setBackground(Color.WHITE);
-		PazientePanel.setLayout(null);
-		sfondoPanel.add(PazientePanel);
+		JPanel pazientePanel = new JPanel();
+		pazientePanel.setBounds(10, 10, 496, 343);
+		pazientePanel.setBackground(Color.WHITE);
+		pazientePanel.setLayout(null);
+		sfondoPanel.add(pazientePanel);
 
-		JLabel assegnaPazienteLabel = new JLabel("Assegna Paziente");
-		assegnaPazienteLabel.setBounds(10, 11, 261, 40);
+		JLabel assegnaPazienteLabel = new JLabel("Assegna posto letto");
+		assegnaPazienteLabel.setBounds(100, 30, 366, 48);
 		assegnaPazienteLabel.setForeground(Stile.BLU_SCURO.getColore());
-		assegnaPazienteLabel.setFont(Stile.TITOLO.getFont());
-		assegnaPazienteLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		PazientePanel.add(assegnaPazienteLabel);
+		assegnaPazienteLabel.setFont(Stile.TITOLO_FINESTRE.getFont());
+		assegnaPazienteLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		pazientePanel.add(assegnaPazienteLabel);
 
 		JLabel immagineLabel = new JLabel();
-		immagineLabel.setBounds(316, 14, 48, 48);
+		immagineLabel.setBounds(30, 30, 48, 48);
 		immagineLabel.setIcon(assegnaPazienteImage);
-		PazientePanel.add(immagineLabel);
+		pazientePanel.add(immagineLabel);
 		
 		JLabel repartoLabel = new JLabel("Reparto");
-		repartoLabel.setBounds(10, 120, 137, 21);
-		PazientePanel.add(repartoLabel);
+		repartoLabel.setBounds(30, 96, 436, 30);
+		repartoLabel.setForeground(Color.GRAY);
+		repartoLabel.setFont(Stile.TESTO.getFont());
+		pazientePanel.add(repartoLabel);
 		
 		repartoComboBox = new JComboBox<String>();
 		repartoComboBox.addItem(" ");
 		for (String nomeReparto : modello.modelloGestoreLogistica.getNomiReparti()) {
 			repartoComboBox.addItem(nomeReparto);
 		}
-		repartoComboBox.setBounds(147, 124, 149, 22);
-		PazientePanel.add(repartoComboBox);
+		repartoComboBox.setBounds(30, 129, 436, 30);
+		pazientePanel.add(repartoComboBox);
 
 		JLabel moduloLabel = new JLabel("Modulo");
-		moduloLabel.setBounds(10, 157, 137, 21);
-		PazientePanel.add(moduloLabel);
+		moduloLabel.setBounds(30, 162, 436, 30);
+		moduloLabel.setForeground(Color.GRAY);
+		moduloLabel.setFont(Stile.TESTO.getFont());
+		pazientePanel.add(moduloLabel);
 		
 		moduloComboBox = new JComboBox<String>();
-		moduloComboBox.setBounds(147, 156, 149, 22);
-		PazientePanel.add(moduloComboBox);
+		moduloComboBox.addItem(" ");
+		moduloComboBox.setBounds(30, 195, 436, 30);
+		pazientePanel.add(moduloComboBox);
 
 		JLabel postoLabel = new JLabel("Posto Letto");
-		postoLabel.setBounds(10, 189, 96, 20);
-		PazientePanel.add(postoLabel);
+		postoLabel.setBounds(30, 228, 436, 30);
+		postoLabel.setForeground(Color.GRAY);
+		postoLabel.setFont(Stile.TESTO.getFont());
+		pazientePanel.add(postoLabel);
 		
 		postoComboBox = new JComboBox<Integer>();
-		postoComboBox.setBounds(148, 188, 137, 22);
-		PazientePanel.add(postoComboBox);
+		postoComboBox.setBounds(30, 261, 436, 30);
+		pazientePanel.add(postoComboBox);
 
 		confermaButton = new JButton("Conferma");
-		confermaButton.setBounds(440, 309, 89, 23);
-		PazientePanel.add(confermaButton);
+		confermaButton.setBounds(346, 302, 120, 30);
+		confermaButton.setBackground(Stile.AZZURRO.getColore());
+		confermaButton.setForeground(Color.WHITE);
+		confermaButton.setFont(Stile.SOTTOTITOLO.getFont());
+		pazientePanel.add(confermaButton);
 		
 		sfondoFrame.setVisible(true);
 
@@ -101,6 +114,8 @@ public class AssegnaPazienteFrame {
 	
 	public void aggiornaModuliRepartoView() {
 		moduloComboBox.removeAllItems();
+		postoComboBox.removeAllItems();
+		moduloComboBox.addItem(" ");
 		for (String nomeModulo : modello.modelloGestoreLogistica.getNomiModuli()) {
 			moduloComboBox.addItem(nomeModulo);
 		}
@@ -108,7 +123,7 @@ public class AssegnaPazienteFrame {
 	
 	public void aggiornaLettiRepartoView() {
 		postoComboBox.removeAllItems();
-		//postoComboBox.addItem(2);
+		postoComboBox.addItem(null);
 		for (Integer numeroLetto : modello.modelloGestoreLogistica.getNumeroLettiDisponibili()) {
 			postoComboBox.addItem(numeroLetto);
 		}

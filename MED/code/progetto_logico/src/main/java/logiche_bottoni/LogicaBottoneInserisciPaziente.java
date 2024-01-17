@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import javax.swing.SwingUtilities;
 
 import gui.*;
+import logiche_bottoni_conferma.ConfermaAggiungiPaziente;
+import logiche_bottoni_conferma.ConfermaDimettiPaziente;
 import modelli.ModelloGestoreLogicaGenerale;
 
 public class LogicaBottoneInserisciPaziente extends LogicaBottone{
@@ -13,6 +15,7 @@ public class LogicaBottoneInserisciPaziente extends LogicaBottone{
 	
 	public LogicaBottoneInserisciPaziente(PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		super(v2,m);
+		start();
 	}
 	
 	protected void start() {
@@ -20,8 +23,11 @@ public class LogicaBottoneInserisciPaziente extends LogicaBottone{
 		frameDeiPazienti.inserisciPazienteButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				System.out.println("entrato");
 			if (modello.modelloGestoreUtente.getMansioneUtente().equals("Operatore")) {
-				//per ora vuoto
+				InserisciPazienteFrame frame = new InserisciPazienteFrame();
+				ConfermaAggiungiPaziente confermaButton = new ConfermaAggiungiPaziente(frame,frameDeiPazienti,modello);
+				
 			}
 			else {
 				new ErroreFrame(frameDeiPazienti.sfondoFrame, "Ci dispiace informarla che, secondo le nostre politiche, il suo account da " + modello.modelloGestoreUtente.getMansioneUtente() + " non è abilitato all'inserimento di nuovi degenti, provi a contattare il reparto di logistica");

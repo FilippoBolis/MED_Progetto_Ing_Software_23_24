@@ -5,20 +5,20 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JTextField;
 
-import gui.AggiungiDiariaFrame;
-import gui.AggiungiInfoPazienteFrame;
-import gui.AssegnaPazienteFrame;
+import gui.InserisciDiariaFrame;
+import gui.InserisciInfoFrame;
+import gui.AssegnaPostoFrame;
 import gui.ErroreFrame;
 import gui.PazientiFrame;
 import modelli.ModelloGestoreLogicaGenerale;
 
 public class ConfermaAggiungiDiariaMedica {
 	
-	private AggiungiDiariaFrame frameDiaria;
+	private InserisciDiariaFrame frameDiaria;
 	private ModelloGestoreLogicaGenerale modello;
 	private PazientiFrame frameDeiPazienti;
 		
-	public ConfermaAggiungiDiariaMedica(AggiungiDiariaFrame v1, PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
+	public ConfermaAggiungiDiariaMedica(InserisciDiariaFrame v1, PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		frameDeiPazienti = v2;
 		frameDiaria = v1;
 		modello = m;
@@ -34,7 +34,7 @@ public class ConfermaAggiungiDiariaMedica {
 				String farmaci = frameDiaria.farmaciTextArea.getText();
 				String repartoconsigliato = frameDiaria.repartoComboBox.getSelectedItem().toString();
 				if(!motivo.isBlank() && !storico.isBlank() && !farmaci.isBlank()) {
-					AggiungiInfoPazienteFrame frameInformazioniExtra = new AggiungiInfoPazienteFrame();
+					InserisciInfoFrame frameInformazioniExtra = new InserisciInfoFrame();
 					ConfermaInformazioniExtra button = new ConfermaInformazioniExtra(frameInformazioniExtra,frameDeiPazienti,modello,motivo,repartoconsigliato,storico,farmaci);
 					frameDiaria.sfondoFrame.dispose();
 				}else {

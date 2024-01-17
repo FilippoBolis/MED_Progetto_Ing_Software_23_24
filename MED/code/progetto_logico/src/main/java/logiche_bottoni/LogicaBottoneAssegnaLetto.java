@@ -25,7 +25,7 @@ public class LogicaBottoneAssegnaLetto extends LogicaBottone{
 			public void actionPerformed(ActionEvent e) {
 			if(modello.modelloGestorePaziente.qualcunoSelezionato()) {
 				if (modello.modelloGestoreUtente.getMansioneUtente().equals("Operatore")) {
-					AssegnaPazienteFrame frame = new AssegnaPazienteFrame(modello);
+					AssegnaPostoFrame frame = new AssegnaPostoFrame(modello);
 					LogicaBottoneAggiornamentoModulo bottoneAggiornamentoModuli = new LogicaBottoneAggiornamentoModulo(frame,modello);
 					LogicaBottoneAggiornamentoLettiDisponibili bottoneAggiornamentoLetti = new LogicaBottoneAggiornamentoLettiDisponibili(frame,modello);
 					ConfermaAssegnaPaziente button = new ConfermaAssegnaPaziente(frame,frameDeiPazienti,modello);
