@@ -57,9 +57,14 @@ public class ConfermaAggiungiDiariaInfermieristica {
 							note = frame.noteTextArea.getText();
 						}
 						Boolean importante = frame.importanteCheckBox.isSelected();
-						int ultimoCodice = contesto.select(Diariainf.DIARIAINF.CODICE).from(Diariainf.DIARIAINF).where(Diariainf.DIARIAINF.CODICE_DEGENTE.eq(modello.modelloGestorePaziente.getCodice())).orderBy(Diariainf.DIARIAINF.CODICE.desc()).limit(1).fetchOneInto(int.class);
-						System.out.println(ultimoCodice+1+modello.modelloGestorePaziente.getCodice()+modello.modelloGestoreUtente.getCodiceUtente()+LocalDate.now()+LocalTime.now().withNano(0)+note+importante+farmaco);
-						
+						Integer risultato = contesto.select(Diariainf.DIARIAINF.CODICE).from(Diariainf.DIARIAINF).where(Diariainf.DIARIAINF.CODICE_DEGENTE.eq(modello.modelloGestorePaziente.getCodice())).orderBy(Diariainf.DIARIAINF.CODICE.desc()).limit(1).fetchOneInto(int.class);
+						int ultimoCodice;
+						if (risultato == null) {
+							ultimoCodice = 0;
+						}
+						else {
+							ultimoCodice = risultato;
+						}
 						if (InserimentoJooq.getIstanza().diariaInf(ultimoCodice+1,modello.modelloGestorePaziente.getCodice(),modello.modelloGestoreUtente.getCodiceUtente(),LocalDate.now(),LocalTime.now().withNano(0),note,importante,farmaco) == 1) {
 							modello.modelloGestorePaziente.deselezionaPaziente();
 							frameDeiPazienti.updateStringaPaziente();

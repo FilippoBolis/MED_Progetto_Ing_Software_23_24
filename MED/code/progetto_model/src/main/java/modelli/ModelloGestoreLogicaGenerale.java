@@ -7,4 +7,5 @@ public class ModelloGestoreLogicaGenerale {
 	public ModelloGestoreVisualizzazioneDatiPaziente modelloGestoreVisualizzazioneDatiPaziente = new ModelloGestoreVisualizzazioneDatiPaziente();
 	public ModelloGestorePaziente modelloGestorePaziente = new ModelloGestorePaziente(modelloGestoreVisualizzazioneDatiPaziente);
 	public ModelloGestoreLogistica modelloGestoreLogistica = new ModelloGestoreLogistica();
+	public ModelloGestoreDiarieInfermieristiche modelloGestoreDiarieInfermieristiche = new ModelloGestoreDiarieInfermieristiche();
 }

@@ -18,7 +18,7 @@ public class VisualizzaInformazioniFrame {
 	private ImageIcon informazioniImage = new ImageIcon("../progetto_gui/src/main/resources/info.png");
 	public JFrame sfondoFrame;
 	public JTextArea infoTextArea;
-	public JButton confermaButton;
+	private JLabel informazioniLabel;
 	
 	public VisualizzaInformazioniFrame() {
 		
@@ -58,7 +58,7 @@ public class VisualizzaInformazioniFrame {
 		immagineLabel.setIcon(informazioniImage);
 		infoPanel.add(immagineLabel);
 		
-		JLabel informazioniLabel = new JLabel("Informazioni");
+		informazioniLabel = new JLabel("Informazioni");
 		informazioniLabel.setBounds(30, 96, 436, 30);
 		informazioniLabel.setForeground(Color.GRAY);
 		informazioniLabel.setFont(Stile.TESTO.getFont());
@@ -76,14 +76,10 @@ public class VisualizzaInformazioniFrame {
 		scrollPane.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
 		infoPanel.add(scrollPane);
 		
-        confermaButton = new JButton("Conferma");
-		confermaButton.setBounds(346, 441, 120, 30);
-		confermaButton.setBackground(Stile.AZZURRO.getColore());
-		confermaButton.setForeground(Color.WHITE);
-		confermaButton.setFont(Stile.SOTTOTITOLO.getFont());
-		infoPanel.add(confermaButton);
-		
 		sfondoFrame.setVisible(true);
 	
+	}
+	public void setPersonaView(String persona) {
+		informazioniLabel.setText("Informazioni di " + persona);
 	}
 }

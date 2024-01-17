@@ -17,15 +17,20 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableRowSorter;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 
+import gui.PazientiFrame.TabellaRenderer;
+import modelli.ModelloGestoreLogicaGenerale;
+
 public class VisualizzaDiarieInfFrame {
 	private ImageIcon diariaImage = new ImageIcon("../progetto_gui/src/main/resources/diaria.png");
 	public JFrame sfondoFrame;
 	public DefaultTableModel tableModel;
 	public JTable table;
-	
+	public boolean updating;
+	private JLabel diarieLabel;
+	private ModelloGestoreLogicaGenerale modello;
 	@SuppressWarnings("serial")
-	public VisualizzaDiarieInfFrame() {
-		
+	public VisualizzaDiarieInfFrame(ModelloGestoreLogicaGenerale m) {
+		modello = m;
 		try {
 			UIManager.setLookAndFeel(new FlatIntelliJLaf());
 		} catch (UnsupportedLookAndFeelException e) {
@@ -62,16 +67,19 @@ public class VisualizzaDiarieInfFrame {
 		immagineLabel.setIcon(diariaImage);
 		diariePanel.add(immagineLabel);
 		
-		JLabel diarieLabel = new JLabel("Diarie infermieristiche");
+		diarieLabel = new JLabel("Diarie infermieristiche");
 		diarieLabel.setBounds(30, 96, 666, 30);
 		diarieLabel.setForeground(Color.GRAY);
 		diarieLabel.setFont(Stile.TESTO.getFont());
 		diariePanel.add(diarieLabel);
 		
 		tableModel = new DefaultTableModel();
-        tableModel.addColumn("Note");
+		tableModel.addColumn("Codice Personale");
+		tableModel.addColumn("Note");
         tableModel.addColumn("Importante");
         tableModel.addColumn("Farmaci");
+        tableModel.addColumn("Data");
+        tableModel.addColumn("Ora");
        
         table = new JTable(tableModel) {
             @Override
@@ -104,5 +112,21 @@ public class VisualizzaDiarieInfFrame {
 		sfondoFrame.setVisible(true);
 	
 	}
-
+	public void setPersonaView(String persona) {
+		diarieLabel.setText("Diarie infermieristiche di " + persona);
+	}
+	
+	public synchronized  void updateViewTabella() {
+		if (updating) {
+            return;
+        }
+		updating = true;
+		for (int i = 0; i < modello.modelloGestoreDiarieInfermieristiche.getCodiceInfermiere().size(); i++) {
+	    	   tableModel.addRow(new Object[] {modello.modelloGestoreDiarieInfermieristiche.getCodiceInfermiere().get(i),modello.modelloGestoreDiarieInfermieristiche.getTableNoteParticolari().get(i),modello.modelloGestoreDiarieInfermieristiche.getTableImportante().get(i),modello.modelloGestoreDiarieInfermieristiche.getTableFarmaci().get(i),modello.modelloGestoreDiarieInfermieristiche.getTableDateArrivo().get(i),modello.modelloGestoreDiarieInfermieristiche.getTableOraArrivo().get(i)});
+		}
+        for(int i = 0; i < tableModel.getColumnCount(); i++) {
+            table.getColumnModel().getColumn(i).setCellRenderer(new TabellaRenderer());
+        }
+		updating = false;
+	}
 }

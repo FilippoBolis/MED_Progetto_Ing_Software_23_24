@@ -18,7 +18,7 @@ public class VisualizzaFarmaciFrame {
 	private ImageIcon farmaciImage = new ImageIcon("../progetto_gui/src/main/resources/farmaci.png");
 	public JFrame sfondoFrame;
 	public JTextArea farmaciTextArea;
-	public JButton confermaButton;
+	private JLabel FarmaciLabel;
 	
 	public VisualizzaFarmaciFrame() {
 		
@@ -58,7 +58,7 @@ public class VisualizzaFarmaciFrame {
 		immagineLabel.setIcon(farmaciImage);
 		farmaciPanel.add(immagineLabel);
 		
-		JLabel FarmaciLabel = new JLabel("Farmaci");
+		FarmaciLabel = new JLabel("Farmaci");
 		FarmaciLabel.setBounds(30, 96, 436, 30);
 		FarmaciLabel.setForeground(Color.GRAY);
 		FarmaciLabel.setFont(Stile.TESTO.getFont());
@@ -76,14 +76,9 @@ public class VisualizzaFarmaciFrame {
 		scrollPane.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
 		farmaciPanel.add(scrollPane);
 		
-        confermaButton = new JButton("Conferma");
-		confermaButton.setBounds(346, 441, 120, 30);
-		confermaButton.setBackground(Stile.AZZURRO.getColore());
-		confermaButton.setForeground(Color.WHITE);
-		confermaButton.setFont(Stile.SOTTOTITOLO.getFont());
-		farmaciPanel.add(confermaButton);
-		
 		sfondoFrame.setVisible(true);
-	
+	}
+	public void setPersonaView(String persona) {
+		FarmaciLabel.setText("Farmaci di " + persona);
 	}
 }

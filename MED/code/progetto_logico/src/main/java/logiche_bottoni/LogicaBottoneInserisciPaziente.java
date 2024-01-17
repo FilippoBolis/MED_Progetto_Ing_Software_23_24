@@ -7,7 +7,6 @@ import javax.swing.SwingUtilities;
 
 import gui.*;
 import logiche_bottoni_conferma.ConfermaAggiungiPaziente;
-import logiche_bottoni_conferma.ConfermaDimettiPaziente;
 import modelli.ModelloGestoreLogicaGenerale;
 
 public class LogicaBottoneInserisciPaziente extends LogicaBottone{

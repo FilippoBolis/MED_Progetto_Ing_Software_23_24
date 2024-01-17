@@ -63,7 +63,8 @@ public class LoginLogic {
 							    public void run() {
 							    	PazientiFrame pazientiFrame = new PazientiFrame(modello);
 							    	LogicaDellaPosizionePazienteTabella tabella	= new LogicaDellaPosizionePazienteTabella(pazientiFrame, modello,"in Pronto Soccorso");
-								   	new LogicaBottoneFiltroReparto(pazientiFrame,modello);
+								   	new LogicaBottoneVisualizzaDiarieInfermieristiche(pazientiFrame,modello);
+							    	new LogicaBottoneFiltroReparto(pazientiFrame,modello);
 								   	new LogicaBottoneInserisciPaziente(pazientiFrame,modello);
 									new LogicaBottoneModificaDiariaMedica(pazientiFrame,modello);
 									new LogicaBottoneAssegnaLetto(pazientiFrame,modello);

@@ -20,7 +20,7 @@ public class VisualizzaStoricoFrame {
 	private ImageIcon storicoImage = new ImageIcon("../progetto_gui/src/main/resources/storico.png");
 	public JFrame sfondoFrame;
 	public JTextArea storicoTextArea;
-	public JButton confermaButton;
+	private JLabel storicoLabel;
 	
 	public VisualizzaStoricoFrame() {
 		
@@ -60,7 +60,7 @@ public class VisualizzaStoricoFrame {
 		immagineLabel.setIcon(storicoImage);
 		storicoPanel.add(immagineLabel);
 		
-		JLabel storicoLabel = new JLabel("Storico");
+		storicoLabel = new JLabel("Storico");
 		storicoLabel.setBounds(30, 96, 436, 30);
 		storicoLabel.setForeground(Color.GRAY);
 		storicoLabel.setFont(Stile.TESTO.getFont());
@@ -78,14 +78,12 @@ public class VisualizzaStoricoFrame {
 		scrollPane.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
 		storicoPanel.add(scrollPane);
 		
-        confermaButton = new JButton("Conferma");
-		confermaButton.setBounds(346, 441, 120, 30);
-		confermaButton.setBackground(Stile.AZZURRO.getColore());
-		confermaButton.setForeground(Color.WHITE);
-		confermaButton.setFont(Stile.SOTTOTITOLO.getFont());
-		storicoPanel.add(confermaButton);
 		
 		sfondoFrame.setVisible(true);
 	
+	}
+	
+	public void setPersonaView(String persona) {
+		storicoLabel.setText("Storico di " + persona);
 	}
 }
