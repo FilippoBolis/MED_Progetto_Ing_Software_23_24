@@ -109,13 +109,13 @@ public class InserisciDiariaFrame {
 		
 		farmaciTextArea = new JTextArea();
 		farmaciTextArea.setBounds(165, 231, 218, 30);
-		farmaciTextArea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
         farmaciTextArea.setLineWrap(true); 
         farmaciTextArea.setWrapStyleWord(true);
 		diariaPanel.add(farmaciTextArea);
 
         JScrollPane scrollPane = new JScrollPane(farmaciTextArea);
 		scrollPane.setBounds(30, 327, 436, 103);
+		scrollPane.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
         diariaPanel.add(scrollPane);
 		
         avantiButton = new JButton("Avanti");

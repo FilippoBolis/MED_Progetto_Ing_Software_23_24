@@ -14,13 +14,13 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 
-public class InserisciInfoFrame {
+public class InserisciInformazioniFrame {
 	private ImageIcon aggiungiInfoImage = new ImageIcon("../progetto_gui/src/main/resources/aggiungi_info.png");
 	public JFrame sfondoFrame;
 	public JTextArea informazioniTextArea;
 	public JButton confermaButton;
 	
-	public InserisciInfoFrame() {
+	public InserisciInformazioniFrame() {
 		
 		try {
 			UIManager.setLookAndFeel(new FlatIntelliJLaf());

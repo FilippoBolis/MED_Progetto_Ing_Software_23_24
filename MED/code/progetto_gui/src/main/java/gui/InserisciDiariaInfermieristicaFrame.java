@@ -14,7 +14,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import javax.swing.JTextArea;
 
-public class DiariaInfermieristicaFrame {
+public class InserisciDiariaInfermieristicaFrame {
 
 	ImageIcon diariaImage = new ImageIcon("../progetto_gui/src/main/resources/diaria.png");
 	public JFrame sfondoFrame;
@@ -24,7 +24,7 @@ public class DiariaInfermieristicaFrame {
 	public JButton confermaButton;
 
 	
-	public DiariaInfermieristicaFrame() {
+	public InserisciDiariaInfermieristicaFrame() {
 
 		try {
 			UIManager.setLookAndFeel(new FlatIntelliJLaf());

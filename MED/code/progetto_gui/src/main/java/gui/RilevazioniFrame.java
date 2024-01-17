@@ -32,7 +32,7 @@ public class RilevazioniFrame {
 			e.printStackTrace();
 		}
 		sfondoFrame = new JFrame();
-		sfondoFrame.setSize(680, 540);
+		sfondoFrame.setSize(720, 540);
 		sfondoFrame.setTitle("<html><font color='white'>M.E.D Visualizza rilevazioni</font></html>");
 		sfondoFrame.getRootPane().setBackground(Stile.AZZURRO.getColore());
 		sfondoFrame.getRootPane().setForeground(Color.WHITE);
@@ -45,13 +45,13 @@ public class RilevazioniFrame {
 		sfondoPanel.setLayout(null);
 		
 		JPanel rilevazioniPanel = new JPanel();
-		rilevazioniPanel.setBounds(10, 10, 646, 482);
+		rilevazioniPanel.setBounds(10, 10, 686, 482);
 		rilevazioniPanel.setBackground(Color.WHITE);
 		rilevazioniPanel.setLayout(null);
 		sfondoPanel.add(rilevazioniPanel);
 		
 		JLabel titoloLabel = new JLabel("Visualizza rilevazioni");
-		titoloLabel.setBounds(100, 30, 519, 48);
+		titoloLabel.setBounds(100, 30, 556, 48);
 		titoloLabel.setForeground(Stile.BLU_SCURO.getColore());
 		titoloLabel.setFont(Stile.TITOLO.getFont());
 		titoloLabel.setHorizontalAlignment(SwingConstants.LEFT);
@@ -63,7 +63,7 @@ public class RilevazioniFrame {
 		rilevazioniPanel.add(immagineLabel);
 		
 		JLabel rilevazioniLabel = new JLabel("Rilevazioni");
-		rilevazioniLabel.setBounds(30, 96, 589, 30);
+		rilevazioniLabel.setBounds(30, 96, 626, 30);
 		rilevazioniLabel.setForeground(Color.GRAY);
 		rilevazioniLabel.setFont(Stile.TESTO.getFont());
 		rilevazioniPanel.add(rilevazioniLabel);
@@ -87,7 +87,7 @@ public class RilevazioniFrame {
         table.setSelectionBackground(Stile.AZZURRO_TRASP.getColore());    
         
 		JScrollPane scrollPanel = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPanel.setBounds(30, 129, 589, 323);
+        scrollPanel.setBounds(30, 129, 626, 323);
         scrollPanel.setBorder(BorderFactory.createEmptyBorder());
         scrollPanel.setViewportView(table);
         rilevazioniPanel.add(scrollPanel);
@@ -104,6 +104,10 @@ public class RilevazioniFrame {
 
 		sfondoFrame.setVisible(true);
 	
+	}
+	
+	public static void main(String[] args) {
+		new RilevazioniFrame();
 	}
 
 }
