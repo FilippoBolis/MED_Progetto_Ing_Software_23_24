@@ -24,6 +24,7 @@ public class AssegnaPostoFrame {
 	public JComboBox<Integer> postoComboBox;
 	public JButton confermaButton;
 	private ModelloGestoreLogicaGenerale modello;
+	public String repartoConsigliato;
 
 	public AssegnaPostoFrame(ModelloGestoreLogicaGenerale modello) {
 		
@@ -66,7 +67,7 @@ public class AssegnaPostoFrame {
 		immagineLabel.setIcon(assegnaPazienteImage);
 		pazientePanel.add(immagineLabel);
 		
-		JLabel repartoLabel = new JLabel("Reparto");
+		JLabel repartoLabel = new JLabel("Reparto (reparto consigliato dal medico: " + repartoConsigliato + ")");
 		repartoLabel.setBounds(30, 96, 436, 30);
 		repartoLabel.setForeground(Color.GRAY);
 		repartoLabel.setFont(Stile.TESTO.getFont());

@@ -25,7 +25,7 @@ public class DimettiPazienteFrame {
 			e.printStackTrace();
 		}
 		sfondoFrame = new JFrame();
-		sfondoFrame.setSize(530, 335);
+		sfondoFrame.setSize(530, 302);
 		sfondoFrame.setTitle("<html><font color='white'>M.E.D Dimetti paziente</font></html>");
 		sfondoFrame.getRootPane().setBackground(Stile.AZZURRO.getColore());
 		sfondoFrame.getRootPane().setForeground(Color.WHITE);
@@ -38,7 +38,7 @@ public class DimettiPazienteFrame {
 		sfondoPanel.setLayout(null);
 
 		JPanel dimettiPanel = new JPanel();
-		dimettiPanel.setBounds(10, 10, 496, 277);
+		dimettiPanel.setBounds(10, 10, 496, 244);
 		dimettiPanel.setBackground(Color.WHITE);
 		dimettiPanel.setLayout(null);
 		sfondoPanel.add(dimettiPanel);
@@ -66,7 +66,7 @@ public class DimettiPazienteFrame {
 		dimettiPanel.add(scrittaLabel);
 		
 		confermaButton = new JButton("Conferma");
-		confermaButton.setBounds(346, 236, 120, 30);
+		confermaButton.setBounds(346, 203, 120, 30);
 		confermaButton.setBackground(Stile.AZZURRO.getColore());
 		confermaButton.setForeground(Color.WHITE);
 		confermaButton.setFont(Stile.SOTTOTITOLO.getFont());

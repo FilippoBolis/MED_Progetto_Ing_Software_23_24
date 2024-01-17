@@ -24,7 +24,7 @@ public class LogicaBottoneInserisciDiariaInfermieristica extends LogicaBottone{
 			public void actionPerformed(ActionEvent e) {
 			if(modello.modelloGestorePaziente.qualcunoSelezionato()) {
 				if (!modello.modelloGestoreUtente.getMansioneUtente().equals("Operatore")) {
-					DiariaInfermieristicaFrame frame = new DiariaInfermieristicaFrame();
+					InserisciDiariaInfermieristicaFrame frame = new InserisciDiariaInfermieristicaFrame();
 					ConfermaAggiungiDiariaInfermieristica confermaButton = new ConfermaAggiungiDiariaInfermieristica(frame,frameDeiPazienti,modello);	
 				}
 				else {

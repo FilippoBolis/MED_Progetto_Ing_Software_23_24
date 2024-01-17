@@ -17,7 +17,7 @@ import gestore_db.InserimentoJooq;
 import gestore_db.RimozioneJooq;
 import gui.InserisciPazienteFrame;
 import gui.AssegnaPostoFrame;
-import gui.DiariaInfermieristicaFrame;
+import gui.InserisciDiariaInfermieristicaFrame;
 import gui.DimettiPazienteFrame;
 import gui.ErroreFrame;
 import gui.PazientiFrame;
@@ -28,11 +28,11 @@ import modelli.ModelloGestoreLogicaGenerale;
 
 public class ConfermaAggiungiDiariaInfermieristica {
 
-	private DiariaInfermieristicaFrame frame;
+	private InserisciDiariaInfermieristicaFrame frame;
 	private PazientiFrame frameDeiPazienti;
 	private ModelloGestoreLogicaGenerale modello;
 
-	public ConfermaAggiungiDiariaInfermieristica(DiariaInfermieristicaFrame v1, PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
+	public ConfermaAggiungiDiariaInfermieristica(InserisciDiariaInfermieristicaFrame v1, PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		frame = v1;
 		frameDeiPazienti = v2;
 		modello = m;

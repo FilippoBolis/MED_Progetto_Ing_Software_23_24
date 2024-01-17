@@ -30,7 +30,7 @@ public class InserisciRilevazioneFrame {
 		}
 		sfondoFrame = new JFrame();
 		sfondoFrame.setSize(530, 533);
-		sfondoFrame.setTitle("<html><font color='white'>M.E.D Inserisci rilevazione </font></html>");
+		sfondoFrame.setTitle("<html><font color='white'>M.E.D Inserisci rilevazione</font></html>");
 		sfondoFrame.getRootPane().setBackground(Stile.AZZURRO.getColore());
 		sfondoFrame.getRootPane().setForeground(Color.WHITE);
 		sfondoFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

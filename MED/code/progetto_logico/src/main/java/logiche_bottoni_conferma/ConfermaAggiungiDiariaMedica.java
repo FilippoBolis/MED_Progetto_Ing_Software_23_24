@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JTextField;
 
 import gui.InserisciDiariaFrame;
-import gui.InserisciInfoFrame;
+import gui.InserisciInformazioniFrame;
 import gui.AssegnaPostoFrame;
 import gui.ErroreFrame;
 import gui.PazientiFrame;
@@ -34,7 +34,7 @@ public class ConfermaAggiungiDiariaMedica {
 				String farmaci = frameDiaria.farmaciTextArea.getText();
 				String repartoconsigliato = frameDiaria.repartoComboBox.getSelectedItem().toString();
 				if(!motivo.isBlank() && !storico.isBlank() && !farmaci.isBlank()) {
-					InserisciInfoFrame frameInformazioniExtra = new InserisciInfoFrame();
+					InserisciInformazioniFrame frameInformazioniExtra = new InserisciInformazioniFrame();
 					ConfermaInformazioniExtra button = new ConfermaInformazioniExtra(frameInformazioniExtra,frameDeiPazienti,modello,motivo,repartoconsigliato,storico,farmaci);
 					frameDiaria.sfondoFrame.dispose();
 				}else {
