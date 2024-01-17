@@ -7,9 +7,33 @@ l’efficienza ospedaliera e il mantenimento dei dati, il tutto interagendo con 
 Il [project plan]() è stato redatto prima della realizzazione del software e successivamente modificato per una completa pianificazione
 ## Documentazione
 Tutta a documentazione,compresa __l'analisi dei requisiti__, per la progettazione del problema è stata scritta in un unico file chiamato [Documentazione del progetto]()
-
-### Componenti del gruppo
-- [__Daniele Gotti, matricola 1079011__]()
-- [__Bolis Filippo Antonio, matricola 1079493__]()
-- [__Mazzoleni Gabriele, matricola 1079514__]()
-- [__Masinari Gabriele, matricola 1079692__]()
+## UML
+Abbiamo realizzato i vari diagrammi con l'utilizzo di StarUML e draw.io, si trovano nella cartella [Med/doc/diagrammi](MED/doc/diagrammi):
+- [CASI D'USO]()
+- [ATTIVITÀ]()
+- [CLASSI]()
+- [PACKAGE]()
+- [SEQUENZA]()
+- [ER]()
+- [COMPONENTI]()
+- [MACCHINA A STATI]()
+## DataBase
+Abbiamo creato un DATABASE chiamato [CreateDB](https://github.com/FilippoBolis/Progetto_ING.Software_23_24/blob/main/MED/code/progetto_database/src/main/java/gestore_db/CreateDB.java) utilizzando java,jooq e sqlite in Eclipse IDE, per la raccolta dei dati dei paziente e del personale
+## Funzionalità
+- __Inserimento dati del paziente nel database__
+- __Inserimento diaria medica da parte del medico__
+- __Inserimento diaria infermieristica da parte dell'infermiere__
+- __Spostamento del paziente da parte dell'operatore__
+- __Dimissione del paziente da parte del medico__
+- __Filtri per la ricerca veloce del paziente__
+- __scrivere qui per aggiungere__
+- __scrivere qui per aggiungere__
+- __scrivere qui per aggiungere__
+- __scrivere qui per aggiungere__
+## Funzionalità Future
+- Autenticazione a 2 Fattori
+## Componenti del gruppo
+- [__Daniele Gotti, matricola 1079011__](https://github.com/DanieleGotti)
+- [__Bolis Filippo Antonio, matricola 1079493__](https://github.com/FilippoBolis)
+- [__Mazzoleni Gabriele, matricola 1079514__](https://github.com/Gabriele-Mazzoleni)
+- [__Masinari Gabriele, matricola 1079692__](https://github.com/GabrieleMasinari27)
