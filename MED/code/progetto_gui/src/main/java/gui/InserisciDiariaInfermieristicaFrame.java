@@ -8,6 +8,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -16,7 +17,7 @@ import javax.swing.JTextArea;
 
 public class InserisciDiariaInfermieristicaFrame {
 
-	ImageIcon diariaImage = new ImageIcon("../progetto_gui/src/main/resources/diaria.png");
+	ImageIcon diariaImage = new ImageIcon("../progetto_gui/src/main/resources/inserisci_diaria.png");
 	public JFrame sfondoFrame;
 	public JTextArea noteTextArea;
 	public JCheckBox importanteCheckBox;
@@ -33,7 +34,7 @@ public class InserisciDiariaInfermieristicaFrame {
 		}
 		sfondoFrame = new JFrame();
 		sfondoFrame.setSize(530, 533);
-		sfondoFrame.setTitle("<html><font color='white'>M.E.D Inserisci diaria infermieristica </font></html>");
+		sfondoFrame.setTitle("<html><font color='white'>M.E.D Inserisci diaria infermieristica</font></html>");
 		sfondoFrame.getRootPane().setBackground(Stile.AZZURRO.getColore());
 		sfondoFrame.getRootPane().setForeground(Color.WHITE);
 		sfondoFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -70,11 +71,14 @@ public class InserisciDiariaInfermieristicaFrame {
 
 		noteTextArea = new JTextArea();
 		noteTextArea.setBounds(30, 129, 436, 98);
-		noteTextArea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
 		noteTextArea.setLineWrap(true); 
 		noteTextArea.setWrapStyleWord(true);
 		diariaInfPanel.add(noteTextArea);
-		sfondoFrame.setVisible(true);
+		
+        JScrollPane noteScrollPane = new JScrollPane(noteTextArea);
+		noteScrollPane.setBounds(30, 129, 436, 98);
+		noteScrollPane.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
+        diariaInfPanel.add(noteScrollPane);
 
 		JLabel importanteLabel = new JLabel("Importante");
 		importanteLabel.setBounds(30, 228, 436, 30);
@@ -95,9 +99,14 @@ public class InserisciDiariaInfermieristicaFrame {
 		
 		farmacoTextArea = new JTextArea();
 		farmacoTextArea.setBounds(30, 327, 436, 98);
-		farmacoTextArea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
 		farmacoTextArea.setLineWrap(true); 
 		farmacoTextArea.setWrapStyleWord(true);
+		diariaInfPanel.add(farmacoTextArea);
+        
+		JScrollPane farmacoScrollPane = new JScrollPane(farmacoTextArea);
+		farmacoScrollPane.setBounds(30, 327, 436, 98);
+		farmacoScrollPane.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
+        diariaInfPanel.add(farmacoScrollPane);
 
 		confermaButton = new JButton("Conferma");
 		confermaButton.setBounds(346, 434, 120, 30);
@@ -106,7 +115,7 @@ public class InserisciDiariaInfermieristicaFrame {
 		confermaButton.setFont(Stile.SOTTOTITOLO.getFont());
 		diariaInfPanel.add(confermaButton);
 
-		diariaInfPanel.add(farmacoTextArea);
+		sfondoFrame.setVisible(true);
 
 	}
 }

@@ -13,7 +13,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 
 public class InserisciRilevazioneFrame {
-	ImageIcon insRilevazioneImage = new ImageIcon("../progetto_gui/src/main/resources/aggiungi_rilevazioni.png");
+	ImageIcon insRilevazioneImage = new ImageIcon("../progetto_gui/src/main/resources/inserisci_rilevazione.png");
 	public JFrame sfondoFrame;
 	public JTextField glicemiaTextField;
 	public JTextField temperaturaTextField;

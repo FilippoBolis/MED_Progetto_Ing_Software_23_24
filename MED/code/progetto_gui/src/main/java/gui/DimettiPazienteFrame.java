@@ -11,14 +11,14 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 
-
 public class DimettiPazienteFrame {
+	
 	ImageIcon dimettiPazienteImage = new ImageIcon("../progetto_gui/src/main/resources/dimetti_paziente.png");
 	public JFrame sfondoFrame;
 	public JButton confermaButton;
 
 	public DimettiPazienteFrame() {
-
+		
 		try {
 			UIManager.setLookAndFeel(new FlatIntelliJLaf());
 		} catch (UnsupportedLookAndFeelException e) {

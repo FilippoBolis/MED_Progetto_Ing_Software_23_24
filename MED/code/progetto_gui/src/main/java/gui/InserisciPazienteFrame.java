@@ -16,7 +16,7 @@ import com.formdev.flatlaf.FlatIntelliJLaf;
 
 public class InserisciPazienteFrame {
 	
-	ImageIcon aggiungiPazienteImage = new ImageIcon("../progetto_gui/src/main/resources/aggiungi_paziente.png");
+	ImageIcon aggiungiPazienteImage = new ImageIcon("../progetto_gui/src/main/resources/inserisci_paziente.png");
 	public JFrame sfondoFrame;
 	public JTextField codiceTextField;
 	public JTextField nomeTextField;

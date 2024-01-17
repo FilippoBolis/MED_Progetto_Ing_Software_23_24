@@ -14,13 +14,13 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 
-public class InserisciInformazioniFrame {
-	private ImageIcon aggiungiInfoImage = new ImageIcon("../progetto_gui/src/main/resources/inserisci_info.png");
+public class VisualizzaFarmaciFrame {
+	private ImageIcon farmaciImage = new ImageIcon("../progetto_gui/src/main/resources/farmaci.png");
 	public JFrame sfondoFrame;
-	public JTextArea informazioniTextArea;
+	public JTextArea farmaciTextArea;
 	public JButton confermaButton;
 	
-	public InserisciInformazioniFrame() {
+	public VisualizzaFarmaciFrame() {
 		
 		try {
 			UIManager.setLookAndFeel(new FlatIntelliJLaf());
@@ -29,7 +29,7 @@ public class InserisciInformazioniFrame {
 		}
 		sfondoFrame = new JFrame();
 		sfondoFrame.setSize(530, 540);
-		sfondoFrame.setTitle("<html><font color='white'>M.E.D Inserisci informazioni paziente</font></html>");
+		sfondoFrame.setTitle("<html><font color='white'>M.E.D Visualizza farmaci</font></html>");
 		sfondoFrame.getRootPane().setBackground(Stile.AZZURRO.getColore());
 		sfondoFrame.getRootPane().setForeground(Color.WHITE);
 		sfondoFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -40,47 +40,48 @@ public class InserisciInformazioniFrame {
 		sfondoFrame.getContentPane().add(sfondoPanel);
 		sfondoPanel.setLayout(null);
 		
-		JPanel infoPanel = new JPanel();
-		infoPanel.setBounds(10, 10, 496, 482);
-		infoPanel.setBackground(Color.WHITE);
-		infoPanel.setLayout(null);
-		sfondoPanel.add(infoPanel);
+		JPanel farmaciPanel = new JPanel();
+		farmaciPanel.setBounds(10, 10, 496, 482);
+		farmaciPanel.setBackground(Color.WHITE);
+		farmaciPanel.setLayout(null);
+		sfondoPanel.add(farmaciPanel);
 		
-		JLabel titoloLabel = new JLabel("Inserisci informazioni paziente");
+		JLabel titoloLabel = new JLabel("Visualizza farmaci");
 		titoloLabel.setBounds(100, 30, 366, 48);
 		titoloLabel.setForeground(Stile.BLU_SCURO.getColore());
 		titoloLabel.setFont(Stile.TITOLO_FINESTRE.getFont());
 		titoloLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		infoPanel.add(titoloLabel);
+		farmaciPanel.add(titoloLabel);
 		
 		JLabel immagineLabel = new JLabel();
 		immagineLabel.setBounds(30, 30, 48, 48);
-		immagineLabel.setIcon(aggiungiInfoImage);
-		infoPanel.add(immagineLabel);
+		immagineLabel.setIcon(farmaciImage);
+		farmaciPanel.add(immagineLabel);
 		
-		JLabel informazioniLabel = new JLabel("Informazioni (allergie, patologie, ecc...)");
-		informazioniLabel.setBounds(30, 96, 436, 30);
-		informazioniLabel.setForeground(Color.GRAY);
-		informazioniLabel.setFont(Stile.TESTO.getFont());
-		infoPanel.add(informazioniLabel);
+		JLabel FarmaciLabel = new JLabel("Farmaci");
+		FarmaciLabel.setBounds(30, 96, 436, 30);
+		FarmaciLabel.setForeground(Color.GRAY);
+		FarmaciLabel.setFont(Stile.TESTO.getFont());
+		farmaciPanel.add(FarmaciLabel);
 		
-		informazioniTextArea = new JTextArea();
-		informazioniTextArea.setBounds(165, 129, 218, 30);
-		informazioniTextArea.setLineWrap(true); 
-        informazioniTextArea.setWrapStyleWord(true); 
-		infoPanel.add(informazioniTextArea);
+		farmaciTextArea = new JTextArea();
+		farmaciTextArea.setBounds(30, 129, 436, 301);
+		farmaciTextArea.setLineWrap(true); 
+        farmaciTextArea.setWrapStyleWord(true); 
+        farmaciTextArea.setEditable(false);
+		farmaciPanel.add(farmaciTextArea);
 		
-        JScrollPane scrollPane = new JScrollPane(informazioniTextArea);
+        JScrollPane scrollPane = new JScrollPane(farmaciTextArea);
 		scrollPane.setBounds(30, 129, 436, 301);
 		scrollPane.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
-		infoPanel.add(scrollPane);
+		farmaciPanel.add(scrollPane);
 		
         confermaButton = new JButton("Conferma");
 		confermaButton.setBounds(346, 441, 120, 30);
 		confermaButton.setBackground(Stile.AZZURRO.getColore());
 		confermaButton.setForeground(Color.WHITE);
 		confermaButton.setFont(Stile.SOTTOTITOLO.getFont());
-		infoPanel.add(confermaButton);
+		farmaciPanel.add(confermaButton);
 		
 		sfondoFrame.setVisible(true);
 	
