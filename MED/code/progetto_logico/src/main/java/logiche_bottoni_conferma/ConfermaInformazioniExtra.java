@@ -20,9 +20,9 @@ import org.jooq.impl.DSL;
 import gestore_db.AggiornamentiJooq;
 import gestore_db.CreateDB;
 import gestore_db.InserimentoJooq;
-import gui.AggiungiDiariaFrame;
-import gui.AggiungiInfoPazienteFrame;
-import gui.AssegnaPazienteFrame;
+import gui.InserisciDiariaFrame;
+import gui.InserisciInfoFrame;
+import gui.AssegnaPostoFrame;
 import gui.ErroreFrame;
 import gui.PazientiFrame;
 import logiche_frame_pronto_soccorso.LogicaDellaPosizionePazienteTabella;
@@ -33,7 +33,7 @@ import modelli.ModelloGestoreLogicaGenerale;
 
 public class ConfermaInformazioniExtra {
 	
-	private AggiungiInfoPazienteFrame frame;
+	private InserisciInfoFrame frame;
 	private ModelloGestoreLogicaGenerale modello;
 	private String motivo;
 	private String storico;
@@ -42,7 +42,7 @@ public class ConfermaInformazioniExtra {
 	private PazientiFrame frameDeiPazienti;
 	private LogicaDellaPosizionePazienteTabella tabellaInProntoSoccorso;
 		
-	public ConfermaInformazioniExtra(AggiungiInfoPazienteFrame v1,  PazientiFrame v2, ModelloGestoreLogicaGenerale m, String motivo, String repartoConsigliato, String storico, String farmaci) {
+	public ConfermaInformazioniExtra(InserisciInfoFrame v1,  PazientiFrame v2, ModelloGestoreLogicaGenerale m, String motivo, String repartoConsigliato, String storico, String farmaci) {
 		frame = v1;
 		frameDeiPazienti = v2;
 		this.modello = m;

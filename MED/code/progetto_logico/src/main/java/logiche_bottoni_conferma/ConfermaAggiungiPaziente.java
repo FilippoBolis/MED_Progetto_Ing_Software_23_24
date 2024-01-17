@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 import gestore_db.InserimentoJooq;
-import gui.AggiungiPazienteFrame;
+import gui.InserisciPazienteFrame;
 import gui.ErroreFrame;
 import gui.PazientiFrame;
 import logiche_frame_pronto_soccorso.LogicaDellaPosizionePazienteTabella;
@@ -14,12 +14,12 @@ import modelli.ModelloGestoreLogicaGenerale;
 
 public class ConfermaAggiungiPaziente {
 
-	private AggiungiPazienteFrame frame;
+	private InserisciPazienteFrame frame;
 	private ModelloGestoreLogicaGenerale modello;
 	private PazientiFrame frameDeiPazienti;
 	private LogicaDellaPosizionePazienteTabella TabellaProntoSoccorso;
 
-	public ConfermaAggiungiPaziente(AggiungiPazienteFrame v1, PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
+	public ConfermaAggiungiPaziente(InserisciPazienteFrame v1, PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		frame = v1;
 		frameDeiPazienti = v2;
 		modello = m;

@@ -14,13 +14,13 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 
-public class AggiungiInfoPazienteFrame {
+public class InserisciInfoFrame {
 	private ImageIcon aggiungiInfoImage = new ImageIcon("../progetto_gui/src/main/resources/aggiungi_info.png");
 	public JFrame sfondoFrame;
 	public JTextArea informazioniTextArea;
 	public JButton confermaButton;
 	
-	public AggiungiInfoPazienteFrame() {
+	public InserisciInfoFrame() {
 		
 		try {
 			UIManager.setLookAndFeel(new FlatIntelliJLaf());
@@ -29,7 +29,7 @@ public class AggiungiInfoPazienteFrame {
 		}
 		sfondoFrame = new JFrame();
 		sfondoFrame.setSize(530, 540);
-		sfondoFrame.setTitle("<html><font color='white'>M.E.D Inserisci Informazioni Paziente</font></html>");
+		sfondoFrame.setTitle("<html><font color='white'>M.E.D Inserisci informazioni paziente</font></html>");
 		sfondoFrame.getRootPane().setBackground(Stile.AZZURRO.getColore());
 		sfondoFrame.getRootPane().setForeground(Color.WHITE);
 		sfondoFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -50,7 +50,7 @@ public class AggiungiInfoPazienteFrame {
 		titoloLabel.setBounds(100, 30, 366, 48);
 		titoloLabel.setForeground(Stile.BLU_SCURO.getColore());
 		titoloLabel.setFont(Stile.TITOLO_FINESTRE.getFont());
-		titoloLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		titoloLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		infoPanel.add(titoloLabel);
 		
 		JLabel immagineLabel = new JLabel();
@@ -81,6 +81,7 @@ public class AggiungiInfoPazienteFrame {
 		confermaButton.setForeground(Color.WHITE);
 		confermaButton.setFont(Stile.SOTTOTITOLO.getFont());
 		infoPanel.add(confermaButton);
+		
 		sfondoFrame.setVisible(true);
 	
 	}

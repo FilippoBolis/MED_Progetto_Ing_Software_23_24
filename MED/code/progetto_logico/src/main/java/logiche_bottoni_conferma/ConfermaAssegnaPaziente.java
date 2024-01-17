@@ -15,7 +15,7 @@ import org.jooq.impl.DSL;
 
 import gestore_db.CreateDB;
 import gestore_db.InserimentoJooq;
-import gui.AssegnaPazienteFrame;
+import gui.AssegnaPostoFrame;
 import gui.ErroreFrame;
 import gui.PazientiFrame;
 import logiche_frame_pronto_soccorso.LogicaDellaPosizionePazienteTabella;
@@ -24,12 +24,12 @@ import modelli.ModelloGestoreLogicaGenerale;
 
 public class ConfermaAssegnaPaziente {
 
-	private AssegnaPazienteFrame frame;
+	private AssegnaPostoFrame frame;
 	private ModelloGestoreLogicaGenerale modello;
 	private PazientiFrame frameDeiPazienti;
 	private LogicaDellaPosizionePazienteTabella tabellaInAttesa;
 
-	public ConfermaAssegnaPaziente(AssegnaPazienteFrame v1, PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
+	public ConfermaAssegnaPaziente(AssegnaPostoFrame v1, PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		frame = v1;
 		frameDeiPazienti = v2;
 		modello = m;
