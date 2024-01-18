@@ -6,7 +6,7 @@ l’efficienza ospedaliera e il mantenimento dei dati, il tutto interagendo con 
 ## Project Plan
 Il [project plan]() è stato redatto prima della realizzazione del software e successivamente modificato per una completa pianificazione
 ## Documentazione
-Tutta a documentazione,compresa __l'analisi dei requisiti__, per la progettazione del problema è stata scritta in un unico file chiamato [Documentazione del progetto]()
+Tutta a documentazione,compresa __l'analisi dei requisiti__, per la progettazione del problema è stata scritta in un unico file chiamato [Documentazione del progetto](https://github.com/FilippoBolis/Progetto_ING.Software_23_24/blob/main/MED/doc/Documentazione%20del%20progetto.pdf)
 ## UML
 Abbiamo realizzato i vari diagrammi con l'utilizzo di StarUML e draw.io, si trovano nella cartella [Med/doc/diagrammi](MED/doc/diagrammi):
 - [CASI D'USO](https://github.com/FilippoBolis/Progetto_ING.Software_23_24/blob/main/MED/doc/diagrammi/Diagramma%20Casi%20d'uso.pdf)
