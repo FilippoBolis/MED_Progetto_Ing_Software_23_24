@@ -18,7 +18,7 @@ Abbiamo realizzato i vari diagrammi con l'utilizzo di StarUML e draw.io, si trov
 - [COMPONENTI](https://github.com/FilippoBolis/Progetto_ING.Software_23_24/blob/main/MED/doc/diagrammi/Diagramma%20dei%20Componenti.pdf)
 - [MACCHINA A STATI](https://github.com/FilippoBolis/Progetto_ING.Software_23_24/blob/main/MED/doc/diagrammi/Macchina%20a%20stati%20paziente.pdf)
 ## DataBase
-Abbiamo creato un DATABASE chiamato [CreateDB](https://github.com/FilippoBolis/Progetto_ING.Software_23_24/blob/main/MED/code/progetto_database/src/main/java/gestore_db/CreateDB.java) utilizzando java,jooq e sqlite in Eclipse IDE, per la raccolta dei dati dei paziente e del personale
+Abbiamo sviluppato un file Java denominato [CreateDB](https://github.com/FilippoBolis/Progetto_ING.Software_23_24/blob/main/MED/code/progetto_database/src/main/java/gestore_db/CreateDB.java) dedicato alla creazione del database. Nel caso in cui il database non esista, verrà generato un nuovo database denominato [db.db3](https://github.com/FilippoBolis/Progetto_ING.Software_23_24/blob/main/MED/code/progetto_database/db/db.db3). Questo processo è implementato utilizzando Java, JOOQ e SQLite all'interno dell'IDE Eclipse, al fine di raccogliere e gestire i dati relativi ai pazienti e al personale.
 ## Funzionalità
 - __Inserimento dati del paziente nel database__
 - __Inserimento diaria medica da parte del medico__
