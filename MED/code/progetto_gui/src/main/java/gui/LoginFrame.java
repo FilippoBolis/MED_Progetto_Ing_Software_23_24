@@ -1,6 +1,8 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Graphics;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
@@ -16,8 +18,8 @@ import javax.swing.JPasswordField;
 @SuppressWarnings("serial")
 public class LoginFrame extends JFrame {
 
-	ImageIcon docImage = new ImageIcon("../progetto_gui/src/main/resources/doc.png");
-	ImageIcon keyImage = new ImageIcon("../progetto_gui/src/main/resources/key.png");
+	ImageIcon medicoImage = new ImageIcon("../progetto_gui/src/main/resources/medico.png");
+	ImageIcon chiaveImage = new ImageIcon("../progetto_gui/src/main/resources/key.png");
 	ImageIcon sfondoImage = new ImageIcon("../progetto_gui/src/main/resources/sfondo.png");
 	public JTextField userField;
 	public JPasswordField passwordField;
@@ -82,11 +84,16 @@ public class LoginFrame extends JFrame {
 		userTitoloLabel.setForeground(Color.GRAY);
 		destraPanel.add(userTitoloLabel);
 		
-		JLabel userLabel = new JLabel();
+		JLabel userLabel = new JLabel() {
+			@Override
+			protected void paintComponent(Graphics g) {
+				super.paintComponent(g);
+				g.drawImage(medicoImage.getImage(), 0 , 0, getWidth(), getHeight(), this);
+			}
+		};
 		userLabel.setBounds(41, 95, 30, 30);
-		userLabel.setIcon(docImage);
 		destraPanel.add(userLabel);
-		
+
 		userField = new JTextField();
 		userField.setBounds(41, 129, 235, 30);
 		userField.setColumns(20);
@@ -100,7 +107,7 @@ public class LoginFrame extends JFrame {
 		
 		JLabel passwordLabel = new JLabel();
 		passwordLabel.setBounds(41, 163, 30, 30);
-		passwordLabel.setIcon(keyImage);
+		passwordLabel.setIcon(chiaveImage);
 		destraPanel.add(passwordLabel);
 		
 		passwordField = new JPasswordField();

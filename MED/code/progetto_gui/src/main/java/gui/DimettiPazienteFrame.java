@@ -1,6 +1,8 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Graphics;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,7 +15,7 @@ import com.formdev.flatlaf.FlatIntelliJLaf;
 
 public class DimettiPazienteFrame {
 	
-	ImageIcon dimettiPazienteImage = new ImageIcon("../progetto_gui/src/main/resources/dimetti_paziente.png");
+	ImageIcon dimettiPazienteImage = new ImageIcon("../progetto_gui/src/main/resources/dimetti_paziente.jpeg");
 	public JFrame sfondoFrame;
 	public JButton confermaButton;
 
@@ -50,9 +52,19 @@ public class DimettiPazienteFrame {
 		dimettiPazienteLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		dimettiPanel.add(dimettiPazienteLabel);
 		
-		JLabel immagineLabel = new JLabel();
+		JPanel immaginePanel = new JPanel(); 
+		immaginePanel.setBounds(30, 30, 48, 48);
+		dimettiPanel.add(immaginePanel);
+		
+		JLabel immagineLabel = new JLabel() {
+			@Override
+			protected void paintComponent(Graphics g) {
+				super.paintComponent(g);
+				g.drawImage(dimettiPazienteImage.getImage(), 0 , 0, immaginePanel.getWidth(), immaginePanel.getHeight(), this);
+			}
+		};
+		//immagineLabel.setIcon(dimettiPazienteImage);
 		immagineLabel.setBounds(30, 30, 48, 48);
-		immagineLabel.setIcon(dimettiPazienteImage);
 		dimettiPanel.add(immagineLabel);
 
 		JLabel tipoLabel = new JLabel("Attenzione");
