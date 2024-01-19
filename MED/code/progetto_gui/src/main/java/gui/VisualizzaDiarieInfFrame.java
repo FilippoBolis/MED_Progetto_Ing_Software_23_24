@@ -2,6 +2,8 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
+
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -62,9 +64,14 @@ public class VisualizzaDiarieInfFrame {
 		titoloLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		diariePanel.add(titoloLabel);
 		
-		JLabel immagineLabel = new JLabel();
+		JLabel immagineLabel = new JLabel() {
+			@Override
+			protected void paintComponent(Graphics g) {
+				super.paintComponent(g);
+				g.drawImage(diariaImage.getImage(), 0 , 0, this.getWidth(), this.getHeight(), this);
+			}
+		};;
 		immagineLabel.setBounds(30, 30, 48, 48);
-		immagineLabel.setIcon(diariaImage);
 		diariePanel.add(immagineLabel);
 		
 		diarieLabel = new JLabel("Diarie infermieristiche");

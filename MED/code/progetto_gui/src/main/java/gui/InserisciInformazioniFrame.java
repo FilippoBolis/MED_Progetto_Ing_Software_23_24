@@ -1,6 +1,8 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Graphics;
+
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,11 +17,12 @@ import javax.swing.UnsupportedLookAndFeelException;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 
 public class InserisciInformazioniFrame {
-	private ImageIcon aggiungiInfoImage = new ImageIcon("../progetto_gui/src/main/resources/inserisci_info.png");
+	private ImageIcon infoImage = new ImageIcon("../progetto_gui/src/main/resources/inserisci_info.png");
 	public JFrame sfondoFrame;
 	public JTextArea informazioniTextArea;
 	public JButton confermaButton;
 	
+	@SuppressWarnings("serial")
 	public InserisciInformazioniFrame() {
 		
 		try {
@@ -53,9 +56,14 @@ public class InserisciInformazioniFrame {
 		titoloLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		infoPanel.add(titoloLabel);
 		
-		JLabel immagineLabel = new JLabel();
+		JLabel immagineLabel = new JLabel() {
+			@Override
+			protected void paintComponent(Graphics g) {
+				super.paintComponent(g);
+				g.drawImage(infoImage.getImage(), 0 , 0, this.getWidth(), this.getHeight(), this);
+			}
+		};;
 		immagineLabel.setBounds(30, 30, 48, 48);
-		immagineLabel.setIcon(aggiungiInfoImage);
 		infoPanel.add(immagineLabel);
 		
 		JLabel informazioniLabel = new JLabel("Informazioni (allergie, patologie, ecc...)");

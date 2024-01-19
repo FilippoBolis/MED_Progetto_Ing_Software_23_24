@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Graphics;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -16,7 +17,7 @@ import com.formdev.flatlaf.FlatIntelliJLaf;
 
 public class InserisciPazienteFrame {
 	
-	ImageIcon aggiungiPazienteImage = new ImageIcon("../progetto_gui/src/main/resources/inserisci_paziente.png");
+	ImageIcon aggiungiImage = new ImageIcon("../progetto_gui/src/main/resources/inserisci_paziente.png");
 	public JFrame sfondoFrame;
 	public JTextField codiceTextField;
 	public JTextField nomeTextField;
@@ -58,9 +59,14 @@ public class InserisciPazienteFrame {
 		titoloLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		aggiungiPazientePanel.add(titoloLabel);
 		
-		JLabel immagineLabel = new JLabel();
+		JLabel immagineLabel = new JLabel() {
+			@Override
+			protected void paintComponent(Graphics g) {
+				super.paintComponent(g);
+				g.drawImage(aggiungiImage.getImage(), 0 , 0, this.getWidth(), this.getHeight(), this);
+			}
+		};;
 		immagineLabel.setBounds(30, 30, 48, 48);
-		immagineLabel.setIcon(aggiungiPazienteImage);
 		aggiungiPazientePanel.add(immagineLabel);
 		
 		JLabel codiceLabel = new JLabel("Codice");

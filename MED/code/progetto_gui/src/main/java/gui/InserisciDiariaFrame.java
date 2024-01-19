@@ -1,6 +1,8 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Graphics;
+
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -19,7 +21,7 @@ import javax.swing.JTextArea;
 
 public class InserisciDiariaFrame {
 
-	ImageIcon aggiungiDiariaImage = new ImageIcon("../progetto_gui/src/main/resources/inserisci_diaria.png");
+	ImageIcon aggiungiImage = new ImageIcon("../progetto_gui/src/main/resources/inserisci_diaria.png");
 	public JFrame sfondoFrame;
 	public JTextField motivoTextField;
 	public JTextField storicoTextField;
@@ -27,6 +29,7 @@ public class InserisciDiariaFrame {
 	public JTextArea farmaciTextArea;
 	public JComboBox<String> repartoComboBox;
 	
+	@SuppressWarnings("serial")
 	public InserisciDiariaFrame(ModelloGestoreLogicaGenerale modello) {
         
 		try {
@@ -61,9 +64,14 @@ public class InserisciDiariaFrame {
 		titoloLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		diariaPanel.add(titoloLabel);
 		
-		JLabel immagineLabel = new JLabel();
+		JLabel immagineLabel = new JLabel() {
+			@Override
+			protected void paintComponent(Graphics g) {
+				super.paintComponent(g);
+				g.drawImage(aggiungiImage.getImage(), 0 , 0, this.getWidth(), this.getHeight(), this);
+			}
+		};;
 		immagineLabel.setBounds(30, 30, 48, 48);
-		immagineLabel.setIcon(aggiungiDiariaImage);
 		diariaPanel.add(immagineLabel);
 		
 		JLabel motivoLabel = new JLabel("Motivo");

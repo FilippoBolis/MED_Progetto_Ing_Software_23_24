@@ -19,7 +19,7 @@ import javax.swing.JPasswordField;
 public class LoginFrame extends JFrame {
 
 	ImageIcon medicoImage = new ImageIcon("../progetto_gui/src/main/resources/medico.png");
-	ImageIcon chiaveImage = new ImageIcon("../progetto_gui/src/main/resources/key.png");
+	ImageIcon chiaveImage = new ImageIcon("../progetto_gui/src/main/resources/chiave.png");
 	ImageIcon sfondoImage = new ImageIcon("../progetto_gui/src/main/resources/sfondo.png");
 	public JTextField userField;
 	public JPasswordField passwordField;
@@ -105,9 +105,14 @@ public class LoginFrame extends JFrame {
 		passwordTitoloLabel.setForeground(Color.GRAY);
 		destraPanel.add(passwordTitoloLabel);
 		
-		JLabel passwordLabel = new JLabel();
+		JLabel passwordLabel = new JLabel(){
+			@Override
+			protected void paintComponent(Graphics g) {
+				super.paintComponent(g);
+				g.drawImage(chiaveImage.getImage(), 0 , 0, this.getWidth(), this.getHeight(), this);
+			}
+		};
 		passwordLabel.setBounds(41, 163, 30, 30);
-		passwordLabel.setIcon(chiaveImage);
 		destraPanel.add(passwordLabel);
 		
 		passwordField = new JPasswordField();

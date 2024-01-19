@@ -1,15 +1,14 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import com.formdev.flatlaf.FlatIntelliJLaf;
-
 import modelli.ModelloGestoreLogicaGenerale;
-
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
@@ -17,7 +16,7 @@ import javax.swing.JComboBox;
 
 public class AssegnaPostoFrame {
 
-	ImageIcon assegnaPazienteImage = new ImageIcon("../progetto_gui/src/main/resources/sposta_paziente.png");
+	ImageIcon assegnaImage = new ImageIcon("../progetto_gui/src/main/resources/sposta_paziente.png");
 	public JFrame sfondoFrame;
 	public JComboBox<String> repartoComboBox;
 	public JComboBox<String> moduloComboBox;
@@ -26,6 +25,7 @@ public class AssegnaPostoFrame {
 	private ModelloGestoreLogicaGenerale modello;
 	public String repartoConsigliato;
 
+	@SuppressWarnings("serial")
 	public AssegnaPostoFrame(ModelloGestoreLogicaGenerale modello) {
 		
 		this.modello = modello;
@@ -62,9 +62,14 @@ public class AssegnaPostoFrame {
 		assegnaPazienteLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		pazientePanel.add(assegnaPazienteLabel);
 
-		JLabel immagineLabel = new JLabel();
+		JLabel immagineLabel = new JLabel() {
+			@Override
+			protected void paintComponent(Graphics g) {
+				super.paintComponent(g);
+				g.drawImage(assegnaImage.getImage(), 0 , 0, this.getWidth(), this.getHeight(), this);
+			}
+		};;
 		immagineLabel.setBounds(30, 30, 48, 48);
-		immagineLabel.setIcon(assegnaPazienteImage);
 		pazientePanel.add(immagineLabel);
 		
 		JLabel repartoLabel = new JLabel("Reparto (reparto consigliato dal medico: " + repartoConsigliato + ")");

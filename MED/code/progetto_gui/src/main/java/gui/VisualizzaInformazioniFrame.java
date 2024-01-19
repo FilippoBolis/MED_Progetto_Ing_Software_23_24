@@ -1,6 +1,8 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Graphics;
+
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -14,11 +16,12 @@ import javax.swing.UnsupportedLookAndFeelException;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 
 public class VisualizzaInformazioniFrame {
-	private ImageIcon informazioniImage = new ImageIcon("../progetto_gui/src/main/resources/info.png");
+	private ImageIcon infoImage = new ImageIcon("../progetto_gui/src/main/resources/info.png");
 	public JFrame sfondoFrame;
 	public JTextArea infoTextArea;
 	private JLabel informazioniLabel;
 	
+	@SuppressWarnings("serial")
 	public VisualizzaInformazioniFrame() {
 		
 		try {
@@ -52,9 +55,14 @@ public class VisualizzaInformazioniFrame {
 		titoloLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		infoPanel.add(titoloLabel);
 		
-		JLabel immagineLabel = new JLabel();
+		JLabel immagineLabel = new JLabel() {
+			@Override
+			protected void paintComponent(Graphics g) {
+				super.paintComponent(g);
+				g.drawImage(infoImage.getImage(), 0 , 0, this.getWidth(), this.getHeight(), this);
+			}
+		};;
 		immagineLabel.setBounds(30, 30, 48, 48);
-		immagineLabel.setIcon(informazioniImage);
 		infoPanel.add(immagineLabel);
 		
 		informazioniLabel = new JLabel("Informazioni");

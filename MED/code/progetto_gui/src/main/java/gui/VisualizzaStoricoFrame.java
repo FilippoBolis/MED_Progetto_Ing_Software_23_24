@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Graphics;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -21,6 +22,7 @@ public class VisualizzaStoricoFrame {
 	public JTextArea storicoTextArea;
 	private JLabel storicoLabel;
 	
+	@SuppressWarnings("serial")
 	public VisualizzaStoricoFrame() {
 		
 		try {
@@ -54,9 +56,14 @@ public class VisualizzaStoricoFrame {
 		titoloLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		storicoPanel.add(titoloLabel);
 		
-		JLabel immagineLabel = new JLabel();
+		JLabel immagineLabel = new JLabel() {
+			@Override
+			protected void paintComponent(Graphics g) {
+				super.paintComponent(g);
+				g.drawImage(storicoImage.getImage(), 0 , 0, this.getWidth(), this.getHeight(), this);
+			}
+		};;
 		immagineLabel.setBounds(30, 30, 48, 48);
-		immagineLabel.setIcon(storicoImage);
 		storicoPanel.add(immagineLabel);
 		
 		storicoLabel = new JLabel("Storico");

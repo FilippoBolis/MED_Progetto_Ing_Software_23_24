@@ -1,6 +1,8 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Graphics;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,7 +15,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 
 public class InserisciRilevazioneFrame {
-	ImageIcon insRilevazioneImage = new ImageIcon("../progetto_gui/src/main/resources/inserisci_rilevazione.png");
+	ImageIcon rilevazioneImage = new ImageIcon("../progetto_gui/src/main/resources/inserisci_rilevazione.png");
 	public JFrame sfondoFrame;
 	public JTextField glicemiaTextField;
 	public JTextField temperaturaTextField;
@@ -21,6 +23,7 @@ public class InserisciRilevazioneFrame {
 	public JTextField frequenzaTextField;
 	public JTextField doloreTextField;
 
+	@SuppressWarnings("serial")
 	public InserisciRilevazioneFrame() {
 
 		try {
@@ -54,9 +57,14 @@ public class InserisciRilevazioneFrame {
 		inserisciRilevazioneLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		rilevazionePanel.add(inserisciRilevazioneLabel);
 
-		JLabel immagineLabel = new JLabel();
+		JLabel immagineLabel = new JLabel() {
+			@Override
+			protected void paintComponent(Graphics g) {
+				super.paintComponent(g);
+				g.drawImage(rilevazioneImage.getImage(), 0 , 0, this.getWidth(), this.getHeight(), this);
+			}
+		};;
 		immagineLabel.setBounds(30, 30, 48, 48);
-		immagineLabel.setIcon(insRilevazioneImage);
 		rilevazionePanel.add(immagineLabel);
 
 		JLabel glicemiaLabel = new JLabel("Glicemia");

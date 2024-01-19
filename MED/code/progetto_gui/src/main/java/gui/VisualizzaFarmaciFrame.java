@@ -1,6 +1,8 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Graphics;
+
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -19,6 +21,7 @@ public class VisualizzaFarmaciFrame {
 	public JTextArea farmaciTextArea;
 	private JLabel FarmaciLabel;
 	
+	@SuppressWarnings("serial")
 	public VisualizzaFarmaciFrame() {
 		
 		try {
@@ -52,9 +55,14 @@ public class VisualizzaFarmaciFrame {
 		titoloLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		farmaciPanel.add(titoloLabel);
 		
-		JLabel immagineLabel = new JLabel();
+		JLabel immagineLabel = new JLabel() {
+			@Override
+			protected void paintComponent(Graphics g) {
+				super.paintComponent(g);
+				g.drawImage(farmaciImage.getImage(), 0 , 0, this.getWidth(), this.getHeight(), this);
+			}
+		};;
 		immagineLabel.setBounds(30, 30, 48, 48);
-		immagineLabel.setIcon(farmaciImage);
 		farmaciPanel.add(immagineLabel);
 		
 		FarmaciLabel = new JLabel("Farmaci");

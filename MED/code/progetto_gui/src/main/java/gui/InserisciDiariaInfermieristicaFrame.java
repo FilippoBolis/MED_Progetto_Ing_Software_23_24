@@ -1,6 +1,8 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Graphics;
+
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -25,6 +27,7 @@ public class InserisciDiariaInfermieristicaFrame {
 	public JButton confermaButton;
 
 	
+	@SuppressWarnings("serial")
 	public InserisciDiariaInfermieristicaFrame() {
 
 		try {
@@ -58,9 +61,14 @@ public class InserisciDiariaInfermieristicaFrame {
 		diariaInfermieristicaLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		diariaInfPanel.add(diariaInfermieristicaLabel);
 
-		JLabel immagineLabel = new JLabel();
+		JLabel immagineLabel = new JLabel() {
+			@Override
+			protected void paintComponent(Graphics g) {
+				super.paintComponent(g);
+				g.drawImage(diariaImage.getImage(), 0 , 0, this.getWidth(), this.getHeight(), this);
+			}
+		};;
 		immagineLabel.setBounds(30, 30, 48, 48);
-		immagineLabel.setIcon(diariaImage);
 		diariaInfPanel.add(immagineLabel);
 		
 		JLabel noteLabel = new JLabel("Note particolari");

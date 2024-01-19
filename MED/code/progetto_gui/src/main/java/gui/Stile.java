@@ -10,6 +10,8 @@ public enum Stile {
     AZZURRO(new Color(63, 114, 175)),
 	AZZURRO_TRASP(new Color(63, 114, 175, 50)),
 	VERDE(new Color(60, 179, 113)),
+	ROSSO(Color.RED),
+	GIALLO(Color.ORANGE),
 	
 	SPECIALE(new Font("sanserif", Font.BOLD, 40)),
 	TITOLO(new Font("sanserif", Font.BOLD, 30)),
