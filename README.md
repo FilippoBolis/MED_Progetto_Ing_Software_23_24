@@ -27,7 +27,8 @@ Abbiamo sviluppato un file Java denominato [CreateDB](https://github.com/Filippo
 - __Dimissione del paziente da parte del medico__
 - __Filtri per la ricerca veloce del paziente__
 ## Funzionalità Future
-- Autenticazione a 2 Fattori
+- Aumento dei campi sulle rilevazioni disponibili
+- Miglioramento grafico a seguito di eventuali consigli del cliente
 ## Componenti del gruppo
 - [__Daniele Gotti, matricola 1079011__](https://github.com/DanieleGotti)
 - [__Bolis Filippo Antonio, matricola 1079493__](https://github.com/FilippoBolis)
