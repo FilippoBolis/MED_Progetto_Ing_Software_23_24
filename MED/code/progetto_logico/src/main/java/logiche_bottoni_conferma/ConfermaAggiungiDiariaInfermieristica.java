@@ -66,8 +66,6 @@ public class ConfermaAggiungiDiariaInfermieristica {
 							ultimoCodice = risultato;
 						}
 						if (InserimentoJooq.getIstanza().diariaInf(ultimoCodice+1,modello.modelloGestorePaziente.getCodice(),modello.modelloGestoreUtente.getCodiceUtente(),LocalDate.now(),LocalTime.now().withNano(0),note,importante,farmaco) == 1) {
-							modello.modelloGestorePaziente.deselezionaPaziente();
-							frameDeiPazienti.updateStringaPaziente();
 						}
 						else {
 							new ErroreFrame(frame.sfondoFrame, "E' avvenuto un problema nell'inserimento della diaria infermieristica, se il problema persiste chiamare un tecnico");

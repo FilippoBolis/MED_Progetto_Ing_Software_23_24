@@ -53,7 +53,17 @@ public class LogicaBottoneAggiornamentoModulo{
 						String nomeReparto = (String) frame.repartoComboBox.getSelectedItem();
 						if (conn != null) {
 							DSLContext contesto = DSL.using(conn, SQLDialect.SQLITE);
-							Result<Record1<String>> moduli = contesto.selectDistinct(Letto.LETTO.NOME_MODULO).from(Letto.LETTO,Reparto.REPARTO).leftJoin(Assegnazioneletto.ASSEGNAZIONELETTO).on(Letto.LETTO.NUMERO.eq(Assegnazioneletto.ASSEGNAZIONELETTO.NUMERO_LETTO)).where(Assegnazioneletto.ASSEGNAZIONELETTO.NUMERO_LETTO.isNull(),Letto.LETTO.CODICE_REPARTO.eq(Reparto.REPARTO.CODICE),Reparto.REPARTO.NOME_REPARTO.eq(nomeReparto)).orderBy(Letto.LETTO.NOME_MODULO).fetch();
+							Result<Record1<String>> moduli = contesto.selectDistinct(Modulo.MODULO.NOME).
+							from(Modulo.MODULO, Reparto.REPARTO,Letto.LETTO).
+							where(Modulo.MODULO.CODICE_REPARTO.eq(Reparto.REPARTO.CODICE),
+									Reparto.REPARTO.NOME_REPARTO.eq(nomeReparto),
+									Letto.LETTO.NOME_MODULO.eq(Modulo.MODULO.NOME),
+									Letto.LETTO.NUMERO.notIn(contesto.select(Assegnazioneletto.ASSEGNAZIONELETTO.NUMERO_LETTO)
+	        								  .from(Assegnazioneletto.ASSEGNAZIONELETTO)
+	        								  .where(Assegnazioneletto.ASSEGNAZIONELETTO.NUMERO_LETTO.eq(Letto.LETTO.NUMERO),
+	        										 Assegnazioneletto.ASSEGNAZIONELETTO.NOME_MODULO.eq(Letto.LETTO.NOME_MODULO),
+	        										 Assegnazioneletto.ASSEGNAZIONELETTO.CODICE_REPARTO.eq(Letto.LETTO.CODICE_REPARTO)))).
+									orderBy(Modulo.MODULO.NOME).fetch();
 							for (Record1<String> moduloRecord : moduli) {
 							    nomi.add(moduloRecord.value1());
 							}
