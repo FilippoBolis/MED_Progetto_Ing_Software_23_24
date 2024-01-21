@@ -223,7 +223,7 @@ public class InserimentoJooq{
 		getIstanza().degente("D2","Jacopo","Bellosi","M",LocalDate.now(), LocalTime.now().withNano(0),"rosso");
 		getIstanza().personale("P1","Daniele","Gotti","M", "SpostamiSeCiRiesci");
 		getIstanza().personale("P2","Filippo","Bolis","I","HaiGiocatoAdOuterWilds");
-		getIstanza().personale("P3","Gabriele","Masinari","S","pw");
+		getIstanza().personale("P3","Gabriele","Masinari","S","PileBunker");
 		getIstanza().degente("D1","Gabriele","Mazzoleni","M",LocalDate.now(), LocalTime.now().withNano(0),"verde");
 
 		getIstanza().diariaMed(1,"D1","P1","il paziente non soffre di nulla in particolare","Vuole diventare più grosso","Cardiologia","Trembolone",LocalDate.now(),LocalTime.now().withNano(0),"nessun allergia");
