@@ -1,8 +1,13 @@
 package gui;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Insets;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -11,15 +16,16 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableRowSorter;
 import com.formdev.flatlaf.FlatIntelliJLaf;
-
-import gui.PazientiFrame.TabellaRenderer;
 import modelli.ModelloGestoreLogicaGenerale;
 
 public class VisualizzaDiarieInfFrame {
@@ -30,6 +36,8 @@ public class VisualizzaDiarieInfFrame {
 	public boolean updating;
 	private JLabel diarieLabel;
 	private ModelloGestoreLogicaGenerale modello;
+		
+	
 	@SuppressWarnings("serial")
 	public VisualizzaDiarieInfFrame(ModelloGestoreLogicaGenerale m) {
 		modello = m;
@@ -70,7 +78,7 @@ public class VisualizzaDiarieInfFrame {
 				super.paintComponent(g);
 				g.drawImage(diariaImage.getImage(), 0 , 0, this.getWidth(), this.getHeight(), this);
 			}
-		};;
+		};
 		immagineLabel.setBounds(30, 30, 48, 48);
 		diariePanel.add(immagineLabel);
 		
@@ -87,7 +95,7 @@ public class VisualizzaDiarieInfFrame {
         tableModel.addColumn("Farmaci");
         tableModel.addColumn("Data");
         tableModel.addColumn("Ora");
-       
+              
         table = new JTable(tableModel) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -99,7 +107,9 @@ public class VisualizzaDiarieInfFrame {
         table.setRowHeight(30);
         table.setShowHorizontalLines(true);
         table.setShowVerticalLines(true);
-        table.setSelectionBackground(Stile.AZZURRO_TRASP.getColore());    
+        table.setSelectionBackground(Stile.AZZURRO_TRASP.getColore()); 
+        table.setCellSelectionEnabled(false);
+        table.setFocusable(false);
         
 		JScrollPane scrollPanel = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPanel.setBounds(30, 129, 766, 323);
@@ -117,6 +127,9 @@ public class VisualizzaDiarieInfFrame {
        
         TableRowSorter<DefaultTableModel> ordineColonna = new TableRowSorter<>(tableModel);
         table.setRowSorter(ordineColonna);
+        
+        table.getColumnModel().getColumn(1).setCellRenderer(new TabellaRenderer());
+        table.getColumnModel().getColumn(3).setCellRenderer(new TabellaRenderer());
 
 		sfondoFrame.setVisible(true);
 	
@@ -130,12 +143,53 @@ public class VisualizzaDiarieInfFrame {
             return;
         }
 		updating = true;
-		for (int i = 0; i < modello.modelloGestoreDiarieInfermieristiche.getCodiceInfermiere().size(); i++) {
+		for (int i = 0; i < 2; i++) {
 	    	   tableModel.addRow(new Object[] {modello.modelloGestoreDiarieInfermieristiche.getCodiceInfermiere().get(i),modello.modelloGestoreDiarieInfermieristiche.getTableNoteParticolari().get(i),modello.modelloGestoreDiarieInfermieristiche.getTableImportante().get(i),modello.modelloGestoreDiarieInfermieristiche.getTableFarmaci().get(i),modello.modelloGestoreDiarieInfermieristiche.getTableDateArrivo().get(i),modello.modelloGestoreDiarieInfermieristiche.getTableOraArrivo().get(i)});
 		}
         for(int i = 0; i < tableModel.getColumnCount(); i++) {
             table.getColumnModel().getColumn(i).setCellRenderer(new TabellaRenderer());
         }
+        table.getColumnModel().getColumn(1).setCellRenderer(new TabellaRenderer());
+        table.getColumnModel().getColumn(3).setCellRenderer(new TabellaRenderer());
 		updating = false;
 	}
+	
+	@SuppressWarnings("serial")
+	static class TabellaRenderer extends DefaultTableCellRenderer {
+
+	    @Override
+	    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+	    	Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+	    	
+	    	if(column == 1 || column == 3) {
+		    	JTextArea textArea = new JTextArea();
+		        textArea.setLineWrap(true);
+		        textArea.setWrapStyleWord(true);
+
+		        TableColumnModel columnModel = table.getColumnModel();
+		        int larghezzaColonna = columnModel.getColumn(column).getWidth();
+		        textArea.setSize(larghezzaColonna, Short.MAX_VALUE);
+		        textArea.setText(String.valueOf(value));
+		        int preferredHeight = textArea.getPreferredSize().height;
+		        table.setRowHeight(row, preferredHeight);
+		        textArea.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 1, UIManager.getColor("Table.gridColor")));
+		        textArea.setAlignmentY(SwingConstants.CENTER);
+		        //centerTextVertically(textArea);
+		        
+		        return textArea;
+	
+	    	} else {
+	    		    		
+	    		return component;
+	    	}
+	    	
+	    	
+	    }
+	    
+	}
+	/*
+	public static void main(String[] args) {
+		new VisualizzaDiarieInfFrame();
+	}
+	*/
 }
