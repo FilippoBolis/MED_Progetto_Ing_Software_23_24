@@ -66,8 +66,8 @@ public class LogicaDelleDiarieInfermieristicheTabella{
 					}
 					else {
 						codiceInfermiere.add("Non ancora inserito");
-						noteParticolari.add("Non ancora inserito");
-						farmaci.add("Non ancora inserito");
+						noteParticolari.add(" ");
+						farmaci.add(" ");
 						importante.add(false);
 						dataCreazione.add(LocalDate.now());
 						oreCreazione.add(LocalTime.now().withNano(0));

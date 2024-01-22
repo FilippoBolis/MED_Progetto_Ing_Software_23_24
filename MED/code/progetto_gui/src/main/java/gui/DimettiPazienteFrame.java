@@ -87,5 +87,4 @@ public class DimettiPazienteFrame {
 		sfondoFrame.setVisible(true);
 
 	}
-
 }

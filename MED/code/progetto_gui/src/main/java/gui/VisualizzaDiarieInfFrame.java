@@ -1,15 +1,12 @@
 package gui;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Insets;
-import java.time.LocalDateTime;
-import java.util.Date;
-
 import javax.swing.BorderFactory;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -128,8 +125,9 @@ public class VisualizzaDiarieInfFrame {
         TableRowSorter<DefaultTableModel> ordineColonna = new TableRowSorter<>(tableModel);
         table.setRowSorter(ordineColonna);
         
-        table.getColumnModel().getColumn(1).setCellRenderer(new TabellaRenderer());
-        table.getColumnModel().getColumn(3).setCellRenderer(new TabellaRenderer());
+        for(int i = 0; i < tableModel.getColumnCount(); i++) {
+            table.getColumnModel().getColumn(i).setCellRenderer(new TabellaRenderer());
+        }
 
 		sfondoFrame.setVisible(true);
 	
@@ -143,49 +141,74 @@ public class VisualizzaDiarieInfFrame {
             return;
         }
 		updating = true;
-		for (int i = 0; i < 2; i++) {
-	    	   tableModel.addRow(new Object[] {modello.modelloGestoreDiarieInfermieristiche.getCodiceInfermiere().get(i),modello.modelloGestoreDiarieInfermieristiche.getTableNoteParticolari().get(i),modello.modelloGestoreDiarieInfermieristiche.getTableImportante().get(i),modello.modelloGestoreDiarieInfermieristiche.getTableFarmaci().get(i),modello.modelloGestoreDiarieInfermieristiche.getTableDateArrivo().get(i),modello.modelloGestoreDiarieInfermieristiche.getTableOraArrivo().get(i)});
+		for (int i = 0; i < modello.modelloGestoreDiarieInfermieristiche.getCodiceInfermiere().size(); i++) {
+	    	   tableModel.addRow(new Object[] {
+	    			   modello.modelloGestoreDiarieInfermieristiche.getCodiceInfermiere().get(i),
+	    			   modello.modelloGestoreDiarieInfermieristiche.getTableNoteParticolari().get(i),
+	    			   modello.modelloGestoreDiarieInfermieristiche.getTableImportante().get(i),
+	    			   modello.modelloGestoreDiarieInfermieristiche.getTableFarmaci().get(i),
+	    			   modello.modelloGestoreDiarieInfermieristiche.getTableDateArrivo().get(i),
+	    			   modello.modelloGestoreDiarieInfermieristiche.getTableOraArrivo().get(i)
+	    	   });
 		}
         for(int i = 0; i < tableModel.getColumnCount(); i++) {
             table.getColumnModel().getColumn(i).setCellRenderer(new TabellaRenderer());
         }
-        table.getColumnModel().getColumn(1).setCellRenderer(new TabellaRenderer());
-        table.getColumnModel().getColumn(3).setCellRenderer(new TabellaRenderer());
 		updating = false;
 	}
 	
 	@SuppressWarnings("serial")
 	static class TabellaRenderer extends DefaultTableCellRenderer {
 
-	    @Override
+	    private final ImageIcon trueImage = new ImageIcon("../progetto_gui/src/main/resources/spunta.png");
+		private final ImageIcon falseImage = new ImageIcon("../progetto_gui/src/main/resources/x.png");
+
+		@Override
 	    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
 	    	Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+
+    		setHorizontalAlignment(SwingConstants.CENTER);
+    		setVerticalAlignment(SwingConstants.CENTER);
+    		setLayout(null);
 	    	
-	    	if(column == 1 || column == 3) {
+    		if(column == 1 || column == 3) {
 		    	JTextArea textArea = new JTextArea();
 		        textArea.setLineWrap(true);
 		        textArea.setWrapStyleWord(true);
 
 		        TableColumnModel columnModel = table.getColumnModel();
 		        int larghezzaColonna = columnModel.getColumn(column).getWidth();
-		        textArea.setSize(larghezzaColonna, Short.MAX_VALUE);
-		        textArea.setText(String.valueOf(value));
+		        textArea.setSize(larghezzaColonna, 40);
+		        String testo = String.valueOf(value) + "\n";
+		        textArea.setText(testo);
 		        int preferredHeight = textArea.getPreferredSize().height;
 		        table.setRowHeight(row, preferredHeight);
-		        textArea.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 1, UIManager.getColor("Table.gridColor")));
-		        textArea.setAlignmentY(SwingConstants.CENTER);
-		        //centerTextVertically(textArea);
 		        
+		        //textArea.setBounds(10, 10, preferredHeight + 20, larghezzaColonna - 20);
+		        textArea.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 1, UIManager.getColor("Table.gridColor")));
+		        textArea.setFont(new Font(getFont().getFontName(), Font.ITALIC, 12));
+		        textArea.setAlignmentX(Component.CENTER_ALIGNMENT);
+		        textArea.setAlignmentY(Component.CENTER_ALIGNMENT);
+
+		       
 		        return textArea;
 	
+	    	} else if (column == 2){
+	            if (value instanceof Boolean) {
+	                if (Boolean.parseBoolean(value.toString()) == true) {
+	                    setIcon(trueImage);
+	                    setText("");
+	                } else {
+	                    setIcon(falseImage);
+	                    setText("");
+	                }
+	            }
+	    		return component;
+	    	
 	    	} else {
-	    		    		
 	    		return component;
 	    	}
-	    	
-	    	
 	    }
-	    
 	}
 	/*
 	public static void main(String[] args) {
