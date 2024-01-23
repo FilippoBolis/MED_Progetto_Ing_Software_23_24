@@ -110,6 +110,14 @@ public class PazientiFrame {
         pazientePanel.setLayout(null);
         infoPanel.add(pazientePanel);
         
+        
+        //FINIRE
+        JButton logoutButton = new JButton();
+        logoutButton.setBounds(pazientePanel.getWidth() - 20 - 100, 20, 100, 30);
+        logoutButton.setBackground(Stile.BLU.getColore());
+        logoutButton.setForeground(Color.WHITE);
+        infoPanel.add(logoutButton);        
+        
         pazienteTitoloLabel = new JLabel("Selezionare un paziente");
         pazienteTitoloLabel.setBounds(20, 0, (int) (pazientePanel.getWidth() - 20), (int) (pazientePanel.getHeight() * 0.4));
         pazienteTitoloLabel.setVerticalAlignment(SwingConstants.BOTTOM);
