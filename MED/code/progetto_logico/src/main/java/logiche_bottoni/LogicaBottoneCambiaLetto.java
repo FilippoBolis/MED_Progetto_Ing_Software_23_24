@@ -2,34 +2,26 @@ package logiche_bottoni;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 
 import javax.swing.SwingUtilities;
 
-import org.jooq.DSLContext;
-import org.jooq.SQLDialect;
-import org.jooq.impl.DSL;
-
-import gestore_db.CreateDB;
 import gui.*;
 import logiche_bottoni_conferma.ConfermaAssegnaPaziente;
+import logiche_bottoni_conferma.ConfermaRiassegnaPaziente;
 import logiche_bottoni_conferma.LogicaBottoneAggiornamentoLettiDisponibili;
 import logiche_bottoni_conferma.LogicaBottoneAggiornamentoModulo;
-import med_db.jooq.generated.tables.Diariamed;
 import modelli.ModelloGestoreLogicaGenerale;
 
-public class LogicaBottoneAssegnaLetto extends LogicaBottone{
+public class LogicaBottoneCambiaLetto extends LogicaBottone{
 	
-	public LogicaBottoneAssegnaLetto(PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
+	public LogicaBottoneCambiaLetto(PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		super(v2,m);
 		start();
 	}
 	
 	protected void start() {
 		//si registra al bottone prontoSoccorsoToggleButton
-		frameDeiPazienti.assegnaLettoButton.addActionListener(new ActionListener() {
+		frameDeiPazienti.spostaLettoButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 			if(modello.modelloGestorePaziente.qualcunoSelezionato()) {
@@ -38,16 +30,7 @@ public class LogicaBottoneAssegnaLetto extends LogicaBottone{
 					frameDeiPazienti.sfondoFrame.setEnabled(false);
 					new LogicaBottoneAggiornamentoModulo(frame,modello);
 					new LogicaBottoneAggiornamentoLettiDisponibili(frame,modello);
-					new ConfermaAssegnaPaziente(frame,frameDeiPazienti,modello);
-					Connection conn;
-					try {
-						conn = DriverManager.getConnection(CreateDB.DB_URL);
-						DSLContext contesto = DSL.using(conn, SQLDialect.SQLITE);
-						String repartoConsigliato = contesto.select(Diariamed.DIARIAMED.REPARTO_CONSIGLIATO).from(Diariamed.DIARIAMED).where(Diariamed.DIARIAMED.CODICE_DEGENTE.eq(modello.modelloGestorePaziente.getCodice()),Diariamed.DIARIAMED.CODICE.eq(1)).fetchOneInto(String.class);
-						frame.aggiornaRepartoView("Il medico consiglia il reparto: " + repartoConsigliato);
-					} catch (SQLException e1) {
-						System.out.println(e1.getMessage());
-					}
+					new ConfermaRiassegnaPaziente(frame,frameDeiPazienti,modello);
 
 				}
 				else {

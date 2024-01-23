@@ -63,6 +63,7 @@ public class PazientiFrame {
 	public JButton assegnaLettoButton;
 	public JButton inserisciDiariaButton;
 	public JButton inserisciPazienteButton;
+	public JButton spostaLettoButton;
 	public JComboBox<String> repartoComboBox;
 	public JLabel repartoLabel;
     private JLabel dataPazienteLabel;
@@ -73,7 +74,6 @@ public class PazientiFrame {
 	private JLabel pazienteTitoloLabel;
 	private ModelloGestoreLogicaGenerale modello;
     public boolean updating = false;
-	private JButton spostaLettoButton;
 
 	public PazientiFrame(ModelloGestoreLogicaGenerale modello) {
 		
@@ -289,7 +289,7 @@ public class PazientiFrame {
         inserisciRilevazioneButton.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Stile.BLU.getColore()));
 		repartoBottoniPanel.add(inserisciRilevazioneButton);
 		
-		spostaLettoButton = new JButton("Assegna posto letto");
+		spostaLettoButton = new JButton("Riassegna posto letto");
 		spostaLettoButton.setBounds(0, modificaDiariaMedButton.getHeight() * 3, repartoBottoniPanel.getWidth(), 34);
 		spostaLettoButton.setBackground(Stile.BLU_SCURO.getColore());
 		spostaLettoButton.setForeground(Color.WHITE);

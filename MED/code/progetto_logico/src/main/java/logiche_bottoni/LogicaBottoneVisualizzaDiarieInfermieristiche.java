@@ -35,7 +35,7 @@ public class LogicaBottoneVisualizzaDiarieInfermieristiche extends LogicaBottone
 				}
 			}
 			else {
-				new ErroreFrame(frameDeiPazienti.sfondoFrame, "Deve selezionare prima il paziente del quale vuole visualizzare i farmaci prescritti");
+				new ErroreFrame(frameDeiPazienti.sfondoFrame, "Deve selezionare prima il paziente del quale vuole visualizzare le diarie infermieristiche");
 			}
 			SwingUtilities.invokeLater(new Runnable() {
 			@Override

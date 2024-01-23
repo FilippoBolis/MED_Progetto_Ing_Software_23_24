@@ -3,6 +3,7 @@ package gui;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 
 import javax.swing.BorderFactory;
@@ -12,24 +13,32 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableRowSorter;
 import com.formdev.flatlaf.FlatIntelliJLaf;
+
+import gui.VisualizzaDiarieInfFrame.TabellaRenderer;
+import modelli.ModelloGestoreLogicaGenerale;
 
 public class VisualizzaRilevazioniFrame {
 	private ImageIcon rilevazioniImage = new ImageIcon("../progetto_gui/src/main/resources/rilevazioni.png");
 	public JFrame sfondoFrame;
 	public DefaultTableModel tableModel;
 	public JTable table;
+	public boolean updating;
+	public JLabel rilevazioniLabel;
+	private ModelloGestoreLogicaGenerale modello;
 	
 	@SuppressWarnings("serial")
-	public VisualizzaRilevazioniFrame() {
-		
+	public VisualizzaRilevazioniFrame(ModelloGestoreLogicaGenerale m) {
+		modello = m;
 		try {
 			UIManager.setLookAndFeel(new FlatIntelliJLaf());
 		} catch (UnsupportedLookAndFeelException e) {
@@ -71,18 +80,22 @@ public class VisualizzaRilevazioniFrame {
 		immagineLabel.setBounds(30, 30, 48, 48);
 		rilevazioniPanel.add(immagineLabel);
 		
-		JLabel rilevazioniLabel = new JLabel("Rilevazioni");
+		rilevazioniLabel = new JLabel("Rilevazioni");
 		rilevazioniLabel.setBounds(30, 96, 666, 30);
 		rilevazioniLabel.setForeground(Color.GRAY);
 		rilevazioniLabel.setFont(Stile.TESTO.getFont());
 		rilevazioniPanel.add(rilevazioniLabel);
 		
 		tableModel = new DefaultTableModel();
-        tableModel.addColumn("Glicemia (mg/dL)");
+		tableModel.addColumn("Codice personale");
+		tableModel.addColumn("Pressione Minima (mmHg)");
+		tableModel.addColumn("Pressione Massima (mmHg)");
+		tableModel.addColumn("Glicemia (mg/dL)");
+		tableModel.addColumn("Frequenza Cardiaca (bpm)");
+		tableModel.addColumn("Dolore (1/10)");
         tableModel.addColumn("Temperatura (°C)");
-        tableModel.addColumn("Pressione (mmHg)");
-        tableModel.addColumn("Frequenza Cardiaca (bpm)");
-        tableModel.addColumn("Dolore");
+        tableModel.addColumn("Data");
+        tableModel.addColumn("Ora");
        
         table = new JTable(tableModel) {
             @Override
@@ -185,6 +198,33 @@ public class VisualizzaRilevazioniFrame {
             }
             return component;
         }
+	}
+	public void setPersonaView(String persona) {
+		rilevazioniLabel.setText("Diarie infermieristiche di " + persona);
+	}
+	
+	public synchronized  void updateViewTabella() {
+		if (updating) {
+            return;
+        }
+		updating = true;
+		for (int i = 0; i < modello.modelloGestoreRilevazioni.getCodicePersonale().size(); i++) {
+	    	   tableModel.addRow(new Object[] {
+	    			   modello.modelloGestoreRilevazioni.getCodicePersonale().get(i),
+	    			   modello.modelloGestoreRilevazioni.getPressioneMin().get(i),
+	    			   modello.modelloGestoreRilevazioni.getPressioneMax().get(i),
+	    			   modello.modelloGestoreRilevazioni.getGlicemia().get(i),
+	    			   modello.modelloGestoreRilevazioni.getFrequenza().get(i),
+	    			   modello.modelloGestoreRilevazioni.getDolore().get(i),
+	    			   modello.modelloGestoreRilevazioni.getTemperatura().get(i),
+	    			   modello.modelloGestoreRilevazioni.getTableDateArrivo().get(i),
+	    			   modello.modelloGestoreRilevazioni.getTableOraArrivo().get(i),
+	    	   });
+		}
+        for(int i = 0; i < tableModel.getColumnCount(); i++) {
+            table.getColumnModel().getColumn(i).setCellRenderer(new TabellaRenderer());
+        }
+		updating = false;
 	}
 	
 }

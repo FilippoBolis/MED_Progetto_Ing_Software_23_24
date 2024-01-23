@@ -19,9 +19,11 @@ public class InserisciRilevazioneFrame {
 	public JFrame sfondoFrame;
 	public JTextField glicemiaTextField;
 	public JTextField temperaturaTextField;
-	public JTextField pressioneTextField;
+	public JTextField pressioneMaxTextField;
+	public JTextField pressioneMinTextField;
 	public JTextField frequenzaTextField;
 	public JTextField doloreTextField;
+	public JButton confermaButton;
 
 	@SuppressWarnings("serial")
 	public InserisciRilevazioneFrame() {
@@ -95,10 +97,15 @@ public class InserisciRilevazioneFrame {
 		pressioneLabel.setFont(Stile.TESTO.getFont());
 		rilevazionePanel.add(pressioneLabel);
 		
-		pressioneTextField = new JTextField();
-		pressioneTextField.setBounds(30, 261, 436, 30);
-		pressioneTextField.setColumns(30);
-		rilevazionePanel.add(pressioneTextField);
+		pressioneMaxTextField = new JTextField();
+		pressioneMaxTextField.setBounds(30, 261, 436, 30);
+		pressioneMaxTextField.setColumns(30);
+		rilevazionePanel.add(pressioneMaxTextField);
+		
+		pressioneMinTextField = new JTextField();
+		pressioneMinTextField.setBounds(15, 261, 436, 30);
+		pressioneMinTextField.setColumns(30);
+		rilevazionePanel.add(pressioneMinTextField);
 
 		JLabel frequenzaLabel = new JLabel("Frequenza Cardiaca");
 		frequenzaLabel.setBounds(30, 294, 436, 30);
@@ -123,7 +130,7 @@ public class InserisciRilevazioneFrame {
 		doloreTextField.setColumns(30);
 		rilevazionePanel.add(doloreTextField);
 
-		JButton confermaButton = new JButton("Conferma");
+		confermaButton = new JButton("Conferma");
 		confermaButton.setBounds(346, 434, 120, 30);
 		confermaButton.setBackground(Stile.AZZURRO.getColore());
 		confermaButton.setForeground(Color.WHITE);
