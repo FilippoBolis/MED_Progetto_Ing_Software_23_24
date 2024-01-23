@@ -119,7 +119,7 @@ public class Test_Inserimenti implements MetodiDaTestare{
 		//assertEquals(1,risultato);
 		//secondo test: tentativo di inserimento con dati scorretti
 		//ci si aspetta che l'inserimento non avvenga, valore atteso è 0
-		risultato=InserimentoJooq.getIstanza().rilevazione(10,"D8", 35, 75, 110, 30, LocalDate.now(), LocalTime.now().withNano(0), 60, 2);
+		risultato=InserimentoJooq.getIstanza().rilevazione(10,"D8","P2", 35, 75, 110, 30, LocalDate.now(), LocalTime.now().withNano(0), 60, 2);
 		assertEquals(0,risultato);
 
 	}

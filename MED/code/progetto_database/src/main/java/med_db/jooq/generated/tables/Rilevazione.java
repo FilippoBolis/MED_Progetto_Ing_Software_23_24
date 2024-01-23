@@ -16,11 +16,11 @@ import med_db.jooq.generated.tables.records.RilevazioneRecord;
 
 import org.jooq.Field;
 import org.jooq.ForeignKey;
-import org.jooq.Function10;
+import org.jooq.Function11;
 import org.jooq.Name;
 import org.jooq.Record;
 import org.jooq.Records;
-import org.jooq.Row10;
+import org.jooq.Row11;
 import org.jooq.Schema;
 import org.jooq.SelectField;
 import org.jooq.Table;
@@ -62,6 +62,11 @@ public class Rilevazione extends TableImpl<RilevazioneRecord> {
      * The column <code>RILEVAZIONE.CODICE_DEGENTE</code>.
      */
     public final TableField<RilevazioneRecord, String> CODICE_DEGENTE = createField(DSL.name("CODICE_DEGENTE"), SQLDataType.CLOB, this, "");
+
+    /**
+     * The column <code>RILEVAZIONE.CODICE_INFERMIERE</code>.
+     */
+    public final TableField<RilevazioneRecord, String> CODICE_INFERMIERE = createField(DSL.name("CODICE_INFERMIERE"), SQLDataType.CLOB, this, "");
 
     /**
      * The column <code>RILEVAZIONE.TEMPERATURA</code>.
@@ -203,18 +208,18 @@ public class Rilevazione extends TableImpl<RilevazioneRecord> {
     }
 
     // -------------------------------------------------------------------------
-    // Row10 type methods
+    // Row11 type methods
     // -------------------------------------------------------------------------
 
     @Override
-    public Row10<Integer, String, Double, Integer, Integer, Integer, LocalDate, LocalTime, Integer, Integer> fieldsRow() {
-        return (Row10) super.fieldsRow();
+    public Row11<Integer, String, String, Double, Integer, Integer, Integer, LocalDate, LocalTime, Integer, Integer> fieldsRow() {
+        return (Row11) super.fieldsRow();
     }
 
     /**
      * Convenience mapping calling {@link SelectField#convertFrom(Function)}.
      */
-    public <U> SelectField<U> mapping(Function10<? super Integer, ? super String, ? super Double, ? super Integer, ? super Integer, ? super Integer, ? super LocalDate, ? super LocalTime, ? super Integer, ? super Integer, ? extends U> from) {
+    public <U> SelectField<U> mapping(Function11<? super Integer, ? super String, ? super String, ? super Double, ? super Integer, ? super Integer, ? super Integer, ? super LocalDate, ? super LocalTime, ? super Integer, ? super Integer, ? extends U> from) {
         return convertFrom(Records.mapping(from));
     }
 
@@ -222,7 +227,7 @@ public class Rilevazione extends TableImpl<RilevazioneRecord> {
      * Convenience mapping calling {@link SelectField#convertFrom(Class,
      * Function)}.
      */
-    public <U> SelectField<U> mapping(Class<U> toType, Function10<? super Integer, ? super String, ? super Double, ? super Integer, ? super Integer, ? super Integer, ? super LocalDate, ? super LocalTime, ? super Integer, ? super Integer, ? extends U> from) {
+    public <U> SelectField<U> mapping(Class<U> toType, Function11<? super Integer, ? super String, ? super String, ? super Double, ? super Integer, ? super Integer, ? super Integer, ? super LocalDate, ? super LocalTime, ? super Integer, ? super Integer, ? extends U> from) {
         return convertFrom(toType, Records.mapping(from));
     }
 }

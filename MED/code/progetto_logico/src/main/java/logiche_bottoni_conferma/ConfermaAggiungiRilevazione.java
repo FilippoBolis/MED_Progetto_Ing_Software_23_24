@@ -63,8 +63,8 @@ public class ConfermaAggiungiRilevazione {
 						}
 						else {
 							ultimoCodice = risultato;
-						}
-						if ((InserimentoJooq.getIstanza().rilevazione(ultimoCodice+1,modello.modelloGestorePaziente.getCodice(),temperatura,pressioneMax,pressioneMin,glicemia, LocalDate.now(),LocalTime.now().withNano(0),frequenza,dolore)) == 1) {
+						} //rivedere questo inserimento, non è corretto
+						if ((InserimentoJooq.getIstanza().rilevazione(ultimoCodice+1,modello.modelloGestorePaziente.getCodice(),null, temperatura,pressioneMax,pressioneMin,glicemia, LocalDate.now(),LocalTime.now().withNano(0),frequenza,dolore)) == 1) {
 						}
 						else {
 							new ErroreFrame(frame.sfondoFrame, "E' avvenuto un problema nell'inserimento della rilevazione, se il problema persiste chiamare un tecnico");

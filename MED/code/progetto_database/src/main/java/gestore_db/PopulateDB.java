@@ -6,10 +6,10 @@ import java.time.LocalTime;
 public class PopulateDB {
 
 	public static void main(String[] args) throws Exception{
-		//file unico per la costruzione del DB
+		/*file unico per la costruzione del DB
 		CreateDB.getIstanza().creaDB();
 		CreateDB.getIstanza().creaTable();
-		
+		*/
 		//inserimento personale
 		InserimentoJooq.getIstanza().personale("P1","Daniele","Gotti","M", "SpostamiSeCiRiesci");
 		InserimentoJooq.getIstanza().personale("P2","Filippo","Bolis","I","HaiGiocatoAdOuterWilds");
@@ -68,8 +68,8 @@ public class PopulateDB {
 		InserimentoJooq.getIstanza().diariaInf(2, "D2", "P2", LocalDate.now(), LocalTime.now().withNano(0), "Il paziente sembra migliorare", false, "aspirina");
 		
 		//inserimento rilevazioni
-		InserimentoJooq.getIstanza().rilevazione(1,"D1",36.8,150,90,100, LocalDate.now(),LocalTime.now().withNano(0),60,5);
-		InserimentoJooq.getIstanza().rilevazione(2,"D1", 35, 120, 80, 30, LocalDate.now(), LocalTime.now().withNano(0), 60, 2);
+		InserimentoJooq.getIstanza().rilevazione(1,"D1","P2",36.8,150,90,100, LocalDate.now(),LocalTime.now().withNano(0),60,5);
+		InserimentoJooq.getIstanza().rilevazione(2,"D1","P2",35, 120, 80, 30, LocalDate.now(), LocalTime.now().withNano(0), 60, 2);
 	}
 
 }

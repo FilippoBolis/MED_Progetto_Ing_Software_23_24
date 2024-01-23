@@ -50,7 +50,7 @@ public class LogicaDelleRilevazioniTabella{
 				if (conn != null) {
 					DSLContext contesto = DSL.using(conn, SQLDialect.SQLITE);
 					if (contesto.select(Rilevazione.RILEVAZIONE.ID).from(Rilevazione.RILEVAZIONE).where(Rilevazione.RILEVAZIONE.CODICE_DEGENTE.eq(codiceDegente)).fetch().isNotEmpty()) {
-						Result<Record9<String, Integer, Double, Integer, Integer, Integer, Integer, LocalDate, LocalTime>> rilevazioni = contesto.selectDistinct(Rilevazione.RILEVAZIONE.CODICE_DEGENTE,Rilevazione.RILEVAZIONE.GLICEMIA,Rilevazione.RILEVAZIONE.TEMPERATURA,Rilevazione.RILEVAZIONE.PRESSIONE_MAX,Rilevazione.RILEVAZIONE.PRESSIONE_MIN, Rilevazione.RILEVAZIONE.FREQ_CARD, Rilevazione.RILEVAZIONE.DOLORE, Rilevazione.RILEVAZIONE.DATA,Rilevazione.RILEVAZIONE.ORA).from(Rilevazione.RILEVAZIONE).where(Rilevazione.RILEVAZIONE.CODICE_DEGENTE.eq(codiceDegente)).fetch();
+						Result<Record9<String, Integer, Double, Integer, Integer, Integer, Integer, LocalDate, LocalTime>> rilevazioni = contesto.selectDistinct(Rilevazione.RILEVAZIONE.CODICE_INFERMIERE,Rilevazione.RILEVAZIONE.GLICEMIA,Rilevazione.RILEVAZIONE.TEMPERATURA,Rilevazione.RILEVAZIONE.PRESSIONE_MAX,Rilevazione.RILEVAZIONE.PRESSIONE_MIN, Rilevazione.RILEVAZIONE.FREQ_CARD, Rilevazione.RILEVAZIONE.DOLORE, Rilevazione.RILEVAZIONE.DATA,Rilevazione.RILEVAZIONE.ORA).from(Rilevazione.RILEVAZIONE).where(Rilevazione.RILEVAZIONE.CODICE_DEGENTE.eq(codiceDegente)).fetch();
 						for (Record9<String, Integer, Double, Integer, Integer, Integer, Integer, LocalDate, LocalTime> RilevazioneRecord : rilevazioni) {
 							codicePersonale.add(RilevazioneRecord.value1());
 							glicemia.add(RilevazioneRecord.value2());

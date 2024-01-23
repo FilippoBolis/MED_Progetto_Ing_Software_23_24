@@ -72,14 +72,14 @@ public class InserimentoJooq{
 		return result;
 	}
 	
-	public int rilevazione(int ID, String codDeg, double temp, int pressMax,int pressMin, int glicem,LocalDate data, LocalTime ora, int freqCard, int dol) {
+	public int rilevazione(int ID, String codDeg, String codInf, double temp, int pressMax,int pressMin, int glicem,LocalDate data, LocalTime ora, int freqCard, int dol) {
 		int result=0;
 		try {
 		Connection conn = DriverManager.getConnection(CreateDB.DB_URL);
 		if (conn != null) {
 			DSLContext create = DSL.using(conn, SQLDialect.SQLITE);
 			if (create.select(Degente.DEGENTE.CODICE).from(Degente.DEGENTE).where(Degente.DEGENTE.CODICE.eq(codDeg)).fetch().isNotEmpty()) {
-				RilevazioneRecord rilevazione = new RilevazioneRecord(ID, codDeg, temp, pressMax, pressMin, glicem, data, ora, freqCard, dol);
+				RilevazioneRecord rilevazione = new RilevazioneRecord(ID, codDeg, codInf, temp, pressMax, pressMin, glicem, data, ora, freqCard, dol);
 				result = create.insertInto(Rilevazione.RILEVAZIONE).set(rilevazione).execute();	
 			}
 			
