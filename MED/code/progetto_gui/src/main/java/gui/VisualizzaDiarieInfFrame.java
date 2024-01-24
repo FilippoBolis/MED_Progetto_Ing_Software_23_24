@@ -44,7 +44,7 @@ public class VisualizzaDiarieInfFrame {
 			e.printStackTrace();
 		}
 		sfondoFrame = new JFrame();
-		sfondoFrame.setSize(860, 540);
+		sfondoFrame.setSize(760, 540);
 		sfondoFrame.setTitle("<html><font color='white'>M.E.D Visualizza diarie infermieristiche</font></html>");
 		sfondoFrame.getRootPane().setBackground(Stile.AZZURRO.getColore());
 		sfondoFrame.getRootPane().setForeground(Color.WHITE);
@@ -57,13 +57,13 @@ public class VisualizzaDiarieInfFrame {
 		sfondoPanel.setLayout(null);
 		
 		JPanel diariePanel = new JPanel();
-		diariePanel.setBounds(10, 10, 826, 482);
+		diariePanel.setBounds(10, 10, 726, 482);
 		diariePanel.setBackground(Color.WHITE);
 		diariePanel.setLayout(null);
 		sfondoPanel.add(diariePanel);
 		
 		JLabel titoloLabel = new JLabel("Visualizza diarie infermieristiche");
-		titoloLabel.setBounds(100, 30, 696, 48);
+		titoloLabel.setBounds(100, 30, 596, 48);
 		titoloLabel.setForeground(Stile.BLU_SCURO.getColore());
 		titoloLabel.setFont(Stile.TITOLO.getFont());
 		titoloLabel.setHorizontalAlignment(SwingConstants.LEFT);
@@ -80,7 +80,7 @@ public class VisualizzaDiarieInfFrame {
 		diariePanel.add(immagineLabel);
 		
 		diarieLabel = new JLabel("Diarie infermieristiche");
-		diarieLabel.setBounds(30, 96, 766, 30);
+		diarieLabel.setBounds(30, 96, 666, 30);
 		diarieLabel.setForeground(Color.GRAY);
 		diarieLabel.setFont(Stile.TESTO.getFont());
 		diariePanel.add(diarieLabel);
@@ -109,7 +109,7 @@ public class VisualizzaDiarieInfFrame {
         table.setFocusable(false);
         
 		JScrollPane scrollPanel = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPanel.setBounds(30, 129, 766, 323);
+        scrollPanel.setBounds(30, 129, 666, 323);
         scrollPanel.getViewport().setBackground(UIManager.getColor("Panel.background"));
         scrollPanel.setBorder(BorderFactory.createEmptyBorder());
         scrollPanel.setViewportView(table);
@@ -184,12 +184,10 @@ public class VisualizzaDiarieInfFrame {
 		        int preferredHeight = textArea.getPreferredSize().height;
 		        table.setRowHeight(row, preferredHeight);
 		        
-		        //textArea.setBounds(10, 10, preferredHeight + 20, larghezzaColonna - 20);
 		        textArea.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 1, UIManager.getColor("Table.gridColor")));
 		        textArea.setFont(new Font(getFont().getFontName(), Font.ITALIC, 12));
 		        textArea.setAlignmentX(Component.CENTER_ALIGNMENT);
 		        textArea.setAlignmentY(Component.CENTER_ALIGNMENT);
-
 		       
 		        return textArea;
 	
@@ -210,9 +208,5 @@ public class VisualizzaDiarieInfFrame {
 	    	}
 	    }
 	}
-	/*
-	public static void main(String[] args) {
-		new VisualizzaDiarieInfFrame();
-	}
-	*/
+
 }

@@ -45,7 +45,7 @@ public class VisualizzaRilevazioniFrame {
 			e.printStackTrace();
 		}
 		sfondoFrame = new JFrame();
-		sfondoFrame.setSize(760, 540);
+		sfondoFrame.setSize(1200, 540);
 		sfondoFrame.setTitle("<html><font color='white'>M.E.D Visualizza rilevazioni</font></html>");
 		sfondoFrame.getRootPane().setBackground(Stile.AZZURRO.getColore());
 		sfondoFrame.getRootPane().setForeground(Color.WHITE);
@@ -58,13 +58,13 @@ public class VisualizzaRilevazioniFrame {
 		sfondoPanel.setLayout(null);
 		
 		JPanel rilevazioniPanel = new JPanel();
-		rilevazioniPanel.setBounds(10, 10, 726, 482);
+		rilevazioniPanel.setBounds(10, 10, 1166, 482);
 		rilevazioniPanel.setBackground(Color.WHITE);
 		rilevazioniPanel.setLayout(null);
 		sfondoPanel.add(rilevazioniPanel);
 		
 		JLabel titoloLabel = new JLabel("Visualizza rilevazioni");
-		titoloLabel.setBounds(100, 30, 596, 48);
+		titoloLabel.setBounds(100, 30, 1036, 48);
 		titoloLabel.setForeground(Stile.BLU_SCURO.getColore());
 		titoloLabel.setFont(Stile.TITOLO.getFont());
 		titoloLabel.setHorizontalAlignment(SwingConstants.LEFT);
@@ -81,19 +81,19 @@ public class VisualizzaRilevazioniFrame {
 		rilevazioniPanel.add(immagineLabel);
 		
 		rilevazioniLabel = new JLabel("Rilevazioni");
-		rilevazioniLabel.setBounds(30, 96, 666, 30);
+		rilevazioniLabel.setBounds(30, 96, 1106, 30);
 		rilevazioniLabel.setForeground(Color.GRAY);
 		rilevazioniLabel.setFont(Stile.TESTO.getFont());
 		rilevazioniPanel.add(rilevazioniLabel);
 		
 		tableModel = new DefaultTableModel();
-		tableModel.addColumn("Codice personale");
-		tableModel.addColumn("Pressione Minima (mmHg)");
-		tableModel.addColumn("Pressione Massima (mmHg)");
-		tableModel.addColumn("Glicemia (mg/dL)");
-		tableModel.addColumn("Frequenza Cardiaca (bpm)");
-		tableModel.addColumn("Dolore (1/10)");
-        tableModel.addColumn("Temperatura (°C)");
+		tableModel.addColumn("<html><div align='center'>Codice<br>Personale</div></html>");
+		tableModel.addColumn("<html>Pressione Max.<br><div align='center'>(mmHg)</div></html>");
+		tableModel.addColumn("<html>Pressione Min.<br><div align='center'>(mmHg)</div></html>");
+		tableModel.addColumn("<html>Frequenza Card.<br><div align='center'>(bpm)</div></html>");
+		tableModel.addColumn("<html>Temperatura<br><div align='center'>(°C)</div></html>");
+		tableModel.addColumn("<html>Glicemia<br><div align='center'>(mg/dL)</div></html>");
+		tableModel.addColumn("<html>Dolore<br><div align='center'>(1/10)</div></html>");
         tableModel.addColumn("Data");
         tableModel.addColumn("Ora");
        
@@ -105,24 +105,22 @@ public class VisualizzaRilevazioniFrame {
         };
 
         table.setBackground(Color.WHITE);
-        table.setRowHeight(30);
+        table.setRowHeight(40);
         table.setShowHorizontalLines(true);
         table.setShowVerticalLines(true);
-        table.setSelectionBackground(Stile.AZZURRO_TRASP.getColore());    
-        
-        for(int i = 0; i < tableModel.getColumnCount(); i++) {
-            table.getColumnModel().getColumn(i).setCellRenderer(new TabellaRenderer());
-        }
+        table.setSelectionBackground(Stile.AZZURRO_TRASP.getColore());  
+        table.setCellSelectionEnabled(false);
+        table.setFocusable(false);
         
 		JScrollPane scrollPanel = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPanel.setBounds(30, 129, 666, 323);
+        scrollPanel.setBounds(30, 129, 1106, 323);
         scrollPanel.getViewport().setBackground(UIManager.getColor("Panel.background"));
         scrollPanel.setBorder(BorderFactory.createEmptyBorder());
         scrollPanel.setViewportView(table);
         rilevazioniPanel.add(scrollPanel);
         
         JTableHeader tableHeader = table.getTableHeader();
-        tableHeader.setPreferredSize(new Dimension(table.getColumnModel().getTotalColumnWidth(), 30));
+        tableHeader.setPreferredSize(new Dimension(table.getColumnModel().getTotalColumnWidth(), 40));
         tableHeader.setBackground(Stile.BLU.getColore());
         tableHeader.setForeground(Color.WHITE);
         tableHeader.setFont(Stile.TESTO.getFont());
@@ -130,75 +128,15 @@ public class VisualizzaRilevazioniFrame {
        
         TableRowSorter<DefaultTableModel> ordineColonna = new TableRowSorter<>(tableModel);
         table.setRowSorter(ordineColonna);
+        
+        for(int i = 0; i < tableModel.getColumnCount(); i++) {
+            table.getColumnModel().getColumn(i).setCellRenderer(new TabellaRenderer());
+        }
 
 		sfondoFrame.setVisible(true);
 	
 	}
-	
-	@SuppressWarnings("serial")
-	static class TabellaRenderer extends DefaultTableCellRenderer {
 
-        @Override
-        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-            Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-            
-            setHorizontalAlignment(SwingConstants.CENTER);
-            setFont(Stile.TESTO.getFont());
-            if (value instanceof Boolean) {
-                double valore = Double.parseDouble(value.toString());
-            	switch(column) {
-                case 0:
-                	if(valore >= 200) {
-                		setForeground(Stile.ROSSO.getColore());
-                	} else if( valore < 140) {
-                		setForeground(Stile.VERDE.getColore());
-                	} else {
-                		setForeground(Stile.GIALLO.getColore());	
-                	}
-                	break;
-                case 1:
-                	if(valore >= 38.6) {
-                		setForeground(Stile.ROSSO.getColore());
-                	} else if(valore < 38.6 && valore >= 37.6) {
-                		setForeground(Stile.GIALLO.getColore());
-                	} else if(valore < 37.6 && valore >= 35.9){
-                		setForeground(Stile.VERDE.getColore());	
-                	} else {
-                		setForeground(Stile.AZZURRO.getColore());
-                	}
-                	break;
-            	case 2:
-            		if(valore >= 140) {
-            			setForeground(Stile.ROSSO.getColore());
-            		} else if( valore < 120) {
-            			setForeground(Stile.VERDE.getColore());
-            		} else {
-            			setForeground(Stile.GIALLO.getColore());	
-            		}
-            		break;
-            	case 3:
-            		if(valore >= 140) {
-            			setForeground(Stile.ROSSO.getColore());
-            		} else if( valore < 120) {
-            			setForeground(Stile.VERDE.getColore());
-            		} else {
-            			setForeground(Stile.GIALLO.getColore());	
-            		}
-            		break;
-            	case 4:
-            		if(valore >= 7) {
-            			setForeground(Stile.ROSSO.getColore());
-            		} else if( valore < 5) {
-            			setForeground(Stile.VERDE.getColore());
-            		} else {
-            			setForeground(Stile.GIALLO.getColore());	
-            		}
-            		break;            	
-            	}  
-            }
-            return component;
-        }
-	}
 	public void setPersonaView(String persona) {
 		rilevazioniLabel.setText("Diarie infermieristiche di " + persona);
 	}
@@ -211,12 +149,12 @@ public class VisualizzaRilevazioniFrame {
 		for (int i = 0; i < modello.modelloGestoreRilevazioni.getCodicePersonale().size(); i++) {
 	    	   tableModel.addRow(new Object[] {
 	    			   modello.modelloGestoreRilevazioni.getCodicePersonale().get(i),
-	    			   modello.modelloGestoreRilevazioni.getPressioneMin().get(i),
 	    			   modello.modelloGestoreRilevazioni.getPressioneMax().get(i),
-	    			   modello.modelloGestoreRilevazioni.getGlicemia().get(i),
+	    			   modello.modelloGestoreRilevazioni.getPressioneMin().get(i),
 	    			   modello.modelloGestoreRilevazioni.getFrequenza().get(i),
-	    			   modello.modelloGestoreRilevazioni.getDolore().get(i),
 	    			   modello.modelloGestoreRilevazioni.getTemperatura().get(i),
+	    			   modello.modelloGestoreRilevazioni.getGlicemia().get(i),
+	    			   modello.modelloGestoreRilevazioni.getDolore().get(i),
 	    			   modello.modelloGestoreRilevazioni.getTableDateArrivo().get(i),
 	    			   modello.modelloGestoreRilevazioni.getTableOraArrivo().get(i),
 	    	   });
@@ -227,4 +165,75 @@ public class VisualizzaRilevazioniFrame {
 		updating = false;
 	}
 	
+	@SuppressWarnings("serial")
+	static class TabellaRenderer extends DefaultTableCellRenderer {
+
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+            setHorizontalAlignment(SwingConstants.CENTER);
+            
+            if (value instanceof Integer || value instanceof Double) {
+            	component.setFont(Stile.TESTO.getFont());
+            	double valore = Double.parseDouble(value.toString());
+            	switch(column) {
+                case 1:
+                	if(valore >= 140 || valore <= 80) {
+                		component.setForeground(Stile.ROSSO.getColore());
+                	} else if(valore >= 90 && valore <= 120) {
+                		component.setForeground(Stile.VERDE.getColore());
+                	} else {
+                		component.setForeground(Stile.GIALLO.getColore());	
+                	}
+                	break;
+                case 2:
+                	if(valore >= 90 || valore <= 50) {
+                		component.setForeground(Stile.ROSSO.getColore());
+                	} else if(valore >= 60 && valore <= 80) {
+                		component.setForeground(Stile.VERDE.getColore());
+                	} else {
+                		component.setForeground(Stile.GIALLO.getColore());	
+                	} 
+                	break;
+            	case 3:
+            		if(valore >= 120 || valore <= 50) {
+            			component.setForeground(Stile.ROSSO.getColore());
+            		} else if(valore >= 60 && valore <= 100) {
+            			component.setForeground(Stile.VERDE.getColore());
+            		} else {
+            			component.setForeground(Stile.GIALLO.getColore());	
+            		}
+            		break;
+            	case 4:
+            		if(valore >= 38 || valore <= 35) {
+            			component.setForeground(Stile.ROSSO.getColore());
+            		} else if(valore >= 36 && valore <= 37.3) {
+            			component.setForeground(Stile.VERDE.getColore());
+            		} else {
+            			component.setForeground(Stile.GIALLO.getColore());	
+            		}
+            		break;
+            	case 5:
+            		if(valore >= 180 || valore <= 50) {
+            			component.setForeground(Stile.ROSSO.getColore());
+            		} else if(valore >= 70 && valore <= 130) {
+            			component.setForeground(Stile.VERDE.getColore());
+            		} else {
+            			component.setForeground(Stile.GIALLO.getColore());	
+            		}
+            		break;
+            	case 6:
+            		if(valore >= 7 || valore < 0) {
+            			component.setForeground(Stile.ROSSO.getColore());
+            		} else if(valore >= 0 && valore <= 4) {
+            			component.setForeground(Stile.VERDE.getColore());
+            		} else {
+            			component.setForeground(Stile.GIALLO.getColore());	
+            		}
+            		break; 
+            	} 
+            }
+            return component;
+        }
+	}
 }

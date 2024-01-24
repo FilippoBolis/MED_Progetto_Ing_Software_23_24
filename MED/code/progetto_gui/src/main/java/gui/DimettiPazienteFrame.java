@@ -82,6 +82,7 @@ public class DimettiPazienteFrame {
 		confermaButton.setBackground(Stile.AZZURRO.getColore());
 		confermaButton.setForeground(Color.WHITE);
 		confermaButton.setFont(Stile.SOTTOTITOLO.getFont());
+		confermaButton.setFocusPainted(false);
 		dimettiPanel.add(confermaButton);
 		
 		sfondoFrame.setVisible(true);

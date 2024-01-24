@@ -34,7 +34,7 @@ public class InserisciRilevazioneFrame {
 			e.printStackTrace();
 		}
 		sfondoFrame = new JFrame();
-		sfondoFrame.setSize(530, 533);
+		sfondoFrame.setSize(530, 599);
 		sfondoFrame.setTitle("<html><font color='white'>M.E.D Inserisci rilevazione</font></html>");
 		sfondoFrame.getRootPane().setBackground(Stile.AZZURRO.getColore());
 		sfondoFrame.getRootPane().setForeground(Color.WHITE);
@@ -47,7 +47,7 @@ public class InserisciRilevazioneFrame {
 		sfondoPanel.setLayout(null);
 
 		JPanel rilevazionePanel = new JPanel();
-		rilevazionePanel.setBounds(10, 10, 496, 475);
+		rilevazionePanel.setBounds(10, 10, 496, 541);
 		rilevazionePanel.setBackground(Color.WHITE);
 		rilevazionePanel.setLayout(null);
 		sfondoPanel.add(rilevazionePanel);
@@ -69,69 +69,75 @@ public class InserisciRilevazioneFrame {
 		immagineLabel.setBounds(30, 30, 48, 48);
 		rilevazionePanel.add(immagineLabel);
 
-		JLabel glicemiaLabel = new JLabel("Glicemia");
-		glicemiaLabel.setBounds(30, 96, 436, 30);
-		glicemiaLabel.setForeground(Color.GRAY);
-		glicemiaLabel.setFont(Stile.TESTO.getFont());
-		rilevazionePanel.add(glicemiaLabel);
-		
-		glicemiaTextField = new JTextField();
-		glicemiaTextField.setBounds(30, 129, 436, 30);
-		glicemiaTextField.setColumns(30);
-		rilevazionePanel.add(glicemiaTextField);
-
-		JLabel temperaturaLabel = new JLabel("Temperatura");
-		temperaturaLabel.setBounds(30, 162, 436, 30);
-		temperaturaLabel.setForeground(Color.GRAY);
-		temperaturaLabel.setFont(Stile.TESTO.getFont());
-		rilevazionePanel.add(temperaturaLabel);
-
-		temperaturaTextField = new JTextField();
-		temperaturaTextField.setBounds(30, 195, 436, 30);
-		temperaturaTextField.setColumns(30);
-		rilevazionePanel.add(temperaturaTextField);
-		
-		JLabel pressioneLabel = new JLabel("Pressione");
-		pressioneLabel.setBounds(30, 228, 436, 30);
-		pressioneLabel.setForeground(Color.GRAY);
-		pressioneLabel.setFont(Stile.TESTO.getFont());
-		rilevazionePanel.add(pressioneLabel);
+		JLabel pressioneMaxLabel = new JLabel("Pressione Max (mmHg)");
+		pressioneMaxLabel.setBounds(30, 96, 436, 30);
+		pressioneMaxLabel.setForeground(Color.GRAY);
+		pressioneMaxLabel.setFont(Stile.TESTO.getFont());
+		rilevazionePanel.add(pressioneMaxLabel);
 		
 		pressioneMaxTextField = new JTextField();
-		pressioneMaxTextField.setBounds(30, 261, 436, 30);
+		pressioneMaxTextField.setBounds(30, 129, 436, 30);
 		pressioneMaxTextField.setColumns(30);
 		rilevazionePanel.add(pressioneMaxTextField);
+
+		JLabel pressioneMinLabel = new JLabel("Pressione Min (mmHg)");
+		pressioneMinLabel.setBounds(30, 162, 436, 30);
+		pressioneMinLabel.setForeground(Color.GRAY);
+		pressioneMinLabel.setFont(Stile.TESTO.getFont());
+		rilevazionePanel.add(pressioneMinLabel);
 		
 		pressioneMinTextField = new JTextField();
-		pressioneMinTextField.setBounds(15, 261, 436, 30);
+		pressioneMinTextField.setBounds(30, 195, 436, 30);
 		pressioneMinTextField.setColumns(30);
 		rilevazionePanel.add(pressioneMinTextField);
-
-		JLabel frequenzaLabel = new JLabel("Frequenza Cardiaca");
-		frequenzaLabel.setBounds(30, 294, 436, 30);
+		
+		JLabel frequenzaLabel = new JLabel("Frequenza Cardiaca (bpm)");
+		frequenzaLabel.setBounds(30, 228, 436, 30);
 		frequenzaLabel.setForeground(Color.GRAY);
 		frequenzaLabel.setFont(Stile.TESTO.getFont());
 		rilevazionePanel.add(frequenzaLabel);
 		
 		frequenzaTextField = new JTextField();
-		frequenzaTextField.setBounds(30, 327, 436, 30);
+		frequenzaTextField.setBounds(30, 261, 436, 30);
 		frequenzaTextField.setColumns(30);
 		rilevazionePanel.add(frequenzaTextField);
+	
+		JLabel temperaturaLabel = new JLabel("Temperatura (°C)");
+		temperaturaLabel.setBounds(30, 294, 436, 30);
+		temperaturaLabel.setForeground(Color.GRAY);
+		temperaturaLabel.setFont(Stile.TESTO.getFont());
+		rilevazionePanel.add(temperaturaLabel);
 
-		JLabel doloreLabel = new JLabel("Dolore");
-		doloreLabel.setBounds(30, 360, 436, 30);
+		temperaturaTextField = new JTextField();
+		temperaturaTextField.setBounds(30, 327, 436, 30);
+		temperaturaTextField.setColumns(30);
+		rilevazionePanel.add(temperaturaTextField);
+
+		JLabel glicemiaLabel = new JLabel("Glicemia (mg/dL)");
+		glicemiaLabel.setBounds(30, 360, 436, 30);
+		glicemiaLabel.setForeground(Color.GRAY);
+		glicemiaLabel.setFont(Stile.TESTO.getFont());
+		rilevazionePanel.add(glicemiaLabel);
+		
+		glicemiaTextField = new JTextField();
+		glicemiaTextField.setBounds(30, 393, 436, 30);
+		glicemiaTextField.setColumns(30);
+		rilevazionePanel.add(glicemiaTextField);
+
+		JLabel doloreLabel = new JLabel("Dolore (1/10)");
+		doloreLabel.setBounds(30, 426, 436, 30);
 		doloreLabel.setForeground(Color.GRAY);
 		doloreLabel.setFont(Stile.TESTO.getFont());
 		rilevazionePanel.add(doloreLabel);
 		
 		doloreTextField = new JTextField();
-		doloreTextField.setBounds(30, 393, 436, 30);
+		doloreTextField.setBounds(30, 459, 436, 30);
 		sfondoFrame.setVisible(true);
 		doloreTextField.setColumns(30);
 		rilevazionePanel.add(doloreTextField);
 
 		confermaButton = new JButton("Conferma");
-		confermaButton.setBounds(346, 434, 120, 30);
+		confermaButton.setBounds(346, 500, 120, 30);
 		confermaButton.setBackground(Stile.AZZURRO.getColore());
 		confermaButton.setForeground(Color.WHITE);
 		confermaButton.setFont(Stile.SOTTOTITOLO.getFont());

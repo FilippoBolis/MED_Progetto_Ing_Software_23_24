@@ -17,15 +17,10 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableRowSorter;
-
 import com.formdev.flatlaf.FlatIntelliJLaf;
-
-//import logiche_bottoni.LoginLogic;
 import modelli.ModelloGestoreLogicaGenerale;
-
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JToggleButton;
@@ -64,6 +59,7 @@ public class PazientiFrame {
 	public JButton inserisciDiariaButton;
 	public JButton inserisciPazienteButton;
 	public JButton spostaLettoButton;
+	public JButton logoutButton;
 	public JComboBox<String> repartoComboBox;
 	public JLabel repartoLabel;
     private JLabel dataPazienteLabel;
@@ -110,13 +106,13 @@ public class PazientiFrame {
         pazientePanel.setLayout(null);
         infoPanel.add(pazientePanel);
         
-        
-        //FINIRE
-        JButton logoutButton = new JButton();
+        logoutButton = new JButton("Logout");
         logoutButton.setBounds(pazientePanel.getWidth() - 20 - 100, 20, 100, 30);
         logoutButton.setBackground(Stile.BLU.getColore());
         logoutButton.setForeground(Color.WHITE);
-        infoPanel.add(logoutButton);        
+        logoutButton.setFont(Stile.TESTO.getFont());
+        logoutButton.setFocusPainted(false);
+        pazientePanel.add(logoutButton);        
         
         pazienteTitoloLabel = new JLabel("Selezionare un paziente");
         pazienteTitoloLabel.setBounds(20, 0, (int) (pazientePanel.getWidth() - 20), (int) (pazientePanel.getHeight() * 0.4));
@@ -512,9 +508,5 @@ public class PazientiFrame {
             return component;
         }
     }
-	
-	/*
-	public static void main(String[] args) {
-		new PazientiFrame();
-	}*/
+
 }
