@@ -2,7 +2,6 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Graphics;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -26,6 +25,7 @@ public class InserisciPazienteFrame {
 	public JComboBox<String> urgenzaComboBox;
 	public JButton confermaButton;
 	
+	@SuppressWarnings("serial")
 	public InserisciPazienteFrame() {
 		try {
 			UIManager.setLookAndFeel(new FlatIntelliJLaf());
