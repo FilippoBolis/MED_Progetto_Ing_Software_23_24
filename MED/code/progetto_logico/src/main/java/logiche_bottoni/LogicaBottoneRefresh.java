@@ -3,8 +3,6 @@ package logiche_bottoni;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.SwingUtilities;
-
 import gui.*;
 import logiche_frame_pronto_soccorso.LogicaDellaPosizionePazienteTabella;
 import modelli.ModelloGestoreLogicaGenerale;
@@ -29,12 +27,6 @@ public class LogicaBottoneRefresh extends LogicaBottone{
 			tabellaProntoSoccorso.update();
 			frameDeiPazienti.urgenzaComboBox.setSelectedItem(" ");
 			frameDeiPazienti.cercaTextField.setText("");
-			SwingUtilities.invokeLater(new Runnable() {
-			@Override
-				public void run() {
-					frameDeiPazienti.updateViewTabella();
-				}
-			});
 			}
 		});
 	}

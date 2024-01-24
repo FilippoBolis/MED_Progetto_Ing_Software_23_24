@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import gestore_db.RimozioneJooq;
-import gui.AssegnaPostoFrame;
 import gui.DimettiPazienteFrame;
 import gui.ErroreFrame;
 import gui.PazientiFrame;

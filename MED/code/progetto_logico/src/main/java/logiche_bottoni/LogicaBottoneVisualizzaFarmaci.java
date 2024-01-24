@@ -6,15 +6,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import javax.swing.SwingUtilities;
-
 import org.jooq.DSLContext;
 import org.jooq.SQLDialect;
 import org.jooq.impl.DSL;
 
 import gestore_db.CreateDB;
 import gui.*;
-import logiche_bottoni_conferma.EsciVisualizzaDiarieInfermieristiche;
 import logiche_bottoni_conferma.EsciVisualizzaFarmaci;
 import med_db.jooq.generated.tables.Diariamed;
 import modelli.ModelloGestoreLogicaGenerale;
@@ -28,7 +25,6 @@ public class LogicaBottoneVisualizzaFarmaci extends LogicaBottone{
 	}
 	
 	protected void start() {
-		//si registra al bottone prontoSoccorsoToggleButton
 		frameDeiPazienti.visualizzaFarmaciButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -55,12 +51,6 @@ public class LogicaBottoneVisualizzaFarmaci extends LogicaBottone{
 			else {
 				new ErroreFrame(frameDeiPazienti.sfondoFrame, "Deve selezionare prima il paziente del quale vuole visualizzare i farmaci prescritti");
 			}
-			SwingUtilities.invokeLater(new Runnable() {
-			@Override
-				public void run() {
-					
-				}
-			});
 			}
 		});
 	}

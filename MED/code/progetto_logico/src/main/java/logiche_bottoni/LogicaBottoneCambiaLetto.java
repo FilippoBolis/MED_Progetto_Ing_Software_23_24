@@ -3,10 +3,7 @@ package logiche_bottoni;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.SwingUtilities;
-
 import gui.*;
-import logiche_bottoni_conferma.ConfermaAssegnaPaziente;
 import logiche_bottoni_conferma.ConfermaRiassegnaPaziente;
 import logiche_bottoni_conferma.LogicaBottoneAggiornamentoLettiDisponibili;
 import logiche_bottoni_conferma.LogicaBottoneAggiornamentoModulo;
@@ -40,12 +37,6 @@ public class LogicaBottoneCambiaLetto extends LogicaBottone{
 			else {
 				new ErroreFrame(frameDeiPazienti.sfondoFrame, "Deve selezionare prima il paziente a cui vuole assegnare un letto");
 			}
-			SwingUtilities.invokeLater(new Runnable() {
-			@Override
-				public void run() {
-					
-				}
-			});
 			}
 		});
 	}

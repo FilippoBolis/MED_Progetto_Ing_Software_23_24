@@ -23,7 +23,6 @@ import gui.*;
 import logiche_frame_pronto_soccorso.LogicaDellaPosizionePazienteTabella;
 import med_db.jooq.generated.tables.Assegnazioneletto;
 import med_db.jooq.generated.tables.Degente;
-import med_db.jooq.generated.tables.Modulo;
 import med_db.jooq.generated.tables.Reparto;
 import modelli.ModelloGestoreLogicaGenerale;
 
@@ -147,10 +146,8 @@ public class LogicaBottoneFiltroNomeCognome extends LogicaBottone{
 					tabellaDeiPazienti = new LogicaDellaPosizionePazienteTabella(frameDeiPazienti, modello, frameDeiPazienti.posizioneAttuale);
 					tabellaDeiPazienti.update();
 				}
-				// non so perchè danno problemi ste cose sotto (se cambi il paziente mentre è attivo un altro filtro non lo cambia, devi rifarlo dopo è come se facesse un clear ma nell'if ci entra non so)
 				frameDeiPazienti.urgenzaComboBox.setSelectedItem(" ");
 				frameDeiPazienti.repartoComboBox.setSelectedItem(" ");
-				// non so perchè danno problemi le cose sopra
 				SwingUtilities.invokeLater(new Runnable() {
 					@Override
 					public void run() {

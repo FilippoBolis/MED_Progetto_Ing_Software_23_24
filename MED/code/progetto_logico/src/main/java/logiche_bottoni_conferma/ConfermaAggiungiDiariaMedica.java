@@ -3,11 +3,8 @@ package logiche_bottoni_conferma;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JTextField;
-
 import gui.InserisciDiariaFrame;
 import gui.InserisciInformazioniFrame;
-import gui.AssegnaPostoFrame;
 import gui.ErroreFrame;
 import gui.PazientiFrame;
 import modelli.ModelloGestoreLogicaGenerale;

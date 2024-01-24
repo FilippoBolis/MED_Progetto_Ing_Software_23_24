@@ -15,15 +15,8 @@ import org.jooq.Record6;
 import org.jooq.Result;
 import org.jooq.SQLDialect;
 import org.jooq.impl.DSL;
-
-import gui.PazientiFrame;
 import gui.VisualizzaDiarieInfFrame;
-import med_db.jooq.generated.tables.Assegnazioneletto;
-import med_db.jooq.generated.tables.Degente;
 import med_db.jooq.generated.tables.Diariainf;
-import med_db.jooq.generated.tables.Letto;
-import med_db.jooq.generated.tables.Modulo;
-import med_db.jooq.generated.tables.Reparto;
 import modelli.ModelloGestoreLogicaGenerale;
 
 public class LogicaDelleDiarieInfermieristicheTabella{
@@ -63,14 +56,6 @@ public class LogicaDelleDiarieInfermieristicheTabella{
 						    oreCreazione.add(diariaRecord.value6());
 						}
 						
-					}
-					else {
-						codiceInfermiere.add("Non ancora inserito");
-						noteParticolari.add(" ");
-						farmaci.add(" ");
-						importante.add(false);
-						dataCreazione.add(LocalDate.now());
-						oreCreazione.add(LocalTime.now().withNano(0));
 					}
 					modello.modelloGestoreDiarieInfermieristiche.setTableCodiceInfermiere(codiceInfermiere);
 					modello.modelloGestoreDiarieInfermieristiche.setTableDateArrivo(dataCreazione);

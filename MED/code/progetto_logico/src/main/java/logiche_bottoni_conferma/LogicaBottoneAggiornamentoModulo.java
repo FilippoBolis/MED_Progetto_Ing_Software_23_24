@@ -5,25 +5,17 @@ import java.awt.event.ItemListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.SwingUtilities;
-
 import org.jooq.DSLContext;
 import org.jooq.Record1;
-import org.jooq.Record7;
 import org.jooq.Result;
 import org.jooq.SQLDialect;
 import org.jooq.impl.DSL;
 
 import gui.*;
-import logiche_frame_pronto_soccorso.LogicaDellUrgenzaPazienteTabella;
-import logiche_frame_pronto_soccorso.LogicaDellaPosizionePazienteTabella;
 import med_db.jooq.generated.tables.Assegnazioneletto;
-import med_db.jooq.generated.tables.Degente;
 import med_db.jooq.generated.tables.Letto;
 import med_db.jooq.generated.tables.Modulo;
 import med_db.jooq.generated.tables.Reparto;

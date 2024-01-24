@@ -6,8 +6,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import javax.swing.SwingUtilities;
-
 import org.jooq.DSLContext;
 import org.jooq.SQLDialect;
 import org.jooq.impl.DSL;
@@ -57,12 +55,6 @@ public class LogicaBottoneAssegnaLetto extends LogicaBottone{
 			else {
 				new ErroreFrame(frameDeiPazienti.sfondoFrame, "Deve selezionare prima il paziente a cui vuole assegnare un letto");
 			}
-			SwingUtilities.invokeLater(new Runnable() {
-			@Override
-				public void run() {
-					
-				}
-			});
 			}
 		});
 	}

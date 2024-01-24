@@ -1,8 +1,6 @@
 package eseguibile;
 
 import javax.swing.SwingUtilities;
-
-import gui.*;
 import modelli.ModelloGestoreLogicaGenerale;
 
 public class Main {

@@ -3,8 +3,6 @@ package logiche_bottoni;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.SwingUtilities;
-
 import gui.*;
 import logiche_bottoni_conferma.EsciVisualizzaDiarieInfermieristiche;
 import logiche_frame_pronto_soccorso.LogicaDelleDiarieInfermieristicheTabella;
@@ -37,12 +35,6 @@ public class LogicaBottoneVisualizzaDiarieInfermieristiche extends LogicaBottone
 			else {
 				new ErroreFrame(frameDeiPazienti.sfondoFrame, "Deve selezionare prima il paziente del quale vuole visualizzare le diarie infermieristiche");
 			}
-			SwingUtilities.invokeLater(new Runnable() {
-			@Override
-				public void run() {
-					
-				}
-			});
 			}
 		});
 	}

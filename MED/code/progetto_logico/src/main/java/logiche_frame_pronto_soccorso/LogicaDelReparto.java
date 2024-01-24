@@ -12,7 +12,6 @@ import javax.swing.SwingUtilities;
 
 import org.jooq.DSLContext;
 import org.jooq.Record10;
-import org.jooq.Record7;
 import org.jooq.Result;
 import org.jooq.SQLDialect;
 import org.jooq.impl.DSL;

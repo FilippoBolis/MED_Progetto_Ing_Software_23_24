@@ -6,17 +6,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import javax.swing.SwingUtilities;
-
 import org.jooq.DSLContext;
 import org.jooq.SQLDialect;
 import org.jooq.impl.DSL;
 
 import gestore_db.CreateDB;
 import gui.*;
-import logiche_bottoni_conferma.EsciVisualizzaDiarieInfermieristiche;
 import logiche_bottoni_conferma.EsciVisualizzaInformazioni;
-import logiche_frame_pronto_soccorso.LogicaDellaPosizionePazienteTabella;
 import med_db.jooq.generated.tables.Diariamed;
 import modelli.ModelloGestoreLogicaGenerale;
 
@@ -56,12 +52,6 @@ public class LogicaBottoneVisualizzaInformazioni extends LogicaBottone{
 			else {
 				new ErroreFrame(frameDeiPazienti.sfondoFrame, "Deve selezionare prima il paziente del quale vuole visualizzare le informazioni");
 			}
-			SwingUtilities.invokeLater(new Runnable() {
-			@Override
-				public void run() {
-					
-				}
-			});
 			}
 		});
 	}

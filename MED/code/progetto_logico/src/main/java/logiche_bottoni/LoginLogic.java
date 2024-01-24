@@ -84,6 +84,7 @@ public class LoginLogic {
 									new LogicaBottoneInserisciRilevazione(pazientiFrame,modello);
 									new LogicaBottoneVisualizzaRilevazioni(pazientiFrame,modello);
 									new LogicaBottoneCambiaLetto(pazientiFrame,modello);
+									new LogicaBottoneLogout(pazientiFrame,modello);
 							    	loginFrame.sfondoFrame.dispose();
 							    	tabella.update();
 							    	pazientiFrame.updateViewUtente();

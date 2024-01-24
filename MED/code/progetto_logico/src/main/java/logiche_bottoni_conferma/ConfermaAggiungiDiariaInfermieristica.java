@@ -14,16 +14,10 @@ import org.jooq.impl.DSL;
 
 import gestore_db.CreateDB;
 import gestore_db.InserimentoJooq;
-import gestore_db.RimozioneJooq;
-import gui.InserisciPazienteFrame;
-import gui.AssegnaPostoFrame;
 import gui.InserisciDiariaInfermieristicaFrame;
-import gui.DimettiPazienteFrame;
 import gui.ErroreFrame;
 import gui.PazientiFrame;
-import logiche_frame_pronto_soccorso.LogicaDellaPosizionePazienteTabella;
 import med_db.jooq.generated.tables.Diariainf;
-import med_db.jooq.generated.tables.Diariamed;
 import modelli.ModelloGestoreLogicaGenerale;
 
 public class ConfermaAggiungiDiariaInfermieristica {

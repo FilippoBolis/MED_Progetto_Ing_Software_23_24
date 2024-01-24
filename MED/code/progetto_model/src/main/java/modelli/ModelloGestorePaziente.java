@@ -42,6 +42,18 @@ public class ModelloGestorePaziente {
 		return nome;
 	}
 	
+	public String getData() {
+		return data;
+	}
+	
+	public String getOra() {
+		return ora;
+	}
+	
+	public String getCondizione() {
+		return condizione;
+	}
+	
 	public String getCodice() {
 		return codice;
 	}

@@ -1,10 +1,7 @@
 package logiche_bottoni;
 
-import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.SwingUtilities;
 
 import gui.*;
 import logiche_bottoni_conferma.ConfermaAggiungiDiariaMedica;
@@ -36,12 +33,6 @@ public class LogicaBottoneInserisciDiariaMedica extends LogicaBottone{
 			else {
 				new ErroreFrame(frameDeiPazienti.sfondoFrame, "Deve selezionare prima il paziente del quale vuole inserire la diaria medica");
 			}
-			SwingUtilities.invokeLater(new Runnable() {
-			@Override
-				public void run() {
-					
-				}
-			});
 			}
 		});
 	}

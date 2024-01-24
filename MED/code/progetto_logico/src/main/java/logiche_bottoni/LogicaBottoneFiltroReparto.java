@@ -3,11 +3,8 @@ package logiche_bottoni;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-import javax.swing.SwingUtilities;
-
 import gui.*;
 import logiche_frame_pronto_soccorso.LogicaDelReparto;
-import logiche_frame_pronto_soccorso.LogicaDellUrgenzaPazienteTabella;
 import logiche_frame_pronto_soccorso.LogicaDellaPosizionePazienteTabella;
 import modelli.ModelloGestoreLogicaGenerale;
 
@@ -41,12 +38,6 @@ public class LogicaBottoneFiltroReparto extends LogicaBottone{
                 }
 				frameDeiPazienti.cercaTextField.setText("");
 				frameDeiPazienti.urgenzaComboBox.setSelectedItem(" ");
-				SwingUtilities.invokeLater(new Runnable() {
-					@Override
-				public void run() {
-					frameDeiPazienti.updateViewTabella();
-				}
-				});
 			}
 		});
 	}

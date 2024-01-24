@@ -2,22 +2,8 @@ package logiche_bottoni_conferma;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-
-import javax.swing.JTextField;
-
-import org.jooq.DSLContext;
-import org.jooq.SQLDialect;
-import org.jooq.impl.DSL;
-
 import gestore_db.AggiornamentiJooq;
-import gestore_db.CreateDB;
-import gui.InserisciDiariaFrame;
-import gui.InserisciInformazioniFrame;
 import gui.ModificaDiariaFrame;
-import gui.AssegnaPostoFrame;
 import gui.ErroreFrame;
 import gui.PazientiFrame;
 import modelli.ModelloGestoreLogicaGenerale;
@@ -42,11 +28,13 @@ public class ConfermaModificaDiariaMedica {
 					String motivo = frame.motivoTextField.getText();
 					String storico = frame.storicoTextField.getText();
 					String farmaci = frame.farmaciTextArea.getText();
+					String informazioni = frame.infoTextArea.getText();
 					String codicePaziente = modello.modelloGestorePaziente.getCodice();
 					if(!motivo.isBlank() && !storico.isBlank() && !farmaci.isBlank()) {
 						AggiornamentiJooq.getIstanza().diariaMed(1, codicePaziente, "storico", storico);
 						AggiornamentiJooq.getIstanza().diariaMed(1, codicePaziente, "motivo", motivo);
 						AggiornamentiJooq.getIstanza().diariaMed(1, codicePaziente, "farmaci", farmaci);
+						AggiornamentiJooq.getIstanza().diariaMed(1, codicePaziente, "allergie", informazioni);
 						frameDeiPazienti.sfondoFrame.setEnabled(true);
 						frame.sfondoFrame.dispose();
 					}else {

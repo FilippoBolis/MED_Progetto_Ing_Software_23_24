@@ -3,12 +3,8 @@ package logiche_bottoni;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.SwingUtilities;
-
 import gui.*;
-import logiche_bottoni_conferma.ConfermaAggiungiDiariaMedica;
 import logiche_bottoni_conferma.ConfermaDimettiPaziente;
-import logiche_frame_pronto_soccorso.LogicaDellaPosizionePazienteTabella;
 import modelli.ModelloGestoreLogicaGenerale;
 
 public class LogicaBottoneDimetti extends LogicaBottone{
@@ -38,12 +34,6 @@ public class LogicaBottoneDimetti extends LogicaBottone{
 			else {
 				new ErroreFrame(frameDeiPazienti.sfondoFrame, "Deve selezionare prima il paziente che vuole dimettere");
 			}
-			SwingUtilities.invokeLater(new Runnable() {
-			@Override
-				public void run() {
-					
-				}
-			});
 			}
 		});
 	}

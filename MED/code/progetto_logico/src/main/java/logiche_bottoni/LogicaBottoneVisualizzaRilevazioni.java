@@ -3,12 +3,8 @@ package logiche_bottoni;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.SwingUtilities;
-
 import gui.*;
-import logiche_bottoni_conferma.EsciVisualizzaDiarieInfermieristiche;
 import logiche_bottoni_conferma.EsciVisualizzaRilevazioni;
-import logiche_frame_pronto_soccorso.LogicaDelleDiarieInfermieristicheTabella;
 import logiche_frame_pronto_soccorso.LogicaDelleRilevazioniTabella;
 import modelli.ModelloGestoreLogicaGenerale;
 
@@ -21,7 +17,6 @@ public class LogicaBottoneVisualizzaRilevazioni extends LogicaBottone{
 	}
 	
 	protected void start() {
-		//si registra al bottone prontoSoccorsoToggleButton
 		frameDeiPazienti.visualizzaRilevazioniButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -39,12 +34,6 @@ public class LogicaBottoneVisualizzaRilevazioni extends LogicaBottone{
 			else {
 				new ErroreFrame(frameDeiPazienti.sfondoFrame, "Deve selezionare prima il paziente del quale vuole visualizzare le rilevazioni");
 			}
-			SwingUtilities.invokeLater(new Runnable() {
-			@Override
-				public void run() {
-					
-				}
-			});
 			}
 		});
 	}

@@ -8,27 +8,19 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 import org.jooq.DSLContext;
-import org.jooq.Record1;
-import org.jooq.Result;
 import org.jooq.SQLDialect;
 import org.jooq.impl.DSL;
 
-import gestore_db.AggiornamentiJooq;
 import gestore_db.CreateDB;
 import gestore_db.InserimentoJooq;
-import gui.InserisciDiariaFrame;
 import gui.InserisciInformazioniFrame;
-import gui.AssegnaPostoFrame;
 import gui.ErroreFrame;
 import gui.PazientiFrame;
 import logiche_frame_pronto_soccorso.LogicaDellaPosizionePazienteTabella;
-import med_db.jooq.generated.tables.Degente;
 import med_db.jooq.generated.tables.Diariamed;
-import med_db.jooq.generated.tables.records.DiariamedRecord;
 import modelli.ModelloGestoreLogicaGenerale;
 
 public class ConfermaInformazioniExtra {

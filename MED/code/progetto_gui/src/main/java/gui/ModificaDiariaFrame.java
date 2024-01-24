@@ -24,7 +24,7 @@ public class ModificaDiariaFrame {
 	public JTextField storicoTextField;
 	public JButton confermaButton;
 	public JTextArea farmaciTextArea;
-	private JTextArea infoTextArea;
+	public JTextArea infoTextArea;
 	
 	@SuppressWarnings("serial")
 	public ModificaDiariaFrame() {

@@ -20,7 +20,6 @@ import org.jooq.impl.DSL;
 import gui.PazientiFrame;
 import med_db.jooq.generated.tables.Assegnazioneletto;
 import med_db.jooq.generated.tables.Degente;
-import med_db.jooq.generated.tables.Modulo;
 import med_db.jooq.generated.tables.Reparto;
 import modelli.ModelloGestoreLogicaGenerale;
 
