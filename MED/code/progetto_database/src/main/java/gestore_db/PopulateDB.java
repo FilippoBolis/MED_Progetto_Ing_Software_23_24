@@ -6,10 +6,10 @@ import java.time.LocalTime;
 public class PopulateDB {
 
 	public static void main(String[] args) throws Exception{
-		/*file unico per la costruzione del DB
+		/*file unico per la costruzione del DB*/
 		CreateDB.getIstanza().creaDB();
 		CreateDB.getIstanza().creaTable();
-		*/
+		
 		//inserimento personale
 		InserimentoJooq.getIstanza().personale("P1","Daniele","Gotti","M", "SpostamiSeCiRiesci");
 		InserimentoJooq.getIstanza().personale("P2","Filippo","Bolis","I","HaiGiocatoAdOuterWilds");
