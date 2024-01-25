@@ -28,7 +28,8 @@ Abbiamo sviluppato un file Java denominato [CreateDB](https://github.com/Filippo
 - __Filtri per la ricerca veloce del paziente__
 ## Funzionalità Future
 - Aumento dei campi sulle rilevazioni disponibili
-- Miglioramento grafico a seguito di eventuali consigli del cliente
+- Miglioramento grafico a seguito di eventuali consigli del cliente 
+- Aggiunta di ulteriori casi di test
 ## Componenti del gruppo
 - [__Daniele Gotti, matricola 1079011__](https://github.com/DanieleGotti)
 - [__Bolis Filippo Antonio, matricola 1079493__](https://github.com/FilippoBolis)
