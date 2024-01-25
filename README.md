@@ -12,7 +12,7 @@ Abbiamo realizzato i vari diagrammi con l'utilizzo di StarUML e draw.io, si trov
 - [CASI D'USO](https://github.com/FilippoBolis/Progetto_ING.Software_23_24/blob/main/MED/doc/diagrammi/Diagramma%20dei%20Casi%20d'uso.pdf)
 - [ATTIVITÀ](https://github.com/FilippoBolis/Progetto_ING.Software_23_24/blob/main/MED/doc/diagrammi/Diagramma%20delle%20attivit%C3%A0.pdf)
 - [CLASSI](https://github.com/FilippoBolis/Progetto_ING.Software_23_24/blob/main/MED/doc/diagrammi/Diagramma%20di%20classe.pdf)
-- [PACKAGE](https://github.com/FilippoBolis/Progetto_ING.Software_23_24/blob/main/MED/doc/diagrammi/Diagramma%20di%20pacchetto.JPG)
+- [PACKAGE](https://github.com/FilippoBolis/Progetto_ING.Software_23_24/blob/main/MED/doc/diagrammi/Diagramma%20di%20pacchetto.pdf)
 - [SEQUENZA](https://github.com/FilippoBolis/Progetto_ING.Software_23_24/blob/main/MED/doc/diagrammi/Diagramma%20di%20sequenza.pdf)
 - [ER](https://github.com/FilippoBolis/Progetto_ING.Software_23_24/blob/main/MED/doc/diagrammi/Diagramma%20ER.pdf)
 - [COMPONENTI](https://github.com/FilippoBolis/Progetto_ING.Software_23_24/blob/main/MED/doc/diagrammi/Diagramma%20dei%20Componenti.pdf)
