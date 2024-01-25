@@ -3,6 +3,9 @@ package gestore_db;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+/**
+ * classe utilizzata per popolare con più rapidità il database a seguito di modifiche alla sua struttura
+ */
 public class PopulateDB {
 
 	public static void main(String[] args) throws Exception{

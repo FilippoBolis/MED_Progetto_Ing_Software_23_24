@@ -15,6 +15,11 @@ import med_db.jooq.generated.tables.Diariainf;
 import med_db.jooq.generated.tables.Diariamed;
 import med_db.jooq.generated.tables.Personale;
 
+/**
+ * Classe contenente i metodi per le modifiche dei dati nelle tuple all'interno dei database,utilizzando JOOQ;
+ * ogni metodo apporta modifiche alla tabella omonima;
+ * non tutte le tabelle ammettono modifiche
+ */
 public class AggiornamentiJooq {
 	//pattern singleton
 	private static AggiornamentiJooq istanza=new AggiornamentiJooq();
@@ -26,6 +31,11 @@ public class AggiornamentiJooq {
 	}
 
 
+	/**
+	 * @param ID codice del personale a cui si intende apportare modifiche
+	 * @param newVal nuovo valore della password, l'unico attributo modificabile
+	 * @return 1 se la modifica ha avuto successo, 0 se non è andata a buon fine
+	 */
 	public int personale(String ID, String newVal) {
 		int result=0;
 		try {
@@ -45,6 +55,12 @@ public class AggiornamentiJooq {
 	}
 	
 	
+	/**
+	 * @param codice del degente di cui si intende modificare i dati
+	 * @param attr permette la selezione tra gli attributi: "urgenza", "posizione" e "sesso"
+	 * @param newVal deve rispettare le limitazioni imposte dal tipo di attributo selezionato
+	 * @return 1 se la modifica ha avuto successo, 0 se non è andata a buon fine
+	 */
 	public int degente(String codice, String attr, String newVal) {
 		int result=0;
 		try {
@@ -90,6 +106,12 @@ public class AggiornamentiJooq {
 		return result;
 	}
 	
+	/**
+	 * @param codice della diaria
+	 * @param codDeg del degente relativo alla diaria
+	 * @param newVal "true" o "false", si può solo alterare il flag di importanza, gli altri dati devono restare invariabili
+	 * @return 1 se la modifica ha avuto successo, 0 se non è andata a buon fine
+	 */
 	public int diariaInf(int codice ,String codDeg, String newVal) {
 		int result=0;
 		try {
@@ -109,6 +131,13 @@ public class AggiornamentiJooq {
 		return result;
 	}
 	
+	/**
+	 * @param codice della diaria
+	 * @param codDeg del degente a cui è associata la diaria medica
+	 * @param attr permette la selezione tra gli attributi: "storico", "motivo", "farmaci" e "allergie"
+	 * @param newVal nuovo valore dell'attributo selezionato
+	 * @return 1 se la modifica ha avuto successo, 0 se non è andata a buon fine
+	 */
 	public int diariaMed(int codice ,String codDeg, String attr, String newVal) {
 		int result=0;
 		try {

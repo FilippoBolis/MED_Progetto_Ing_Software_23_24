@@ -9,6 +9,10 @@ import org.jooq.impl.DSL;
 
 import med_db.jooq.generated.tables.*;
 
+/**
+ * Classe contenente i metodi per gli inserimenti di tuple all'interno dei database,utilizzando JOOQ;
+ * ogni metodo rimuove dati dalla tabella omonima.
+ */
 public class RimozioneJooq {
 	//pattern singleton
 	private static RimozioneJooq istanza=new RimozioneJooq();
@@ -19,6 +23,10 @@ public class RimozioneJooq {
 		return istanza;
 	}
 	
+	/**
+	 * @param codice del membro del personale da rimuovere
+	 * @return 1 se la rimozione ha avuto successo, 0 se non è andata a buon fine
+	 */
 	public int personale(String codice) {
 		int result=0;
 		try {
@@ -33,6 +41,10 @@ public class RimozioneJooq {
 		return result;
 	}
 	
+	/**
+	 * @param codice del degente che si desidera rimuovere
+	 * @return 0 se la rimozione non ha avuto successo, 1+(1 per ogni tabella entità debole associata al degente in cui sono state eseguite rimozioni) se la rimozione è avvenuta con successo
+	 */
 	public int degente(String codice) {
 		int result=0;
 		try {
@@ -55,6 +67,11 @@ public class RimozioneJooq {
 	}
 	
 	
+	/**
+	 * @param ID della rilevazione che si desidera rimuovere
+	 * @param codDeg codice del degente a cui è associata
+	 * @return 1 se la rimozione ha avuto successo, 0 se non è andata a buon fine
+	 */
 	public int rilevazione(int ID, String codDeg) {
 		int result=0;
 		try {
@@ -70,6 +87,10 @@ public class RimozioneJooq {
 		return result;
 	}
 	
+	/**
+	 * @param codice del reparto che si desidera rimuovere
+	 * @return 0 se la rimozione non ha avuto successo, 1+(1 per ogni tabella entità debole associata al reparto in cui sono state eseguite rimozioni, quali modulo, letto e assegnazioneLetto) se la rimozione è avvenuta con successo
+	 */
 	public int reparto(String codice) {
 		int result=0;
 		try {
@@ -91,6 +112,11 @@ public class RimozioneJooq {
 		return result;
 	}
 	
+	/**
+	 * @param codRep codice del reparto che contiene il modulo
+	 * @param nome nome del modulo che si desidera rimuovere
+	 * @return 0 se la rimozione non ha avuto successo, 1+(1 per ogni tabella entità debole associata al modulo in cui sono state eseguite rimozioni, quali letto e assegnazioneLetto) se la rimozione è avvenuta con successo
+	 */
 	public int modulo(String codRep, String nome) {
 		int result=0;
 		try {
@@ -110,6 +136,12 @@ public class RimozioneJooq {
 		return result;
 	}
 	
+	/**
+	 * @param codRep codice del reparto contenente il letto
+	 * @param nomeMod nome del modulo contentente il letto
+	 * @param numero del letto che si desidera rimuovere
+	 * @return 0 se la rimozione non ha avuto successo, 1+(1 se è stata rimossa un'assegnazioneLetto) se la rimozione è avvenuta con successo
+	 */
 	public int letto(String codRep, String nomeMod, int numero) {
 		int result=0;
 		try {
@@ -128,6 +160,13 @@ public class RimozioneJooq {
 		return result;
 	}
 	
+	/**
+	 * @param codDeg codice del degente assegnato al letto
+	 * @param codRep codice del reparto contenente il letto
+	 * @param nomeMod nome del modulo contentente il letto
+	 * @param numLetto numero del letto
+	 * @return 1 se la rimozione ha avuto successo, 0 se non è andata a buon fine
+	 */
 	public int assegnazioneLetto(String codDeg, String codRep, String nomeMod, int numLetto) {
 		int result=0;
 		try {
@@ -142,6 +181,11 @@ public class RimozioneJooq {
 		return result;
 	}
 	
+	/**
+	 * @param codice della diaria
+	 * @param codDeg codice del degente a cui la diaria è associata
+	 * @return 1 se la rimozione ha avuto successo, 0 se non è andata a buon fine
+	 */
 	public int diariaMed(int codice, String codDeg) {
 		int result=0;
 		try {
@@ -157,6 +201,11 @@ public class RimozioneJooq {
 		return result;
 	}
 	
+	/**
+	 * @param codice della diaria
+	 * @param codDeg codice del degente a cui la diaria è associata
+	 * @return 1 se la rimozione ha avuto successo, 0 se non è andata a buon fine
+	 */
 	public int diariaInf(int codice, String codDeg) {
 		int result=0;
 		try {

@@ -19,6 +19,11 @@ public class CreateDB {
 	public static String DB_REL_FILE = "../progetto_database/db/db.db3";
 	public static String DB_URL = "jdbc:sqlite:" + DB_REL_FILE;
 
+	/**
+	 * genera il database, se non ne è già presente uno
+	 * @throws IOException
+	 * @throws SQLException
+	 */
 	public void creaDB() throws IOException, SQLException {
 		if (new File(DB_REL_FILE).exists()) {
 			System.out.println("Il DB gia' esiste");
@@ -29,6 +34,12 @@ public class CreateDB {
 		}
 	}
 
+	
+	/**
+	 * crea le tabelle nel database
+	 * @throws IOException
+	 * @throws SQLException
+	 */
 	public void creaTable() throws IOException, SQLException {
 		Connection conn = DriverManager.getConnection(DB_URL);
 		if (conn != null) {

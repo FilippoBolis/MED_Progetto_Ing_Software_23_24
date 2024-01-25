@@ -14,6 +14,10 @@ import med_db.jooq.generated.tables.*;
 import med_db.jooq.generated.tables.records.*;
 
 
+/**
+ * Classe contenente i metodi per gli inserimenti di tuple all'interno dei database,utilizzando JOOQ;
+ * ogni metodo inserisce dati nella table omonima.
+ */
 public class InserimentoJooq{
 	//pattern singleton
 	private static InserimentoJooq istanza= new InserimentoJooq();
@@ -24,6 +28,16 @@ public class InserimentoJooq{
 		return istanza;
 	}
 
+	
+	
+	/**
+	 * @param codice identificativo del personale, solitamente è "P"+numero
+	 * @param nome
+	 * @param cognome
+	 * @param mansione può solo essere "M" (medico), "I" (infermiere) o "S" (servizio/operatore)
+	 * @param password 
+	 * @return 1 se l'inserimento ha avuto successo, 0 se non è riuscito
+	 */
 	public int personale(String codice, String nome, String cognome, String mansione, String password) {
 		int result=0;
 		try {
@@ -49,6 +63,16 @@ public class InserimentoJooq{
 		return result;
 	}
 
+	/**
+	 * @param codice dovrebbe essere il codice fiscale
+	 * @param nome
+	 * @param cognome
+	 * @param sesso ammessi valori "M" o "F"
+	 * @param dataArrivo
+	 * @param oraArrivo
+	 * @param urgenza ammessi solo valori "verde", "giallo" e "rosso"
+	 * @return 1 se l'inserimento ha avuto successo, 0 se non è riuscito
+	 */
 	public int degente(String codice, String nome, String cognome, String sesso, LocalDate dataArrivo, LocalTime oraArrivo,  String urgenza) {
 		int result=0;
 		try {
@@ -72,6 +96,21 @@ public class InserimentoJooq{
 		return result;
 	}
 	
+	
+	/**
+	 * @param ID numero della rilevazione, relativa al singolo paziente
+	 * @param codDeg deve essere già presente nel database per l'inserimento
+	 * @param codInf codice dell'infermiere che ha eseguito la rilevazione
+	 * @param temp temperatura corporea
+	 * @param pressMax pressione massima
+	 * @param pressMin pressione minima
+	 * @param glicem glicemia
+	 * @param data
+	 * @param ora
+	 * @param freqCard frequenza cardiaca
+	 * @param dol si presuppone abbia un valore compreso tra 1 e 10
+	 * @return 1 se l'inserimento ha avuto successo, 0 se non è riuscito
+	 */
 	public int rilevazione(int ID, String codDeg, String codInf, double temp, int pressMax,int pressMin, int glicem,LocalDate data, LocalTime ora, int freqCard, int dol) {
 		int result=0;
 		try {
@@ -92,6 +131,12 @@ public class InserimentoJooq{
 		return result;
 }
 
+	
+	/**
+	 * @param codice con la forma "Re"+numero crescente
+	 * @param nome
+	 * @return 1 se l'inserimento ha avuto successo, 0 se non è riuscito
+	 */
 	public int reparto(String codice, String nome) {
 		int result=0;
 		try {
@@ -109,6 +154,12 @@ public class InserimentoJooq{
 		return result;
 	}
 	
+	
+	/**
+	 * @param codRep deve essere il codice di un reparto già nel database
+	 * @param nome "Modulo"+ lettera a partire dalla "A", si presuppone di non avere più di 3 moduli per ogni reparto
+	 * @return 1 se l'inserimento ha avuto successo, 0 se non è riuscito
+	 */
 	public int modulo(String codRep, String nome) {
 		int result=0;
 		try {
@@ -126,6 +177,12 @@ public class InserimentoJooq{
 		return result;
 	}
 	
+	/**
+	 * @param codRep deve essere già presente nel database
+	 * @param nomeMod deve essere già presente nel database
+	 * @param numero da 1 a 15
+	 * @return 1 se l'inserimento ha avuto successo, 0 se non è riuscito
+	 */
 	public int letto(String codRep, String nomeMod, int numero) {
 		int result=0;
 		try {
@@ -145,6 +202,14 @@ public class InserimentoJooq{
 		return result;
 	}
 	
+	/**
+	 * @param codDeg degente assegnato al letto
+	 * @param codRep reparto del letto
+	 * @param nomeMod modulo del letto
+	 * @param numero
+	 * @param dataAss data di assegnazione del letto
+	 * @return 1 se l'inserimento ha avuto successo, 0 se non è riuscito
+	 */
 	public int assegnazioneLetto(String codDeg, String codRep, String nomeMod, int numero, LocalDate dataAss) {
 		int result=0;
 		try {
@@ -170,6 +235,17 @@ public class InserimentoJooq{
 		return result;
 	}
 	
+	/**
+	 * @param codice identificativo della diaria, parte da 1 per ogni degente
+	 * @param codiceDegente
+	 * @param codiceInfermiere
+	 * @param data
+	 * @param ora
+	 * @param noteParticolari
+	 * @param importante 
+	 * @param farmaco indica uno o più farmaci somministrati durante la cura
+	 * @return 1 se l'inserimento ha avuto successo, 0 se non è riuscito
+	 */
 	public int diariaInf(int codice, String codiceDegente, String codiceInfermiere, LocalDate data, LocalTime ora, String noteParticolari, Boolean importante, String farmaco) {
 		int result=0;
 		try {
@@ -190,6 +266,20 @@ public class InserimentoJooq{
 		return result;
 	}
 	
+	
+	/**
+	 * @param codice identificativo della diaria, parte da 1 per ogni degente
+	 * @param codiceDegente
+	 * @param codiceMedico
+	 * @param storico eventuali condizioni pregresse del paziente
+	 * @param motivo ragione del ricovero
+	 * @param reparto reparto consigliato dal medico, non obbligatoriamente è quello che sarà poi assegnato
+	 * @param farmaci prescritti per la cura
+	 * @param data
+	 * @param ora
+	 * @param allergie
+	 * @return 1 se l'inserimento ha avuto successo, 0 se non è riuscito
+	 */
 	public int diariaMed(int codice, String codiceDegente, String codiceMedico, String storico, String motivo, String reparto, String farmaci, LocalDate data, LocalTime ora, String allergie) {
 		int result=0;
 		try {
@@ -214,7 +304,7 @@ public class InserimentoJooq{
 
 	public static void main(String[] args) {
 		
-		/*
+		/* ignorare, utilizzato per popolamento nelle fasi iniziali della codifica
 		getIstanza().degente("D$","Tizio","Test","M",LocalDate.now(), LocalTime.now().withNano(0),"verde");
 		getIstanza().personale("m","ADMIN","Medico","M", "m");
 		getIstanza().personale("i","ADMIN","Infermiere","I", "i");
