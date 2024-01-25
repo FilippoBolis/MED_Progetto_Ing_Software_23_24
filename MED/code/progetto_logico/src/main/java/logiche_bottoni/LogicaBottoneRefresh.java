@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import gui.*;
-import logiche_frame_pronto_soccorso.LogicaDellaPosizionePazienteTabella;
+import logiche_frame_sezioni_ospedaliere.LogicaDellaPosizionePazienteTabella;
 import modelli.ModelloGestoreLogicaGenerale;
 
 public class LogicaBottoneRefresh extends LogicaBottone{

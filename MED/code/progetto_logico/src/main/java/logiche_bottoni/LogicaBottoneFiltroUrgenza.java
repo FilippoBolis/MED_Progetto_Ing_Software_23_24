@@ -4,8 +4,8 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 import gui.*;
-import logiche_frame_pronto_soccorso.LogicaDellUrgenzaPazienteTabella;
-import logiche_frame_pronto_soccorso.LogicaDellaPosizionePazienteTabella;
+import logiche_frame_sezioni_ospedaliere.LogicaDellUrgenzaPazienteTabella;
+import logiche_frame_sezioni_ospedaliere.LogicaDellaPosizionePazienteTabella;
 import modelli.ModelloGestoreLogicaGenerale;
 
 public class LogicaBottoneFiltroUrgenza extends LogicaBottone{

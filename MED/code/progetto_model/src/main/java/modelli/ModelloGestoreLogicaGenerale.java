@@ -1,5 +1,8 @@
 package modelli;
 
+/**
+ * Classe di interfaccia, contiene riferimenti a tutti i modelli del package e ne permette l'accesso agli altri componenti
+ */
 public class ModelloGestoreLogicaGenerale {	
 	
 	public ModelloGestoreUtente modelloGestoreUtente = new ModelloGestoreUtente();

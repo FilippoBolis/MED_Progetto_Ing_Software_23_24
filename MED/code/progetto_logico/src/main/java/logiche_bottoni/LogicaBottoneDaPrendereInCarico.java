@@ -6,9 +6,13 @@ import java.awt.event.ActionListener;
 import javax.swing.SwingUtilities;
 
 import gui.*;
-import logiche_frame_pronto_soccorso.LogicaDellaPosizionePazienteTabella;
+import logiche_frame_sezioni_ospedaliere.LogicaDellaPosizionePazienteTabella;
 import modelli.ModelloGestoreLogicaGenerale;
 
+
+/**
+ * Logica del pulsante di selezione della sezione dell'ospedale "da prendere in carico"
+ */
 public class LogicaBottoneDaPrendereInCarico extends LogicaBottone{
 	
 	private LogicaDellaPosizionePazienteTabella tabellaInReparto;
@@ -19,6 +23,9 @@ public class LogicaBottoneDaPrendereInCarico extends LogicaBottone{
 		start();
 	}
 	
+	/**
+	 * Alla selezione della sezione, vengono sostituiti i pulsanti laterali e viene mostrata a schermo la lista dei degenti da prendere in carico
+	 */
 	protected void start() {
 		//si registra al bottone prontoSoccorsoToggleButton
 		frameDeiPazienti.inCaricoToggleButton.addActionListener(new ActionListener() {

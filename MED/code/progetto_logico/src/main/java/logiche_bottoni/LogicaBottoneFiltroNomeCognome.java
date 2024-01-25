@@ -20,12 +20,15 @@ import org.jooq.SQLDialect;
 import org.jooq.impl.DSL;
 
 import gui.*;
-import logiche_frame_pronto_soccorso.LogicaDellaPosizionePazienteTabella;
+import logiche_frame_sezioni_ospedaliere.LogicaDellaPosizionePazienteTabella;
 import med_db.jooq.generated.tables.Assegnazioneletto;
 import med_db.jooq.generated.tables.Degente;
 import med_db.jooq.generated.tables.Reparto;
 import modelli.ModelloGestoreLogicaGenerale;
 
+/**
+ * Pulsante che permette di filtrare i pazienti nella sezione correntemente attiva per nome e/o cognome
+ */
 public class LogicaBottoneFiltroNomeCognome extends LogicaBottone{
 	
 	private static String DB_REL_FILELOGIC = "../progetto_database/db/db.db3";
@@ -40,6 +43,9 @@ public class LogicaBottoneFiltroNomeCognome extends LogicaBottone{
 		start();
 	}
 	
+	/**
+	 * 
+	 */
 	protected void start() {
 		//si registra al bottone prontoSoccorsoToggleButton
 		frameDeiPazienti.cercaButton.addActionListener(new ActionListener() {
@@ -59,7 +65,8 @@ public class LogicaBottoneFiltroNomeCognome extends LogicaBottone{
 	            List<Integer> letto = new ArrayList<>();
 	            modello.modelloGestorePaziente.deselezionaPaziente();
 				frameDeiPazienti.updateStringaPaziente();
-				if (conn != null) {								//ipotizzio che un paziente abbia un nome e un cognome, quelli con il doppio nome putroppo si dovrà cercare per cognome, stessa cosa per le persone con il doppio cognome che si dovrà cercare per nome
+				if (conn != null) {								
+				//ipotizzio che un paziente abbia un nome e un cognome, degenti con il doppio nome putroppo si dovranno cercare per cognome, stessa cosa per le persone con il doppio cognome che si dovranno cercare per nome
 				DSLContext contesto = DSL.using(conn, SQLDialect.SQLITE);
 				if(!frameDeiPazienti.cercaTextField.getText().isEmpty()) {
 					sezioni = frameDeiPazienti.cercaTextField.getText().split(" ");

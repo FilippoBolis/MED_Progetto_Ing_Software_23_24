@@ -19,7 +19,7 @@ import gestore_db.InserimentoJooq;
 import gui.InserisciInformazioniFrame;
 import gui.ErroreFrame;
 import gui.PazientiFrame;
-import logiche_frame_pronto_soccorso.LogicaDellaPosizionePazienteTabella;
+import logiche_frame_sezioni_ospedaliere.LogicaDellaPosizionePazienteTabella;
 import med_db.jooq.generated.tables.Diariamed;
 import modelli.ModelloGestoreLogicaGenerale;
 

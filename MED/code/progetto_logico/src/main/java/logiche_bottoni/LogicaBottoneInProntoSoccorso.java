@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.SwingUtilities;
 
 import gui.*;
-import logiche_frame_pronto_soccorso.LogicaDellaPosizionePazienteTabella;
+import logiche_frame_sezioni_ospedaliere.LogicaDellaPosizionePazienteTabella;
 import modelli.ModelloGestoreLogicaGenerale;
 
 public class LogicaBottoneInProntoSoccorso extends LogicaBottone{

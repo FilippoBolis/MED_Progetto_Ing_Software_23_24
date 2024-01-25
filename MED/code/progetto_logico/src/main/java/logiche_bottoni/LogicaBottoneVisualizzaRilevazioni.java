@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import gui.*;
 import logiche_bottoni_conferma.EsciVisualizzaRilevazioni;
-import logiche_frame_pronto_soccorso.LogicaDelleRilevazioniTabella;
+import logiche_frame_sezioni_ospedaliere.LogicaDelleRilevazioniTabella;
 import modelli.ModelloGestoreLogicaGenerale;
 
 public class LogicaBottoneVisualizzaRilevazioni extends LogicaBottone{

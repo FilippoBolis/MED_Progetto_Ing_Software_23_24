@@ -9,7 +9,7 @@ import gestore_db.InserimentoJooq;
 import gui.InserisciPazienteFrame;
 import gui.ErroreFrame;
 import gui.PazientiFrame;
-import logiche_frame_pronto_soccorso.LogicaDellaPosizionePazienteTabella;
+import logiche_frame_sezioni_ospedaliere.LogicaDellaPosizionePazienteTabella;
 import modelli.ModelloGestoreLogicaGenerale;
 
 public class ConfermaAggiungiPaziente {

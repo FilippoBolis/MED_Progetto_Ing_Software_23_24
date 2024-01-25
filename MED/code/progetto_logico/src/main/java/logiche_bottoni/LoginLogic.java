@@ -14,8 +14,8 @@ import org.jooq.SQLDialect;
 import org.jooq.impl.DSL;
 
 import gui.*;
-import logiche_frame_pronto_soccorso.LogicaDellaPosizionePazienteTabella;
-import logiche_frame_pronto_soccorso.LogicaDellaStringaPaziente;
+import logiche_frame_sezioni_ospedaliere.LogicaDellaPosizionePazienteTabella;
+import logiche_frame_sezioni_ospedaliere.LogicaDellaStringaPaziente;
 import med_db.jooq.generated.tables.Personale;
 import modelli.ModelloGestoreLogicaGenerale;
 

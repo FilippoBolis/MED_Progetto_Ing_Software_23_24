@@ -4,8 +4,8 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 import gui.*;
-import logiche_frame_pronto_soccorso.LogicaDelReparto;
-import logiche_frame_pronto_soccorso.LogicaDellaPosizionePazienteTabella;
+import logiche_frame_sezioni_ospedaliere.LogicaDelReparto;
+import logiche_frame_sezioni_ospedaliere.LogicaDellaPosizionePazienteTabella;
 import modelli.ModelloGestoreLogicaGenerale;
 
 public class LogicaBottoneFiltroReparto extends LogicaBottone{

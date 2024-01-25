@@ -1,4 +1,4 @@
-package logiche_frame_pronto_soccorso;
+package logiche_frame_sezioni_ospedaliere;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

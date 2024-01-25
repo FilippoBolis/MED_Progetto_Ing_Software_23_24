@@ -3,6 +3,12 @@ package logiche_bottoni;
 import gui.PazientiFrame;
 import modelli.ModelloGestoreLogicaGenerale;
 
+/**
+ * Superclasse astratta per le logiche dei bottoni;
+ * ogni elemento logico fa riferimento alla GUI e al modello
+ * @param frameDeiPazienti collegamento agli elementi grafici
+ * @param modello collegamento al modello
+ */
 public abstract class LogicaBottone {
 
 	
@@ -18,6 +24,10 @@ public abstract class LogicaBottone {
 		 */
 	}
 	
-	protected abstract void start(); //ogni bottone eseguirà un compito differente
+	
+	/**
+	 * Avvia le funzionalità del bottone
+	 */
+	protected abstract void start();
 	
 }

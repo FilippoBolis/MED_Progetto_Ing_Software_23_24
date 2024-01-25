@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import gui.*;
 import logiche_bottoni_conferma.EsciVisualizzaDiarieInfermieristiche;
-import logiche_frame_pronto_soccorso.LogicaDelleDiarieInfermieristicheTabella;
+import logiche_frame_sezioni_ospedaliere.LogicaDelleDiarieInfermieristicheTabella;
 import modelli.ModelloGestoreLogicaGenerale;
 
 public class LogicaBottoneVisualizzaDiarieInfermieristiche extends LogicaBottone{

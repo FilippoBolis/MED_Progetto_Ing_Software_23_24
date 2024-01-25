@@ -17,6 +17,9 @@ import logiche_bottoni.*;
 import med_db.jooq.generated.tables.Reparto;
 import modelli.ModelloGestoreLogicaGenerale;
 
+/**
+ * Classe che predispone tutti i componenti del programma, attivandoli 
+ */
 public class GestoreLogicaSetup {
 	
 	private LoginFrame loginFrame;
@@ -24,6 +27,10 @@ public class GestoreLogicaSetup {
 	private static String DB_REL_FILELOGIC = "../progetto_database/db/db.db3";
 	private static String DB_URLLOGIC = "jdbc:sqlite:" + DB_REL_FILELOGIC;
 	
+	/**
+	 * Metodo costruttore che avvia il processo di login e collega tutti i bottoni della GUI alle relative funzionalità logiche
+	 * @param m riferimento al modello generale
+	 */
 	public GestoreLogicaSetup(ModelloGestoreLogicaGenerale m) {
 		// prende i riferimenti e avvia tutti i bottoni della GUI
 		loginFrame = new LoginFrame();
@@ -33,6 +40,10 @@ public class GestoreLogicaSetup {
 		new LoginLogic(loginFrame,m);
 	}
 	
+	/**
+	 * Metodo utilizzato per impostare i reparti disponibili nel programma, a partire da quelli presenti nel database
+	 * @param modello
+	 */
 	private void setupReparti(ModelloGestoreLogicaGenerale modello) {
 		try {
 			List<String> nomi = new ArrayList<>();

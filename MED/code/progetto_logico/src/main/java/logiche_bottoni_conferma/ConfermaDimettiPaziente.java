@@ -7,7 +7,7 @@ import gestore_db.RimozioneJooq;
 import gui.DimettiPazienteFrame;
 import gui.ErroreFrame;
 import gui.PazientiFrame;
-import logiche_frame_pronto_soccorso.LogicaDellaPosizionePazienteTabella;
+import logiche_frame_sezioni_ospedaliere.LogicaDellaPosizionePazienteTabella;
 import modelli.ModelloGestoreLogicaGenerale;
 
 public class ConfermaDimettiPaziente {
