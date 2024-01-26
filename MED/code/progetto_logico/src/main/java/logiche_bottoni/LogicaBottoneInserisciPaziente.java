@@ -20,7 +20,6 @@ public class LogicaBottoneInserisciPaziente extends LogicaBottone{
 		frameDeiPazienti.inserisciPazienteButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("entrato");
 			if (modello.modelloGestoreUtente.getMansioneUtente().equals("Operatore")) {
 				InserisciPazienteFrame frame = new InserisciPazienteFrame();
 				frameDeiPazienti.sfondoFrame.setEnabled(false);
