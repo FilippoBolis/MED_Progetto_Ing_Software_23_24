@@ -12,6 +12,11 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 
+/**
+ * Classe contenente il frame per gestire la dimissione del paziente;
+ * contiene solo parte grafica, è resa utilizzabile dal progetto_logico;
+ * sono stati utilizzati java swing e WindowBuilder
+ */
 public class DimettiPazienteFrame {
 	
 	static final ImageIcon dimettiImage = new ImageIcon("../progetto_gui/src/main/resources/dimetti_paziente.png");

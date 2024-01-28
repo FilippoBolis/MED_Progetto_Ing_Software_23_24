@@ -17,6 +17,11 @@ import javax.swing.UnsupportedLookAndFeelException;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import javax.swing.JTextArea;
 
+/**
+ * Classe contenente il frame per gestire l'inserimento di una nuova diaria infermieristica;
+ * contiene solo parte grafica, è resa utilizzabile dal progetto_logico;
+ * sono stati utilizzati java swing e WindowBuilder
+ */
 public class InserisciDiariaInfermieristicaFrame {
 
 	ImageIcon diariaImage = new ImageIcon("../progetto_gui/src/main/resources/inserisci_diaria.png");
@@ -26,7 +31,6 @@ public class InserisciDiariaInfermieristicaFrame {
 	public JTextArea farmacoTextArea;
 	public JButton confermaButton;
 
-	
 	@SuppressWarnings("serial")
 	public InserisciDiariaInfermieristicaFrame() {
 
@@ -67,7 +71,7 @@ public class InserisciDiariaInfermieristicaFrame {
 				super.paintComponent(g);
 				g.drawImage(diariaImage.getImage(), 0 , 0, this.getWidth(), this.getHeight(), this);
 			}
-		};;
+		};
 		immagineLabel.setBounds(30, 30, 48, 48);
 		diariaInfPanel.add(immagineLabel);
 		

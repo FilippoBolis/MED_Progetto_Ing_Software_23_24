@@ -3,6 +3,9 @@ package gui;
 import java.awt.Color;
 import java.awt.Font;
 
+/**
+ * Classe contenente colori e font per facilitare la realizzazione della gui e le sue modifiche;
+ */
 public enum Stile {
 	
     BLU(new Color(26, 69, 120)),

@@ -17,7 +17,13 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 
+/**
+ * Classe contenente il frame per gestire la modifica della diaria medica del paziente;
+ * contiene solo parte grafica, è resa utilizzabile dal progetto_logico;
+ * sono stati utilizzati java swing e WindowBuilder
+ */
 public class ModificaDiariaFrame {
+	
 	ImageIcon diariaImage = new ImageIcon("../progetto_gui/src/main/resources/modifica_diaria.png");
 	public JFrame sfondoFrame;
 	public JTextField motivoTextField;
@@ -67,7 +73,7 @@ public class ModificaDiariaFrame {
 				super.paintComponent(g);
 				g.drawImage(diariaImage.getImage(), 0 , 0, this.getWidth(), this.getHeight(), this);
 			}
-		};;
+		};
 		immagineLabel.setBounds(30, 30, 48, 48);
 		diariaPanel.add(immagineLabel);
 		

@@ -16,7 +16,13 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import com.formdev.flatlaf.FlatIntelliJLaf;
 
+/**
+ * Classe contenente il frame per visualizzare lo storico del paziente;
+ * contiene solo parte grafica, è resa utilizzabile dal progetto_logico;
+ * sono stati utilizzati java swing e WindowBuilder
+ */
 public class VisualizzaStoricoFrame {
+	
 	private ImageIcon storicoImage = new ImageIcon("../progetto_gui/src/main/resources/storico.png");
 	public JFrame sfondoFrame;
 	public JTextArea storicoTextArea;
@@ -84,12 +90,14 @@ public class VisualizzaStoricoFrame {
 		scrollPane.setBounds(30, 129, 436, 301);
 		scrollPane.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));
 		storicoPanel.add(scrollPane);
-		
-		
+
 		sfondoFrame.setVisible(true);
 	
 	}
 	
+	/**
+	 * @param persona per aggiornare storicoLabel con nome e cognome del paziente
+	 */
 	public void setPersonaView(String persona) {
 		storicoLabel.setText("Storico di " + persona);
 	}

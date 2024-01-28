@@ -21,6 +21,11 @@ import javax.swing.table.TableRowSorter;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import modelli.ModelloGestoreLogicaGenerale;
 
+/**
+ * Classe contenente il frame per visualizzare tutte le rilevazioni fatte al paziente;
+ * contiene solo parte grafica, è resa utilizzabile dal progetto_logico;
+ * sono stati utilizzati java swing e WindowBuilder
+ */
 public class VisualizzaRilevazioniFrame {
 	private ImageIcon rilevazioniImage = new ImageIcon("../progetto_gui/src/main/resources/rilevazioni.png");
 	public JFrame sfondoFrame;
@@ -30,6 +35,9 @@ public class VisualizzaRilevazioniFrame {
 	public JLabel rilevazioniLabel;
 	private ModelloGestoreLogicaGenerale modello;
 	
+	/**
+	 * @param modello utilizzato aggiornate le stringhe con i valori contunuti nel progetto_model;
+	 */
 	@SuppressWarnings("serial")
 	public VisualizzaRilevazioniFrame(ModelloGestoreLogicaGenerale m) {
 		modello = m;
@@ -70,7 +78,7 @@ public class VisualizzaRilevazioniFrame {
 				super.paintComponent(g);
 				g.drawImage(rilevazioniImage.getImage(), 0 , 0, this.getWidth(), this.getHeight(), this);
 			}
-		};;
+		};
 		immagineLabel.setBounds(30, 30, 48, 48);
 		rilevazioniPanel.add(immagineLabel);
 		
@@ -131,11 +139,17 @@ public class VisualizzaRilevazioniFrame {
 	
 	}
 
+	/**
+	 * @param persona per aggiornare rilevazioniLabel con nome e cognome del paziente
+	 */
 	public void setPersonaView(String persona) {
 		rilevazioniLabel.setText("Diarie infermieristiche di " + persona);
 	}
 	
-	public synchronized  void updateViewTabella() {
+	/**
+	 * Aggiorna i valori nella tabella prendendoli dal progetto_model
+	 */
+	public synchronized void updateViewTabella() {
 		if (updating) {
             return;
         }
@@ -159,6 +173,10 @@ public class VisualizzaRilevazioniFrame {
 		updating = false;
 	}
 	
+	/**
+	 * Classe per gestire la grafica delle celle della tabella in base al valore contenuto;
+	 * in base al valore possono essere cambiati colori o font
+	 */
 	@SuppressWarnings("serial")
 	static class TabellaRenderer extends DefaultTableCellRenderer {
 

@@ -14,6 +14,11 @@ import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 
+/**
+ * Classe contenente il frame per gestire l'assegnazione del posto letto al paziente;
+ * contiene solo parte grafica, è resa utilizzabile dal progetto_logico;
+ * sono stati utilizzati java swing e WindowBuilder
+ */
 public class AssegnaPostoFrame {
 
 	ImageIcon assegnaImage = new ImageIcon("../progetto_gui/src/main/resources/sposta_paziente.png");
@@ -25,6 +30,9 @@ public class AssegnaPostoFrame {
 	private ModelloGestoreLogicaGenerale modello;
 	private JLabel repartoLabel;
 
+	/**
+	 * @param modello utilizzato aggiornate le stringhe con i valori contunuti nel progetto_model;
+	 */
 	@SuppressWarnings("serial")
 	public AssegnaPostoFrame(ModelloGestoreLogicaGenerale modello) {
 		
@@ -68,7 +76,7 @@ public class AssegnaPostoFrame {
 				super.paintComponent(g);
 				g.drawImage(assegnaImage.getImage(), 0 , 0, this.getWidth(), this.getHeight(), this);
 			}
-		};;
+		};
 		immagineLabel.setBounds(30, 30, 48, 48);
 		pazientePanel.add(immagineLabel);
 		
@@ -118,10 +126,17 @@ public class AssegnaPostoFrame {
 
 	}
 	
+	/**
+	 * Aggiorna la stringa contenente il reparto consigliato dal medico scritto nella diaria medica e salvato nel progetto_model
+	 * @param repartoConsigliato reparto consigliato dal medico
+	 */
 	public void aggiornaRepartoView(String repartoConsigliato) {
 		repartoLabel.setText(repartoConsigliato);
 	}
 	
+	/**
+	 * Aggiorna le stringhe nel menu a tendina moduloComboBox con i moduli disponibili nel reparto selezionato, salvati nel progetto_model
+	 */
 	public void aggiornaModuliRepartoView() {
 		moduloComboBox.removeAllItems();
 		postoComboBox.removeAllItems();
@@ -131,6 +146,9 @@ public class AssegnaPostoFrame {
 		}
 	}
 	
+	/**
+	 * Aggiorna le stringhe nel menu a tendina postoJComboBox con i posti letto disponibili nel modulo selezionato, salvati nel progetto_model
+	 */
 	public void aggiornaLettiRepartoView() {
 		postoComboBox.removeAllItems();
 		postoComboBox.addItem(null);

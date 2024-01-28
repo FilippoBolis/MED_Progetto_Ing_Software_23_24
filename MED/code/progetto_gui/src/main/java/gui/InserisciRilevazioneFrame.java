@@ -14,7 +14,13 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 
+/**
+ * Classe contenente il frame per gestire l'inserimento di una nuova rilevazione;
+ * contiene solo parte grafica, è resa utilizzabile dal progetto_logico;
+ * sono stati utilizzati java swing e WindowBuilder
+ */
 public class InserisciRilevazioneFrame {
+	
 	ImageIcon rilevazioneImage = new ImageIcon("../progetto_gui/src/main/resources/inserisci_rilevazione.png");
 	public JFrame sfondoFrame;
 	public JTextField glicemiaTextField;
@@ -65,7 +71,7 @@ public class InserisciRilevazioneFrame {
 				super.paintComponent(g);
 				g.drawImage(rilevazioneImage.getImage(), 0 , 0, this.getWidth(), this.getHeight(), this);
 			}
-		};;
+		};
 		immagineLabel.setBounds(30, 30, 48, 48);
 		rilevazionePanel.add(immagineLabel);
 

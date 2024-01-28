@@ -16,6 +16,11 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 
+/**
+ * Classe contenente il frame per gestire l'inserimento di informazioni aggiuntive sul paziente;
+ * contiene solo parte grafica, è resa utilizzabile dal progetto_logico;
+ * sono stati utilizzati java swing e WindowBuilder
+ */
 public class InserisciInformazioniFrame {
 	private ImageIcon infoImage = new ImageIcon("../progetto_gui/src/main/resources/inserisci_info.png");
 	public JFrame sfondoFrame;
@@ -62,7 +67,7 @@ public class InserisciInformazioniFrame {
 				super.paintComponent(g);
 				g.drawImage(infoImage.getImage(), 0 , 0, this.getWidth(), this.getHeight(), this);
 			}
-		};;
+		};
 		immagineLabel.setBounds(30, 30, 48, 48);
 		infoPanel.add(immagineLabel);
 		

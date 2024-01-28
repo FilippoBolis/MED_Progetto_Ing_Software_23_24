@@ -19,6 +19,11 @@ import com.formdev.flatlaf.FlatIntelliJLaf;
 import modelli.ModelloGestoreLogicaGenerale;
 import javax.swing.JTextArea;
 
+/**
+ * Classe contenente il frame per gestire la compilazione di una nuova diaria medica;
+ * contiene solo parte grafica, è resa utilizzabile dal progetto_logico;
+ * sono stati utilizzati java swing e WindowBuilder
+ */
 public class InserisciDiariaFrame {
 
 	ImageIcon aggiungiImage = new ImageIcon("../progetto_gui/src/main/resources/inserisci_diaria.png");
@@ -29,6 +34,9 @@ public class InserisciDiariaFrame {
 	public JTextArea farmaciTextArea;
 	public JComboBox<String> repartoComboBox;
 	
+	/**
+	 * @param modello utilizzato aggiornate le stringhe con i valori contunuti nel progetto_model;
+	 */
 	@SuppressWarnings("serial")
 	public InserisciDiariaFrame(ModelloGestoreLogicaGenerale modello) {
         
@@ -70,7 +78,7 @@ public class InserisciDiariaFrame {
 				super.paintComponent(g);
 				g.drawImage(aggiungiImage.getImage(), 0 , 0, this.getWidth(), this.getHeight(), this);
 			}
-		};;
+		};
 		immagineLabel.setBounds(30, 30, 48, 48);
 		diariaPanel.add(immagineLabel);
 		
@@ -102,6 +110,9 @@ public class InserisciDiariaFrame {
 		repartoLabel.setFont(Stile.TESTO.getFont());
 		diariaPanel.add(repartoLabel);
 		
+		/**
+		 * Aggiorna le stringhe nel menu a tendina repartoComboBox con i reparti disponibili, salvati nel progetto_model
+		 */
 		repartoComboBox = new JComboBox<String>();
 		for (String nomeReparto : modello.modelloGestoreLogistica.getNomiReparti()) {
 			repartoComboBox.addItem(nomeReparto);

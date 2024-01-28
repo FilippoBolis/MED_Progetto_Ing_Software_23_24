@@ -14,6 +14,11 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 
+/**
+ * Classe contenente il frame per gestire l'inserimento dei dati un nuovo paziente;
+ * contiene solo parte grafica, è resa utilizzabile dal progetto_logico;
+ * sono stati utilizzati java swing e WindowBuilder
+ */
 public class InserisciPazienteFrame {
 	
 	ImageIcon aggiungiImage = new ImageIcon("../progetto_gui/src/main/resources/inserisci_paziente.png");
@@ -65,7 +70,7 @@ public class InserisciPazienteFrame {
 				super.paintComponent(g);
 				g.drawImage(aggiungiImage.getImage(), 0 , 0, this.getWidth(), this.getHeight(), this);
 			}
-		};;
+		};
 		immagineLabel.setBounds(30, 30, 48, 48);
 		aggiungiPazientePanel.add(immagineLabel);
 		

@@ -24,7 +24,13 @@ import javax.swing.table.TableRowSorter;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import modelli.ModelloGestoreLogicaGenerale;
 
+/**
+ * Classe contenente il frame per visualizzare tutte le diarie infermieristiche del paziente;
+ * contiene solo parte grafica, è resa utilizzabile dal progetto_logico;
+ * sono stati utilizzati java swing e WindowBuilder
+ */
 public class VisualizzaDiarieInfFrame {
+	
 	private ImageIcon diariaImage = new ImageIcon("../progetto_gui/src/main/resources/diaria.png");
 	public JFrame sfondoFrame;
 	public DefaultTableModel tableModel;
@@ -33,7 +39,9 @@ public class VisualizzaDiarieInfFrame {
 	private JLabel diarieLabel;
 	private ModelloGestoreLogicaGenerale modello;
 		
-	
+	/**
+	 * @param modello utilizzato aggiornate le stringhe con i valori contunuti nel progetto_model;
+	 */
 	@SuppressWarnings("serial")
 	public VisualizzaDiarieInfFrame(ModelloGestoreLogicaGenerale m) {
 		modello = m;
@@ -129,13 +137,20 @@ public class VisualizzaDiarieInfFrame {
         }
 
 		sfondoFrame.setVisible(true);
-	
 	}
+	
+	
+	/**
+	 * @param persona per aggiornare diarieLabel con nome e cognome del paziente
+	 */
 	public void setPersonaView(String persona) {
 		diarieLabel.setText("Diarie infermieristiche di " + persona);
 	}
 	
-	public synchronized  void updateViewTabella() {
+	/**
+	 * Aggiorna i valori nella tabella prendendoli dal progetto_model
+	 */
+	public synchronized void updateViewTabella() {
 		if (updating) {
             return;
         }
@@ -156,6 +171,10 @@ public class VisualizzaDiarieInfFrame {
 		updating = false;
 	}
 	
+	/**
+	 * Classe per gestire la grafica delle celle della tabella in base al valore contenuto;
+	 * in base al valore possono essere cambiati colori, font, formato o immagini
+	 */
 	@SuppressWarnings("serial")
 	static class TabellaRenderer extends DefaultTableCellRenderer {
 

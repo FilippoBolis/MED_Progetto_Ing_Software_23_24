@@ -15,6 +15,11 @@ import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import javax.swing.JPasswordField;
 
+/**
+ * Classe contenente il frame gestire il login del personale;
+ * contiene solo parte grafica, è resa utilizzabile dal progetto_logico;
+ * sono stati utilizzati java swing e WindowBuilder
+ */
 @SuppressWarnings("serial")
 public class LoginFrame extends JFrame {
 
@@ -126,6 +131,7 @@ public class LoginFrame extends JFrame {
 		loginButton.setForeground(Color.WHITE);
 		loginButton.setFont(Stile.SOTTOTITOLO.getFont());
 		destraPanel.add(loginButton);
+		
 		sfondoFrame.setVisible(true);
 	}
 	
