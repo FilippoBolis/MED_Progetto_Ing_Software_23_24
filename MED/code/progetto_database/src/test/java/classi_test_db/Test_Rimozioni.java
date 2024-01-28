@@ -21,12 +21,11 @@ public class Test_Rimozioni implements MetodiDaTestare{
 	
 	@Test
 	public void testDegente2() {
-		/* test commentato, fallisce se
 		int risultato=RimozioneJooq.getIstanza().degente("D10");
 		//D10 è presente, ci si aspetta che il risultato sia 5 siccome oltre al degente vengono rimossi elementi da altre 4 tabelle
 		//diariaMed, diariaInf, rilevazione e assegnazioneLetto
 		assertEquals(5,risultato);
-		*/
+		
 	}
 	
 	@Test
@@ -38,7 +37,8 @@ public class Test_Rimozioni implements MetodiDaTestare{
 	
 	@Test
 	public void testPersonale2() {
-		/*
+		/* test commentato, fallisce se eseguito più volte di seguito senza che ogni volta venga eseguito
+		 * il reinserimento del dato del personale
 		//P10 è nel database, la rimozione ha successo e restituisce 1
 		int risultato=RimozioneJooq.getIstanza().personale("P10");
 		assertEquals(1,risultato);
@@ -94,7 +94,7 @@ public class Test_Rimozioni implements MetodiDaTestare{
 	
 	@Test
 	public void testReparto2() {
-		/* test commentato, fallisce se 
+		/* test commentato, fallisce se eseguita dopo testDegente2 
 		int risultato;
 		//rimozione di un reparto esistente ha successo
 		risultato=RimozioneJooq.getIstanza().reparto("Re3");
