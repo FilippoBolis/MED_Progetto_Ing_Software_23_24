@@ -6,6 +6,9 @@ import java.awt.event.ActionListener;
 import gui.*;
 import modelli.ModelloGestoreLogicaGenerale;
 
+/**Controllore del pulsante "Logout".
+ * Permette a un utente di uscire dal sistema una volta terminate le operazioni necessarie
+ */
 public class LogicaBottoneLogout extends LogicaBottone{
 	
 	
@@ -14,6 +17,9 @@ public class LogicaBottoneLogout extends LogicaBottone{
 		start();
 	}
 	
+	/**Alla pressione del pulsante, la schermata principale con sezioni e degenti viene chiusa 
+	 * e si ritorna alla schermata di login
+	 */
 	protected void start() {
 		//si registra al bottone prontoSoccorsoToggleButton
 		frameDeiPazienti.logoutButton.addActionListener(new ActionListener() {

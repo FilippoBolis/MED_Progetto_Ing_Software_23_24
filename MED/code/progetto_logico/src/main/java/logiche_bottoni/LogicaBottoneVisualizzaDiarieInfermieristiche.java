@@ -16,6 +16,7 @@ public class LogicaBottoneVisualizzaDiarieInfermieristiche extends LogicaBottone
 		start();
 	}
 	
+	
 	protected void start() {
 		//si registra al bottone prontoSoccorsoToggleButton
 		frameDeiPazienti.visualizzaDiarieInfButton.addActionListener(new ActionListener() {

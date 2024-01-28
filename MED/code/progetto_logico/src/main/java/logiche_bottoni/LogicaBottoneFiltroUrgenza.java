@@ -8,6 +8,8 @@ import logiche_frame_sezioni_ospedaliere.LogicaDellUrgenzaPazienteTabella;
 import logiche_frame_sezioni_ospedaliere.LogicaDellaPosizionePazienteTabella;
 import modelli.ModelloGestoreLogicaGenerale;
 
+/**Filtro che permette la ricerca dei degenti attraverso il colore relativo all'urgenza.
+ */
 public class LogicaBottoneFiltroUrgenza extends LogicaBottone{
 	
 	private LogicaDellUrgenzaPazienteTabella tabellaFiltrataUrgenza;
@@ -19,6 +21,11 @@ public class LogicaBottoneFiltroUrgenza extends LogicaBottone{
 		start();
 	}
 	
+	/**Alla selezione di un campo della tendina vengono selezionati e mostrati all'utente 
+	 *solo i degenti che presentano quel livello di urgenza.
+	 *Se viene selezionato il riquadro vuoto la selezione viene annullata e vengono posti a schermo
+	 *i dati di tutti i degenti nella sezione.
+	 */
 	protected void start() {
 		//si registra al bottone prontoSoccorsoToggleButton
 		frameDeiPazienti.urgenzaComboBox.addItemListener(new ItemListener() {

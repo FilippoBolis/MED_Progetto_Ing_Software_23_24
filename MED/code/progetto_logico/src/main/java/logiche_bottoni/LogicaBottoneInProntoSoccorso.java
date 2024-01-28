@@ -9,6 +9,8 @@ import gui.*;
 import logiche_frame_sezioni_ospedaliere.LogicaDellaPosizionePazienteTabella;
 import modelli.ModelloGestoreLogicaGenerale;
 
+/**Logica del pulsante di selezione della sezione "In pronto soccorso" 
+ */
 public class LogicaBottoneInProntoSoccorso extends LogicaBottone{
 	
 	private LogicaDellaPosizionePazienteTabella tabellaProntoSoccorso;
@@ -19,6 +21,9 @@ public class LogicaBottoneInProntoSoccorso extends LogicaBottone{
 		start();
 	}
 	
+	/**Alla selezione della sezione, vengono sostituiti i pulsanti laterali 
+	 * e viene mostrata a schermo la lista dei degenti in pronto soccorso
+	 */
 	protected void start() {
 		frameDeiPazienti.prontoSoccorsoToggleButton.setSelected(true);
 		frameDeiPazienti.inCaricoToggleButton.setSelected(false);

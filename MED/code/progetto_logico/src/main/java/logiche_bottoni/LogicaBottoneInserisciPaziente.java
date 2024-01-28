@@ -7,6 +7,9 @@ import gui.*;
 import logiche_bottoni_conferma.ConfermaAggiungiPaziente;
 import modelli.ModelloGestoreLogicaGenerale;
 
+/**Controller del bottone "inserisci paziente".
+ * Il pulsante può essere utilizzato soltanto da un operatore
+ */
 public class LogicaBottoneInserisciPaziente extends LogicaBottone{
 
 	
@@ -15,6 +18,11 @@ public class LogicaBottoneInserisciPaziente extends LogicaBottone{
 		start();
 	}
 	
+	/**Alla pressione del bottone verifica la mansione dell'utilizzatore corrente:
+	 * se si tratta di un operatore, delega l'operazione di inserimento alla classe logica "ConfermaAggiungiPaziente", 
+	 * avviando anche i frame appositi.
+	 * Alternativamente, mostra a schermo un relativo messaggio di errore.
+	 */
 	protected void start() {
 		//si registra al bottone prontoSoccorsoToggleButton
 		frameDeiPazienti.inserisciPazienteButton.addActionListener(new ActionListener() {

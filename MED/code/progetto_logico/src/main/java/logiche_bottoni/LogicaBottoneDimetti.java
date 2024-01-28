@@ -8,8 +8,7 @@ import logiche_bottoni_conferma.ConfermaDimettiPaziente;
 import modelli.ModelloGestoreLogicaGenerale;
 
 
-/**
- * Logica del pulsante "dimetti paziente", utilizzabile solo da un utente medico
+/**Logica del pulsante "dimetti paziente", utilizzabile solo da un utente medico
  */
 public class LogicaBottoneDimetti extends LogicaBottone{
 	
@@ -20,8 +19,7 @@ public class LogicaBottoneDimetti extends LogicaBottone{
 	}
 	
 	
-	/**
-	 * Alla pressione del pulsante, vengono eseguiti i controlli sulla selezione del degente e sulla mansione dell'utente;
+	/**Alla pressione del pulsante, vengono eseguiti i controlli sulla selezione del degente e sulla mansione dell'utente;
 	 * se i controlli sono superati, viene aperto il frame di dimissione e si delega il completamento dell'operazione alla classe "confermaDimettiPazientiFrame;
 	 * se i controlli non sono superati, viene reso a schermo il relativo messaggio di errore
 	 */

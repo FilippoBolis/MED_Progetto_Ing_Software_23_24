@@ -9,8 +9,8 @@ import logiche_bottoni_conferma.LogicaBottoneAggiornamentoLettiDisponibili;
 import logiche_bottoni_conferma.LogicaBottoneAggiornamentoModulo;
 import modelli.ModelloGestoreLogicaGenerale;
 
-/**
- * Controller del bottone "riassegna posto letto", utilizzabile solo da un membro del personale "operatore" (mansione "S")
+/**Controller del bottone "riassegna posto letto"
+ * utilizzabile solo da un membro del personale "operatore" (mansione "S")
  */
 public class LogicaBottoneCambiaLetto extends LogicaBottone{
 	
@@ -19,8 +19,7 @@ public class LogicaBottoneCambiaLetto extends LogicaBottone{
 		start();
 	}
 	
-	/**
-	 * alla pressione del bottone verifica la selezione di un utente e la mansione dell'utilizzatore corrente:
+	/**Alla pressione del bottone verifica la selezione di un utente e la mansione dell'utilizzatore corrente:
 	 * se tutto è in regola delega l'operazione di assegnazione alla classe logica "confermaRiassegnaPaziente", 
 	 * avviando anche i frame appositi e mostrando il reparto consigliato dal medico;
 	 * se qualcosa non è in linea con l'utilizzo previsto, mostra a schermo un relativo messaggio di errore

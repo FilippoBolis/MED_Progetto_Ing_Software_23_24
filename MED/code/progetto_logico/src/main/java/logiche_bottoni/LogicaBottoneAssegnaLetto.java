@@ -18,8 +18,7 @@ import logiche_bottoni_conferma.LogicaBottoneAggiornamentoModulo;
 import med_db.jooq.generated.tables.Diariamed;
 import modelli.ModelloGestoreLogicaGenerale;
 
-/**
- * Controller del bottone "assegna letto", utilizzabile solo da un membro del personale "operatore" (mansione "S")
+/**Controller del bottone "assegna letto", utilizzabile solo da un membro del personale "operatore" (mansione "S")
  */
 public class LogicaBottoneAssegnaLetto extends LogicaBottone{
 	
@@ -28,8 +27,7 @@ public class LogicaBottoneAssegnaLetto extends LogicaBottone{
 		start();
 	}
 	
-	/**
-	 * alla pressione del bottone verifica la selezione di un utente e la mansione dell'utilizzatore corrente:
+	/**Alla pressione del bottone verifica la selezione di un utente e la mansione dell'utilizzatore corrente:
 	 * se tutto è in regola delega l'operazione di assegnazione alla classe logica "confermaAssegnaPaziente", 
 	 * avviando anche i frame appositi e mostrando il reparto consigliato dal medico;
 	 * se qualcosa non è in linea con l'utilizzo previsto, mostra a schermo un relativo messaggio di errore

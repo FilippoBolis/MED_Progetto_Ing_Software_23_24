@@ -10,8 +10,7 @@ import logiche_frame_sezioni_ospedaliere.LogicaDellaPosizionePazienteTabella;
 import modelli.ModelloGestoreLogicaGenerale;
 
 
-/**
- * Logica del pulsante di selezione della sezione dell'ospedale "da prendere in carico"
+/**Logica del pulsante di selezione della sezione dell'ospedale "da prendere in carico"
  */
 public class LogicaBottoneDaPrendereInCarico extends LogicaBottone{
 	
@@ -23,8 +22,8 @@ public class LogicaBottoneDaPrendereInCarico extends LogicaBottone{
 		start();
 	}
 	
-	/**
-	 * Alla selezione della sezione, vengono sostituiti i pulsanti laterali e viene mostrata a schermo la lista dei degenti da prendere in carico
+	/**Alla selezione della sezione, vengono sostituiti i pulsanti laterali 
+	 * e viene mostrata a schermo la lista dei degenti da prendere in carico
 	 */
 	protected void start() {
 		//si registra al bottone prontoSoccorsoToggleButton

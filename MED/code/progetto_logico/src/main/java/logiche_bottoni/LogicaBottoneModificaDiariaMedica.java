@@ -16,6 +16,9 @@ import logiche_bottoni_conferma.ConfermaModificaDiariaMedica;
 import med_db.jooq.generated.tables.Diariamed;
 import modelli.ModelloGestoreLogicaGenerale;
 
+/** Controller del pulsante "Modifica diaria medica".
+ *  Può essere utilizzato solamente da un medico.
+ */
 public class LogicaBottoneModificaDiariaMedica extends LogicaBottone{
 	
 	
@@ -24,6 +27,11 @@ public class LogicaBottoneModificaDiariaMedica extends LogicaBottone{
 		start();
 	}
 	
+	/**Alla pressione del bottone verifica la selezione di un utente e la mansione dell'utilizzatore corrente:
+	 * se tutto è in regola delega l'operazione di modifica alla classe logica "ConfermaAggiungiRilevazione", 
+	 * avviando anche i frame appositi, in cui inserisce i dati correnti della diaria da modificare.
+	 * Se qualcosa non è in linea con l'utilizzo previsto, mostra a schermo un relativo messaggio di errore
+	 */
 	protected void start() {
 		//si registra al bottone prontoSoccorsoToggleButton
 		frameDeiPazienti.modificaDiariaMedButton.addActionListener(new ActionListener() {

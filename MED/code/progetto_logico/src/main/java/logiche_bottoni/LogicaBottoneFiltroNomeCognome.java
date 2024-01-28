@@ -26,8 +26,7 @@ import med_db.jooq.generated.tables.Degente;
 import med_db.jooq.generated.tables.Reparto;
 import modelli.ModelloGestoreLogicaGenerale;
 
-/**
- * Pulsante che permette di filtrare i pazienti nella sezione correntemente attiva per nome e/o cognome
+/**Pulsante che permette di filtrare i pazienti nella sezione correntemente attiva per nome e/o cognome
  */
 public class LogicaBottoneFiltroNomeCognome extends LogicaBottone{
 	
@@ -43,8 +42,11 @@ public class LogicaBottoneFiltroNomeCognome extends LogicaBottone{
 		start();
 	}
 	
-	/**
-	 * 
+	/**Il filtro si attiva alla pressione del pulsante di ricerca (lente di ingrandimento).
+	 * Utilizza le stringhe di caratteri posti nella barra di ricerca, eseguendo controlli che permettano
+	 * di trovare il degente richiesto attraverso una qualsiasi combinazione di nome e cognome 
+	 * (solo uno o l'altro, oppure entrambi in qualunque ordine).
+	 * Se alla pressione del pulsante di ricerca la barra di testo è vuota vengono presentati tutti i degenti
 	 */
 	protected void start() {
 		//si registra al bottone prontoSoccorsoToggleButton

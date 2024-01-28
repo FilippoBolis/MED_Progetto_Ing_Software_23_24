@@ -7,6 +7,10 @@ import gui.*;
 import logiche_frame_sezioni_ospedaliere.LogicaDellaPosizionePazienteTabella;
 import modelli.ModelloGestoreLogicaGenerale;
 
+/** Classe controller per il pulsante refresh.
+ *  Questo pulsante può essere utilizzato qualora il sistema non si aggiorni correttamente
+ *  dopo l'inserimento/la rimozione di dati sul database.
+ */
 public class LogicaBottoneRefresh extends LogicaBottone{
 	
 	private LogicaDellaPosizionePazienteTabella tabellaProntoSoccorso;
@@ -16,6 +20,9 @@ public class LogicaBottoneRefresh extends LogicaBottone{
 		start();
 	}
 	
+	/** Alla pressione del pulsante viene deselezionato il degente selezionato(se ce n'è uno) 
+	 *  per poi ricaricare la tabella con i dati aggiornati del database.
+	 */
 	protected void start() {
 		//si registra al bottone prontoSoccorsoToggleButton
 		frameDeiPazienti.indietroButton.addActionListener(new ActionListener() {

@@ -3,8 +3,7 @@ package logiche_bottoni;
 import gui.PazientiFrame;
 import modelli.ModelloGestoreLogicaGenerale;
 
-/**
- * Superclasse astratta per le logiche dei bottoni;
+/**Superclasse astratta per le logiche dei bottoni;
  * ogni elemento logico fa riferimento alla GUI e al modello
  * @param frameDeiPazienti collegamento agli elementi grafici
  * @param modello collegamento al modello
