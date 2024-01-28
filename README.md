@@ -4,12 +4,12 @@ versione BETA 1.0.0
 Lo scopo del progetto è quello di implementare una soluzione software alternativa volta alla gestione automatica (raccolta, scrittura e consultazione) dei dati che accompagnano il paziente dalla sua accettazione alla dimissione e contribuendo a raccogliere una serie di rilevazioni sui parametri vitali, al fine di migliorare 
 l’efficienza ospedaliera e il mantenimento dei dati, il tutto interagendo con un'interfaccia grafica (GUI).
 ## Project Plan
-Il [project plan](https://github.com/FilippoBolis/Progetto_ING.Software_23_24/blob/main/MED/doc/Project_Plan.pdf) è stato redatto prima della realizzazione del software e successivamente modificato per una completa pianificazione
+Il [project plan](https://github.com/FilippoBolis/Progetto_ING.Software_23_24/blob/main/MED/doc/Project_Plan.pdf) è stato redatto prima della realizzazione del software e successivamente modificato per una completa pianificazione.
 ## Documentazione
-Tutta a documentazione, compresa __l'analisi dei requisiti__, per la progettazione del problema è stata scritta in un unico file chiamato [Documentazione del progetto](https://github.com/FilippoBolis/Progetto_ING.Software_23_24/blob/main/MED/doc/Documentazione%20del%20progetto.pdf)
+Tutta a documentazione, compresa __l'analisi dei requisiti__, per la progettazione del problema è stata scritta in un unico file chiamato [Documentazione del progetto](https://github.com/FilippoBolis/Progetto_ING.Software_23_24/blob/main/MED/doc/Documentazione%20del%20progetto.pdf).
 ## UML
 Abbiamo realizzato i vari diagrammi con l'utilizzo di StarUML e draw.io, si trovano nella cartella [Med/doc/diagrammi](MED/doc/diagrammi):
-- [CASI D'USO](https://github.com/FilippoBolis/Progetto_ING.Software_23_24/blob/main/MED/doc/diagrammi/Diagramma%20dei%20Casi%20d'uso.pdf)([Descrizione dei casi d'uso](https://github.com/FilippoBolis/Progetto_ING.Software_23_24/blob/main/MED/doc/diagrammi/Descrizione%20dei%20Casi%20d'uso.pdf))
+- [CASI D'USO](https://github.com/FilippoBolis/Progetto_ING.Software_23_24/blob/main/MED/doc/diagrammi/Diagramma%20dei%20Casi%20d'uso.pdf) ([Descrizione dei casi d'uso](https://github.com/FilippoBolis/Progetto_ING.Software_23_24/blob/main/MED/doc/diagrammi/Descrizione%20dei%20Casi%20d'uso.pdf))
 - [ATTIVITÀ](https://github.com/FilippoBolis/Progetto_ING.Software_23_24/blob/main/MED/doc/diagrammi/Diagramma%20delle%20attivit%C3%A0.pdf)
 - [CLASSI](https://github.com/FilippoBolis/Progetto_ING.Software_23_24/blob/main/MED/doc/diagrammi/Diagramma%20di%20classe.pdf)
 - [PACKAGE](https://github.com/FilippoBolis/Progetto_ING.Software_23_24/blob/main/MED/doc/diagrammi/Diagramma%20di%20pacchetto.pdf)
