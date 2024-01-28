@@ -25,6 +25,18 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JToggleButton;
 
+/**
+ * Classe contenente il frame principale, è diviso in tre pannelli principali:
+ * 1. infoPanel: contenete qualche informazione sul paziente selezionato, logout, 
+ * e i 3 bottoni principali (prontoSoccorsoToggleButton, inCaricoToggleButton e repartoToggleButton);
+ * 2. sinistraPanel: contente logo e i pulsanti a seconda della sezione in cui ci troviamo
+ * (indicata dal bottone principale dei 3 selezionato);
+ * 3. centroPanel: contenente la tabella con i pazienti  a seconda della sezione in cui ci troviamo
+ * e i filtri per facilitare la navigazione.
+ * Ognuno di questi può contenere altri panel, label, button, ecc ... per migliorare la visualizzazione;
+ * il frame contiene solo parte grafica, è resa utilizzabile dal progetto_logico;
+ * sono stati utilizzati java swing e WindowBuilder
+ */
 @SuppressWarnings("serial")
 public class PazientiFrame {
 	
@@ -71,6 +83,9 @@ public class PazientiFrame {
 	private ModelloGestoreLogicaGenerale modello;
     public boolean updating = false;
 
+	/**
+	 * @param modello utilizzato aggiornate le stringhe con i valori contunuti nel progetto_model;
+	 */
 	public PazientiFrame(ModelloGestoreLogicaGenerale modello) {
 		
 		this.modello = modello;
@@ -435,11 +450,17 @@ public class PazientiFrame {
 		sfondoFrame.setVisible(true);
 	}
 	
+	/**
+	 * Aggiorna utenteLabel con nome, cognome e professione dell'utente loggato
+	 */
 	public void updateViewUtente() {
 		utenteLabel.setText(modello.modelloGestoreUtente.getUtente());
 		
 	}
 	
+	/**
+	 * Aggiorna i valori nella tabella prendendoli dal progetto_model
+	 */
 	public synchronized  void updateViewTabella() {
 			if (updating) {
                 return;
@@ -467,12 +488,19 @@ public class PazientiFrame {
 			updating = false;
 	}
 	
+	/**
+	 * Aggiorna i label con i dati del paziente selezionato
+	 */
 	public void updateStringaPaziente() {
 		pazienteTitoloLabel.setText(modello.modelloGestoreVisualizzazioneDatiPaziente.getStringaDatiPaziente());
 		dataPazienteLabel.setText(modello.modelloGestoreVisualizzazioneDatiPaziente.getStringaArrivoPaziente());
 		motivoPazienteLabel.setText(modello.modelloGestoreVisualizzazioneDatiPaziente.getStringaCondizionePaziente());
 	}
 	
+	/**
+	 * Classe per gestire la grafica delle celle della tabella in base al valore contenuto;
+	 * in base al valore possono essere cambiate le immagini
+	 */
     static class TabellaRenderer extends DefaultTableCellRenderer {
 
     	private final ImageIcon rossoImage = new ImageIcon("../progetto_gui/src/main/resources/rosso.png");
