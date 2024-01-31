@@ -8,6 +8,9 @@ import logiche_bottoni_conferma.EsciVisualizzaDiarieInfermieristiche;
 import logiche_frame_sezioni_ospedaliere.LogicaDelleDiarieInfermieristicheTabella;
 import modelli.ModelloGestoreLogicaGenerale;
 
+/** Classe VisualizzaDiarieInfermieristiche.
+ * 
+ */
 public class LogicaBottoneVisualizzaDiarieInfermieristiche extends LogicaBottone{
 	
 	

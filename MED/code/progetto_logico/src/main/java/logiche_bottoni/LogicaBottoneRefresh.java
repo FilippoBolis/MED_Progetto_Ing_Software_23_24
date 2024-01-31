@@ -8,7 +8,7 @@ import logiche_frame_sezioni_ospedaliere.LogicaDellaPosizionePazienteTabella;
 import modelli.ModelloGestoreLogicaGenerale;
 
 /** Classe controller per il pulsante refresh.
- *  Questo pulsante può essere utilizzato qualora il sistema non si aggiorni correttamente
+ *  Questo pulsante può essere utilizzato per aggiornare il sistema
  *  dopo l'inserimento/la rimozione di dati sul database.
  */
 public class LogicaBottoneRefresh extends LogicaBottone{
