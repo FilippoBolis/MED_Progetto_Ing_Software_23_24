@@ -83,7 +83,7 @@ public class Test_Inserimenti implements MetodiDaTestare{
 		int risultato;
 		//test: tentativo di inserimento con dati scorretti
 		//ci si aspetta non inserisca, valore atteso è 0
-		risultato=InserimentoJooq.getIstanza().diariaMed(1, "D8", "P1", "Il paziente soffre di allergia agli anticoagulanti?", "Necessaria cura","fisioterapia","Antiallergene", LocalDate.now(), LocalTime.now().withNano(0), "anticoagulanti");
+		risultato=InserimentoJooq.getIstanza().diariaMed(1, "D10", "m", "Il paziente soffre di allergia agli anticoagulanti?", "Necessaria cura","fisioterapia","Antiallergene", LocalDate.now(), LocalTime.now().withNano(0), "anticoagulanti");
 		assertEquals(0,risultato);
 		
 	}
@@ -180,7 +180,7 @@ public class Test_Inserimenti implements MetodiDaTestare{
 		int risultato;
 		//test: tentativo di inserimento con dati scorretti
 		//ci si aspetta che l'inserimento non avvenga, valore atteso è 0
-		risultato=InserimentoJooq.getIstanza().rilevazione(10,"D8","P2", 35, 75, 110, 30, LocalDate.now(), LocalTime.now().withNano(0), 60, 2);
+		risultato=InserimentoJooq.getIstanza().rilevazione(15,"D11","i",37.6,142,83,97, LocalDate.now(),LocalTime.now().withNano(0),63,8);
 		assertEquals(0,risultato);
 
 	}

@@ -180,13 +180,7 @@ public class AggiornamentiJooq {
 	
 	
 	public static void main(String[] args) {
-		//getIstanza().personale("P2", "CaviAreMyLife");
-		//getIstanza().degente("D1","posizione","in Reparto");
-		//getIstanza().diariaInf("DiariaInf1", "D1", "false");
-		//getIstanza().diariaMed("DiariaMed1", "D1", "storico", "Il paziente era diventato gigagrosso");
-		//getIstanza().diariaMed("DiariaMed1", "D1", "motivo", "Il paziente deve ridursi un pelo");
-		//getIstanza().diariaMed("DiariaMed1", "D1", "farmaci", "riducina");
-		//getIstanza().diariaMed("DiariaMed1", "D1", "allergie", "i perditempo");
+
 	}
 
 }

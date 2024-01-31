@@ -36,7 +36,7 @@ public class Test_Aggiornamenti implements MetodiDaTestare{
 	
 	@Test
 	public void testPersonale2() {
-		int risultato=AggiornamentiJooq.getIstanza().personale("P2", "CaviAreMyLife");
+		int risultato=AggiornamentiJooq.getIstanza().personale("m", "ADMIN");
 		assertEquals(1,risultato);
 	}
 	
