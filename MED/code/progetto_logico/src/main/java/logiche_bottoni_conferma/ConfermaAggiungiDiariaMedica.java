@@ -14,14 +14,25 @@ public class ConfermaAggiungiDiariaMedica {
 	private InserisciDiariaFrame frame;
 	private ModelloGestoreLogicaGenerale modello;
 	private PazientiFrame frameDeiPazienti;
-		
+	
+	/** Classe che prende i dati digitati nel relativo frame e li fornisce alla classe
+	 * "ConfermaInformazioniExtra".
+	 * @param v1 riferimento al frame per l'inserimento diarieMed
+	 * @param v2 riferimento al frame principale
+	 * @param m riferimento al modello
+	 */
 	public ConfermaAggiungiDiariaMedica(InserisciDiariaFrame v1, PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		frameDeiPazienti = v2;
 		frame = v1;
 		modello = m;
 		start();
 	}
-		
+	
+	/**Una volta premuto il pulsante "conferma" nel frame di inserimento, prende i dati scritti e delega
+	 * il loro inserimento nel database alla classe logica "ConfermaInformazioniExtra".
+	 * Inoltre permete la chiusura della finestra, premendo la X.
+	 * Alla chiusura della finestra il frame principale viene riabilitato.
+	 */
 	protected void start() {
 		frame.avantiButton.addActionListener(new ActionListener() {
 			@Override

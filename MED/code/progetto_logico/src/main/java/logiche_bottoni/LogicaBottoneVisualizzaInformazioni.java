@@ -16,14 +16,21 @@ import logiche_bottoni_conferma.EsciVisualizzaInformazioni;
 import med_db.jooq.generated.tables.Diariamed;
 import modelli.ModelloGestoreLogicaGenerale;
 
+
 public class LogicaBottoneVisualizzaInformazioni extends LogicaBottone{
 	
-	
+	/** Classe che permette di aprire il frame delle visualizzazioni delle informazioni relative a un degente
+	 */
 	public LogicaBottoneVisualizzaInformazioni(PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		super(v2,m);
 		start();
 	}
 	
+	/**Alla pressione del bottone verifica la selezione di un utente e la mansione dell'utilizzatore corrente (ammessi solo medico o infermiere):
+	 * se tutto è in regola, attiva e compila il frame delle informazioni mediche (nel database indicate sotto il nome di "allergie"),
+	 * bloccando l'interazione con il frame principale.
+	 * Se qualcosa non è in linea con l'utilizzo previsto, mostra a schermo un relativo messaggio di errore
+	 */
 	protected void start() {
 		//si registra al bottone prontoSoccorsoToggleButton
 		frameDeiPazienti.visualizzaInformazioniButton.addActionListener(new ActionListener() {

@@ -18,12 +18,17 @@ import modelli.ModelloGestoreLogicaGenerale;
 
 public class LogicaBottoneVisualizzaStorico extends LogicaBottone{
 	
-	
+	/** Classe che permette di aprire il frame delle visualizzazioni dello storico di un degente
+	 */
 	public LogicaBottoneVisualizzaStorico(PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		super(v2,m);
 		start();
 	}
 	
+	/**Alla pressione del bottone verifica la selezione di un utente e la mansione dell'utilizzatore corrente (ammessi solo medico o infermiere):
+	 * se tutto è in regola, attiva e compila il frame dello storico, bloccando l'interazione con il frame principale.
+	 * Se qualcosa non è in linea con l'utilizzo previsto, mostra a schermo un relativo messaggio di errore
+	 */
 	protected void start() {
 		frameDeiPazienti.visualizzaStoricoButton.addActionListener(new ActionListener() {
 			@Override

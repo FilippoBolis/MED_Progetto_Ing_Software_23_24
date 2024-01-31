@@ -8,11 +8,10 @@ import logiche_bottoni_conferma.ConfermaDimettiPaziente;
 import modelli.ModelloGestoreLogicaGenerale;
 
 
-/**Logica del pulsante "dimetti paziente", utilizzabile solo da un utente medico
- */
 public class LogicaBottoneDimetti extends LogicaBottone{
 	
-	
+	/**Logica del pulsante "dimetti paziente", utilizzabile solo da un utente medico
+	 */
 	public LogicaBottoneDimetti(PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		super(v2,m);
 		start();

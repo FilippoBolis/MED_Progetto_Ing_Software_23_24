@@ -26,8 +26,7 @@ import med_db.jooq.generated.tables.Degente;
 import med_db.jooq.generated.tables.Reparto;
 import modelli.ModelloGestoreLogicaGenerale;
 
-/**Pulsante che permette di filtrare i pazienti nella sezione correntemente attiva per nome e/o cognome
- */
+
 public class LogicaBottoneFiltroNomeCognome extends LogicaBottone{
 	
 	private static String DB_REL_FILELOGIC = "../progetto_database/db/db.db3";
@@ -37,6 +36,8 @@ public class LogicaBottoneFiltroNomeCognome extends LogicaBottone{
 	private String valore2;
 	private LogicaDellaPosizionePazienteTabella tabellaDeiPazienti;
 	
+	/**Pulsante che permette di filtrare i pazienti nella sezione correntemente attiva per nome e/o cognome
+	 */
 	public LogicaBottoneFiltroNomeCognome(PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		super(v2,m);
 		start();

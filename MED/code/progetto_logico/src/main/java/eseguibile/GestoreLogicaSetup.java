@@ -37,7 +37,7 @@ public class GestoreLogicaSetup {
 		mainModelUnit = m;
 		//mainFrameUnit = new PazientiFrame(mainModelUnit);
 		setupReparti(mainModelUnit);
-		new LoginLogic(loginFrame,m);
+		new LogicaLogin(loginFrame,m);
 	}
 	
 	/**

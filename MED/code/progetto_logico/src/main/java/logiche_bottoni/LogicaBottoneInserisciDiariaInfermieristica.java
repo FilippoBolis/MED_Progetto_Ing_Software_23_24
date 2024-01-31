@@ -7,12 +7,12 @@ import gui.*;
 import logiche_bottoni_conferma.ConfermaAggiungiDiariaInfermieristica;
 import modelli.ModelloGestoreLogicaGenerale;
 
-/**Controller del bottone "inserisci diaria infermieristica".
- * Il pulsante può essere utilizzato soltanto da un infermiere
- */
+
 public class LogicaBottoneInserisciDiariaInfermieristica extends LogicaBottone{
 	
-	
+	/**Controller del bottone "inserisci diaria infermieristica".
+	 * Il pulsante può essere utilizzato soltanto da un infermiere
+	 */
 	public LogicaBottoneInserisciDiariaInfermieristica(PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		super(v2,m);
 		start();

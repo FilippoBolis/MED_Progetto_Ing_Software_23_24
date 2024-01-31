@@ -18,10 +18,11 @@ import logiche_bottoni_conferma.LogicaBottoneAggiornamentoModulo;
 import med_db.jooq.generated.tables.Diariamed;
 import modelli.ModelloGestoreLogicaGenerale;
 
-/**Controller del bottone "assegna letto", utilizzabile solo da un membro del personale "operatore" (mansione "S")
- */
+
 public class LogicaBottoneAssegnaLetto extends LogicaBottone{
 	
+	/**Controller del bottone "assegna letto", utilizzabile solo da un membro del personale "operatore" (mansione "S")
+	 */
 	public LogicaBottoneAssegnaLetto(PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		super(v2,m);
 		start();

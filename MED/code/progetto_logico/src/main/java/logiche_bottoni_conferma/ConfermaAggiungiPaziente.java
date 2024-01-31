@@ -19,6 +19,11 @@ public class ConfermaAggiungiPaziente {
 	private PazientiFrame frameDeiPazienti;
 	private LogicaDellaPosizionePazienteTabella TabellaProntoSoccorso;
 
+	/** Classe che prende i dati digitati nel relativo frame e li inserisce nel database
+	 * @param v1 riferimento al frame per l'inserimento pazienti
+	 * @param v2 riferimento al frame principale
+	 * @param m riferimento al modello
+	 */
 	public ConfermaAggiungiPaziente(InserisciPazienteFrame v1, PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		frame = v1;
 		frameDeiPazienti = v2;
@@ -27,6 +32,11 @@ public class ConfermaAggiungiPaziente {
 		start();
 	}
 
+	/**Una volta premuto il pulsante "conferma" nel frame di inserimento, prende i dati scritti e li utilizza
+	 * per eseguire un insert nella tabella degente del database.
+	 * Inoltre permete la chiusura della finestra, premendo la X oppure confermando l'inserimento.
+	 * Alla chiusura della finestra il frame principale viene riabilitato e aggiornato con il nuovo dato.
+	 */
 	protected void start() {
 		frame.confermaButton.addActionListener(new ActionListener() {
 			@Override

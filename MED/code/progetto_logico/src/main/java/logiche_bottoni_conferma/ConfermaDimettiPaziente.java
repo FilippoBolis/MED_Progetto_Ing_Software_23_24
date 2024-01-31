@@ -10,6 +10,7 @@ import gui.PazientiFrame;
 import logiche_frame_sezioni_ospedaliere.LogicaDellaPosizionePazienteTabella;
 import modelli.ModelloGestoreLogicaGenerale;
 
+
 public class ConfermaDimettiPaziente {
 
 	private DimettiPazienteFrame frame;
@@ -17,6 +18,11 @@ public class ConfermaDimettiPaziente {
 	private PazientiFrame frameDeiPazienti;
 	private LogicaDellaPosizionePazienteTabella tabellaInReparto;
 
+	/** Classe che permette la rimozione del degente selezionato
+	 * @param v1 riferimento al frame per la rimozione del degente
+	 * @param v2 riferimento al frame principale
+	 * @param m riferimento al modello
+	 */
 	public ConfermaDimettiPaziente(DimettiPazienteFrame v1, PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		frame = v1;
 		frameDeiPazienti = v2;
@@ -25,6 +31,11 @@ public class ConfermaDimettiPaziente {
 		start();
 	}
 
+	/**Una volta premuto il pulsante "conferma" nel frame di rimozione, rimuove il paziente selezionato
+	 * dalla tabella degente del database
+	 * Inoltre permete la chiusura della finestra, premendo la X oppure confermando l'inserimento.
+	 * Alla chiusura della finestra il frame principale viene riabilitato e aggiornato.
+	 */
 	protected void start() {
 		frame.confermaButton.addActionListener(new ActionListener() {
 			@Override

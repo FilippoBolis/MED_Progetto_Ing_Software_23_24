@@ -9,12 +9,13 @@ import gui.*;
 import logiche_frame_sezioni_ospedaliere.LogicaDellaPosizionePazienteTabella;
 import modelli.ModelloGestoreLogicaGenerale;
 
-/***Logica del pulsante di selezione della sezione "In reparto"
- */
+
 public class LogicaBottoneInReparto extends LogicaBottone{
 	
 	private LogicaDellaPosizionePazienteTabella tabellaInReparto;
 	
+	/***Logica del pulsante di selezione della sezione "In reparto"
+	 */
 	public LogicaBottoneInReparto(PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		super(v2,m);
 		tabellaInReparto = new LogicaDellaPosizionePazienteTabella(frameDeiPazienti, modello,"in Reparto");

@@ -19,7 +19,8 @@ import logiche_frame_sezioni_ospedaliere.LogicaDellaStringaPaziente;
 import med_db.jooq.generated.tables.Personale;
 import modelli.ModelloGestoreLogicaGenerale;
 
-public class LoginLogic {
+
+public class LogicaLogin {
 	
 	private LoginFrame loginFrame;
 	private static String DB_REL_FILELOGIC = "../progetto_database/db/db.db3";
@@ -32,13 +33,21 @@ public class LoginLogic {
 	private String codice;
 	private ModelloGestoreLogicaGenerale modello;
 	
-	public LoginLogic(LoginFrame v, ModelloGestoreLogicaGenerale m) {
+	
+	/**Classe che permette l'avvio del programma, gestendo la schermata di login e attivando frame e modelli
+	 * @param v riferimento al frame grafico di login
+	 * @param m riferimento al modello generale
+	 */
+	public LogicaLogin(LoginFrame v, ModelloGestoreLogicaGenerale m) {
 		// prede i refs
 		loginFrame = v;
 		modello = m;
 		registerLogin();
 	}
 	
+	/**All'avvio dell'applicazione attiva la schermata di login e attende i dati dell'utente.
+	 * Verifica poi che i dati siano presenti nel database per poi attivare il resto del programma.
+	 */
 	private void registerLogin() {
 		// si registra al bottone loginButton
 		loginFrame.loginButton.addActionListener(new ActionListener() {

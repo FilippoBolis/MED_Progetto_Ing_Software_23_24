@@ -7,14 +7,15 @@ import gui.*;
 import logiche_frame_sezioni_ospedaliere.LogicaDellaPosizionePazienteTabella;
 import modelli.ModelloGestoreLogicaGenerale;
 
-/** Classe controller per il pulsante refresh.
- *  Questo pulsante può essere utilizzato per aggiornare il sistema
- *  dopo l'inserimento/la rimozione di dati sul database.
- */
+
 public class LogicaBottoneRefresh extends LogicaBottone{
 	
 	private LogicaDellaPosizionePazienteTabella tabellaProntoSoccorso;
 	
+	/** Classe controller per il pulsante refresh.
+	 *  Questo pulsante può essere utilizzato per aggiornare il sistema
+	 *  dopo l'inserimento/la rimozione di dati sul database.
+	 */
 	public LogicaBottoneRefresh(PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		super(v2,m);
 		start();

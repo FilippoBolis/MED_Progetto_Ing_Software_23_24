@@ -13,7 +13,12 @@ public class ConfermaModificaDiariaMedica {
 	private ModificaDiariaFrame frame;
 	private ModelloGestoreLogicaGenerale modello;
 	private PazientiFrame frameDeiPazienti;
-		
+	
+	/** Classe che prende i dati digitati nel relativo frame e li utilizza per modificare i dati nel database
+	 * @param v1 riferimento al frame per le modifiche alle diarieMed
+	 * @param v2 riferimento al frame principale
+	 * @param m riferimento al modello
+	 */
 	public ConfermaModificaDiariaMedica(ModificaDiariaFrame v1, PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		frameDeiPazienti = v2;
 		frame = v1;

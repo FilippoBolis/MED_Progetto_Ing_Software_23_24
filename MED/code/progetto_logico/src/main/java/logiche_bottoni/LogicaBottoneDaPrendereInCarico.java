@@ -10,12 +10,13 @@ import logiche_frame_sezioni_ospedaliere.LogicaDellaPosizionePazienteTabella;
 import modelli.ModelloGestoreLogicaGenerale;
 
 
-/**Logica del pulsante di selezione della sezione dell'ospedale "da prendere in carico"
- */
+
 public class LogicaBottoneDaPrendereInCarico extends LogicaBottone{
 	
 	private LogicaDellaPosizionePazienteTabella tabellaInReparto;
 	
+	/**Logica del pulsante di selezione della sezione dell'ospedale "da prendere in carico"
+	 */
 	public LogicaBottoneDaPrendereInCarico(PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		super(v2,m);
 		tabellaInReparto = new LogicaDellaPosizionePazienteTabella(frameDeiPazienti, modello,"in Attesa");

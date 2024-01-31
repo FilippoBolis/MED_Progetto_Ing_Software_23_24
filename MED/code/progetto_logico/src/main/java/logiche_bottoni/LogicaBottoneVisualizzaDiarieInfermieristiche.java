@@ -8,18 +8,22 @@ import logiche_bottoni_conferma.EsciVisualizzaDiarieInfermieristiche;
 import logiche_frame_sezioni_ospedaliere.LogicaDelleDiarieInfermieristicheTabella;
 import modelli.ModelloGestoreLogicaGenerale;
 
-/** Classe VisualizzaDiarieInfermieristiche.
- * 
- */
+
 public class LogicaBottoneVisualizzaDiarieInfermieristiche extends LogicaBottone{
 	
-	
+	/** Classe che permette di aprire il frame delle visualizzazioni delle diarie infermieristiche.
+	 */
 	public LogicaBottoneVisualizzaDiarieInfermieristiche(PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		super(v2,m);
 		start();
 	}
 	
 	
+	/** Alla pressione del bottone verifica la selezione di un utente e la mansione dell'utilizzatore corrente (ammessi solo medico o infermiere):
+	 * se tutto è in regola, attiva e compila il frame delle diarie infermieristiche, 
+	 * bloccando l'interazione con il frame principale.
+	 * Se qualcosa non è in linea con l'utilizzo previsto, mostra a schermo un relativo messaggio di errore
+	 */
 	protected void start() {
 		//si registra al bottone prontoSoccorsoToggleButton
 		frameDeiPazienti.visualizzaDiarieInfButton.addActionListener(new ActionListener() {

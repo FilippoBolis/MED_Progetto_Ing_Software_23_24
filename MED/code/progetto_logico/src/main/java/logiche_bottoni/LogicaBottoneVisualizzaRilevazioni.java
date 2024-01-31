@@ -8,14 +8,20 @@ import logiche_bottoni_conferma.EsciVisualizzaRilevazioni;
 import logiche_frame_sezioni_ospedaliere.LogicaDelleRilevazioniTabella;
 import modelli.ModelloGestoreLogicaGenerale;
 
+
 public class LogicaBottoneVisualizzaRilevazioni extends LogicaBottone{
 	
-	
+	/** Classe che permette di aprire il frame delle visualizzazioni delle rilevazioni relative a un degente
+	 */
 	public LogicaBottoneVisualizzaRilevazioni(PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		super(v2,m);
 		start();
 	}
 	
+	/**Alla pressione del bottone verifica la selezione di un utente e la mansione dell'utilizzatore corrente (ammessi solo medico o infermiere):
+	 * se tutto è in regola, attiva e compila il frame delle rilevazioni, bloccando l'interazione con il frame principale.
+	 * Se qualcosa non è in linea con l'utilizzo previsto, mostra a schermo un relativo messaggio di errore
+	 */
 	protected void start() {
 		frameDeiPazienti.visualizzaRilevazioniButton.addActionListener(new ActionListener() {
 			@Override

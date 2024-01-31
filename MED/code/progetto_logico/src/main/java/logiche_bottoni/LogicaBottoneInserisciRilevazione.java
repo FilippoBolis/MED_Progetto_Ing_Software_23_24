@@ -7,12 +7,12 @@ import gui.*;
 import logiche_bottoni_conferma.ConfermaAggiungiRilevazione;
 import modelli.ModelloGestoreLogicaGenerale;
 
-/**Controller del bottone "inserisci prima diaria medica".
- * Il pulsante può essere utilizzato da un medico o un'infermiere
- */
+
 public class LogicaBottoneInserisciRilevazione extends LogicaBottone{
 	
-	
+	/**Controller del bottone "inserisci prima diaria medica".
+	 * Il pulsante può essere utilizzato da un medico o un'infermiere
+	 */
 	public LogicaBottoneInserisciRilevazione(PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		super(v2,m);
 		start();

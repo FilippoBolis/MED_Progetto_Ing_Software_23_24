@@ -7,12 +7,12 @@ import gui.*;
 import logiche_bottoni_conferma.ConfermaAggiungiPaziente;
 import modelli.ModelloGestoreLogicaGenerale;
 
-/**Controller del bottone "inserisci paziente".
- * Il pulsante può essere utilizzato soltanto da un operatore
- */
+
 public class LogicaBottoneInserisciPaziente extends LogicaBottone{
 
-	
+	/**Controller del bottone "inserisci paziente".
+	 * Il pulsante può essere utilizzato soltanto da un operatore
+	 */
 	public LogicaBottoneInserisciPaziente(PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		super(v2,m);
 		start();

@@ -16,12 +16,12 @@ import logiche_bottoni_conferma.ConfermaModificaDiariaMedica;
 import med_db.jooq.generated.tables.Diariamed;
 import modelli.ModelloGestoreLogicaGenerale;
 
-/** Controller del pulsante "Modifica diaria medica".
- *  Può essere utilizzato solamente da un medico.
- */
+
 public class LogicaBottoneModificaDiariaMedica extends LogicaBottone{
 	
-	
+	/** Controller del pulsante "Modifica diaria medica".
+	 *  Può essere utilizzato solamente da un medico.
+	 */
 	public LogicaBottoneModificaDiariaMedica(PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		super(v2,m);
 		start();

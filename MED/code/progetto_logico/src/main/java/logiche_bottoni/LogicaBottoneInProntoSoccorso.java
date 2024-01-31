@@ -9,12 +9,13 @@ import gui.*;
 import logiche_frame_sezioni_ospedaliere.LogicaDellaPosizionePazienteTabella;
 import modelli.ModelloGestoreLogicaGenerale;
 
-/**Logica del pulsante di selezione della sezione "In pronto soccorso" 
- */
+
 public class LogicaBottoneInProntoSoccorso extends LogicaBottone{
 	
 	private LogicaDellaPosizionePazienteTabella tabellaProntoSoccorso;
 	
+	/**Logica del pulsante di selezione della sezione "In pronto soccorso" 
+	 */
 	public LogicaBottoneInProntoSoccorso(PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		super(v2,m);
 		tabellaProntoSoccorso = new LogicaDellaPosizionePazienteTabella(frameDeiPazienti, modello,"in Pronto Soccorso");

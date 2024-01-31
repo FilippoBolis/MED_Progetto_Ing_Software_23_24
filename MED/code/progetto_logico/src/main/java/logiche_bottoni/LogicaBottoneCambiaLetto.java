@@ -9,11 +9,12 @@ import logiche_bottoni_conferma.LogicaBottoneAggiornamentoLettiDisponibili;
 import logiche_bottoni_conferma.LogicaBottoneAggiornamentoModulo;
 import modelli.ModelloGestoreLogicaGenerale;
 
-/**Controller del bottone "riassegna posto letto"
- * utilizzabile solo da un membro del personale "operatore" (mansione "S")
- */
+
 public class LogicaBottoneCambiaLetto extends LogicaBottone{
 	
+	/**Controller del bottone "riassegna posto letto"
+	 * utilizzabile solo da un membro del personale "operatore" (mansione "S")
+	 */
 	public LogicaBottoneCambiaLetto(PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		super(v2,m);
 		start();

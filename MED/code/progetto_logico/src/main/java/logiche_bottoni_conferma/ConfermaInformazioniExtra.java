@@ -33,7 +33,18 @@ public class ConfermaInformazioniExtra {
 	private String reparto;
 	private PazientiFrame frameDeiPazienti;
 	private LogicaDellaPosizionePazienteTabella tabellaInProntoSoccorso;
-		
+	
+	
+	/**Classe che prende i dati passati da "ConfermaAggiungiDiariaMedica",
+	 * oltre ad altri digitati nel relativo frame e li inserisce nel database
+	 * @param v1 riferimento al frame per l'inserimento delle informazioni della diariaMed
+	 * @param v2 riferimento al frame principale
+	 * @param m riferimento al modello
+	 * @param motivo dato fornito, da inserire in diariaMed
+	 * @param repartoConsigliato dato fornito, da inserire in diariaMed
+	 * @param storico dato fornito, da inserire in diariaMed
+	 * @param farmaci dato fornito, da inserire in diariaMed
+	 */
 	public ConfermaInformazioniExtra(InserisciInformazioniFrame v1,  PazientiFrame v2, ModelloGestoreLogicaGenerale m, String motivo, String repartoConsigliato, String storico, String farmaci) {
 		frame = v1;
 		frameDeiPazienti = v2;
@@ -46,6 +57,11 @@ public class ConfermaInformazioniExtra {
 		start();
 	}
 		
+	/**Una volta premuto il pulsante "conferma" nel frame di inserimento, prende i dati scritti e passati e li utilizza
+	 * per eseguire un insert nella tabella diariaMed del database.
+	 * Inoltre permete la chiusura della finestra, premendo la X oppure confermando l'inserimento.
+	 * Alla chiusura della finestra il frame principale viene riabilitato e aggiornato (il degente viene posto nella sezione "in attesa").
+	 */
 	protected void start() {
 		frame.confermaButton.addActionListener(new ActionListener() {
 			@Override

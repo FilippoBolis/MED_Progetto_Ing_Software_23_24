@@ -16,14 +16,20 @@ import logiche_bottoni_conferma.EsciVisualizzaFarmaci;
 import med_db.jooq.generated.tables.Diariamed;
 import modelli.ModelloGestoreLogicaGenerale;
 
+
 public class LogicaBottoneVisualizzaFarmaci extends LogicaBottone{
 	
-	
+	/** Classe che permette di aprire il frame delle visualizzazioni dei farmaci relativi a un degente
+	 */
 	public LogicaBottoneVisualizzaFarmaci(PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		super(v2,m);
 		start();
 	}
 	
+	/** Alla pressione del bottone verifica la selezione di un utente e la mansione dell'utilizzatore corrente (ammessi solo medico o infermiere):
+	 * se tutto è in regola, attiva e compila il frame dei farmaci somministrati, bloccando l'interazione con il frame principale.
+	 * Se qualcosa non è in linea con l'utilizzo previsto, mostra a schermo un relativo messaggio di errore
+	 */
 	protected void start() {
 		frameDeiPazienti.visualizzaFarmaciButton.addActionListener(new ActionListener() {
 			@Override

@@ -7,12 +7,12 @@ import gui.*;
 import logiche_bottoni_conferma.ConfermaAggiungiDiariaMedica;
 import modelli.ModelloGestoreLogicaGenerale;
 
-/**Controller del bottone "inserisci prima diaria medica".
- * Il pulsante può essere utilizzato soltanto da un medico
- */
+
 public class LogicaBottoneInserisciDiariaMedica extends LogicaBottone{
 	
-	
+	/**Controller del bottone "inserisci prima diaria medica".
+	 * Il pulsante può essere utilizzato soltanto da un medico
+	 */
 	public LogicaBottoneInserisciDiariaMedica(PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		super(v2,m);
 		start();

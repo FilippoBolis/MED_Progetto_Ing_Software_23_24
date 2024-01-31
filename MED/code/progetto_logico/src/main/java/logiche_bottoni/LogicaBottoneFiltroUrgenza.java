@@ -8,14 +8,15 @@ import logiche_frame_sezioni_ospedaliere.LogicaDellUrgenzaPazienteTabella;
 import logiche_frame_sezioni_ospedaliere.LogicaDellaPosizionePazienteTabella;
 import modelli.ModelloGestoreLogicaGenerale;
 
-/**Filtro che permette la ricerca dei degenti attraverso il colore relativo all'urgenza.
- */
+
 public class LogicaBottoneFiltroUrgenza extends LogicaBottone{
 	
 	private LogicaDellUrgenzaPazienteTabella tabellaFiltrataUrgenza;
 	private LogicaDellaPosizionePazienteTabella tabellaPosizioneNonFiltrata;
 	private String opzione;
 	
+	/**Filtro che permette la ricerca dei degenti attraverso il colore relativo all'urgenza.
+	 */
 	public LogicaBottoneFiltroUrgenza(PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		super(v2,m);
 		start();

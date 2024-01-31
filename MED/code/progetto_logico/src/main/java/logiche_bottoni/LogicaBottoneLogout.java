@@ -6,12 +6,12 @@ import java.awt.event.ActionListener;
 import gui.*;
 import modelli.ModelloGestoreLogicaGenerale;
 
-/**Controllore del pulsante "Logout".
- * Permette a un utente di uscire dal sistema una volta terminate le operazioni necessarie
- */
+
 public class LogicaBottoneLogout extends LogicaBottone{
 	
-	
+	/**Controllore del pulsante "Logout".
+	 * Permette a un utente di uscire dal sistema una volta terminate le operazioni necessarie
+	 */
 	public LogicaBottoneLogout(PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		super(v2,m);
 		start();
@@ -27,7 +27,7 @@ public class LogicaBottoneLogout extends LogicaBottone{
 			public void actionPerformed(ActionEvent e) {
 			frameDeiPazienti.sfondoFrame.dispose();
 			LoginFrame loginFrame = new LoginFrame();
-			new LoginLogic(loginFrame,modello);
+			new LogicaLogin(loginFrame,modello);
 			}
 		});
 	}
