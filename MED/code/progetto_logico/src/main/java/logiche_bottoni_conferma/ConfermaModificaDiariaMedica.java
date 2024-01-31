@@ -25,7 +25,12 @@ public class ConfermaModificaDiariaMedica {
 		modello = m;
 		start();
 	}
-		
+	
+	/**Una volta premuto il pulsante "conferma" nel frame di modifica, prende i dati scritti e li utilizza
+	 * per eseguire un update nella tabella diariaMed del database.
+	 * Inoltre permete la chiusura della finestra, premendo la X oppure confermando l'inserimento.
+	 * Alla chiusura della finestra il frame principale viene riabilitato.
+	 */
 	protected void start() {
 		frame.confermaButton.addActionListener(new ActionListener() {
 			@Override

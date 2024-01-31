@@ -31,6 +31,12 @@ public class ConfermaRiassegnaPaziente {
 	private PazientiFrame frameDeiPazienti;
 	private LogicaDellaPosizionePazienteTabella tabellaInAttesa;
 
+	/**Classe che prende i dati digitati nel relativo frame e li inserisce nel database;
+	 * siccome si tratta di una riassegnazione, rimuove la vecchia assegnazione e ne inserisce una nuova
+	 * @param v1 riferimento al frame per la rimozione e l'inserimento di assegnazioni letto
+	 * @param v2 riferimento al frame principale
+	 * @param m riferimento al modello
+	 */
 	public ConfermaRiassegnaPaziente(AssegnaPostoFrame v1, PazientiFrame v2, ModelloGestoreLogicaGenerale m) {
 		frame = v1;
 		frameDeiPazienti = v2;
@@ -39,6 +45,12 @@ public class ConfermaRiassegnaPaziente {
 		start();
 	}
 
+	/**Una volta premuto il pulsante "conferma" nel frame di inserimento, prende i dati scritti e li utilizza
+	 * per eseguire un insert nella tabella assegnazioneLetto del database.
+	 * In seguito rimuove dalla stessa tabella la precedente assegnazione del letto del degente.
+	 * Inoltre permete la chiusura della finestra, premendo la X oppure confermando l'inserimento.
+	 * Alla chiusura della finestra il frame principale viene riabilitato e aggiornato (il degente viene spostato nella sezione "in reparto").
+	 */
 	protected void start() {
 		frame.confermaButton.addActionListener(new ActionListener() {
 			@Override

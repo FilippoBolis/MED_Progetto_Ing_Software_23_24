@@ -27,12 +27,21 @@ public class LogicaBottoneAggiornamentoLettiDisponibili{
 	private AssegnaPostoFrame frame;
 	private ModelloGestoreLogicaGenerale modello;
 	
+	/**Controller del filtro "Letto" all'interno dei selettori per l'inserimento di un'assegnazione di un letto;
+	 * permette la visualizzazione di un letto libero all'interno del reparto e modulo selezionato.
+	 * @param v2 riferimento al frame per l'assegnazione del letto
+	 * @param m riferimento al modello generale
+	 */
 	public LogicaBottoneAggiornamentoLettiDisponibili(AssegnaPostoFrame v2, ModelloGestoreLogicaGenerale m) {
 		frame = v2;
 		modello = m;
 		start();
 	}
 	
+	/**Alla selezione del nome del reparto e del modulo viene eseguita una ricerca sul database
+	 * per trovare i letti non assegnati;
+	 * se ce ne sono, ne inserisce i numeri ordinati nel filtro di selezione.
+	 */
 	private void start() {
 		//si registra al bottone prontoSoccorsoToggleButton
 		frame.moduloComboBox.addItemListener(new ItemListener() {
