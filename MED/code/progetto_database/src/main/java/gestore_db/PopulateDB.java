@@ -83,12 +83,13 @@ public class PopulateDB {
 		
 		//inserimento diarie mediche
 		InserimentoJooq.getIstanza().diariaMed(1,"D1","m","Nessuno","Dolore al braccio","Ortopedia","Antidolorifico",LocalDate.now(),LocalTime.now().withNano(0),"Nessuna allergia");
-		InserimentoJooq.getIstanza().diariaMed(1,"D2","m","Il paziente soffre di un forte allergia", "Attacco allergico, necessaria cura immediata","Medicina Interna", "Antiallergene", LocalDate.now(), LocalTime.now().withNano(0), "Alcuni farmaci");
-		InserimentoJooq.getIstanza().diariaMed(1,"D3","m","Nessuno","Forte influenza","Medicina Interna","Tachipirina",LocalDate.now(),LocalTime.now().withNano(0),"Nessun allergia");
+		InserimentoJooq.getIstanza().diariaMed(1,"D2","m","Il paziente soffre di un forte allergia", "Attacco allergico, necessaria cura immediata","Medicina Interna", "Antiallergene", LocalDate.now(), LocalTime.now().withNano(0), "Allergia ad alcuni farmaci");
+		InserimentoJooq.getIstanza().diariaMed(1,"D3","m","Nessuno","Forte influenza","Medicina Interna","Tachipirina",LocalDate.now(),LocalTime.now().withNano(0),"Nessuna allergia");
 		InserimentoJooq.getIstanza().diariaMed(1,"D4","m","Il paziente è spesso stressato","Pressione molto alta","Cardiologia","Pastiglia della pressione e riposo",LocalDate.now(),LocalTime.now().withNano(0),"Nessuna allergia");
 		InserimentoJooq.getIstanza().diariaMed(1,"D5","m","Nessuno","Forte dolore alla gamba","Ortopedia","Antidolorifico e ulteriori esami",LocalDate.now(),LocalTime.now().withNano(0),"Nessuna allergia");
 		InserimentoJooq.getIstanza().diariaMed(1,"D6","m","Il paziente soffre di disturbo della personalità","Necessario consulto psichiatrico","Medicina Interna","Tranquillante",LocalDate.now(),LocalTime.now().withNano(0),"Intolleranza al lattosio");
-		InserimentoJooq.getIstanza().diariaMed(1,"D7","m","Il paziente si infortuna facendo sport","Strappo muscolare","Ortopedia","Esami specifici, fisioterapia e antidolorifici",LocalDate.now(),LocalTime.now().withNano(0),"Polline");
+		InserimentoJooq.getIstanza().diariaMed(1,"D7","m","Il paziente si infortuna facendo sport","Strappo muscolare","Ortopedia","Esami specifici, fisioterapia e antidolorifici",LocalDate.now(),LocalTime.now().withNano(0),"Allergia al polline");
+		InserimentoJooq.getIstanza().diariaMed(1,"D8","m","Il paziente soffre di asma","Attacco d'asma","Medicina Interna","Farmaci Broncodilatatori",LocalDate.now(),LocalTime.now().withNano(0),"Nessuna allergia");
 		
 		//assegnazione dei letti
 		InserimentoJooq.getIstanza().assegnazioneLetto("D1","Re2","ModuloC",1,LocalDate.now());
