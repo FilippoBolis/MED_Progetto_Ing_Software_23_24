@@ -331,6 +331,18 @@ public class InserimentoJooq{
 		getIstanza().assegnazioneLetto("D1","Re1","ModuloA",1,LocalDate.now());
 		getIstanza().diariaInf(1,"D1","P2",LocalDate.now(),LocalTime.now().withNano(0),"Il paziente è diventato enorme dottore",true,"Trembolone");
 		*/
+		
+
+		getIstanza().reparto("Re4","Ortopedia");
+		getIstanza().modulo("Re4","ModuloA");
+		getIstanza().modulo("Re4","ModuloB");
+		getIstanza().modulo("Re4","ModuloC");
+		for(int i = 1; i <= 15; i++) {
+			getIstanza().letto("Re4","ModuloA",i);
+			getIstanza().letto("Re4","ModuloB",i);
+			getIstanza().letto("Re4","ModuloC",i);
+				
+		}
 
 	}
 
