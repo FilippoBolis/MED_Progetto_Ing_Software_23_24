@@ -5,6 +5,10 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**Modello della struttura dei dati dei degenti mostrati in tabella nelle varie sezioni del programma
+ * 
+ */
 public class ModelloGestoreTabella {
 	//per le tabelle dei pazienti
 	private List<String> nomi = new ArrayList<>();

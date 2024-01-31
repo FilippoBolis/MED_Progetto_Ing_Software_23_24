@@ -5,6 +5,10 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**Modello della struttura dei dati delle rilevazioni
+ * 
+ */
 public class ModelloGestoreRilevazioni {
 	//per le tabelle delle rilevazioni
 	private List<String> codicePersonale = new ArrayList<>();

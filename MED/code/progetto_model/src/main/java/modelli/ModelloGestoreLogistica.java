@@ -3,6 +3,9 @@ package modelli;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**Modello della struttura di reparti, moduli e letti
+ */
 public class ModelloGestoreLogistica {
 	//per le tabelle dei pazienti
 	private List<String> nomiReparti = new ArrayList<>();

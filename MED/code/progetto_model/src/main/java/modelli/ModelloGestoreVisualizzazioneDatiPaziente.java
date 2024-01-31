@@ -1,5 +1,7 @@
 package modelli;
 
+/**Modello della struttura dei dati da visualizzare alla selezione del paziente
+ */
 public class ModelloGestoreVisualizzazioneDatiPaziente {
 	
 	private String stringaAnagrafica;

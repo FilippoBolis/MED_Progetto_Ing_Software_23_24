@@ -27,11 +27,19 @@ public class LogicaDellUrgenzaPazienteTabella extends LogicaFrame{
 
 	private String filtro;
 	
+	/**Classe che si occupa di mostrare a schermo i soli degenti che corrispondono al filtro di urgenza selezionato
+	 * @param p riferimento al frame principale dei pazienti
+	 * @param m riferimento al modello generale
+	 * @param filtro valore di urgenza richiesto nella ricerca
+	 */
 	public LogicaDellUrgenzaPazienteTabella(PazientiFrame p, ModelloGestoreLogicaGenerale m, String filtro) {
 		super(p,m);
 		this.filtro=filtro;
 	}
 	
+	
+	/**All'attivazione questo metodo compila la tabella di degenti a schermo con i degenti della sezione attiva con il grado di urgenza scelto
+	 */
 	public void update() {
 		if(!frameDeiPazienti.updating) {
 			try {

@@ -27,12 +27,18 @@ public class LogicaDelleRilevazioniTabella{
 	private static String DB_URLLOGIC = "jdbc:sqlite:" + DB_REL_FILELOGIC;
 	private ModelloGestoreLogicaGenerale modello;
 	
+	/**Classe che permette di visualizzare i dati delle rilevazioni di un paziente
+	 * @param p riferimento al frame principale
+	 * @param m riferimento al modulo generale
+	 */
 	public LogicaDelleRilevazioniTabella(VisualizzaRilevazioniFrame v, ModelloGestoreLogicaGenerale m) {
 		frameDelleRilevazioni = v;
 		modello = m;
 		update();
 	}
 	
+	/**Dato il frame, questo metodo ne riempie la tabella con i dati delle rilevazioni associate al degente selezionato
+	 */
 	public void update() {
 		if(!frameDelleRilevazioni.updating) {
 			try {

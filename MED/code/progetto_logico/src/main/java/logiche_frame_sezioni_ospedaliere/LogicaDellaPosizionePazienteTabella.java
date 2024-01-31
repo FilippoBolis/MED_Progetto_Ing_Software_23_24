@@ -27,11 +27,22 @@ public class LogicaDellaPosizionePazienteTabella extends LogicaFrame{
 
 	private String filtro;
 	
+	/**Classe che tiene conto dei dati del paziente presenti nel database,
+	 * permettendone la visualizzazione a schermo in base alla sezione selezionata del programma.
+	 * Nel caso in cui la sezione attiva sia "in reparto", permette di visualizzare anche i dati relativi al letto assegnato a ogni degente
+	 * @param p riferimento agli elementi grafici
+	 * @param m riferimento al modello generale
+	 * @param filtro corrisponde alla sezione attiva correntemente nel programma, 
+	 * definisce quali degenti devono essere mostrati a schermo in un determinato momento
+	 */
 	public LogicaDellaPosizionePazienteTabella(PazientiFrame p, ModelloGestoreLogicaGenerale m, String filtro) {
 		super(p,m);
 		this.filtro=filtro;
 	}
 	
+	/**Ogni qualvolta venga selezionata una nuova sezione o effettuata una modifica ai dati dei pazienti
+	 * viene ricaricata la lista di degenti nella sezione attiva, utilizzando i dati aggiornati presenti nel database.
+	 */
 	public void update() {
 		if(!frameDeiPazienti.updating) {
 			try {

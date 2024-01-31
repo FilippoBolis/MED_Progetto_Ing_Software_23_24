@@ -28,11 +28,18 @@ public class LogicaDellaStringaPaziente extends LogicaFrame{
 	private String condizione;
 	
 	
+	/**Classe che permette di visualizzare i dati salienti del degente selezionato
+	 * @param p riferimento al frame principale
+	 * @param m riferimento al modulo generale
+	 */
 	public LogicaDellaStringaPaziente(PazientiFrame p, ModelloGestoreLogicaGenerale m) {
 		super(p,m);
 		updateStringaPaziente();
 	}
 	
+	/**Ogni qualvolta viene selezionato un degente, i suoi dati sono raccolti dal database e posti nell'apposito spazio grafico.
+	 * Se esiste una diaria medica assegnata al degente, viene mostrato anche il motivo del ricovero del degente.
+	 */
 	private void updateStringaPaziente() {
 		// si registra al mouse nella tabella
 		frameDeiPazienti.table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {

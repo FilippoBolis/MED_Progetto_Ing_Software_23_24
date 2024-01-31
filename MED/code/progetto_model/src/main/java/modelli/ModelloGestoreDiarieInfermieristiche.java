@@ -5,6 +5,9 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**Modello dei dati delle diarie infermieristiche
+ */
 public class ModelloGestoreDiarieInfermieristiche {
 	//per le tabelle delle diarie
 	private List<String> codiceInfermiere = new ArrayList<>();

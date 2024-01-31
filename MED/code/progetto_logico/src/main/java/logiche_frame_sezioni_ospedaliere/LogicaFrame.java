@@ -3,6 +3,9 @@ package logiche_frame_sezioni_ospedaliere;
 import gui.PazientiFrame;
 import modelli.ModelloGestoreLogicaGenerale;
 
+/**Classe astratta che definisce i collegamenti delle classi logiche agli altri progetti del programma.
+ * Fa riferimento al modello, alla GUI e alla directory relativa del database.
+ */
 public abstract class LogicaFrame {
 	//riferimenti agli altri pacchetti di lavoro 
 	protected PazientiFrame frameDeiPazienti;

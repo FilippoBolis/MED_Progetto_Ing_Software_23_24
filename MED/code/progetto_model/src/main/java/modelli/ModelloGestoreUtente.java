@@ -1,5 +1,8 @@
 package modelli;
 
+
+/**Modello dei dati dell'utente utilizzatore del programma
+ */
 public class ModelloGestoreUtente {
 	private String mansione;
 	private String nome;

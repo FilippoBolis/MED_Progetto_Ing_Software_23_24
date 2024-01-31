@@ -1,5 +1,9 @@
 package modelli;
 
+
+/**Modello che controlla la selezione di un paziente dalla tabella.
+ * Definisce il valore delle stringhe di "ModelloGestoreVisualizzaDatiPaziente" in base alla selezione.
+ */
 public class ModelloGestorePaziente {
 	private String codice;
 	private String cognome;

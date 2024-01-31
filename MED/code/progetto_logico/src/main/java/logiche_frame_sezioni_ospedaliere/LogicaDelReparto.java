@@ -26,11 +26,18 @@ public class LogicaDelReparto extends LogicaFrame{
 
 	private String filtroNomeReparto;
 	
+	/**Classe che si occupa di mostrare a schermo i soli degenti che corrispondono al filtro di reparto selezionato
+	 * @param p riferimento al frame principale dei pazienti
+	 * @param m riferimento al modello generale
+	 * @param filtro valore di reparto richiesto nella ricerca
+	 */
 	public LogicaDelReparto(PazientiFrame p, ModelloGestoreLogicaGenerale m, String filtro) {
 		super(p,m);
 		this.filtroNomeReparto=filtro;
 	}
 	
+	/**All'attivazione questo metodo compila la tabella di degenti a schermo con i degenti della sezione attiva posti nel reparto scelto
+	 */
 	public void update() {
 		if(!frameDeiPazienti.updating) {
 			try {
