@@ -45,7 +45,7 @@ Per accedere al software nella pagina di login inserire le seguenti credeziali:
 
 Nel software sono stati già inseriti alcuni pazienti default di esempio. Qualora si desideri eliminarli, è necessario procedere trasferendoli in un reparto specifico e successivamente dimetterli.
 ## Componenti del gruppo
-- [__Daniele Gotti, matricola 1079011__](https://github.com/DanieleGotti)
+- [__Gotti Daniele, matricola 1079011__](https://github.com/DanieleGotti)
 - [__Bolis Filippo Antonio, matricola 1079493__](https://github.com/FilippoBolis)
 - [__Mazzoleni Gabriele, matricola 1079514__](https://github.com/Gabriele-Mazzoleni)
 - [__Masinari Gabriele, matricola 1079692__](https://github.com/GabrieleMasinari27)
