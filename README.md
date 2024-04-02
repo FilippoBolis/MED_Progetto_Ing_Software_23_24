@@ -1,4 +1,4 @@
-# Progetto_ING.Software_23_24
+# Progetto Ing. Software 23/24
 versione BETA 1.0.0
 ![logo](https://github.com/FilippoBolis/Progetto_ING.Software_23_24/blob/main/MED/doc/immagini/logo.png)
 Lo scopo del progetto è quello di implementare una soluzione software alternativa volta alla gestione automatica (raccolta, scrittura e consultazione) dei dati che accompagnano il paziente dalla sua accettazione alla dimissione e contribuendo a raccogliere una serie di rilevazioni sui parametri vitali, al fine di migliorare 
